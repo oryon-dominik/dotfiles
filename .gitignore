@@ -1,0 +1,42 @@
+## GIT is ignoring...
+
+# hidden secrets
+.secrets/*
+
+# local environment settings
+.local/*.*
+.local/shortcuts/*.*
+!.local/envs_example.json
+
+# local environment variables
+.env
+!.env.example  # don't forget to set them on a fork using the .env.example
+
+# submodule-files containing your private galleries
+files/icons/*
+files/images/avatar/*
+files/images/backgrounds/*
+files/images/console/*
+files/images/generic/*
+files/images/user/*
+files/plymouth_theme/*
+files/systemsounds/*
+files/windows_software_addons/*
+
+# all manual-pdfs from internet_sources
+basic-tutorials/manual_*
+
+# git itself
+.git/*
+
+# all logs
+*.log
+
+# vscode/settings
+.vscode/*
+config.code-workspace
+
+### Python ###
+# precompiled
+__pycache__/
+*.py[cod]
