@@ -49,9 +49,10 @@ __pycache__/
 basic-tutorials/how-to_bash.md
 basic-tutorials/how-to_emacs.md
 basic-tutorials/how-to_windows_installation.md
+basic-tutorials/how-to_fedora_installation.md
 basic-tutorials/how-to_vim.md
 basic-tutorials/how-to_emacs.md
-basic-tutorials/how_to_mercurial.md
+basic-tutorials/how-to_mercurial.md
 settings/*
 .env
 .env.example
