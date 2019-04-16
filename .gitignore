@@ -6,7 +6,7 @@
 # local environment settings
 .local/*.*
 .local/shortcuts/*.*
-!.local/envs_example.json
+!.local/env_settings_example.json
 
 # local environment variables
 .env
@@ -28,15 +28,35 @@ basic-tutorials/manual_*
 
 # git itself
 .git/*
+# git-modules (set them up yourself, see readme)
+.gitmodules
 
 # all logs
 *.log
 
 # vscode/settings
 .vscode/*
-config.code-workspace
+den.code-workspace
 
 ### Python ###
 # precompiled
 __pycache__/
 *.py[cod]
+
+
+### Incomplete Tutorials & Settings ###
+# TODO: reactivate the ones finished
+basic-tutorials/how-to_bash.md
+basic-tutorials/how-to_emacs.md
+basic-tutorials/how-to_windows_installation.md
+basic-tutorials/how-to_vim.md
+basic-tutorials/how-to_emacs.md
+basic-tutorials/how_to_mercurial.md
+settings/*
+.env
+.env.example
+TODO
+scripts/python/timer.py
+scripts/powershell/*
+install/*
+README_full.md
