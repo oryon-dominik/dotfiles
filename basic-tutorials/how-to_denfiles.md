@@ -4,7 +4,7 @@
 
 THIS TUTORIAL IS IN NO WAY COMPLETE NOR TESTET. NO WARRANTIES
 
-After setting up your [ssh-keys](how_to_init_a_git_repo.md#markdown-header-preparations)..
+After setting up your [ssh-keys](how_to_init_a_git_repo.md#markdown-header-preparations) and your git-credentials (`git config -e --global`)
 
 1. create a file-repository (you could use [new_project.py](../scripts/python/new_project.py) for that or manually set it up over the website )
 
