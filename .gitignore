@@ -57,7 +57,6 @@ settings/*
 .env
 .env.example
 TODO
-scripts/python/timer.py
 scripts/powershell/*
 install/*
 README_full.md
