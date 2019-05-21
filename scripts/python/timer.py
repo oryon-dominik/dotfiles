@@ -6,10 +6,10 @@ Timer - for pomodore-sessions and meetings - for Windows
 plays "church.wav" from your preconfigured files-repo
 """
 
-__version__ = "0.0.1"
+__version__ = "0.1.0"
 __author__ = "oryon/dominik"
 __date__ = "April 12, 2019"
-__updated__ = "April 12, 2019"
+__updated__ = "May 21, 2019"
 
 from argparse import ArgumentParser, RawTextHelpFormatter
 import time
