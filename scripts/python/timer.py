@@ -47,6 +47,9 @@ if __name__ == "__main__":
         print(f"Time left: - {minutes:02d}:{seconds:02d}", end="\r")
         time.sleep(1)
         time_left -= 1
+    else:
+        minutes, seconds = divmod(time_left, 60)
+        print(f"Time left: - {minutes:02d}:{seconds:02d}", end="\n")
 
     if os.getenv("DEN_ROOT"):
         cfg_root = Path(os.getenv("DEN_ROOT"))
