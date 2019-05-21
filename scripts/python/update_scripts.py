@@ -18,6 +18,7 @@ if os.getenv("DEN_ROOT"):
 if os.getenv("PROJECTS_DIR"):
     projects = Path(os.getenv("PROJECTS_DIR"))
     clitube_new = projects / "cliTube" / "cliTube.py"
+    # TODO: check for files online, if projects not present
 
 if clitube_old.is_file() and clitube_new.is_file():
     shutil.copy(clitube_new, clitube_old)
