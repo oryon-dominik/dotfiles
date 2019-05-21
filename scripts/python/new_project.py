@@ -27,7 +27,6 @@ TODO:
     - check if required conditions are met / substitute curl with requests
     - add install of custom projects & requirements, folders, files
     - add other repo-services accounts (AZURE, bitbucket..)
-    - get the settings file from your $env:DEN_ROOT\.local\project-settings.json
 """
 
 __version__ = '0.2.0'
@@ -54,7 +53,6 @@ import shutil
 from json import load
 import re
 import requests
-from getpass import getpass
 
 
 
@@ -402,17 +400,17 @@ if __name__ == '__main__':
     
     # authentification
     AUTH = False
-    TOKEN = os.environ.get('GIT_TOKEN')
+    TOKEN = os.environ.get('GITHUB_TOKEN')
     while not AUTH:
         if not TOKEN:
-            TOKEN = getpass(prompt=f'{GIT_USER} please enter your personal {REPO} access token > ')
+            TOKEN = getpass.getpass(prompt=f'{GIT_USER} please enter your personal {REPO} access token > ')
         response = requests.get('https://api.github.com/', headers={'Authorization': f'token {TOKEN}'}).json()  # TODO: GITHUB-specific!
         if 'message' in response:
             if response['message'] == 'Bad credentials':
                 TOKEN = None
                 parser.error('authentification failed')
             else:
-                if os.environ.get('GIT_TOKEN'):
+                if os.environ.get('GITHUB_TOKEN'):
                     parser.error(response)
                 else:
                     print(response)
