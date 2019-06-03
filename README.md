@@ -20,3 +20,5 @@ explanation: "den" = cave, hive, nest, sanctuary..
 ## How to repository
 
 ...
+
+newest_version: 03.06.2019
