@@ -23,7 +23,7 @@ files/plymouth_theme/*
 files/systemsounds/*
 files/windows_software_addons/*
 
-# all manual-pdfs from internet_sources
+# all manual-pdfs (mostly copyrighted and as such not distributable) from internet_sources
 basic-tutorials/manual_*
 
 # git itself
@@ -43,20 +43,19 @@ den.code-workspace
 __pycache__/
 *.py[cod]
 
+# these two are secret, put your own location-aliases and project-aliases here
+scripts/powershell/limbs/locations.ps1
+scripts/powershell/limbs/projects.ps1
 
 ### Incomplete Tutorials & Settings ###
 # TODO: reactivate the ones finished
-basic-tutorials/how-to_bash.md
 basic-tutorials/how-to_emacs.md
-basic-tutorials/how-to_windows_installation.md
-basic-tutorials/how-to_fedora_installation.md
 basic-tutorials/how-to_vim.md
-basic-tutorials/how-to_emacs.md
-basic-tutorials/how-to_mercurial.md
+# settings need sync-scripts and polishing, maybe pack them to another module
 settings/*
-.env
-.env.example
-TODO
-scripts/powershell/*
+# all install-files are under heavy construction
 install/*
+# TODO work full_version into readme
 README_full.md
+# the todo-list
+TODO
