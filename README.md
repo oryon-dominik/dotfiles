@@ -21,4 +21,12 @@ explanation: "den" = cave, hive, nest, sanctuary..
 
 ...
 
+work still in progress, just have a look around the script files
+
+if you are interested in something special or you need an advice you may write me a message
+
+this repos' main purpose is serving as a private dump - so no warranties at all for anything
+
+> especially all install-files are under heavy construction and therefor hidden from the repository
+
 newest_version: 11.07.2019
