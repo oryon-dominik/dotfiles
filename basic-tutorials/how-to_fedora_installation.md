@@ -1,10 +1,5 @@
 # Fedora Linux Installation
 
-[![SOILA](http://www.soila.de/wp-content/uploads/2017/10/soila_analytics_logo_signet_32px.png)](http://www.soila.de)
-
-$~$
-**Ein Projekt von oryon-dominik@soila - smart opportunities in leveraging analytics**
-
 > How-to install fedora linux
 
 THIS TUTORIAL IS IN NO WAY COMPLETE NOR TESTET. NO WARRANTIES
