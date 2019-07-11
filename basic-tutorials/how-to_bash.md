@@ -10,7 +10,8 @@ This shell (bash & fish) -Tutorial mostly follows my learnings with fedora-linux
 Some (or most) of the commands should work on other linux-distributions too.
 As I'm a linux-beginner (at least I was, when I started writing this tutorial) these commands do neither claim completeness nor correctness at all.
 
-If you have special questions on a command, you should tryout [explainshell](https://explainshell.com/)
+If you have special questions on a command, you should tryout [explainshell](https://explainshell.com/).
+
 Some of the links point to german references, sorry.
 
 - [Preparations](#markdown-header-preparations)
@@ -22,32 +23,33 @@ Some of the links point to german references, sorry.
 
 install fedora
 
-TODO: create a good, readable tutorial on using bash from these notes
-TODO: create a readable readme with good sections and examples
-TODO: clean from personal variables (use .env-imports for this)
+- TODO: create a good, readable tutorial on using bash from these notes
+- TODO: create a readable readme with good sections and examples
+- TODO: clean from personal variables (use .env-imports for this)
 
 ### Basic UI-Controls
 
-Basic UI-Controls:
-ctrl+shift+alt + arrowkeys  -> move application between desktops
-ctrl+alt+ arrowkeys         -> switch between desktops
+- Basics:
+    ctrl+shift+alt + arrowkeys  -> move application between desktops
+    ctrl+alt+ arrowkeys         -> switch between desktops
 
-Fedora-Terminal:
-ctrl+shift+t                -> new tab in terminal
-ctrl+shift+n                -> new terminal
-alt+1 / alt+2               -> switch tab
-ctrl+shift+w                -> close terminal
+- Fedora-Terminal:
+    ctrl+shift+t                -> new tab in terminal
+    ctrl+shift+n                -> new terminal
+    alt+1 / alt+2               -> switch tab
+    ctrl+shift+w                -> close terminal
 
-ctrl+c                      -> terminate running process
-ctrl+z                      -> hold on process
-ctrl+s                      -> stop scrolling
-ctrl+q                      -> resume scrolling
+    ctrl+c                      -> terminate running process
+    ctrl+z                      -> hold on process
+    ctrl+s                      -> stop scrolling
+    ctrl+q                      -> resume scrolling
 
-ctrl+shift+u+hex+SPACE      -> special chars [entity-table](http://unicode.e-workers.de/entities.php)
+    ctrl+shift+u+hex+SPACE      -> special chars [entity-table](http://unicode.e-workers.de/entities.php)
+
                                „Ω“ = (U+2126) # -> ctrl+shift+u+2126+SPACE
 
 fedora autostart:
-in `~/.config/autostart` are the `*.desktop` files of programs, that run on systemstart
+in `~/.config/autostart` are the `*.desktop` files of programs, that run on systemstart.
 More Inormation on [modifying dekstop entries](https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html#recognized-keys)
 
 ## Bash
@@ -59,47 +61,48 @@ More Inormation on [modifying dekstop entries](https://specifications.freedeskto
 
 `date` ...
 
-show version: `cat /etc/fedora-release`
-load all os-variables: `source /etc/os-release`
+show version: `cat /etc/fedora-release`\
+load all os-variables: `source /etc/os-release`\
 show system `uname -a` or kernel `uname -r` info
 
 show the manual-page for any command `man <command>`
 
 show the path of a command (python here) `whereis python`
+
 show the path to the currently used version `which python`
 
 list files in the cwd or `<path>` with `ls`
 
-`pushd <path>` push current working directory (cwd) on a stack and switches to `<path>`
-`dirs` shows all directories on directory-stack
+`pushd <path>` push current working directory (cwd) on a stack and switches to `<path>`\
+`dirs` shows all directories on directory-stack\
 `popd` pops dir from the stack (and switches to it)
 
 `mkdir` create directory
 
 ### variables
 
-Show, set or unset values of shell options and positional parameters with `set`
+Show, set or unset values of shell options and positional parameters with `set`\
 Set environment variable to value `export name=value`
 
 ### advanced basics
 
 Repeat the last command `!!`
 
-`history` list the last commands
-`history > file` saves history in "file" / you can find the history in `~/.bash_history` too!
-`history -c` clears history from current shell
-`history -w` saves / overwrites the shell history with the current one
+`history` list the last commands\
+`history > file` saves history in "file" / you can find the history in `~/.bash_history` too!\
+`history -c` clears history from current shell\
+`history -w` saves / overwrites the shell history with the current one\
 `history -d <nummer>` delete history entries with `<number>`
 
 `tty` Terminal-name
 
-chain commands with a `|`
-write command-output (pipe it) to a file `> filename` or append it with `>> filename`
-a `&` at the end, runs the command in the background
-`man ascii` shows the ascii-table
-to continue the command even though you closed the terminal with `nohup <command>`
+chain commands with a `|`\
+write command-output (pipe it) to a file `> filename` or append it with `>> filename`\
+a `&` at the end, runs the command in the background\
+`man ascii` shows the ascii-table\
+to continue the command even though you closed the terminal with `nohup <command>`\
 
-other use-cases of `ls`:
+other use-cases of `ls`:\
 you can combine it with `cut`: `ls | cut -f1`
 
 ```bash
@@ -119,52 +122,52 @@ ls -dZ              # prints SELinux information on directory
 ls | wc -l          # counts files in cwd
 ```
 
-sleep: `shutdown -h <timein_hh:mm>`
-hinbernate: `systemctl hibernate`
-restart: `shutdown -r` or `reboot`
-`shutdown -k` "Wall"-Message, no shutdown
-`shutdown now` or `shutdown 0` does `shutdown -p 0` and powers off
+sleep: `shutdown -h <timein_hh:mm>`\
+hinbernate: `systemctl hibernate`\
+restart: `shutdown -r` or `reboot`\
+`shutdown -k` "Wall"-Message, no shutdown\
+`shutdown now` or `shutdown 0` does `shutdown -p 0` and powers off\
 `systemctl suspend`
 
 ATTENTION: delete all the data on your disk recursively `rm -rf /` without asking `rm -rf / --no-preserve-root`
 
-`eog <image-name>` shows an image
-`file -bi <filename>` shows encoding
+`eog <image-name>` shows an image\
+`file -bi <filename>` shows encoding\
 `iconv -f <from-encoding> -t <to endocding> input.file -o output.file` convert encoding
 
 `df` show empty disk space `df -h` in GB
 
 Mount a dir to another path `mount --bind /<sourcepath> <targetpath>`
 
-`find <path> -name *.log -print` find and list log files in `<path>`
-`find . -name '*.log' -exec rm{};` find log files in current directory and delete them
+`find <path> -name *.log -print` find and list log files in `<path>`\
+`find . -name '*.log' -exec rm{};` find log files in current directory and delete them\
 `find <path> -newer <filename>` looks for files newer than `<filename>` in `<path>`
 
-`ln <source> <target>` hard-link ("physical" link) for content, looks like the original
-`ln -s <source> <target>` soft-link ("virtual) for content, that's what you want to use!
-`unlink <target>` remove soft- or hardlink
-`find -L DIRECTORY -xtype l` find links recursively in DIR
-`ls -l LINKDIR/LINKNAME` see the target of the link
+`ln <source> <target>` hard-link ("physical" link) for content, looks like the original\
+`ln -s <source> <target>` soft-link ("virtual) for content, that's what you want to use!\
+`unlink <target>` remove soft- or hardlink\
+`find -L DIRECTORY -xtype l` find links recursively in DIR\
+`ls -l LINKDIR/LINKNAME` see the target of the link\
 `find -L . -type l` looks for flawed links in cwd and sub-dirs
 
 `lspci` shows installed hardware
 
 `file <filename>` shows filetype and details
 
-`echo "text"` writes "text" to console
-`echo "text" > file` writes "text" to file
+`echo "text"` writes "text" to console\
+`echo "text" > file` writes "text" to file\
 `echo "text" >> file` appends "text" to file
 
-`head <file*>` show beginning of some files
+`head <file*>` show beginning of some files\
 `tail <file*>` shows end of some files
 
-`cmp <file1> <file2>` compare two files, shot analysis
+`cmp <file1> <file2>` compare two files, shot analysis\
 `diff <file1> <file2>` detailed differences
 
 `split -n <file>` splits `<file>` in n-lines long parts
 
-`cat <file*>` creates file or shows files content
-`cat <file*> > <file>` writes content to new-file
+`cat <file*>` creates file or shows files content\
+`cat <file*> > <file>` writes content to new-file\
 `cat file1 file2 > file3` concatenate two files to third
 
 `wc <file>` counts lines, words and chars
@@ -175,7 +178,7 @@ Mount a dir to another path `mount --bind /<sourcepath> <targetpath>`
 
 `localectl set-locale en_US.utf8` sets language to english
 
-`tee -a <file>` splits progam-output: reads standard-input, writes to standard-output and a file `-a` appends instead of overwritng the file
+`tee -a <file>` splits progam-output: reads standard-input, writes to standard-output and a file `-a` appends instead of overwritng the file\
 `<command> | tee <file>` writes console-outpu directly into a file too, e.g `ls | tee list.txt`
 
 `printenv` shows environment-variables, print single values with `echo $<varname>`
@@ -184,24 +187,24 @@ Mount a dir to another path `mount --bind /<sourcepath> <targetpath>`
 
 ### user
 
-show user id `id <username>`
+show user id `id <username>`\
 show user id from name `id -u <username>` or name from id `id -nu <userid>`
 
-last login and active user with `w`
-show users groupd `groups username`
-create user `$ useradd -m -G wheel -s /bin/bash username`
+last login and active user with `w`\
+show users groupd `groups username`\
+create user `$ useradd -m -G wheel -s /bin/bash username`\
 and set her password `passwd username`
 
 when changing some values in configfiles use use `$HOME` instead of `/home/username`, so they are generally valid
 
-rename a user `sudo usermod -l oldname newname` and move its home `sudo usermod -d /home/newname -m newname`
-give her a new id too `sudo usermod -u 2000 newname`
-and don't forget to change her usergroup `groupmod -n newname oldname`
+rename a user `sudo usermod -l oldname newname` and move its home `sudo usermod -d /home/newname -m newname`\
+give her a new id too `sudo usermod -u 2000 newname`\
+and don't forget to change her usergroup `groupmod -n newname oldname`\
 test it with `id newname`
 
 move `malcolm` to a new home-directory `usermod -d /newpathto/malcolm -m malcolm`
 
-block chris `usermod -L chris` and free him again `usermod -U chris`
+block chris `usermod -L chris` and free him again `usermod -U chris`\
 move shell for daisy to `/bin/fish` with `usermod -s /bin/fish daisy` and back `usermod -s /bin/bash daisy`
 
 if you want to skip login in gnome edit `/var/lib/AccountsService/users/` and set `SystemAccount=true`
@@ -212,7 +215,7 @@ show groups `cat /etc/group`
 
 in `/etc/sudoers` groups (wheel, root) with sudo-access are listed
 
-to add a user to a group use this instead of `groupadd` to not overwrite its values `gpasswd --add username group`
+to add a user to a group use this instead of `groupadd` to not overwrite its values `gpasswd --add username group`\
 and to delete him `gpasswd -d username group`
 
 Create a group with id(1337) and its group(hackers) `groupadd -g 1337 hackers`
@@ -225,67 +228,67 @@ add hillary to the sudo group `usermod -aG sudo hillary`
 
 #### chmod
 
-First = owner
-Second = group
-third  = others
-7 = full
-6 = read AND write
-5 = read and execute
-4 = read only
-3 = write and execute
-2 = write only
-1 = execute only
+First = owner\
+Second = group\
+third  = others\
+7 = full\
+6 = read AND write\
+5 = read and execute\
+4 = read only\
+3 = write and execute\
+2 = write only\
+1 = execute only\
 0 = no
 
-Examples:
-To set all rights recursivley on all rights and folders in dir /foo/bar to 700 `chmod -R 700 /foo/bar`
+Examples:\
+To set all rights recursivley on all rights and folders in dir /foo/bar to 700 `chmod -R 700 /foo/bar`\
 change the rights on file.txt to "full" for owners, groups and others `chmod 777 file.txt`
 
 #### chown
 
-`chown <user> <file>` change owner of a file to user
-Examples:
-to set the current user as owner of media including all subdirs and show changes `sudo chown -cR $USER /media/`
-you can also change the group and user of a file `chown root:groupname file.txt`
-change owner of dir and content from `/var/dict` to user & group "yourgroup" `chown -R user:yourgroup /var/dict`
+`chown <user> <file>` change owner of a file to user\
+Examples:\
+to set the current user as owner of media including all subdirs and show changes `sudo chown -cR $USER /media/`\
+you can also change the group and user of a file `chown root:groupname file.txt`\
+change owner of dir and content from `/var/dict` to user & group "yourgroup" `chown -R user:yourgroup /var/dict`\
 
 ### package & kernel managing with dnf
 
 More on DNF System upgrade on the [official pages](https://fedoraproject.org/wiki/DNF_system_upgrade)
 
-`dnf upgrade`                   upgrades all packages
-`dnf check-update`              what upgrades are available
-`dnf check-update <packetname>`
+`dnf upgrade`                   upgrades all packages\
+`dnf check-update`              what upgrades are available\
+`dnf check-update <packetname>`\
 
-`dnf search <packetname>`
+`dnf search <packetname>`\
 
-`dnf install <packetname>`
-`dnf remove <packetname>`
-`dnf download --source <packetname>`
+`dnf install <packetname>`\
+`dnf remove <packetname>`\
+`dnf download --source <packetname>`\
 
 `dnf clean metadata`            cleans metadaten bevor update, you could use `dnf upgrade --refresh`
 
-To show your repository-groups:
-`dnf grouplist hidden`
-`dnf group info <groupname>`
-`dnf install '@<groupname>'`
+To show your repository-groups:\
+`dnf grouplist hidden`\
+`dnf group info <groupname>`\
+`dnf install '@<groupname>'`\
 
-Show kernel-version: `uname -r` and installed kernel with `rpm -q kernel` or `dnf list installed | grep kernel`
-Show old kernels with `package-cleanup --oldkernels` and remove em with `dnf remove kernel-<version>`
+Show kernel-version: `uname -r` and installed kernel with `rpm -q kernel` or `dnf list installed | grep kernel`\
+Show old kernels with `package-cleanup --oldkernels` and remove em with `dnf remove kernel-<version>`\
 
-In `/etc/dnf/dnf-conf` is a list with `installonly_limit =` you can set here how many kernels should be stocked
+In `/etc/dnf/dnf-conf` is a list with `installonly_limit =` you can set here how many kernels should be stocked\
 
-`dracut -fv` builds initramfs for the running kernel
+`dracut -fv` builds initramfs for the running kernel\
 
-on a stable sytem these can be savely removed from /boot `rm /boot/vmlinuz-0-rescue-*` and `rm /boot/initramfs-0-rescue-*`
+on a stable sytem these can be savely removed from /boot `rm /boot/vmlinuz-0-rescue-*` and `rm /boot/initramfs-0-rescue-*`\
 After removing, run: `grub2-mkconfig -o /boot/grub2/grub.cfg` to rebuild the boot-list
 
 ### basic .bashrc
 
-Extend `~/.bashrc` to your needs.
+Extend `~/.bashrc` to your needs.\
 After any changes you should `source ~/.bashrc` to activate them.
 
-ATTENTION if you are using fish a `source ~/.bashrc` won't work
+ATTENTION if you are using fish a `source ~/.bashrc` won't work\
 just switch to `/bin/bash`, `source` there and return back to `fish`
 
 ```.bashrc
@@ -317,13 +320,13 @@ dircolors                                                   # colors for dirs
 export LS_COLORS='rs=0:di=01;34:ln=01;36:mh=00:pi=40;33'    # colors in ls
 ```
 
-some links for more color:
-[ls-colors](http://linux-sxs.org/housekeeping/lscolors.html)
+some links for more color:\
+[ls-colors](http://linux-sxs.org/housekeeping/lscolors.html)\
 more on [bash-colors](https://misc.flogisoft.com/bash/tip_colors_and_formatting)
 
 ### basic aliases
 
-After setting up the use of `~/.bash_aliases` in `~/.bashrc` you can customize them.
+After setting up the use of `~/.bash_aliases` in `~/.bashrc` you can customize them.\
 Reload them with `source ~/.bash_aliases`
 
 You can also set them inside your terminal `alias name1 name2` temporary: `alias name1="name2"` or remove them `unalias name1`
@@ -399,11 +402,11 @@ systemd-analyze critical-chain  # show process-chain in boot-order
 
 ### boot
 
-ATTENTION unless you now what your doing, you can leave the system unbootable
-`sudo vim /etc/grub2.cfg` to edit the bootmenu in `grub.cfg` and delete unwanted entries
+ATTENTION unless you now what your doing, you can leave the system unbootable\
+`sudo vim /etc/grub2.cfg` to edit the bootmenu in `grub.cfg` and delete unwanted entries\
 
-`sudo systemctl set-default multi-user.target` boot with a shell
-`sudo systemctl set-default graphical.target`  boot with graphical log-in
+`sudo systemctl set-default multi-user.target` boot with a shell\
+`sudo systemctl set-default graphical.target`  boot with graphical log-in\
 
 #### bootsplash - plymouth
 
@@ -450,7 +453,7 @@ systemctl unmask                                        # service is unmasked
 
 show your drives with `ls /dev/ | grep sd` or `cat /proc/partitions`
 
-show your mountpoints with disk free `df` and mount them with `sudo mount /dev/sda1 /yourfolder`, `mount -l` to show all already mounted mountpoints.
+show your mountpoints with disk free `df` and mount them with `sudo mount /dev/sda1 /yourfolder`, `mount -l` to show all already mounted mountpoints.\
 To write an etx4 filesystem on `sdb` use the syntax `sudo mkfs -t ext4 -v -L Diskname /dev/sdb`
 
 then add the mount to `/etc/fstab`:
@@ -471,26 +474,26 @@ For a graphical view on your partitions your can use `blivet-gui` (has to be ins
 
 `dd if=SOURCE of=TARGET <options>`
 
-`dd if=/dev/sda of=/dev/sdb` clones complete sda to sdb including partitions, MBR and partiton-table.
+`dd if=/dev/sda of=/dev/sdb` clones complete sda to sdb including partitions, MBR and partiton-table.\
 ATTENTION: even UUID and labels are the same
 
-New UUID: `sudo tune2fs -U random /dev/sdb1`
-New label: `sudo e2label /dev/sdb1 newlabel`
-If your targetsystem is a bigger volume you can stretch the fs to fit the new size with `sudo resize2fs /dev/sdb1`
+New UUID: `sudo tune2fs -U random /dev/sdb1`\
+New label: `sudo e2label /dev/sdb1 newlabel`\
+If your targetsystem is a bigger volume you can stretch the fs to fit the new size with `sudo resize2fs /dev/sdb1`\
 
-To make an image of sda1 in home `dd if=/dev/sda1 of=~/image_sda1.img`
-And to rebuild the image to sda1 `dd if=~/image_sda1.img of=/dev/sda1`
+To make an image of sda1 in home `dd if=/dev/sda1 of=~/image_sda1.img`\
+And to rebuild the image to sda1 `dd if=~/image_sda1.img of=/dev/sda1`\
 
-You can also choose to build on a network target over ssh `dd if=/dev/sda | ssh 192.168.11.11 dd of=/dev/sda`
+You can also choose to build on a network target over ssh `dd if=/dev/sda | ssh 192.168.11.11 dd of=/dev/sda`\
 
-Or backup on a server: `dd if=/dev/hda1 | ssh user@192.168.2.101 "cat > /home/User/myimage.img"`
-Or restore from the server `ssh User@192.168.2.101 "cat /home/User/myimage.img" | dd of=/dev/hda1`
+Or backup on a server: `dd if=/dev/hda1 | ssh user@192.168.2.101 "cat > /home/User/myimage.img"`\
+Or restore from the server `ssh User@192.168.2.101 "cat /home/User/myimage.img" | dd of=/dev/hda1`\
 
 ### using virtual environments
 
 I recommend using [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/), but you the syntax to use virtualenvs without it is
 
-If you already have a project in `/pyxercise` create a venv with: `virtualenv-3 --system-site-packages ~/.venvs/pyxercise`
+If you already have a project in `/pyxercise` create a venv with: `virtualenv-3 --system-site-packages ~/.venvs/pyxercise`\
 Activate it in fish with `. ~/.venvs/pyxercise/bin/activate.fish` or `source ~/.venvs/pyxercise/bin/activate.fish` and deactivate with `deactivate`.
 
 ### if you run your distribution inside a virtualbox
@@ -528,12 +531,12 @@ grep -l 'hello' *.txt           # only filename
 grep -L 'hello' *.txt           # files NOT containing search
 ```
 
-you can create complex regex search-patterns and save them in files
-Example: filter lines with E-Mail-adresses from file
-`grep -E '([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})' file.txt`
-Write that regex to a file
-`$ echo '([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})' > ~/regexpressions/mail`
-Call it with `grep -Ef ~/regexpressions/mail file.txt`
+you can create complex regex search-patterns and save them in files\
+Example: filter lines with E-Mail-adresses from file\
+`grep -E '([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})' file.txt`\
+Write that regex to a file\
+`$ echo '([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})' > ~/regexpressions/mail`\
+Call it with `grep -Ef ~/regexpressions/mail file.txt`\
 
 Some more examples (in german) from [kushellig.de](http://kushellig.de/linux-unix-grep-befehl-beispiele/):
 
@@ -548,8 +551,8 @@ ps aux | grep postgres                  # list all postgres processes
 
 ### GIT
 
-You can read about git on [Pro git book](https://git-scm.com/book/en/v2), these commands are mostly c&ps
-I use [git flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) to create and manage features
+You can read about git on [Pro git book](https://git-scm.com/book/en/v2), these commands are mostly c&ps\
+I use [git flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) to create and manage features\
 
 ```bash
 git status
@@ -574,7 +577,7 @@ git merge hotfix                            # merges hotfix branch into master, 
 git branch -d hotfix                        # deletes the hotfix-branch when you r ready (fails, if branch is not merged into - but you can still force deletion with -D)
 ```
 
-more on [teamwork](https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches)  and [contributing issues](https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project)
+more on [teamwork](https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches) and [contributing issues](https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project)
 
 ```bash
 git init                                    # initialize a new repository inside cwd
@@ -603,45 +606,45 @@ git add forgotten_file
 git commit --amend
 ```
 
-You end up with a single commit, the second commit replaces the results of the first.
+You end up with a single commit, the second commit replaces the results of the first.\
 
-if you want to see which commits modifying test files in the Git source code history were committed by "oryon" in the month of September 2018 and are not merge commits,
-you can run something like this: `git log --pretty="%h - %s" --author=oryon --since="2018-09-01" \`
+if you want to see which commits modifying test files in the Git source code history were committed by "oryon" in the month of September 2018 and are not merge commits,\
+you can run something like this: `git log --pretty="%h - %s" --author=oryon --since="2018-09-01" \`\
 
 #### .gitignore
 
 create a `.gitignore` file in your repository to ignore them
 
-ignore all .a files `*.a`
-but do track lib.a, even though you're ignoring .a files above `!lib.a`
-ignore all files in the build/ directory `build/`
-ignore doc/notes.txt, but not doc/server/arch.txt `doc/*.txt`
-ignore all .pdf files in the doc/ directory and any of its subdirectories `doc/**/*.pdf`
+ignore all .a files `*.a`\
+but do track lib.a, even though you're ignoring .a files above `!lib.a`\
+ignore all files in the build/ directory `build/`\
+ignore doc/notes.txt, but not doc/server/arch.txt `doc/*.txt`\
+ignore all .pdf files in the doc/ directory and any of its subdirectories `doc/**/*.pdf`\
 
 ### network
 
-`ip addr show` shows all the avaiable network interfaces (lo is the local interface for loopbacks)
-`ifconfig`
-`nmcli`
-`nmcli con show` shows all connections by name and if active or not, with device-name at the end
+`ip addr show` shows all the avaiable network interfaces (lo is the local interface for loopbacks)\
+`ifconfig`\
+`nmcli`\
+`nmcli con show` shows all connections by name and if active or not, with device-name at the end\
 
-`ls /etc/sysconfig/network-scripts`
-to edit try `vim ifcfg-<device-name>`
+`ls /etc/sysconfig/network-scripts`\
+to edit try `vim ifcfg-<device-name>`\
 
-`nmcli dev show` shows detailed information on the network-adapters
-`nmcli con reload` reloads configuration files
-`nmcli con show 'System <name>'` eg: System eth0, shows all info to connection
-`nmcli con mod ipv4.addresses '10.0.0.2/24'` changes the config..
-      `ipv4.addresses`  changes the subnet mask
-      `ipv4.gateway`    changes default gateway
-      `ipv4.dns`        changes nameserver opv4 address
-      `ip4v.method`     auto: use dhcp, manual: use static only
-`nmcli con up 'System eth0'`  interface gets turned on
-`nmcli dev disconnect 'System eth0'` (dev=device),.. turn interface off..
+`nmcli dev show` shows detailed information on the network-adapters\
+`nmcli con reload` reloads configuration files\
+`nmcli con show 'System <name>'` eg: System eth0, shows all info to connection\
+`nmcli con mod ipv4.addresses '10.0.0.2/24'` changes the config..\
+      `ipv4.addresses`  changes the subnet mask\
+      `ipv4.gateway`    changes default gateway\
+      `ipv4.dns`        changes nameserver opv4 address\
+      `ip4v.method`     auto: use dhcp, manual: use static only\
+`nmcli con up 'System eth0'`  interface gets turned on\
+`nmcli dev disconnect 'System eth0'` (dev=device),.. turn interface off..\
 
-troubleshooting:
-`ping <address>` ping response
-`traceroute www.redhat.com` traces ip addresses between you and the server addressed
+troubleshooting:\
+`ping <address>` ping response\
+`traceroute www.redhat.com` traces ip addresses between you and the server addressed\
 
 #### curl
 
@@ -669,23 +672,23 @@ curl -u <user>@<domain>:<password> -O ftp://<URL>/<filename>  # downloads a file
 
 `python -m http.server 8080` starts python web-server on http:localhost:8080/ with cws as source
 
-ssh-daemon: `systemctl start sshd` or `sudo systemctl start sshd.service;`
-stop it with `sudo systemctl stop sshd.service;`
+ssh-daemon: `systemctl start sshd` or `sudo systemctl start sshd.service;`\
+stop it with `sudo systemctl stop sshd.service;`\
 
-to enable it on boot `sudo systemctl enable sshd.service;`
-and to remove it from autostart `sudo systemctl disable sshd.service;`
+to enable it on boot `sudo systemctl enable sshd.service;`\
+and to remove it from autostart `sudo systemctl disable sshd.service;`\
 
 `systemctl restart network.service`
 
 in `/etc/sysconfig/network-scripts/ifcfg*` is the data for network adapters saved. with `BOOTPROTO=static` you can give them a static IP
 
-to get a name-access (e.g `ssh username@network`)
+to get a name-access (e.g `ssh username@network`)\
 `vim /etc/hosts` and add a new entry: `ip hostename` e.g. `192.168.14.2 myNetwork`
 
 #### Apache
 
-webfiles default to the directory `/var/www/html/` you can change that in the conf
-`index.html` is the base for content then..
+webfiles default to the directory `/var/www/html/` you can change that in the conf\
+`index.html` is the base for content then..\
 it runs on port 80, if not specified otherwise
 
 apache-service-optionen: (append to apache-command) e.g `service apache <option>`
@@ -702,25 +705,25 @@ force-reload    # reloads config, even if connections would be cut
 
 (is quite similar to cp):
 
-`scp sourceUsername@localhost:file targetUser@targetServer:`
-you can write it shorter, when using your active user and cwd:
-`$ scp file targetUser@targetServer:`
-send files:
-`scp -r user1@server1:path1 file2 user2@server2:`
+`scp sourceUsername@localhost:file targetUser@targetServer:`\
+you can write it shorter, when using your active user and cwd:\
+`$ scp file targetUser@targetServer:`\
+send files:\
+`scp -r user1@server1:path1 file2 user2@server2:`\
 
-set hostname
-`hostnamectl set-hostname --static "YOUR-HOSTNAME-HERE"`
+set hostname\
+`hostnamectl set-hostname --static "YOUR-HOSTNAME-HERE"`\
 
-`telnet` brings up a login promt of remote host, not encrypted, needs a telnet-server running
-`telnet ?` help
-`close` close current connection
-`quit` exit telnet
-`logout` ...
-`open <host> <port>`
+`telnet` brings up a login promt of remote host, not encrypted, needs a telnet-server running\
+`telnet ?` help\
+`close` close current connection\
+`quit` exit telnet\
+`logout` ...\
+`open <host> <port>`\
 
-`telnet checkip.dyndns.org 80` check if there is a http-server running on `checkip.dyndns.org`
-`telnet$ GET / HTTP/1.1`
-`telnet$ HOST: checkip.dyndns.org`
+`telnet checkip.dyndns.org 80` check if there is a http-server running on `checkip.dyndns.org`\
+`telnet$ GET / HTTP/1.1`\
+`telnet$ HOST: checkip.dyndns.org`\
 
 #### ftp
 
@@ -734,58 +737,58 @@ ftp ? # brings up the help inside ftp-prompt and shows avaiable commands
 
 #### Netstat
 
-`sudo netstat -paute` shows which PIDs belong to what sockets (also works with t, u, x, etc..)
-`$ netstat -p`
-list connections `netstat -a`
-tcp-/udp-/-unix-details: `netstat -at`, `netstat -au`, `netstat -ax`
-routetable: `netstat -r`
-look which ports are listening: (also works with t, u, x oder all): `$ netstat -l`
-statistik over failed or successful connections: `netstat -s`
-tail the network: `netstat -c [timeinseconds]`
+`sudo netstat -paute` shows which PIDs belong to what sockets (also works with t, u, x, etc..)\
+`$ netstat -p`\
+list connections `netstat -a`\
+tcp-/udp-/-unix-details: `netstat -at`, `netstat -au`, `netstat -ax`\
+routetable: `netstat -r`\
+look which ports are listening: (also works with t, u, x oder all): `$ netstat -l`\
+statistik over failed or successful connections: `netstat -s`\
+tail the network: `netstat -c [timeinseconds]`\
 `netstat -e`
 
 ### processes
 
-list processes with `ps`, you get a PID (process-ID), the terminalname and the ucmd - the name of the process
+list processes with `ps`, you get a PID (process-ID), the terminalname and the ucmd - the name of the process\
 
-`kill <PID>` kill the process
-`kill -9 <pid>` violently kill the process (remove it)
+`kill <PID>` kill the process\
+`kill -9 <pid>` violently kill the process (remove it)\
 
-`ps`                active user & active terminal
-`ps -e`             all processes
-`ps -ef`            all processes with PID & path
-`ps -U username`    show a user's process (eg root):, add `u` oder `f` for format `ps -U root u`
-`ps -p 42`          show process with id 42
-`ps --ppid ID`      parents process
+`ps`                active user & active terminal\
+`ps -e`             all processes\
+`ps -ef`            all processes with PID & path\
+`ps -U username`    show a user's process (eg root):, add `u` oder `f` for format `ps -U root u`\
+`ps -p 42`          show process with id 42\
+`ps --ppid ID`      parents process\
 
 ### XARGS
 
-Find files named `core` in or below the directory /tmp and delete them. (no spaces)
-`find /tmp -name core -type f -print | xargs /bin/rm -f`
+Find files named `core` in or below the directory /tmp and delete them. (no spaces)\
+`find /tmp -name core -type f -print | xargs /bin/rm -f`\
 
-in such a way that file or directory names containing spaces or newlines are correctly handled.
-`find /tmp -name core -type f -print0 | xargs -0 /bin/rm -f`
+in such a way that file or directory names containing spaces or newlines are correctly handled.\
+`find /tmp -name core -type f -print0 | xargs -0 /bin/rm -f`\
 
-install a list (-a reads from file) with `$ xargs -a ~/software.list sudo dnf install`
+install a list (-a reads from file) with `$ xargs -a ~/software.list sudo dnf install`\
 
 ### cron tab & jobs
 
-`@reboot` every reboot..
-ATTENTION paths should be correct -> look for errors between absolute and relative paths
-is the service running? `systemctl status crond.service`
-`service crond status`
+`@reboot` every reboot..\
+ATTENTION paths should be correct -> look for errors between absolute and relative paths\
+is the service running? `systemctl status crond.service`\
+`service crond status`\
 
-cron list: `crontab -l`
-cron edit `crontab -e`
+cron list: `crontab -l`\
+cron edit `crontab -e`\
 cron delete `crontab -r`
 
-The entry: `01 * * * * /bin/echo Hello, world!` runs the command /bin/echo Hello, world! on the first minute of every hour of every day of every month (i.e. at 12:01, 1:01, 2:01, etc.).
+The entry: `01 * * * * /bin/echo Hello, world!` runs the command /bin/echo Hello, world! on the first minute of every hour of every day of every month (i.e. at 12:01, 1:01, 2:01, etc.).\
 
-Similarly: `*/5 * * jan mon-fri /bin/echo Hello, world!` runs the same job every five minutes on weekdays during the month of January (i.e. at 12:00, 12:05, 12:10, etc.).
+Similarly: `*/5 * * jan mon-fri /bin/echo Hello, world!` runs the same job every five minutes on weekdays during the month of January (i.e. at 12:00, 12:05, 12:10, etc.).\
 
-The line (as noted in "man 5 crontab"): `*0,*5 9-16 * 1-5,9-12 1-5 /home/user/bin/i_love_cron.sh` will execute the script i_love_cron.sh at five minute intervals from 9 AM to 5 PM (excluding 5 PM itself) every weekday (Mon-Fri) of every month except during the summer (June, July, and August).
+The line (as noted in "man 5 crontab"): `*0,*5 9-16 * 1-5,9-12 1-5 /home/user/bin/i_love_cron.sh` will execute the script i_love_cron.sh at five minute intervals from 9 AM to 5 PM (excluding 5 PM itself) every weekday (Mon-Fri) of every month except during the summer (June, July, and August).\
 
-Periodical settings can also be entered as in this crontab template:
+Periodical settings can also be entered as in this crontab template:\
 
 ```bash
 # Chronological table of program loadings
@@ -877,23 +880,23 @@ gdb$ kill
 gdb$ quit
 ```
 
-With `layout asm` and `layout reg` enabled, gdb will highlight which registers changed since the last stop. Use `stepi` to single-step by instructions. Use  `x` to examine memory at a given address (useful when trying to figure out why your code crashed while trying to read or write at a given address). In a binary without symbols (or even sections), you can use `b *0` to get gdb to stop before the first instruction.
+With `layout asm` and `layout reg` enabled, gdb will highlight which registers changed since the last stop. Use `stepi` to single-step by instructions. Use  `x` to examine memory at a given address (useful when trying to figure out why your code crashed while trying to read or write at a given address). In a binary without symbols (or even sections), you can use `b *0` to get gdb to stop before the first instruction.\
 
-Another key tool for debugging is tracing system calls. e.g. on a Unix system, `strace ./a.out` will show you the args and return values of all the system calls your code makes.
+Another key tool for debugging is tracing system calls. e.g. on a Unix system, `strace ./a.out` will show you the args and return values of all the system calls your code makes.\
 
 ### archives & backup
 
-`tar tvf filename.tar` view the table of content of a tar archive
-`tar xvf filename.tar` extract content of a tar archive
-`tar cvf filename.tar file1 file2 file3` create a tar archive called filename.tar using file1, file2,file3
+`tar tvf filename.tar` view the table of content of a tar archive\
+`tar xvf filename.tar` extract content of a tar archive\
+`tar cvf filename.tar file1 file2 file3` create a tar archive called filename.tar using file1, file2,file3\
 
-tar can’t copy special files or device files. So it os not suitable for taking a root backup. For that we use cpio:
-cpio can copy special files and is useful in taking root backups containing device files.
-cpio is mostly used in conjunction with other commands to generate a list of files to be copied
+tar can’t copy special files or device files. So it os not suitable for taking a root backup. For that we use cpio:\
+cpio can copy special files and is useful in taking root backups containing device files.\
+cpio is mostly used in conjunction with other commands to generate a list of files to be copied\
 
-`ls | cpio -o > /dev/rmt/c0t0d0`            # copy the contents of a directory into a tape archive
-`find . -depth -print | cpio -pd newdir`    # copy entire directory to another place
-`find . -cpio /dev/rmt/c0t0d0`              # copy files in current directory to a tape
+`ls | cpio -o > /dev/rmt/c0t0d0`            # copy the contents of a directory into a tape archive\
+`find . -depth -print | cpio -pd newdir`    # copy entire directory to another place\
+`find . -cpio /dev/rmt/c0t0d0`              # copy files in current directory to a tape\
 
 ### install from source
 
@@ -903,9 +906,9 @@ cpio is mostly used in conjunction with other commands to generate a list of fil
 
 ### htop & s-tui
 
-`top` gives us a overview about what is happening
-with `pip install s-tui` you can get a nice overview about what's happening with your cpu, power and temperatures
-also very very nice is the paket `htop` (`dnf install h-top`), that gives you a complete summary of all running processes and the possibility to filter em accordingly
+`top` gives us a overview about what is happening\
+with `pip install s-tui` you can get a nice overview about what's happening with your cpu, power and temperatures\
+also very very nice is the paket `htop` (`dnf install h-top`), that gives you a complete summary of all running processes and the possibility to filter em accordingly\
 
 ### logkeys - keylogger
 
@@ -1018,43 +1021,43 @@ some small example scripts:
 
 SELinux -> `sestatus` see the status of security enhanced linux
 
-`getsebool -a` shows which booleans are turned on or off
+`getsebool -a` shows which booleans are turned on or off\
 `setsebool -P <booleanname> 0|1`  # 0 or 1 -P makes changes permanent
 
-you can look up errors in `/var/log/messages` OR in `/var/log/audit/audit.log` (if audit is installed)
+you can look up errors in `/var/log/messages` OR in `/var/log/audit/audit.log` (if audit is installed)\
 if a boolean gets changed, he shows up in (no changes allowd, read only!): `/etc/selinux/targeted/modules/active`
 
-several commmands have a -Z command for SELinux options, e.g: `ls -Z` shows SELinux-spezific fileattributes
+several commmands have a -Z command for SELinux options, e.g: `ls -Z` shows SELinux-spezific fileattributes\
 also available with `ps -Z`, `netstat -Z`, `id -Z`, `cp -Zv`, `mkdir -Z`
 
-`chcon` changes `<file>` [SELinux security context](https://linux.die.net/man/1/chcon)
-`chcon --reference <sourcePath> <targetFile>`
+`chcon` changes `<file>` [SELinux security context](https://linux.die.net/man/1/chcon)\
+`chcon --reference <sourcePath> <targetFile>`\
 `restorecon -v R <path>` resets the `<path>` to SELinux defaults (R = recursive -v= show changes)
 
-`semanage fcontext -a -t <type> "<path>(/.*)?"` (-a =adds [we want to add]) fcontext= filecontext) `<type>` is the type we want to allow in `<path>` and for everything inside `<path>`
-OR
-`semanage fcontext -a -e <sourcePath> <targetPath>` creates a rule, to change the context from source to target
-    e.g: `semanage fcontext -a -e /var/www/ /foo/`
-    "Hey SELinux, the FOO-Directory should be the same as /var/www .."
-    after that, we run `restorecon -VR /foo/` and it changes the default type to the wished (httpd here) type!
+`semanage fcontext -a -t <type> "<path>(/.*)?"` (-a =adds [we want to add]) fcontext= filecontext) `<type>` is the type we want to allow in `<path>` and for everything inside `<path>`\
+OR\
+`semanage fcontext -a -e <sourcePath> <targetPath>` creates a rule, to change the context from source to target\
+    e.g: `semanage fcontext -a -e /var/www/ /foo/`\
+    "Hey SELinux, the FOO-Directory should be the same as /var/www .."\
+    after that, we run `restorecon -VR /foo/` and it changes the default type to the wished (httpd here) type!\
 
-`setenfroce 0` disables SELinux temporily ATTENTION -> security relevance
-with `grep httpd /var/log/audit/audit.log | audit2allow -M <app_and_rule_name>` we create a policy-package (here: for httpd) /// maybe use `ausearch` here too
-and install the policy-modul after that with `$ semodule - i <app_and_rule_name>.pp`
-`setenfroce 1` finally reactivates SELinux
+`setenfroce 0` disables SELinux temporily ATTENTION -> security relevance\
+with `grep httpd /var/log/audit/audit.log | audit2allow -M <app_and_rule_name>` we create a policy-package (here: for httpd) /// maybe use `ausearch` here too\
+and install the policy-modul after that with `$ semodule - i <app_and_rule_name>.pp`\
+`setenfroce 1` finally reactivates SELinux\
 
-to enable SELinux on a system edit `/etc/selinux/config` and set `SELINUX=permissive` then `touch /.autorelabel` and reboot
-after everthing is done reboot clean again, then set `SELINUX=enforcing` in `/etc/selinux/config` and reboot a third time!
+to enable SELinux on a system edit `/etc/selinux/config` and set `SELINUX=permissive` then `touch /.autorelabel` and reboot\
+after everthing is done reboot clean again, then set `SELINUX=enforcing` in `/etc/selinux/config` and reboot a third time!\
 
 ### atom editor
 
-using atom causes an error with linter and other autocompletes, here is the fix:
-(in `/usr/share/applications/atom.desktop` change `Exec=/usr/share/atom/atom %F` to `Exec=/usr/bin/atom %F`)
+using atom causes an error with linter and other autocompletes, here is the fix:\
+(in `/usr/share/applications/atom.desktop` change `Exec=/usr/share/atom/atom %F` to `Exec=/usr/bin/atom %F`)\
 [issue](https://github.com/atom/atom/issues/13451)
 
 you may add `WORKSPACE-NUMBER=2` in atom.desktop to open it on the second desktop (I prefer using the second desktop for atom, dunno why)
 
-`xdotool search --name --onlyvisible --sync "Atom"` waits for a return-value until the window is open (I use it in my scripts, above)
+`xdotool search --name --onlyvisible --sync "Atom"` waits for a return-value until the window is open (I use it in my scripts, above)\
 see [xprop](https://www.x.org/releases/X11R7.5/doc/man/man1/xprop.1.html) & [xwininfo](https://linux.die.net/man/1/xwininfo)
 
 ### VLC
@@ -1095,11 +1098,11 @@ default-sample-rate = 48000
 resample-method = speex-float-5
 ```
 
-Links:
-[Pulse Audio Configuration](https://wiki.archlinux.org/index.php/PulseAudio/Configuration)
-[Pulse Audio how-to](https://proaudio.tuxfamily.org/wiki/index.php?title=PulseAudio#PulseAudio)
-[Pulse Auio Troubleshoot](https://wiki.parabola.nu/PulseAudio/Troubleshooting)
-[Pule Audio Man-Page](https://www.systutorials.com/docs/linux/man/5-pulse-client.conf/)
+Links:\
+[Pulse Audio Configuration](https://wiki.archlinux.org/index.php/PulseAudio/Configuration)\
+[Pulse Audio how-to](https://proaudio.tuxfamily.org/wiki/index.php?title=PulseAudio#PulseAudio)\
+[Pulse Auio Troubleshoot](https://wiki.parabola.nu/PulseAudio/Troubleshooting)\
+[Pule Audio Man-Page](https://www.systutorials.com/docs/linux/man/5-pulse-client.conf/)\
 
 ### Email with MUTT
 
@@ -1142,7 +1145,7 @@ set mail_check = 120
 set mark_old = no
 ```
 
-~/.mutt/exchange
+~/.mutt/exchange\
 (replace values inside <> with your values)
 
 ```.mutt/exchange
@@ -1173,8 +1176,8 @@ account-hook $folder "set imap_user=<username> imap_pass=<password>"
 
 ### several bugfixes
 
-on reboot1
--> systemctl rnfg.service does fail to start:
+on reboot1\
+-> systemctl rnfg.service does fail to start:\
 
 ```bash
 cp /usr/lib/systemd/system/rngd.service /etc/systemd/system/rngd.service
@@ -1187,11 +1190,11 @@ systemctl start rngd
 systemctl status rngd
 ```
 
-Error with initializing vbox after kernel-update:
-try recreating initial ramdisk images (initramfs) for preloading modules
+Error with initializing vbox after kernel-update:\
+try recreating initial ramdisk images (initramfs) for preloading modules\
 
 ```bash
 dracut -v -f         # -f = forces overwrite, -v = verbose mode
 ```
 
-the amount of kernels to be kept is in `/etc/dnf/dnf.conf`, set to two `installonly_limit=2`
+the amount of kernels to be kept is in `/etc/dnf/dnf.conf`, set to two `installonly_limit=2`\
