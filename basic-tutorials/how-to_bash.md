@@ -14,6 +14,8 @@ If you have special questions on a command, you should tryout [explainshell](htt
 
 Some of the links point to german references, sorry.
 
+TODO: add / update index, better chapter-marks & titles
+
 - [Preparations](#markdown-header-preparations)
 - [Usage](#markdown-header-usage)
 
@@ -29,34 +31,33 @@ install fedora
 
 ### Basic UI-Controls
 
-- Basics:
-    ctrl+shift+alt + arrowkeys  -> move application between desktops
-    ctrl+alt+ arrowkeys         -> switch between desktops
+- Basics:\
+    ctrl+shift+alt + arrowkeys  -> move application between desktops\
+    ctrl+alt+ arrowkeys         -> switch between desktops\
 
-- Fedora-Terminal:
-    ctrl+shift+t                -> new tab in terminal
-    ctrl+shift+n                -> new terminal
-    alt+1 / alt+2               -> switch tab
-    ctrl+shift+w                -> close terminal
+- Fedora-Terminal:\
+    ctrl+shift+t                -> new tab in terminal\
+    ctrl+shift+n                -> new terminal\
+    alt+1 / alt+2               -> switch tab\
+    ctrl+shift+w                -> close terminal\
 
-    ctrl+c                      -> terminate running process
-    ctrl+z                      -> hold on process
-    ctrl+s                      -> stop scrolling
-    ctrl+q                      -> resume scrolling
+    ctrl+c                      -> terminate running process\
+    ctrl+z                      -> hold on process\
+    ctrl+s                      -> stop scrolling\
+    ctrl+q                      -> resume scrolling\
 
-    ctrl+shift+u+hex+SPACE      -> special chars [entity-table](http://unicode.e-workers.de/entities.php)
+    ctrl+shift+u+hex+SPACE      -> special chars [entity-table](http://unicode.e-workers.de/entities.php)\
+                                    „Ω“ = (U+2126) # -> ctrl+shift+u+2126+SPACE\
 
-                               „Ω“ = (U+2126) # -> ctrl+shift+u+2126+SPACE
-
-fedora autostart:
-in `~/.config/autostart` are the `*.desktop` files of programs, that run on systemstart.
+fedora autostart:\
+in `~/.config/autostart` are the `*.desktop` files of programs, that run on systemstart.\
 More Inormation on [modifying dekstop entries](https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html#recognized-keys)
 
 ## Bash
 
 ### the very basics
 
-`whoami` shows your username
+`whoami` shows your username\
 `who` show who is logged on
 
 `date` ...
@@ -100,7 +101,7 @@ chain commands with a `|`\
 write command-output (pipe it) to a file `> filename` or append it with `>> filename`\
 a `&` at the end, runs the command in the background\
 `man ascii` shows the ascii-table\
-to continue the command even though you closed the terminal with `nohup <command>`\
+to continue the command even though you closed the terminal with `nohup <command>`
 
 other use-cases of `ls`:\
 you can combine it with `cut`: `ls | cut -f1`
@@ -250,7 +251,7 @@ change the rights on file.txt to "full" for owners, groups and others `chmod 777
 Examples:\
 to set the current user as owner of media including all subdirs and show changes `sudo chown -cR $USER /media/`\
 you can also change the group and user of a file `chown root:groupname file.txt`\
-change owner of dir and content from `/var/dict` to user & group "yourgroup" `chown -R user:yourgroup /var/dict`\
+change owner of dir and content from `/var/dict` to user & group "yourgroup" `chown -R user:yourgroup /var/dict`
 
 ### package & kernel managing with dnf
 
@@ -258,27 +259,27 @@ More on DNF System upgrade on the [official pages](https://fedoraproject.org/wik
 
 `dnf upgrade`                   upgrades all packages\
 `dnf check-update`              what upgrades are available\
-`dnf check-update <packetname>`\
+`dnf check-update <packetname>`
 
-`dnf search <packetname>`\
+`dnf search <packetname>`
 
 `dnf install <packetname>`\
 `dnf remove <packetname>`\
-`dnf download --source <packetname>`\
+`dnf download --source <packetname>`
 
 `dnf clean metadata`            cleans metadaten bevor update, you could use `dnf upgrade --refresh`
 
 To show your repository-groups:\
 `dnf grouplist hidden`\
 `dnf group info <groupname>`\
-`dnf install '@<groupname>'`\
+`dnf install '@<groupname>'`
 
 Show kernel-version: `uname -r` and installed kernel with `rpm -q kernel` or `dnf list installed | grep kernel`\
-Show old kernels with `package-cleanup --oldkernels` and remove em with `dnf remove kernel-<version>`\
+Show old kernels with `package-cleanup --oldkernels` and remove em with `dnf remove kernel-<version>`
 
-In `/etc/dnf/dnf-conf` is a list with `installonly_limit =` you can set here how many kernels should be stocked\
+In `/etc/dnf/dnf-conf` is a list with `installonly_limit =` you can set here how many kernels should be stocked
 
-`dracut -fv` builds initramfs for the running kernel\
+`dracut -fv` builds initramfs for the running kernel
 
 on a stable sytem these can be savely removed from /boot `rm /boot/vmlinuz-0-rescue-*` and `rm /boot/initramfs-0-rescue-*`\
 After removing, run: `grub2-mkconfig -o /boot/grub2/grub.cfg` to rebuild the boot-list
@@ -403,10 +404,10 @@ systemd-analyze critical-chain  # show process-chain in boot-order
 ### boot
 
 ATTENTION unless you now what your doing, you can leave the system unbootable\
-`sudo vim /etc/grub2.cfg` to edit the bootmenu in `grub.cfg` and delete unwanted entries\
+`sudo vim /etc/grub2.cfg` to edit the bootmenu in `grub.cfg` and delete unwanted entries
 
 `sudo systemctl set-default multi-user.target` boot with a shell\
-`sudo systemctl set-default graphical.target`  boot with graphical log-in\
+`sudo systemctl set-default graphical.target`  boot with graphical log-in
 
 #### bootsplash - plymouth
 
@@ -479,15 +480,15 @@ ATTENTION: even UUID and labels are the same
 
 New UUID: `sudo tune2fs -U random /dev/sdb1`\
 New label: `sudo e2label /dev/sdb1 newlabel`\
-If your targetsystem is a bigger volume you can stretch the fs to fit the new size with `sudo resize2fs /dev/sdb1`\
+If your targetsystem is a bigger volume you can stretch the fs to fit the new size with `sudo resize2fs /dev/sdb1`
 
 To make an image of sda1 in home `dd if=/dev/sda1 of=~/image_sda1.img`\
-And to rebuild the image to sda1 `dd if=~/image_sda1.img of=/dev/sda1`\
+And to rebuild the image to sda1 `dd if=~/image_sda1.img of=/dev/sda1`
 
 You can also choose to build on a network target over ssh `dd if=/dev/sda | ssh 192.168.11.11 dd of=/dev/sda`\
 
 Or backup on a server: `dd if=/dev/hda1 | ssh user@192.168.2.101 "cat > /home/User/myimage.img"`\
-Or restore from the server `ssh User@192.168.2.101 "cat /home/User/myimage.img" | dd of=/dev/hda1`\
+Or restore from the server `ssh User@192.168.2.101 "cat /home/User/myimage.img" | dd of=/dev/hda1`
 
 ### using virtual environments
 
@@ -536,7 +537,7 @@ Example: filter lines with E-Mail-adresses from file\
 `grep -E '([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})' file.txt`\
 Write that regex to a file\
 `$ echo '([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})' > ~/regexpressions/mail`\
-Call it with `grep -Ef ~/regexpressions/mail file.txt`\
+Call it with `grep -Ef ~/regexpressions/mail file.txt`
 
 Some more examples (in german) from [kushellig.de](http://kushellig.de/linux-unix-grep-befehl-beispiele/):
 
@@ -552,7 +553,7 @@ ps aux | grep postgres                  # list all postgres processes
 ### GIT
 
 You can read about git on [Pro git book](https://git-scm.com/book/en/v2), these commands are mostly c&ps\
-I use [git flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) to create and manage features\
+I use [git flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) to create and manage features
 
 ```bash
 git status
@@ -609,7 +610,7 @@ git commit --amend
 You end up with a single commit, the second commit replaces the results of the first.\
 
 if you want to see which commits modifying test files in the Git source code history were committed by "oryon" in the month of September 2018 and are not merge commits,\
-you can run something like this: `git log --pretty="%h - %s" --author=oryon --since="2018-09-01" \`\
+you can run something like this: `git log --pretty="%h - %s" --author=oryon --since="2018-09-01" \`
 
 #### .gitignore
 
@@ -619,17 +620,17 @@ ignore all .a files `*.a`\
 but do track lib.a, even though you're ignoring .a files above `!lib.a`\
 ignore all files in the build/ directory `build/`\
 ignore doc/notes.txt, but not doc/server/arch.txt `doc/*.txt`\
-ignore all .pdf files in the doc/ directory and any of its subdirectories `doc/**/*.pdf`\
+ignore all .pdf files in the doc/ directory and any of its subdirectories `doc/**/*.pdf`
 
 ### network
 
-`ip addr show` shows all the avaiable network interfaces (lo is the local interface for loopbacks)\
+`ip addr show` shows all the avaiable network interfaces (lo is the local interface for loopbacks)
 `ifconfig`\
 `nmcli`\
 `nmcli con show` shows all connections by name and if active or not, with device-name at the end\
 
 `ls /etc/sysconfig/network-scripts`\
-to edit try `vim ifcfg-<device-name>`\
+to edit try `vim ifcfg-<device-name>`
 
 `nmcli dev show` shows detailed information on the network-adapters\
 `nmcli con reload` reloads configuration files\
@@ -640,7 +641,7 @@ to edit try `vim ifcfg-<device-name>`\
       `ipv4.dns`        changes nameserver opv4 address\
       `ip4v.method`     auto: use dhcp, manual: use static only\
 `nmcli con up 'System eth0'`  interface gets turned on\
-`nmcli dev disconnect 'System eth0'` (dev=device),.. turn interface off..\
+`nmcli dev disconnect 'System eth0'` (dev=device),.. turn interface off..
 
 troubleshooting:\
 `ping <address>` ping response\
@@ -673,10 +674,10 @@ curl -u <user>@<domain>:<password> -O ftp://<URL>/<filename>  # downloads a file
 `python -m http.server 8080` starts python web-server on http:localhost:8080/ with cws as source
 
 ssh-daemon: `systemctl start sshd` or `sudo systemctl start sshd.service;`\
-stop it with `sudo systemctl stop sshd.service;`\
+stop it with `sudo systemctl stop sshd.service;`
 
 to enable it on boot `sudo systemctl enable sshd.service;`\
-and to remove it from autostart `sudo systemctl disable sshd.service;`\
+and to remove it from autostart `sudo systemctl disable sshd.service;`
 
 `systemctl restart network.service`
 
@@ -709,21 +710,21 @@ force-reload    # reloads config, even if connections would be cut
 you can write it shorter, when using your active user and cwd:\
 `$ scp file targetUser@targetServer:`\
 send files:\
-`scp -r user1@server1:path1 file2 user2@server2:`\
+`scp -r user1@server1:path1 file2 user2@server2:`
 
 set hostname\
-`hostnamectl set-hostname --static "YOUR-HOSTNAME-HERE"`\
+`hostnamectl set-hostname --static "YOUR-HOSTNAME-HERE"`
 
 `telnet` brings up a login promt of remote host, not encrypted, needs a telnet-server running\
 `telnet ?` help\
 `close` close current connection\
 `quit` exit telnet\
 `logout` ...\
-`open <host> <port>`\
+`open <host> <port>`
 
 `telnet checkip.dyndns.org 80` check if there is a http-server running on `checkip.dyndns.org`\
 `telnet$ GET / HTTP/1.1`\
-`telnet$ HOST: checkip.dyndns.org`\
+`telnet$ HOST: checkip.dyndns.org`
 
 #### ftp
 
@@ -759,36 +760,36 @@ list processes with `ps`, you get a PID (process-ID), the terminalname and the u
 `ps -ef`            all processes with PID & path\
 `ps -U username`    show a user's process (eg root):, add `u` oder `f` for format `ps -U root u`\
 `ps -p 42`          show process with id 42\
-`ps --ppid ID`      parents process\
+`ps --ppid ID`      parents process
 
 ### XARGS
 
 Find files named `core` in or below the directory /tmp and delete them. (no spaces)\
-`find /tmp -name core -type f -print | xargs /bin/rm -f`\
+`find /tmp -name core -type f -print | xargs /bin/rm -f`
 
 in such a way that file or directory names containing spaces or newlines are correctly handled.\
-`find /tmp -name core -type f -print0 | xargs -0 /bin/rm -f`\
+`find /tmp -name core -type f -print0 | xargs -0 /bin/rm -f`
 
-install a list (-a reads from file) with `$ xargs -a ~/software.list sudo dnf install`\
+install a list (-a reads from file) with `$ xargs -a ~/software.list sudo dnf install`
 
 ### cron tab & jobs
 
 `@reboot` every reboot..\
 ATTENTION paths should be correct -> look for errors between absolute and relative paths\
 is the service running? `systemctl status crond.service`\
-`service crond status`\
+`service crond status`
 
 cron list: `crontab -l`\
 cron edit `crontab -e`\
 cron delete `crontab -r`
 
-The entry: `01 * * * * /bin/echo Hello, world!` runs the command /bin/echo Hello, world! on the first minute of every hour of every day of every month (i.e. at 12:01, 1:01, 2:01, etc.).\
+The entry: `01 * * * * /bin/echo Hello, world!` runs the command /bin/echo Hello, world! on the first minute of every hour of every day of every month (i.e. at 12:01, 1:01, 2:01, etc.).
 
-Similarly: `*/5 * * jan mon-fri /bin/echo Hello, world!` runs the same job every five minutes on weekdays during the month of January (i.e. at 12:00, 12:05, 12:10, etc.).\
+Similarly: `*/5 * * jan mon-fri /bin/echo Hello, world!` runs the same job every five minutes on weekdays during the month of January (i.e. at 12:00, 12:05, 12:10, etc.).
 
-The line (as noted in "man 5 crontab"): `*0,*5 9-16 * 1-5,9-12 1-5 /home/user/bin/i_love_cron.sh` will execute the script i_love_cron.sh at five minute intervals from 9 AM to 5 PM (excluding 5 PM itself) every weekday (Mon-Fri) of every month except during the summer (June, July, and August).\
+The line (as noted in "man 5 crontab"): `*0,*5 9-16 * 1-5,9-12 1-5 /home/user/bin/i_love_cron.sh` will execute the script i_love_cron.sh at five minute intervals from 9 AM to 5 PM (excluding 5 PM itself) every weekday (Mon-Fri) of every month except during the summer (June, July, and August).
 
-Periodical settings can also be entered as in this crontab template:\
+Periodical settings can also be entered as in this crontab template:
 
 ```bash
 # Chronological table of program loadings
@@ -880,23 +881,23 @@ gdb$ kill
 gdb$ quit
 ```
 
-With `layout asm` and `layout reg` enabled, gdb will highlight which registers changed since the last stop. Use `stepi` to single-step by instructions. Use  `x` to examine memory at a given address (useful when trying to figure out why your code crashed while trying to read or write at a given address). In a binary without symbols (or even sections), you can use `b *0` to get gdb to stop before the first instruction.\
+With `layout asm` and `layout reg` enabled, gdb will highlight which registers changed since the last stop. Use `stepi` to single-step by instructions. Use  `x` to examine memory at a given address (useful when trying to figure out why your code crashed while trying to read or write at a given address). In a binary without symbols (or even sections), you can use `b *0` to get gdb to stop before the first instruction.
 
-Another key tool for debugging is tracing system calls. e.g. on a Unix system, `strace ./a.out` will show you the args and return values of all the system calls your code makes.\
+Another key tool for debugging is tracing system calls. e.g. on a Unix system, `strace ./a.out` will show you the args and return values of all the system calls your code makes.
 
 ### archives & backup
 
 `tar tvf filename.tar` view the table of content of a tar archive\
 `tar xvf filename.tar` extract content of a tar archive\
-`tar cvf filename.tar file1 file2 file3` create a tar archive called filename.tar using file1, file2,file3\
+`tar cvf filename.tar file1 file2 file3` create a tar archive called filename.tar using file1, file2,file3
 
 tar can’t copy special files or device files. So it os not suitable for taking a root backup. For that we use cpio:\
 cpio can copy special files and is useful in taking root backups containing device files.\
-cpio is mostly used in conjunction with other commands to generate a list of files to be copied\
+cpio is mostly used in conjunction with other commands to generate a list of files to be copied
 
 `ls | cpio -o > /dev/rmt/c0t0d0`            # copy the contents of a directory into a tape archive\
 `find . -depth -print | cpio -pd newdir`    # copy entire directory to another place\
-`find . -cpio /dev/rmt/c0t0d0`              # copy files in current directory to a tape\
+`find . -cpio /dev/rmt/c0t0d0`              # copy files in current directory to a tape
 
 ### install from source
 
@@ -908,7 +909,7 @@ cpio is mostly used in conjunction with other commands to generate a list of fil
 
 `top` gives us a overview about what is happening\
 with `pip install s-tui` you can get a nice overview about what's happening with your cpu, power and temperatures\
-also very very nice is the paket `htop` (`dnf install h-top`), that gives you a complete summary of all running processes and the possibility to filter em accordingly\
+also very very nice is the paket `htop` (`dnf install h-top`), that gives you a complete summary of all running processes and the possibility to filter em accordingly
 
 ### logkeys - keylogger
 
@@ -1039,15 +1040,15 @@ OR\
 `semanage fcontext -a -e <sourcePath> <targetPath>` creates a rule, to change the context from source to target\
     e.g: `semanage fcontext -a -e /var/www/ /foo/`\
     "Hey SELinux, the FOO-Directory should be the same as /var/www .."\
-    after that, we run `restorecon -VR /foo/` and it changes the default type to the wished (httpd here) type!\
+    after that, we run `restorecon -VR /foo/` and it changes the default type to the wished (httpd here) type!
 
 `setenfroce 0` disables SELinux temporily ATTENTION -> security relevance\
 with `grep httpd /var/log/audit/audit.log | audit2allow -M <app_and_rule_name>` we create a policy-package (here: for httpd) /// maybe use `ausearch` here too\
 and install the policy-modul after that with `$ semodule - i <app_and_rule_name>.pp`\
-`setenfroce 1` finally reactivates SELinux\
+`setenfroce 1` finally reactivates SELinux
 
 to enable SELinux on a system edit `/etc/selinux/config` and set `SELINUX=permissive` then `touch /.autorelabel` and reboot\
-after everthing is done reboot clean again, then set `SELINUX=enforcing` in `/etc/selinux/config` and reboot a third time!\
+after everthing is done reboot clean again, then set `SELINUX=enforcing` in `/etc/selinux/config` and reboot a third time!
 
 ### atom editor
 
@@ -1102,7 +1103,7 @@ Links:\
 [Pulse Audio Configuration](https://wiki.archlinux.org/index.php/PulseAudio/Configuration)\
 [Pulse Audio how-to](https://proaudio.tuxfamily.org/wiki/index.php?title=PulseAudio#PulseAudio)\
 [Pulse Auio Troubleshoot](https://wiki.parabola.nu/PulseAudio/Troubleshooting)\
-[Pule Audio Man-Page](https://www.systutorials.com/docs/linux/man/5-pulse-client.conf/)\
+[Pule Audio Man-Page](https://www.systutorials.com/docs/linux/man/5-pulse-client.conf/)
 
 ### Email with MUTT
 
@@ -1177,7 +1178,7 @@ account-hook $folder "set imap_user=<username> imap_pass=<password>"
 ### several bugfixes
 
 on reboot1\
--> systemctl rnfg.service does fail to start:\
+-> systemctl rnfg.service does fail to start:
 
 ```bash
 cp /usr/lib/systemd/system/rngd.service /etc/systemd/system/rngd.service
@@ -1191,10 +1192,10 @@ systemctl status rngd
 ```
 
 Error with initializing vbox after kernel-update:\
-try recreating initial ramdisk images (initramfs) for preloading modules\
+try recreating initial ramdisk images (initramfs) for preloading modules
 
 ```bash
 dracut -v -f         # -f = forces overwrite, -v = verbose mode
 ```
 
-the amount of kernels to be kept is in `/etc/dnf/dnf.conf`, set to two `installonly_limit=2`\
+the amount of kernels to be kept is in `/etc/dnf/dnf.conf`, set to two `installonly_limit=2`
