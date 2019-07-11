@@ -21,4 +21,4 @@ explanation: "den" = cave, hive, nest, sanctuary..
 
 ...
 
-newest_version: 03.06.2019
+newest_version: 11.07.2019
