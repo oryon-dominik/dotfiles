@@ -3,7 +3,7 @@
 # required: the dircetory .local/logs/ must be available | TODO: implement check on install script and create first logfiles manually..
 
 # load functions
-. $PSScriptRoot\aliases.ps1
+. $PSScriptRoot\functions.ps1
 # load locations
 . $PSScriptRoot\locations.ps1
 # load projects
