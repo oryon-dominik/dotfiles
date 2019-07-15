@@ -67,6 +67,15 @@ To remotely create repositories completey from your command line interface, supp
 
 4. Config your git (skip the `git init` and continue with nr. 2. below)
 
+5. If you want to update your fork from the upstream repository
+
+    ```powershell
+    git fetch upstream
+    git checkout master
+    git merge upstream/master
+    git push  # to refresh your fork
+    ```
+
 ### If you want to work on your own repository
 
 1. Initialize git in your project directory
