@@ -3,11 +3,11 @@
 # required: the dircetory .local/logs/ must be available | TODO: implement check on install script and create first logfiles manually..
 
 # load functions
-. $PSScriptRoot\limbs\aliases.ps1
+. $PSScriptRoot\aliases.ps1
 # load locations
-. $PSScriptRoot\limbs\locations.ps1
+. $PSScriptRoot\locations.ps1
 # load projects
-. $PSScriptRoot\limbs\projects.ps1
+. $PSScriptRoot\projects.ps1
 
 Set-Alias -Name draw -Value Write-Pixel -Description "Draws pictures in pixel into shell"
 
