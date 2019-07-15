@@ -2,6 +2,7 @@
     "den_location": "!den",
     "cloud": "X:\\My Cloud",
     "projects": "X:\\My Cloud\\#projects",
+    "heap": "C:\\localprojects",
     "shortcuts": ".local\\shortcuts",
     "residence": ["Alamo", "US"],
     "coordinates": [37.234332396, -115.80666344],

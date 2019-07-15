@@ -49,6 +49,8 @@ scripts/powershell/limbs/projects.ps1
 
 ### Incomplete Tutorials & Settings ###
 # TODO: reactivate the ones finished
+basic-tutorials/how-to_bash.md
+basic-tutorials/how-to_get_WSL_running.md
 basic-tutorials/how-to_emacs.md
 basic-tutorials/how-to_vim.md
 # settings need sync-scripts and polishing, maybe pack them to another module

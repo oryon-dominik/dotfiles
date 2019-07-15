@@ -2,7 +2,13 @@
 
 > How-to set environment variables with powershell
 
-## Usage
+## Variables
+
+If you already know the `$name` and the `$key` of the variable you want to set into your environment, set it directly with `Set-Item "env:$name" $key`
+
+## Path
+
+### Usage
 
 Add the absolute path you want to add into your global *path*-env as temporary environment variable
 

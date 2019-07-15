@@ -22,3 +22,6 @@ if os.getenv("PROJECTS_DIR"):
 
 if clitube_old.is_file() and clitube_new.is_file():
     shutil.copy(clitube_new, clitube_old)
+
+# TODO: add the new youtube.lua to the scripts update..
+# TODO: add logic (maybe in ps-scripts) to update periodically
