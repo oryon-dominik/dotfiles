@@ -90,6 +90,8 @@ Set-PSReadlineOption -EditMode vi -BellStyle None
 
 # TODO: add powershell-history (https://software.intel.com/en-us/blogs/2014/06/17/giving-powershell-a-persistent-history-of-commands)
 
+# TODO: add a ps-script aliases-structrue that includes all the scripts named as the localhost, so that you load the local-aliases too
+
 # ======================================================
 
 # Chocolatey profile
