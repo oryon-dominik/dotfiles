@@ -19,6 +19,7 @@ THIS TUTORIAL IS IN NO WAY COMPLETE NOR TESTET. NO WARRANTIES
     TODO: get it from private settings-repo\
     TODO: explain how to get coordinates\
     TODO: explain values\
+    TODO: touch a ``.local/logs/updates.log`
 
 5. If you do not have a file-repository: create a file-repository into `files` (you could use [new_project.py](../scripts/python/new_project.py) for that or manually set it up over the website )
 
