@@ -76,8 +76,6 @@ Set-PSReadlineOption -EditMode vi -BellStyle None
 
 # TODO add script for connecting to wifi-network
 
-# TODO: init on serenity & hawk
-
 # TODO: add-pomodore-timer (https://andrewpla.github.io/A-Toasty-Pomodoro-Timer/)
 
 # TODO: use geolocation for open-weather api
@@ -89,6 +87,8 @@ Set-PSReadlineOption -EditMode vi -BellStyle None
 # TODO: if projects are created with new_project script there should be a name and a lsvirtualenv.. so maybe add a shortcut to it to projects and import that to aliases too
 
 # TODO: haxx : highlight every ip-location for every connection on world-map
+
+# TODO: add powershell-history (https://software.intel.com/en-us/blogs/2014/06/17/giving-powershell-a-persistent-history-of-commands)
 
 # ======================================================
 
