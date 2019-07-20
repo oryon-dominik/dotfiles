@@ -43,9 +43,13 @@ den.code-workspace
 __pycache__/
 *.py[cod]
 
-# locally installed powershell-modules & scripts
+# ignore locally installed powershell-modules & scripts
 scripts/powershell/Modules/*
 scripts/powershell/Scripts/*
+scripts/powershell/machines/*.*
+# still load the local_machines'-scripts if available
+!scripts/powershell/machines/load_machine.ps1
+
 
 # these two are secret, put your own location-aliases and project-aliases here
 scripts/powershell/limbs/locations.ps1

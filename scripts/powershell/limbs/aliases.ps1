@@ -8,6 +8,8 @@
 . $PSScriptRoot\locations.ps1
 # load projects
 . $PSScriptRoot\projects.ps1
+# load machine
+. $PSScriptRoot\..\machines\load_machine.ps1
 
 Set-Alias -Name draw -Value Write-Pixel -Description "Draws pictures in pixel into shell"
 
