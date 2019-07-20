@@ -16,7 +16,7 @@ THIS TUTORIAL IS IN NO WAY COMPLETE NOR TESTET. NO WARRANTIES
 3. clone the dotfile-den repo into $DEN_ROOT `git clone git@github.com:oryon-dominik/dotfiles-den $ENV:DEN_ROOT`
 
 4. edit the `env_settings_example.json` to your needs and and save it to `env_settings.json`\
-    TODO: get it from settings-repo\
+    TODO: get it from private settings-repo\
     TODO: explain how to get coordinates\
     TODO: explain values\
 
@@ -82,3 +82,4 @@ THIS TUTORIAL IS IN NO WAY COMPLETE NOR TESTET. NO WARRANTIES
 
 TODO: finish this tutorial
 TODO: write install-script following this tutorial
+TODO: expand to private settings
