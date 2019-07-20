@@ -13,14 +13,25 @@ THIS TUTORIAL IS IN NO WAY COMPLETE NOR TESTET. NO WARRANTIES
 
 ## Preparations
 
+> I'm using [hub](https://github.com/github/hub) a syntax-wrapper for git with a nice autocompletion
+
 create an ssh-key and [register](https://help.github.com/en/enterprise/2.15/user/articles/adding-a-new-ssh-key-to-your-github-account) the public-Key (.pub) in the backend of your azure, bitbucket or github account
 
 ```powershell
 # register a new key using a UNIQUE_IDENTIFIER, e.g: GITHUB)
 ssh-keygen -t rsa -C your@email.address ~/.ssh/id_rsa_GITHUB
 # copy the public key to the clipboard
-clip < ~/.ssh/id_rsa_GITHUB
+clip < ~/.ssh/id_rsa_GITHUB.pub
+```
 
+Configure (`git config -e --global`) your global git settings to work with your unique identifier (you can also use different keys on a project-to-project basis - `git config -e --local`)
+
+```.gitconfig
+[user]
+    name = yourname
+    email = email@adress
+[core]
+    sshCommand = ssh -i ~/.ssh/id_rsa_GITHUB
 ```
 
 To remotely create repositories completey from your command line interface, supplementary to the credentials yo need a [GIT-Token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line)
