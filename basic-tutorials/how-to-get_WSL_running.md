@@ -150,3 +150,5 @@ Set-Service ssh-agent -StartupType Manual
 ssh-agent
 ssh-add <KEYNAME>
 ```
+
+TODO: sync wsl over several machines, write a config-script (fish/aliases etc) for that
