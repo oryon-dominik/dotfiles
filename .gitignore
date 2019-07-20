@@ -43,6 +43,10 @@ den.code-workspace
 __pycache__/
 *.py[cod]
 
+# locally installed powershell-modules & scripts
+scripts/powershell/Modules/*
+scripts/powershell/Scripts/*
+
 # these two are secret, put your own location-aliases and project-aliases here
 scripts/powershell/limbs/locations.ps1
 scripts/powershell/limbs/projects.ps1
@@ -57,5 +61,5 @@ settings/*
 install/*
 # TODO work full_version into readme
 README_full.md
-# the todo-list
+# the todo-list, TODO: should also be synced via gist or something
 TODO
