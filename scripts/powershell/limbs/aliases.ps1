@@ -16,8 +16,8 @@ Set-Alias -Name draw -Value Write-Pixel -Description "Draws pictures in pixel in
 Set-Alias -Name reboot -Value Restart-Computer -Description "reboot"
 Set-Alias -Name reb -Value Restart-Computer -Description "reboot"
 # %windir%\System32\rundll32.exe powrprof.dll,SetSuspendState Hibernate
-Set-Alias -Name hibernate -Value "shutdown.exe /h" -Description "hibernation"
-Set-Alias -Name hib -Value "shutdown.exe /h" -Description "hibernation"
+function hibernate {& "$env:windir\system32\shutdown.exe" /h}
+Set-Alias -Name hib -Value hibernate -Description "hibernation"
 Set-Alias -Name aus -Value Stop-Computer -Description "shutdown"
 
 Set-Alias -Name touch -Value New-Item -Description "Creates a file"
