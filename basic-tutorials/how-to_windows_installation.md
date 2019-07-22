@@ -34,7 +34,7 @@ To prepare your windows-installation
 
 - Fork the repo using [hub](https://github.com/github/hub) (`git clone <url>`) switch to the directory and `git fork` it
 - Customize the Environment-Variables in `.env.example` and save them as `.env`
-- Create a list of your installed vscode extensions in `settings/programs/vscode` with:  `code.cmd --list-extensions > extensions.list`
+- Create a list of your installed vscode extensions in `settings/programs/vscode` with:  `code.cmd --list-extensions > vscode_extensions.list`
 - Commit the changes to your fork
 
 ## Installation
@@ -107,6 +107,7 @@ powershell
 powershell-core
 python
 vscode
+vscode-insiders
 less
 get-childitemcolor
 vim
@@ -231,8 +232,13 @@ setup vnc + mediaserver
 check context-menu entries (vscode, notepad++ 7zip)
 new-files for word-docs and .py(vscode)
 
+install the newest nightly-update in vscode-insiders
+
 install all vscode-extensions :
 $ code.cmd --install-extension <extension-name>
+
+$ cat vscode_extensions.list |% { code-insiders.cmd --install-extension $_}
+$ cat vscode_extensions.list |% { code.cmd --install-extension $_}
 
 
 configure chrome profile / firefox profile
