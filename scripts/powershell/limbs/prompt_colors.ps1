@@ -4,8 +4,18 @@
 # colors
 $Host.UI.RawUI.ForegroundColor = "Yellow"
 # powershell-error-colors
-$Host.PrivateData.ErrorForegroundColor = "DarkRed"
-$Host.PrivateData.ErrorBackgroundColor = "White"
+$Host.PrivateData.ErrorForegroundColor    = "DarkRed"
+$Host.PrivateData.ErrorBackgroundColor    = "White"
+$Host.PrivateData.WarningForegroundColor  = "Magenta"
+$Host.PrivateData.WarningBackgroundColor  = "Black"
+$Host.PrivateData.DebugForegroundColor    = "DarkMagenta"
+$Host.PrivateData.DebugBackgroundColor    = "Black"
+$Host.PrivateData.VerboseForegroundColor  = "Cyan"
+$Host.PrivateData.VerboseBackgroundColor  = "Black"
+$Host.PrivateData.ProgressForegroundColor = "Yellow"
+$Host.PrivateData.ProgressBackgroundColor = "DarkCyan"
+
+
 
 # dracula colors
 Set-PSReadlineOption -Color @{
