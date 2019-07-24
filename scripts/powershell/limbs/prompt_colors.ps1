@@ -1,6 +1,19 @@
 ﻿# custom prompt
-# requires: posh-git, $settings.cloud set to cloud-directory
+# requires: Modules: posh-git, PSReadline; $settings.cloud set to cloud-directory
 
+# dracula colors
+Set-PSReadlineOption -Color @{
+    "Command" = [ConsoleColor]::White
+    "Parameter" = [ConsoleColor]::Magenta
+    "Operator" = [ConsoleColor]::Green
+    "Variable" = [ConsoleColor]::Red
+    "String" = [ConsoleColor]::Yellow
+    "Number" = [ConsoleColor]::Blue
+    "Type" = [ConsoleColor]::Cyan
+    "Comment" = [ConsoleColor]::DarkCyan
+}
+
+# prompt
 function Prompt
 {
 	$realLASTEXITCODE = $LASTEXITCODE
@@ -32,7 +45,9 @@ function Prompt
 	Write-VcsStatus  # posh-git status, alternative: #& $GitPromptScriptBlock
 	Write-Host -NoNewline -ForegroundColor magenta
 	Write-Host $promptEnd -NoNewline -ForegroundColor magenta
+	Write-Host "" -NoNewline -ForegroundColor yellow
 	
 	$global:LASTEXITCODE = $realLASTEXITCODE
     return " "
 }
+

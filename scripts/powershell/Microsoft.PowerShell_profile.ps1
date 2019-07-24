@@ -54,7 +54,7 @@ $icons = Join-Path -Path $file_location -ChildPath '\icons'
 . $PSScriptRoot\commands\import_modules.ps1
 
 # set prompt
-. $PSScriptRoot\limbs\prompt.ps1
+. $PSScriptRoot\limbs\prompt_colors.ps1
 
 # load aliases & function-definitions
 . $PSScriptRoot\limbs\aliases.ps1
@@ -64,9 +64,12 @@ $env:path += Join-Path -Path $script_location -ChildPath "\python"
 $env:path += Join-Path -Path $script_location -ChildPath "\batch"
 $env:path += ";C:\Program Files\NASM"  # netwide-assembler
 
+# colors
+$Host.UI.RawUI.ForegroundColor = "Yellow"
 # powershell-error-colors
 $host.PrivateData.ErrorForegroundColor = "DarkRed"
 $host.PrivateData.ErrorBackgroundColor = "White"
+
 
 # vi-edit-mode
 Set-PSReadlineOption -EditMode vi -BellStyle None
