@@ -138,16 +138,16 @@ function alias_config { notepad++ "$env:DEN_ROOT\scripts\powershell\limbs\aliase
 Set-Alias -Name aliases -Value alias_config -Description "edit Powershell-Aliases"
 
 function sysinfo {
-	Get-WmiObject Win32_processor | ft -AutoSize Name,MaxClockSpeed,NumberOfCores
-	Get-WMIObject Win32_Physicalmemory | ft -AutoSize Manufacturer,PartNumber,Configuredclockspeed,Capacity
-	Get-WmiObject Win32_VideoController | ft -AutoSize Name,AdapterRAM,DriverVersion
-	Get-WmiObject Win32_BaseBoard | ft -AutoSize Manufacturer,Product
-	Get-WmiObject win32_bios | ft -AutoSize Manufacturer,Version,Name
+	Get-CimInstance -ClassName Win32_processor | ft -AutoSize Name,MaxClockSpeed,NumberOfCores
+	Get-CimInstance -ClassName Win32_Physicalmemory | ft -AutoSize Manufacturer,PartNumber,Configuredclockspeed,Capacity
+	Get-CimInstance -ClassName Win32_VideoController | ft -AutoSize Name,AdapterRAM,DriverVersion
+	Get-CimInstance -ClassName Win32_BaseBoard | ft -AutoSize Manufacturer,Product
+	Get-CimInstance -ClassName win32_bios | ft -AutoSize Manufacturer,Version,Name
 }
 
 function ver {
-	$name = (Get-WmiObject Win32_OperatingSystem).caption
-	$bit = (Get-WmiObject Win32_OperatingSystem).OSArchitecture
+	$name = (Get-CimInstance -ClassName Win32_OperatingSystem).caption
+	$bit = (Get-CimInstance -ClassName Win32_OperatingSystem).OSArchitecture
 	$ver = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ReleaseId
 	$build = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").BuildLabEx
 	Write-Host $name, $bit, " Version:", $ver, "- Build:", $build
