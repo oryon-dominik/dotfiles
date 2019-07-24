@@ -4,6 +4,8 @@
 
 THIS TUTORIAL IS IN NO WAY COMPLETE NOR TESTET. NO WARRANTIES
 
+Make sure you have installed `powershell7`
+
 1. Set up your `ssh-key` and your `git config` (you can read how-to do it in the preparations part of my [git-repo-tutorial](how-to_init_a_git_repo.md#markdown-header-preparations))
 
 2. set `$env:DEN_ROOT` to the location you want to install your config to suggested example: `$env:userprofile\ + '!den'`
@@ -69,9 +71,12 @@ THIS TUTORIAL IS IN NO WAY COMPLETE NOR TESTET. NO WARRANTIES
 
     ```powershell
     $ps_path = Join-Path -Path $env:userprofile -ChildPath '\Documents\WindowsPowerShell'
+    $ps7_path = Join-Path -Path $env:userprofile -ChildPath '\Documents\PowerShell'
     $den_loc = Join-Path -Path $env:DEN_ROOT -ChildPath 'scripts\powershell'
     Remove-Item -path $ps_path -recurse
+    Remove-Item -path $ps7_path -recurse
     cmd /c mklink /j "$ps_path" "$den_loc"
+    cmd /c mklink /j "$ps7_path" "$den_loc"
     ```
 
 8. check if everything runs as expected (install powershell-modules, etc.)\

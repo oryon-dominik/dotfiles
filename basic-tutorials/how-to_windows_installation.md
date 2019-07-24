@@ -50,6 +50,13 @@ TODO: create the script from commands below
 
 TODO: implement all the small steps into an automatically running script
 
+Install powershell 7, start it and set a new profile
+
+```powershell
+iex "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI -Preview"
+New-Item $PROFILE -Force
+```
+
 1. Set environment-variables (or get 'em from repo :P):
 
     - $hostname = the name of your machine
@@ -100,11 +107,11 @@ Clone the repo.
 
 choco install
 
+TODO: update package-list
+
 cmder
 google-drive-file-stream
 googlechrome
-powershell
-powershell-core
 python
 vscode
 vscode-insiders
@@ -169,6 +176,9 @@ tasklist > ~/!den/logs/processes_fresh_install.txt
 Create a Junction link for your Powershell-Settings & the cloud (googledrive for me):
 
 `cmd /c mklink /j "C:\Users\<username>\Documents\WindowsPowerShell" "C:\Users\<username>\!den\scripts\powershell"`
+
+for powershell 7:
+`cmd /c mklink /j "C:\Users\<username>\Documents\PowerShell" "C:\Users\<username>\!den\scripts\powershell"`
 `cmd /c mklink /j C:\<cloud> "x:\<cloud>"`
 
 TODO: Install updates (you can do that with the corresponding choco module too)
