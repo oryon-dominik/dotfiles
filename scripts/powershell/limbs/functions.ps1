@@ -153,6 +153,11 @@ function ver {
 	Write-Host $name, $bit, " Version:", $ver, "- Build:", $build
 }
 
+function lan {
+	$networks = Get-CimInstance -ClassName win32_networkadapter | select netconnectionid, name, InterfaceIndex, netconnectionstatus
+	Write-Host $networks
+}
+
 # link <destination> <target>               create a junction
 function link($destination,$target){New-Item -Path $destination -ItemType Junction -Value $target}
 
