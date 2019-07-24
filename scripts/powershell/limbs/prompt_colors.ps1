@@ -1,6 +1,12 @@
 ﻿# custom prompt
 # requires: Modules: posh-git, PSReadline; $settings.cloud set to cloud-directory
 
+# colors
+$Host.UI.RawUI.ForegroundColor = "Yellow"
+# powershell-error-colors
+$Host.PrivateData.ErrorForegroundColor = "DarkRed"
+$Host.PrivateData.ErrorBackgroundColor = "White"
+
 # dracula colors
 Set-PSReadlineOption -Color @{
     "Command" = [ConsoleColor]::White
@@ -12,6 +18,23 @@ Set-PSReadlineOption -Color @{
     "Type" = [ConsoleColor]::Cyan
     "Comment" = [ConsoleColor]::DarkCyan
 }
+
+    #   black: '#000000',
+    #   red: '#C51E14',
+    #   green: '#1DC121',
+    #   yellow: '#C7C329',
+    #   blue: '#0A2FC4',
+    #   magenta: '#C839C5',
+    #   cyan: '#20C5C6',
+    #   white: '#C7C7C7',
+    #   lightBlack: '#686868',
+    #   lightRed: '#FD6F6B',
+    #   lightGreen: '#67F86F',
+    #   lightYellow: '#FFFA72',
+    #   lightBlue: '#6A76FB',
+    #   lightMagenta: '#FD7CFC',
+    #   lightCyan: '#68FDFE',
+    #   lightWhite: '#FFFFFF',
 
 # prompt
 function Prompt
