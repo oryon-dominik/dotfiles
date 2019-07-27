@@ -143,6 +143,7 @@ function sysinfo {
 	Get-CimInstance -ClassName Win32_VideoController | ft -AutoSize Name,AdapterRAM,DriverVersion
 	Get-CimInstance -ClassName Win32_BaseBoard | ft -AutoSize Manufacturer,Product
 	Get-CimInstance -ClassName win32_bios | ft -AutoSize Manufacturer,Version,Name
+	Get-CimInstance -ClassName WIN32_DiskDrive -ComputerName $server
 }
 
 function ver {
