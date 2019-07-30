@@ -102,6 +102,8 @@ to get the full package of open-ssh-server (minimal is preinstalled)
 
 ## [Docker setup](https://nickjanetakis.com/blog/setting-up-docker-for-windows-and-wsl-to-work-flawlessly)
 
+Use the edge version for docker for windows from their website (don't install with choco!!)
+
 Download and add Docker's official public PGP key.
 `curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -`
 
