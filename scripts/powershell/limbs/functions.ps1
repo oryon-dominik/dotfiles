@@ -144,6 +144,7 @@ function sysinfo {
 	Get-CimInstance -ClassName Win32_BaseBoard | ft -AutoSize Manufacturer,Product
 	Get-CimInstance -ClassName win32_bios | ft -AutoSize Manufacturer,Version,Name
 	Get-CimInstance -ClassName WIN32_DiskDrive -ComputerName $server
+	# Get-CimInstance -ClassName Win32_Networkadapter | ft -AutoSize DeviceID,Name,ServiceName
 }
 
 function ver {
