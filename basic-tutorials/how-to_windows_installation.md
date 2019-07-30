@@ -20,6 +20,7 @@ It may not work for you, there may be nonsense steps, things you don't like or e
 the level automation ist still very low, there is much to do.. this will take time or worse: maybe never be complete, don't wait for it.
 
 TODO: complete how to install Windows
+TODO: integrate updates from `https://www.microsoft.com/en-us/software-download/windows10`
 TODO: write python script schreiben, to change the colors of virtualenvwerpaper
   `<user>\Envs\<cast>\Scripts\Activate.ps1`
   -> Line 38: `Write-Host -NoNewline -ForegroundColor Green '(cast) '` change it to whatever you like, green is not my favourite
