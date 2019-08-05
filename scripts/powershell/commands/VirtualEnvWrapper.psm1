@@ -29,7 +29,7 @@ $Version = "0.2.0"
 # Set the default path and create the directory if don't exist
 #
 if (!$WORKON_HOME) {
-    $WORKON_HOME = "$Env:USERPROFILE\Envs"
+    $WORKON_HOME = Join-Path -Path $Env:USERPROFILE -ChildPath "Envs"
 }
 
 if ((Test-Path $WORKON_HOME) -eq $false) {
@@ -40,7 +40,7 @@ if ((Test-Path $WORKON_HOME) -eq $false) {
 # Get the absolute path for the environment
 #
 function Get-FullPyEnvPath($pypath) {
-    return ("{0}\{1}" -f $WORKON_HOME, $pypath)
+    return Join-Path -Path $WORKON_HOME -ChildPath $pypath
 }
 
 # 
@@ -323,7 +323,7 @@ function IsPyEnvExists($Name) {
 }
 
 function Get-VirtualEnvs {
-    $children = Get-ChildItem $WORKON_HOME
+    $children = Get-ChildItem -Path $WORKON_HOME -Name  # FIXED: -Name neccessary, as Get-ChildItem returns abspath
     Write-Host
     Write-Host "`tPython Virtual Environments available"
     Write-Host
@@ -334,7 +334,9 @@ function Get-VirtualEnvs {
     if ($children.Length) {
         for($i = 0; $i -lt $children.Length; $i++) {
             $child = $children[$i]
-            $PythonVersion = (((Invoke-Expression ("$WORKON_HOME\{0}\Scripts\Python.exe --version 2>&1" -f $child)) -replace "`r|`n","") -Split " ")[1]
+			$env_child_path = Join-Path -Path $WORKON_HOME -ChildPath $child  
+			$env_python_path = Join-Path -Path $env_child_path -ChildPath "Scripts\Python.exe"
+            $PythonVersion = (((Invoke-Expression ("$env_python_path --version 2>&1" )) -replace "`r|`n","") -Split " ")[1]
             Write-host ("`t{0,-30}{1,-15}" -f $child,$PythonVersion)
         }
     } else {
