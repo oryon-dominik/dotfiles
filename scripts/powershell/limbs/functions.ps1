@@ -98,7 +98,7 @@ function windows-update{
 	Write-Host "Installing Windows Updates.."
 	Write-Output (-join('{"message": "', $($update_message), '", "@timestamp": "', $(Get-TimeStamp), '"},')) | Out-file (Join-Path -Path $env:DEN_ROOT -ChildPath ".local\logs\updates.log") -append
 	Import-Module PSWindowsUpdate
-	Get-WUInstall -AcceptAll -IgnoreUserInput -Confirm:$false
+	Get-WindowsUpdate -AcceptAll -IgnoreUserInput -Confirm:$false
 	wmic qfe list
 }
 
