@@ -176,4 +176,4 @@ function spool { . $env:DEN_ROOT\scripts\batch\printer_restart.bat }
 
 # SpeedTest
 function speedtest { . $env:DEN_ROOT\scripts\powershell\commands\SpeedTest.ps1 }
-Set-Alias speedtest speed
+Set-Alias speed speedtest
