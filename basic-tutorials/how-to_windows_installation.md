@@ -6,8 +6,8 @@ THIS TUTORIAL IS IN NO WAY COMPLETE NOR TESTET. NO WARRANTIES
 
 ## Content
 
-- [Preparations](#markdown-header-preparations)
-- [Installation](#markdown-header-installation)
+- [Preparations](#preparations)
+- [Installation](#installation)
 
 ---
 

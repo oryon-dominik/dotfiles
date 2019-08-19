@@ -6,8 +6,8 @@ THIS TUTORIAL IS IN NO WAY COMPLETE NOR TESTET. NO WARRANTIES
 
 ## Content
 
-- [Preparations](#markdown-header-preparations)
-- [Usage](#markdown-header-usage)
+- [Preparations](#preparations)
+- [Usage](#usage)
 
 ---
 

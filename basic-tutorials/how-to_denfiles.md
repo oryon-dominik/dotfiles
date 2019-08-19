@@ -6,7 +6,7 @@ THIS TUTORIAL IS IN NO WAY COMPLETE NOR TESTET. NO WARRANTIES
 
 Make sure you have installed `powershell7`
 
-1. Set up your `ssh-key` and your `git config` (you can read how-to do it in the preparations part of my [git-repo-tutorial](how-to_init_a_git_repo.md#markdown-header-preparations))
+1. Set up your `ssh-key` and your `git config` (you can read how-to do it in the preparations part of my [git-repo-tutorial](how-to_init_a_git_repo.md#preparations))
 
 2. set `$env:DEN_ROOT` to the location you want to install your config to suggested example: `$env:userprofile\ + '!den'`
 
