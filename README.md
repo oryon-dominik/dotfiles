@@ -33,4 +33,4 @@ this repos' main purpose is serving as a private dump - so no warranties at all 
 
 > especially all install-files are under heavy construction and therefore hidden from the repository
 
-newest_version: 20.07.2019
+newest_version: 19.08.2019
