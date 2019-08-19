@@ -14,10 +14,57 @@ If you have special questions on a command, you should tryout [explainshell](htt
 
 Some of the links point to german references, sorry.
 
-TODO: add / update index, better chapter-marks & titles
+TODO: add / update index, better chapter-marks & titles / sort the list with more meaning, clean it up, seperate topics
 
 - [Preparations](#markdown-header-preparations)
 - [Usage](#markdown-header-usage)
+- [Basic UI-Controls](#markdown-header-basic-ui-controls)
+- [Bash](#markdown-header-bash)
+- [the very basics](#markdown-header-the-very-basics)
+- [variables](#markdown-header-variables)
+- [advanced basics](#markdown-header-advanced-basics)
+- [user](#markdown-header-user)
+- [groups](#markdown-header-groups)
+- [chmod](#markdown-header-chmod)
+- [chown](#markdown-header-chown)
+- [package & kernel managing with dnf](#markdown-header-package-kernel-managing-with-dnf)
+- [basic .bashrc](#markdown-header-basic-bashrc)
+- [basic aliases](#markdown-header-basic-aliases)
+- [fish](#markdown-header-fish)
+- [logging](#markdown-header-logging)
+- [boot](#markdown-header-boot)
+- [bootsplash - plymouth](#markdown-header-bootsplash-plymouth)
+- [Systemctl](#markdown-header-systemctl)
+- [hard-drives](#markdown-header-hard-drives)
+- [Cloning your Hard-Drives](#markdown-header-cloning-your-hard-drives)
+- [using virtual environments](#markdown-header-using-virtual-environments)
+- [if you run your distribution inside a virtualbox](#markdown-header-if-you-run-your-distribution-inside-a-virtualbox)
+- [grep / regex search](#markdown-header-grep-regex-search)
+- [GIT](#markdown-header-git)
+- [.gitignore](#markdown-header-gitignore)
+- [network](#markdown-header-network)
+- [curl](#markdown-header-curl)
+- [server ssh & html](#markdown-header-server-ssh-html)
+- [Apache](#markdown-header-apache)
+- [scp](#markdown-header-scp)
+- [ftp](#markdown-header-ftp)
+- [Netstat](#markdown-header-netstat)
+- [processes](#markdown-header-processes)
+- [Xargs](#markdown-header-xargs)
+- [cron tab & jobs](#markdown-header-cron-tab-jobs)
+- [gdb debugger](#markdown-header-gdb)
+- [archives & backup](#markdown-header-archives-backup)
+- [install from source](#markdown-header-install-from-source)
+- [htop & s-tui](#markdown-header-htop-s-tui)
+- [logkeys](#markdown-header-logkeys-keylogger)
+- [shark](#markdown-header-shark)
+- [Gnome Desktop](#markdown-header-gnome)
+- [scripts .sh](#markdown-header-scripts-sh)
+- [SELinux - Security Enhanced Linux](#markdown-header-selinux-security-enhanced-linux)
+- [Atom](#markdown-header-atom-editor)
+- [setup VLC Media](#markdown-header-vlc)
+- [Email with MUTT](#markdown-header-email-with-mutt)
+- [several bugfixes (Fedora 27)](#markdown-header-several-bugfixes)
 
 ---
 
@@ -225,7 +272,7 @@ to have the user change its password at next login: `chage -d 0 username`
 
 delete a user (including its home-.directory) with `userdel -r username`
 
-add hillary to the sudo group `usermod -aG sudo hillary`
+add "hillary" to the sudo group `usermod -aG sudo hillary`
 
 #### chmod
 
