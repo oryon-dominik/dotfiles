@@ -8,8 +8,8 @@
 
 ## Content
 
-- [Requirements](#markdown-header-requirements)
-- [Repo-Tutorial](#markdown-header-how-to-repository)
+- [Requirements](#requirements)
+- [Repo-Tutorial](#how-to-repository)
 
 ---
 
@@ -21,7 +21,7 @@ explanation: "den" = cave, hive, nest, sanctuary..
 
 ...
 
-you can follow my first [tutorial on how to setup your own dotfiles here](basic-tutorials/how-to_init_a_git_repo.md#markdown-header-preparations))
+you can follow my first [tutorial on how to setup your own dotfiles here](basic-tutorials/how-to_denfiles.md)
 
 ...
 
