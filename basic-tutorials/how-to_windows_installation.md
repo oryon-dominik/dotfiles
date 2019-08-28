@@ -287,6 +287,8 @@ set system-restore-point
 
 install netflix, pocketcast from the Store.. or via powershell (still form the store) TODO: add to script
 
+install c compiler with all packages into c:\tools\cygwin from `http://win-builds.org/`
+
 $ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
 (or: choco install wsl)
 

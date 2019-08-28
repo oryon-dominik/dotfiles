@@ -22,6 +22,7 @@ THIS TUTORIAL IS IN NO WAY COMPLETE NOR TESTET. NO WARRANTIES
   
   # add the cygwin-packages
   cyg-get default attr cron shutdown zip coreutils openssl pulseaudio sqlite3 gdb git fzf-vim vim python python3 mutt pylint fish fzf-fish guake lynx nginx xfce irssi bash-completion fzf-bash-completion fzf-fish fish-debuginfo
+  # also add all cygwin packages needed for compilation..
 
   # list the packages installed locally (without '-l'-parameter you get all packages avaiable online):
   choco list -l
