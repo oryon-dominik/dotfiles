@@ -24,6 +24,8 @@ if (-Not [System.Double]::IsNaN($latitude) -and -Not [System.Double]::IsNaN($lon
         # Retrieve Geolocation from Google Geocoding API
         $url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=$latitude,$longitude&key=$GEOCODING_KEY"
 
+        
+        # TODO: catch no network-error
         $APIResults = ((Invoke-WebRequest $url).Content | ConvertFrom-Json | Select Results)
         
         if ($APIResults.results) {
