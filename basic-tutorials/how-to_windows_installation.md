@@ -31,10 +31,10 @@ TODO: write python script schreiben, to change the colors of virtualenvwerpaper
 
 ## Preparations
 
-To prepare your windows-installation
+To prepare your windows-installation on another system
 
-- Fork the repo using [hub](https://github.com/github/hub) (`git clone <url>`) switch to the directory and `git fork` it
-- Customize the Environment-Variables in `.env.example` and save them as `.env`
+- Fork the dotfiles repo using [hub](https://github.com/github/hub) (`git clone <url>`) switch to the directory and `git fork` it
+- Customize the Environment-Variables in `env_settings_example.json` and save it to `env_settings.json`
 - Create a list of your installed vscode extensions in `settings/programs/vscode` with:  `code.cmd --list-extensions > vscode_extensions.list`
 - Commit the changes to your fork
 
