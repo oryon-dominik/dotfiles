@@ -35,6 +35,9 @@ if (-not (Test-Path env:DEN_ROOT)) {
 # load local settings
 . $PSScriptRoot\limbs\read_settings.ps1
 # TODO: check for existence of ($settings.den_location, $settings.cloud, $settings.projects, $settings.shortcuts)
+# calculate last update
+. $PSScriptRoot\limbs\read_update_log.ps1
+
 
 # init PROJECTS_DIR, if not set
 if (-not (Test-Path env:PROJECTS_DIR)) { $env:PROJECTS_DIR = $settings.projects }
