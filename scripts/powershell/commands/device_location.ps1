@@ -12,7 +12,13 @@ $gps_location = New-Object System.Device.Location.GeoCoordinate
 $latitude = $gps_location.latitude
 $longitude = $gps_location.longitude
 
-$connected = Test-Connection -Count 1 -ComputerName google.de -Quiet -InformationAction Ignore
+try {
+    $connected = Test-Connection -Count 1 -ComputerName google.de -Quiet -InformationAction Ignore
+}
+catch {
+    $connected = false
+}
+
 
 if ($connected) {
     if ([System.Double]::IsNaN($latitude)){
