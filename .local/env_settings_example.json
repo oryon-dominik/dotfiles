@@ -1,7 +1,7 @@
 {
     "den_location": "!den",
     "cloud": "X:\\My Cloud",
-    "projects": "X:\\My Cloud\\#projects",
+    "projects": "X:\\My Cloud\\_projects",
     "heap": "C:\\localprojects",
     "shortcuts": ".local\\shortcuts",
     "residence": ["Alamo", "US"],
