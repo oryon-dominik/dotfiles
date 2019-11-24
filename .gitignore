@@ -50,8 +50,8 @@ scripts/powershell/machines/*.*
 # still load the local_machines'-scripts if available
 !scripts/powershell/machines/load_machine.ps1
 
-
 # these two are secret, put your own location-aliases and project-aliases here
+# TODO: sumodule for local "secret" config-parts I still want to share between machines
 scripts/powershell/limbs/locations.ps1
 scripts/powershell/limbs/projects.ps1
 
