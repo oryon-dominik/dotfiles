@@ -3,7 +3,7 @@
 ## create a git user
 
 add a git group to a id of your choice (if not existent already [`sudo tail /etc/group`])
-`sudo groupadd -g 54321 git`
+`sudo groupadd -g 54545 git`
 
 the user
 `sudo adduser --gecos Git --disabled-login --disabled-password --shell /usr/bin/git-shell --home /home/git --ingroup www-data git`
@@ -51,9 +51,9 @@ sudo -Hu git git init --bare
 sudo -Hu git git config core.sharedRepository group
 ```
 
-`sudo vim /var/git/SITENAME.git/hooks/post-receive`
+## configure the post-receive-hook
 
-and configure the post-receive-hook:
+`sudo vim /var/git/SITENAME.git/hooks/post-receive`
 
 ```vim
 #!/bin/bash
@@ -74,11 +74,11 @@ exit $rc
 ```
 
 finally update the permissions:
-`sudo chown -R git:git /var/git/SITENAME.git`
+`sudo chown -R git:www-data /var/git/SITENAME.git`
 `sudo chmod -R ug+rwX /var/git/SITENAME.git`
 
 add the developers ssh-keys to `/home/git/.ssh/authorized_keys`
-we use different port and ssh-key settings and have already configured .ssh/config that, so its only "servername", not "url:port"
+we use different port and ssh-key settings and have already configured these in our .ssh/config, so its only "servername", not "url:port"
 
 and on the developers site add a remote:
 `git remote add deploy git@servername:/var/git/SITENAME.git`
