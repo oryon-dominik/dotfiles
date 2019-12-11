@@ -1,5 +1,5 @@
 
-# Python Errors after installation
+# Python 3.8 Errors after installation
 
 Unofficial Windows Binaries for [Python Extension Packages](https://www.lfd.uci.edu/~gohlke/pythonlibs/)
 
