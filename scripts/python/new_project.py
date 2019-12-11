@@ -55,7 +55,7 @@ import requests
 
 
 DEFAULTS = {
-    "PROJECTS_DIR": "x:\\Meine Ablage\\#projects",
+    "PROJECTS_DIR": "x:\\Meine Ablage\\_projects",
     "REPO": "GITHUB",
     "RELEASE": "0.1",  # starting-release number
     "FEATURE": "Initial_Structure",  # first feature_name
@@ -85,6 +85,7 @@ def read_settings(filename="project_settings.json", settings=DEFAULTS):
     """ reads settings file from disk """
     script_path = Path(__file__).resolve().parent
     settings_path = Path(script_path, filename)
+    # TODO: get settings from ENVS and/or .local directory
     if not settings_path.exists():
         return settings
     else:
