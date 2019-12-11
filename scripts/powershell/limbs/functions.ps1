@@ -106,6 +106,10 @@ function script-update{
 	. (Join-Path -Path $script_location -ChildPath "\python\update_scripts.py")
 }
 
+function new_project {
+	. (Join-Path -Path $script_location -ChildPath "\python\new_project.py")
+}
+
 function Get-TimeStamp {
     return "{0:yyyy-MM-dd} {0:HH:mm:ss}" -f (Get-Date)
 }
