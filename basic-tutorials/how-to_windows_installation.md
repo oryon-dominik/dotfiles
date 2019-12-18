@@ -181,6 +181,7 @@ Create a Junction link for your Powershell-Settings & the cloud (googledrive for
 for powershell 7:
 `cmd /c mklink /j "C:\Users\<username>\Documents\PowerShell" "C:\Users\<username>\!den\scripts\powershell"`
 `cmd /c mklink /j C:\<cloud> "x:\<cloud>"`
+`cmd /c mklink /j C:\<my-company> "x:\<cloud>"`
 
 TODO: Install updates (you can do that with the corresponding choco module too)
 

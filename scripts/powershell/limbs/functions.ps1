@@ -122,7 +122,7 @@ function zen{  # activates zen-mode
 }
 
 function shell{
-	$newtab = $powershell_location + "\PowerShell.exe -NoLogo -NoExit -new_console:t:PowerShell -new_console:W:'" + $console + "\console.png' -new_console:C:" + $icons + "\soila.ico"
+	$newtab = $powershell_location + "\PowerShell.exe -NoLogo -NoExit -new_console:t:PowerShell -new_console:W:'" + $console + "\console.png' -new_console:C:" + $icons + "\cyberise.ico"
 	iex $newtab
 }
 Set-Alias -Name newtab -Value shell -Description "opens new tab"
