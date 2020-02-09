@@ -21,7 +21,7 @@ explanation: "den" = cave, hive, nest, sanctuary..
 
 ...
 
-you can follow my first [tutorial on how to setup your own dotfiles here](basic-tutorials/how-to_denfiles.md)
+you can follow the [tutorial on how to setup your own dotfiles here](basic-tutorials/how-to_denfiles.md)
 
 ...
 
@@ -31,6 +31,8 @@ if you are interested in something special or you need an advice you may write m
 
 this repos' main purpose is serving as a private dump - so no warranties at all for anything
 
+the repository is mainly used with windows (&powershell), you will find some crumbs for linux-environments though
+
 > especially all install-files are under heavy construction and therefore hidden from the repository
 
-newest_version: 19.08.2019
+newest_version: 09.02.2020
