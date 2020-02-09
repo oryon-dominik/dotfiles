@@ -40,9 +40,9 @@ To remotely create repositories completey from your command line interface, supp
 
 ### If you want to work on an already existing project
 
-1. Fork the project on the github-website
+1. **Fork the project** on the github-website
 
-2. Clone it locally with SSH
+2. **Clone it** locally with SSH
 
     ```powershell
     git clone git@github.com:username/forkname.git <destination-folder>
@@ -59,7 +59,7 @@ To remotely create repositories completey from your command line interface, supp
     git pull upstream develop
     ```
 
-    set up your local environment (make a virtualenv, `make` the tests) and install the requirements, e.g:
+3. **Set up** your local environment (make a virtualenv, eventually `make` the tests) and install the requirements, e.g:
 
     ```powershell
     python setup.py develop
@@ -67,18 +67,18 @@ To remotely create repositories completey from your command line interface, supp
     make test
     ```
 
-3. Now you can start a feature with
+4. Now you can **start a feature** with
 
     ```powershell
     # If the project uses git-flow:
     git flow feature start <feature name>
-    # Or if you start your work on your own branch
+    # Or if you want to start your work on your own branch outside the gitflow
     git checkout -b <name-of-your-bugfix-or-feature>
     ```
 
-4. Config your git (skip the `git init` and continue with nr. 2. below)
+5. **Config** your git (skip the `git init` and continue with nr. 2. below)
 
-5. If you want to update your fork from the upstream repository
+6. If you want to **update your fork** from the upstream repository
 
     ```powershell
     git fetch upstream
@@ -89,21 +89,21 @@ To remotely create repositories completey from your command line interface, supp
 
 ### If you want to work on your own repository
 
-1. Initialize git in your project directory
+1. **Initialize git** version control in your project directory
 
     ```powershell
     git init
     ```
 
-2. Configure the repository with your email, username and UNIQUE_IDENTIFIER
+2. **Configure the repository** with your email, username and UNIQUE_IDENTIFIER
 
     ```powershell
     git config --local user.email "your@email.address"
     git config --local user.name "username"
-    git config --local core.sshCommand "ssh -i ~/.ssh/id_rsa_GITHUB"
+    git config --local core.sshCommand "ssh -i ~/.ssh/UNIQUE_IDENTIFIER"
     ```
 
-3. Add some files and commit your directory structure
+3. Add some files and **commit** your directory structure
 
     ```powershell
     echo "something" >> README.md
@@ -111,13 +111,13 @@ To remotely create repositories completey from your command line interface, supp
     git commit -m "First commit"
     ```
 
-4. Set the origin (`git remote -v` shows already available connections)
+4. **Set the origin** (`git remote -v` shows already available connections)
 
     On github via SSH:
 
     ```powershell
     git remote add origin git@github.com:<username>/<repo>.git
-    git push origin master  # takes you local commit and pushes it to master
+    git push origin master  # takes your local commit and pushes it to master
     ```
 
     On azure
@@ -127,13 +127,13 @@ To remotely create repositories completey from your command line interface, supp
     git push -u origin --all  # sets upstream tracking reference and pushes all local branches
     ```
 
-    If you accidently started with https and want to switch to ssh just type
+    If you accidently started with https and want to switch over to ssh just type
 
     ```powershell
     git remote set-url origin git@github.com:<username>/<repo>.git
     ```
 
-5. Start a git flow (you can just confirm any questions asked with `<enter>`)
+5. Start a **git flow** (you can skip any questions asked and confirm with `<enter>` for now)
 
     ```powershell
     git flow init
@@ -143,11 +143,11 @@ To remotely create repositories completey from your command line interface, supp
 
     ```powershell
     git flow release start <release number>
-    # to end it (merged in master & develop)
+    # to end it (the release get's merged into master & develop)
     git flow release finish <release number>
     ```
 
-    And start (or finish) a new-feature or bugfix
+    Start (or finish) a new-feature or bugfix
 
     ```powershell
     git flow feature start <feature name>
