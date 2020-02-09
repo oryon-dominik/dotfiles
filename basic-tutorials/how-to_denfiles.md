@@ -18,9 +18,23 @@ Make sure you have installed a [powershell](https://github.com/PowerShell/PowerS
 3. clone the dotfile-den repo into `$DEN_ROOT` with `git clone git@github.com:oryon-dominik/dotfiles-den $ENV:DEN_ROOT`
 
 4. edit the `env_settings_example.json` in the `.local`-directory to your needs and and save it to `env_settings.json`\
-    TODO: get it from private settings-repo\
-    TODO: explain how to get GEO coordinates (to work with weather scripts and location specific sync scripts)\
-    TODO: explain values\
+    TODO: get it from private settings-repo via install-script\
+
+    example:
+
+    ```json
+    {
+        "den_location": ".den",
+        "cloud": "<X:\\endpoint_of_your_cloud>",
+        "projects": "<path_to_projects>",
+        "heap": "<path_to_not_so_important_stuff>",
+        "shortcuts": ".local\\shortcuts",
+        "residence": ["<cityname>", "<country_abbrev_ISO-Alpha-2>"],
+        "coordinates": [<latitude>, <longitude>],
+        "files_url": "<url_to_your_files_repository",
+        "files_location": "files"
+    }
+    ```
 
 5. Create an empty logfile for your updates `New-Item -ItemType file $ENV:DEN_ROOT/.local/logs/updates.log`
     TODO: put into install script
@@ -71,7 +85,7 @@ Make sure you have installed a [powershell](https://github.com/PowerShell/PowerS
     # don't forget to checkout a branch BEFORE a commit (git checkout -b added) inside the submodules or the header will get messed up!
     ```
 
-9. delete the old folders and make some system links (don't forget to backup your old Powershell configs, if you need them!)
+9. delete the old folders and make some system links (don't forget to backup your old powershell configs)
 
     ```powershell
     $ps_path = Join-Path -Path $env:userprofile -ChildPath '\Documents\WindowsPowerShell'
@@ -85,10 +99,15 @@ Make sure you have installed a [powershell](https://github.com/PowerShell/PowerS
 
 10. check if everything runs as expected (install powershell-modules, etc.)\
 
-    TODO: link to win-install tutorial
-    TODO: add an example `locations.ps1` and `projetcs.ps1`
+11. setup your `locations.ps1` and `projetcs.ps1` (aliases that load on startup)
 
-11. put your program-links into .local/shortcuts and add them to your desktop or taskbar via script
+    ```powershell
+    echo "function dev { set-location (Join-Path -Path $settings.cloud -ChildPath '\Development') }" >> $ENV:DEN_ROOT/scripts/powershell/limbs/locations.ps1
+    echo "function server {ssh serverip}" >> $ENV:DEN_ROOT/scripts/powershell/limbs/projects.ps1
+    ```
 
-TODO: write install-script following this tutorial
-TODO: expand to private settings & how-to-hold-secrets
+\
+TODO: 12. put your program-links into .local/shortcuts and add them to your desktop or taskbar via script\
+TODO: link to windows-installation tutorial\
+TODO: write install-script following this tutorial\
+TODO: expand to private settings & how-to-hold-secrets\
