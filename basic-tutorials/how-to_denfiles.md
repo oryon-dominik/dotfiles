@@ -1,29 +1,37 @@
-# denfile-repository
+# dotfile-repository
 
-> How-to configure your own dotfile-den repository
+> This is about: How-to configure your own dotfile repository, I call it my `DEN`
 
 THIS TUTORIAL IS IN NO WAY COMPLETE NOR TESTET. NO WARRANTIES
 
-Make sure you have installed `powershell7`
+Make sure you have installed a [powershell](https://github.com/PowerShell/PowerShell#get-powershell) (This tutorial assumes, youre using `powershell7`)
 
 1. Set up your `ssh-key` and your `git config` (you can read how-to do it in the preparations part of my [git-repo-tutorial](how-to_init_a_git_repo.md#preparations))
 
-2. set `$env:DEN_ROOT` to the location you want to install your config to suggested example: `$env:userprofile\ + '!den'`
+2. I suggest, setting an environment variable (`$env:DEN_ROOT`) to the location you want to install your config to. Suggested example: `$env:userprofile\ + '.den'`
 
     ```powershell
-    $den_loc = Join-Path -Path $env:userprofile -ChildPath "\!den"
+    $den_loc = Join-Path -Path $env:userprofile -ChildPath "\.den"
     [Environment]::SetEnvironmentVariable("DEN_ROOT", "$den_loc", "User")
     ```
 
-3. clone the dotfile-den repo into $DEN_ROOT `git clone git@github.com:oryon-dominik/dotfiles-den $ENV:DEN_ROOT`
+3. clone the dotfile-den repo into `$DEN_ROOT` with `git clone git@github.com:oryon-dominik/dotfiles-den $ENV:DEN_ROOT`
 
-4. edit the `env_settings_example.json` to your needs and and save it to `env_settings.json`\
+4. edit the `env_settings_example.json` in the `.local`-directory to your needs and and save it to `env_settings.json`\
     TODO: get it from private settings-repo\
-    TODO: explain how to get coordinates\
+    TODO: explain how to get GEO coordinates (to work with weather scripts and location specific sync scripts)\
     TODO: explain values\
-    TODO: touch a ``.local/logs/updates.log`
 
-5. If you do not have a file-repository: create a file-repository into `files` (you could use [new_project.py](../scripts/python/new_project.py) for that or manually set it up over the website )
+5. Create an empty logfile for your updates `New-Item -ItemType file $ENV:DEN_ROOT/.local/logs/updates.log`
+    TODO: put into install script
+
+6. If you do not have a file-repository: I suggest to create another repository for your shared system files (system-images, shared icons and so on..).\
+
+    We create a sub-repository for that (If you keep your dotfiles private, you could just sync them with the dotfiles and skip this step..)
+
+    Init a new or clone an existing repository into the `files`-directory you specified in the `env_settings` (you could use [new_project.py](../scripts/python/new_project.py) for that or manually set it up over the website)
+
+    Init example:
 
     ```powershell
     echo "# files" >> README.md
@@ -37,26 +45,22 @@ Make sure you have installed `powershell7`
     git push -u origin master
     ```
 
-    or create it with a curl (if you have a git_token already)
+    or create it with a powershell-`curl` (if you have a git_token already)
 
     ```powershell
     $GIT_TOKEN = <insert your token here>
-    $NAME = <insert the file-repos name here, suggested: 'file'>
-
-    TODO: FIX / correct CURL code (doesn't work:)
-    BROKEN # curl -u $git_username https://api.github.com/user/repos -d "{\"name\":\"$repo_name\"}"
-    BROKEN # curl https://api.github.com/user/repos?access_token=$GIT_TOKEN -d "{\"name\":\"files\", \"private\": true}"
-    BROKEN # curl https://api.github.com/user/repos?access_token=$GIT_TOKEN -d "`{`\"name`\": `\"$NAME`\", `\"private`\": true`}"
+    $NAME = <insert the file-repos name here, suggested: 'files'>
+    curl -Uri https://api.github.com/user/repos?access_token=$GIT_TOKEN -Method POST -Body (@{private="true";name=$NAME} | ConvertTo-Json)
     ```
 
-5. If you already have a file-repository: Add your file-repo as submodule to `files`
+7. If you already have a file-repository: Add your file-repo as submodule to `files`
 
     ```powershell
     git submodule add git@github.com:<username>/<files-repo> files
     git commit -m 'Added files as submodule'
     ```
 
-6. If the submodul is setup in your git-repo ..
+8. If the submodul is correctly setup in your git-repo ..
 
     ```powershell
     git submodule init
@@ -67,7 +71,7 @@ Make sure you have installed `powershell7`
     # don't forget to checkout a branch BEFORE a commit (git checkout -b added) inside the submodules or the header will get messed up!
     ```
 
-7. delete the old folders and make the links
+9. delete the old folders and make some system links (don't forget to backup your old Powershell configs, if you need them!)
 
     ```powershell
     $ps_path = Join-Path -Path $env:userprofile -ChildPath '\Documents\WindowsPowerShell'
@@ -79,13 +83,12 @@ Make sure you have installed `powershell7`
     cmd /c mklink /j "$ps7_path" "$den_loc"
     ```
 
-8. check if everything runs as expected (install powershell-modules, etc.)\
+10. check if everything runs as expected (install powershell-modules, etc.)\
 
     TODO: link to win-install tutorial
     TODO: add an example `locations.ps1` and `projetcs.ps1`
 
-9. put your program-links into .local/shortcuts and add them to your desktop or taskbar
+11. put your program-links into .local/shortcuts and add them to your desktop or taskbar via script
 
-TODO: finish this tutorial
 TODO: write install-script following this tutorial
-TODO: expand to private settings
+TODO: expand to private settings & how-to-hold-secrets
