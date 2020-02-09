@@ -13,19 +13,21 @@ THIS TUTORIAL IS IN NO WAY COMPLETE NOR TESTET. NO WARRANTIES
 
 ## TODOS
 
-ATTENTION: this "guide" is completely personal. It is for my own use, my own notes for my own installation.
-It is absolutely out of date (because I will actualize it only every couple of years, when I have to reinstall something).
+ATTENTION: this guide is probably considered: broken
+
+ATTENTION: this "guide" is completely personal. It is for my own use, my own notes for my own installation.\
+It is absolutely out of date (because I will actualize it only every couple of years, when I have to reinstall something).\
 It may not work for you, there may be nonsense steps, things you don't like or even find absolutely disgusting. Feel free to use it as your guide too, but don't blame me if something goes terribly wrong!
 
 the level automation ist still very low, there is much to do.. this will take time or worse: maybe never be complete, don't wait for it.
 
-TODO: complete how to install Windows
-TODO: integrate updates from `https://www.microsoft.com/en-us/software-download/windows10`
-TODO: write python script schreiben, to change the colors of virtualenvwerpaper
-  `<user>\Envs\<cast>\Scripts\Activate.ps1`
-  -> Line 38: `Write-Host -NoNewline -ForegroundColor Green '(cast) '` change it to whatever you like, green is not my favourite
-  TODO: add DNS: 46.182.19.48 (https://digitalcourage.de/support/zensurfreier-dns-server)
-  212.82.226.212 (https://www.ccc.de/de/censorship/dns-howto)
+TODO: complete how to install Windows\
+TODO: integrate updates from `https://www.microsoft.com/en-us/software-download/windows10`\
+TODO: write python script schreiben, to change the colors of virtualenvwerpaper\
+  `<user>\Envs\<cast>\Scripts\Activate.ps1`\
+  -> Line 38: `Write-Host -NoNewline -ForegroundColor Green '(cast) '` change it to whatever you like, green is not my favourite\
+  TODO: add DNS: 46.182.19.48 (https://digitalcourage.de/support/zensurfreier-dns-server)\
+  212.82.226.212 (https://www.ccc.de/de/censorship/dns-howto)\
   
   if something doesnt work: google-dns: 8.8.8.8 or 8.8.4.4
 
@@ -33,9 +35,9 @@ TODO: write python script schreiben, to change the colors of virtualenvwerpaper
 
 To prepare your windows-installation on another system
 
-- Fork the dotfiles repo using [hub](https://github.com/github/hub) (`git clone <url>`) switch to the directory and `git fork` it
-- Customize the Environment-Variables in `env_settings_example.json` and save it to `env_settings.json`
-- Create a list of your installed vscode extensions in `settings/programs/vscode` with:  `code.cmd --list-extensions > vscode_extensions.list`
+- Fork the dotfiles repo using [hub](https://github.com/github/hub) (`git clone <url>`) switch to the directory and `git fork` it\
+- Customize the Environment-Variables in `env_settings_example.json` and save it to `env_settings.json`\
+- Create a list of your installed vscode extensions in `settings/programs/vscode` with:  `code.cmd --list-extensions > vscode_extensions.list`\
 - Commit the changes to your fork
 
 ## Installation
@@ -44,7 +46,7 @@ Windows 10 TODO:
 
 install Windows from medium, (offline-account!)
 
-TODO: get the install script and the repo from url
+TODO: get the install script and the repo from url\
       start the script
 
 TODO: create the script from commands below
@@ -60,8 +62,8 @@ New-Item $PROFILE -Force
 
 1. Set environment-variables (or get 'em from repo :P):
 
-    - $hostname = the name of your machine
-    - $den_loc = Join-Path -Path $home -ChildPath "\!den"
+    - $hostname = the name of your machine\
+    - $den_loc = Join-Path -Path $home -ChildPath "\!den"\
     - [Environment]::SetEnvironmentVariable("DEN_ROOT", "$den_loc", "User")
 
 ```powershell
