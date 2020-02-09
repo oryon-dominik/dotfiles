@@ -18,7 +18,7 @@ THIS TUTORIAL IS IN NO WAY COMPLETE NOR TESTET. NO WARRANTIES
 2. Install ubuntu from windows- store (or from chocolatey via powershell : `choco install wsl-ubuntu-<version>`)
     You can list available distributions on your system with `wslconfig /l` and set the default with `wslconfig /setdefault <name>`
 
-3. (Optional) Install vscode remote- & wsl-extensions (right now [19.06.2019] these are available only in the insiders-edition, not yet in stable releases)
+3. (Optional) Install vscode remote- & wsl-extensions
 
 4. (Optional) Install a X-server for windows, I recommend [vcxsrv](https://sourceforge.net/projects/vcxsrv/) (`choco install vcxsrv`) and configure Display and OpenGL in `.bashrc` (see below)
 
@@ -86,13 +86,13 @@ sudo apt install virtualenvwrapper
 ```
 
 `sudo apt install python3 python3-pip ipython3`
-`sudo apt install python3.7`
+`sudo apt install python3.8`
 
-`mkvirtualenv -p /usr/bin/python3.7 <venvname>`
+`mkvirtualenv -p /usr/bin/python3.8 <venvname>`
 
 don't forget to install the development building compiler libraries
 
-`sudo apt-get install python-dev python3-dev sudo apt install python3.7-dev build-essential python-pip`
+`sudo apt-get install python-dev python3-dev sudo apt install python3.8-dev build-essential python-pip`
 `sudo apt install leptonica-dev`
 `sudo apt install tesseract-ocr`
 
@@ -102,7 +102,7 @@ to get the full package of open-ssh-server (minimal is preinstalled)
 
 ## [Docker setup](https://nickjanetakis.com/blog/setting-up-docker-for-windows-and-wsl-to-work-flawlessly)
 
-Use the edge version for docker for windows from their website (don't install with choco!!)
+Use the edge version for docker for windows from their website (<s>don't install with choco!!</s> - may be fixed, 09.02.2020)
 
 Download and add Docker's official public PGP key.
 `curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -`
