@@ -109,11 +109,11 @@ Make sure you have installed a [powershell](https://github.com/PowerShell/PowerS
 12. customize
 
     edit `aliases.ps1`, `functions.ps1`, `intro.ps1` & `prompt_colors.ps1` in `scripts/powershell/limbs/` to your taste\
-    create a `<machine-name>.ps1` in `scripts/powershell/machines` for scripts that only run on your machine
-    customize installed modules & scripts\
+    create a `<machine-name>.ps1` in `scripts/powershell/machines` for scripts that only run on your machine\
+    customize installed modules & scripts
 
 \
 TODO: 12. put your program-links into .local/shortcuts and add them to your desktop or taskbar via script\
 TODO: link to windows-installation tutorial\
 TODO: write install-script following this tutorial\
-TODO: expand to private settings & how-to-hold-secrets\
+TODO: expand to private settings & how-to-hold-secrets
