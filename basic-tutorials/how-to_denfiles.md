@@ -64,7 +64,7 @@ Make sure you have installed a [powershell](https://github.com/PowerShell/PowerS
     ```powershell
     $GIT_TOKEN = <insert your token here>
     $NAME = <insert the file-repos name here, suggested: 'files'>
-    curl -Uri https://api.github.com/user/repos?access_token=$GIT_TOKEN -Method POST -Body (@{private="true";name=$NAME} | ConvertTo-Json)
+    curl -Uri https://api.github.com/user/repos -Method POST -Body (@{private="true";name=$NAME} | ConvertTo-Json) -Headers @{Authorization="token $GIT_TOKEN"}
     ```
 
 7. If you already have a file-repository: Add your file-repo as submodule to `files`
@@ -108,9 +108,10 @@ Make sure you have installed a [powershell](https://github.com/PowerShell/PowerS
 
 12. customize
 
-    edit `aliases.ps1`, `functions.ps1`, `intro.ps1` & `prompt_colors.ps1` in `scripts/powershell/limbs/` to your taste\
-    create a `<machine-name>.ps1` in `scripts/powershell/machines` for scripts that only run on your machine\
-    customize installed modules & scripts
+    - edit `aliases.ps1`, `functions.ps1`, `intro.ps1` & `prompt_colors.ps1` in `scripts/powershell/limbs/` to your taste\
+    - create a `<machine-name>.ps1` in `scripts/powershell/machines` for scripts that only run on your machine\
+    - customize installed modules & scripts\
+    - share your thoughts with me
 
 \
 TODO: 12. put your program-links into .local/shortcuts and add them to your desktop or taskbar via script\
