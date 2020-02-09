@@ -36,10 +36,10 @@ Make sure you have installed a [powershell](https://github.com/PowerShell/PowerS
     }
     ```
 
-5. Create an empty logfile for your updates `New-Item -ItemType file $ENV:DEN_ROOT/.local/logs/updates.log`
+5. Create an empty logfile for your updates `New-Item -ItemType file $ENV:DEN_ROOT/.local/logs/updates.log`\
     TODO: put into install script
 
-6. If you do not have a file-repository: I suggest to create another repository for your shared system files (system-images, shared icons and so on..).\
+6. If you do not have a file-repository: I suggest to create another repository for your shared system files (system-images, shared icons and so on..).
 
     We create a sub-repository for that (If you keep your dotfiles private, you could just sync them with the dotfiles and skip this step..)
 
