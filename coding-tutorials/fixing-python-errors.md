@@ -3,6 +3,10 @@
 
 Unofficial Windows Binaries for [Python Extension Packages](https://www.lfd.uci.edu/~gohlke/pythonlibs/)
 
+## numpy & plotly-express
+
+Installing [numpy + mkl](https://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy) from `gohlkes pythonlibs` solves missing dll issues with plotly express.
+
 ## Pywin32
 
 after
