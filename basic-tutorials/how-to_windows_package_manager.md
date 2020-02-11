@@ -13,13 +13,13 @@ THIS TUTORIAL IS IN NO WAY COMPLETE NOR TESTET. NO WARRANTIES
   Set-ExecutionPolicy Bypass -Scope Process -Force; iex $env:DEN_ROOT/install/windows/powershell_modules.ps1
   
   choco feature enable -n allowGlobalConfirmation
-  choco install ~\.config\install\windows\choco_win10_minimal_developer.config -y
+  choco install $env:DEN_ROOT/install/windows/choco_win10_minimal_developer.config -y
 ```
 
 or if you've prepared your scripts and previously [dumped your installed windows packages](scripts/python/dump_installed_windows_packages.py)
 
 ```powershell
-  choco install ~\.config\install\windows\choco_installed_packages_<your_hostname>.config -y
+  choco install $env:DEN_ROOT/install/windows/choco_installed_packages_$env:computername.config -y
 ```
 
 for ms-office:
