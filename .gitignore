@@ -64,6 +64,7 @@ basic-tutorials/how-to_ubuntu-server.md
 settings/*
 # all install-files are under heavy construction
 install/*
+!install/windows/choco_win10_minimal_developer.config
 # TODO work full_version into readme
 README_full.md
 # the todo-list, TODO: should also be synced via gist or something
