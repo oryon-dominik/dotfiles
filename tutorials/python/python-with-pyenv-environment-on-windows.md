@@ -40,7 +40,18 @@
 
 7. `pyenv rehash`
 
-8. re-setup your project-interpreters (vscode-settings etc.)
+8. re-setup your project-interpreters
+
+    If you want to keep your 'old' (e.g. virtualenvwrapper) environments, you have switch to your Envs directory
+    (`~\Envs`) and edit `home` and `version` in `pyvenv.cfg` for every enviroment.
+
+    Example `pyvenv.cfg`:
+
+    ```pyvenv.cfg
+        home = C:\Users\oryon\.pyenv\pyenv-win\versions\3.8.1-amd64
+        include-system-site-packages = false
+        version = 3.8.1
+    ```
 
 9. (if your using my dotfiles-den) add the repository to the the repository update-list
 
