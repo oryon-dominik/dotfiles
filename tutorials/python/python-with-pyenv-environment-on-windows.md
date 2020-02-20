@@ -11,7 +11,7 @@
     because the `chocolatey PATH` has precedence over the local `PATH` pyenv uses.
 
     ```powershell
-    git clone https://github.com/pyenv-win/pyenv-win.git $env:USERPROFILE/.pyenv
+    git clone https://github.com/pyenv-win/pyenv-win.git $env:USERPROFILE\.pyenv
     ```
 
 2. Set the ennvironment variable `PYENV`
