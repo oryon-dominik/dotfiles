@@ -74,6 +74,9 @@ function upgrade{  # update all choco-packages, including windows-update
 	Write-Host "Updating local Python-Scripts.."
 	. (Join-Path -Path $script_location -ChildPath "\python\update_scripts.py")
 	Write-Host ""
+	Write-Host "Updating python-poetry.."
+	poetry self update
+	Write-Host ""
 	Write-Host "Updating local repositories.."
 	. (Join-Path -Path $script_location -ChildPath "\powershell\limbs\update_repositories.ps1")
 	Write-Host ""
