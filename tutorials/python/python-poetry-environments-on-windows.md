@@ -54,3 +54,9 @@ You can use your existing virtual enviroments too.
     ```powershell
     foreach($requirement in (Get-Content "$pwd\requirements.txt")) {iex "poetry add $requirement"}
     ```
+
+    Add dev-requirements:
+
+    ```powershell
+    foreach($requirement in (Get-Content "$pwd\requirements\dev.txt")) {iex "poetry add $requirement --dev"}
+    ```
