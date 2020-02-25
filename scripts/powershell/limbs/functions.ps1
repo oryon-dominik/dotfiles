@@ -63,7 +63,7 @@ function lock{
 
 
 function update{
-	Write-Host "'Update' not implemented: Try 'upgrade' (Full System-Upgrade), 'windows-update' or 'script-update' instead"
+	Write-Host "'Update' not implemented: Try 'upgrade' (Full System-Upgrade), 'windows-update', 'repo-update' or 'script-update' instead"
 }
 
 function upgrade{  # update all choco-packages, including windows-update
@@ -74,8 +74,8 @@ function upgrade{  # update all choco-packages, including windows-update
 	Write-Host "Updating local Python-Scripts.."
 	. (Join-Path -Path $script_location -ChildPath "\python\update_scripts.py")
 	Write-Host ""
-	Write-Host "Updating python-poetry.."
-	poetry self update
+	Write-Host "Updating python.."
+	python-update
 	Write-Host ""
 	Write-Host "Updating local repositories.."
 	. (Join-Path -Path $script_location -ChildPath "\powershell\limbs\update_repositories.ps1")
@@ -91,13 +91,6 @@ function upgrade{  # update all choco-packages, including windows-update
 	Write-Host "Updates finished"
 }
 
-function weather{  # weather <city> <country>
-	Param([Parameter(Mandatory=$false)] [String]$city = $position.city, [Parameter(Mandatory=$false)] [String]$country = $position.country) # default-city
-	Write-Host ""
-	Get-Weather -City $city -Country $country
-	Write-Host ""
-}
-Set-Alias -Name wetter -Value weather -Description "Wetterbericht"
 
 function windows-update{
 	$update_message = "Windows Update"
@@ -109,7 +102,42 @@ function windows-update{
 }
 
 function script-update{
+	Write-Host "Updating local Python-Scripts.."
 	. (Join-Path -Path $script_location -ChildPath "\python\update_scripts.py")
+}
+
+function python-update{
+	Write-Host "Updating pip.."
+	python -m pip install --upgrade pip
+	Write-Host ""
+	
+	Write-Host "Updating pyenv.."
+	if (Test-Path env:PYENV) {
+		$current_path = $pwd
+		Set-Location -Path (Split-Path -Path $env:PYENV -Parent)
+		$git_command = "git pull"
+		iex $git_command
+		Set-Location -Path $current_path
+		}
+	else {
+		Write-Host "env:PYENV not found, skipping.."
+	}
+	Write-Host ""
+
+	Write-Host "Updating python-poetry.."
+	poetry self update
+	Write-Host ""
+}
+
+function python-packages-update{
+	Write-Host "Updating python-packages.."
+	pip install --upgrade ((pip list -o | Select-Object -Skip 2) | Foreach-Object {$_.Split()[0]})
+	Write-Host ""
+}
+
+function repo-update{
+	Write-Host "Updating local repositories.."
+	. (Join-Path -Path $script_location -ChildPath "\powershell\limbs\update_repositories.ps1")
 }
 
 function new_project {
@@ -126,6 +154,14 @@ function zen{  # activates zen-mode
 	$zenmode = $powershell_location + "\PowerShell.exe -NoLogo -NoExit -Command " + $zen_cmd + " -new_console:t:zen -new_console:W:'" + $console + "\console_zen.png' -new_console:C:" + $icons + "\zen.ico"
 	iex $zenmode
 }
+
+function weather{  # weather <city> <country>
+	Param([Parameter(Mandatory=$false)] [String]$city = $position.city, [Parameter(Mandatory=$false)] [String]$country = $position.country) # default-city
+	Write-Host ""
+	Get-Weather -City $city -Country $country
+	Write-Host ""
+}
+Set-Alias -Name wetter -Value weather -Description "Wetterbericht"
 
 function shell{
 	$newtab = $powershell_location + "\PowerShell.exe -NoLogo -NoExit -new_console:t:PowerShell -new_console:W:'" + $console + "\console.png' -new_console:C:" + $icons + "\cyberise.ico"
