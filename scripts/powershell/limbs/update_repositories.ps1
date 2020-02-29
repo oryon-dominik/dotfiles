@@ -19,7 +19,7 @@ foreach($repo in $repositories)
     Write-Host "Updating" $repo
     Set-Location -Path $repo
     $git_command = "git pull"
-    iex $git_command
+    Invoke-Expression $git_command
 }
 
 $repositories = $null

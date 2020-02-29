@@ -52,11 +52,11 @@ You can use your existing virtual enviroments too.
 3. to install from old `requirements.txt`
 
     ```powershell
-    foreach($requirement in (Get-Content "$pwd\requirements.txt")) {iex "poetry add $requirement"}
+    foreach($requirement in (Get-Content "$pwd\requirements.txt")) {Invoke-Expression "poetry add $requirement"}
     ```
 
     Add dev-requirements:
 
     ```powershell
-    foreach($requirement in (Get-Content "$pwd\requirements\dev.txt")) {iex "poetry add $requirement --dev"}
+    foreach($requirement in (Get-Content "$pwd\requirements\dev.txt")) {Invoke-Expression "poetry add $requirement --dev"}
     ```

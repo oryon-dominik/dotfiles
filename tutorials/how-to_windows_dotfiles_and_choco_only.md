@@ -3,7 +3,7 @@
 Install powershell 7, start it and set a new profile
 
 ```powershell
-iex "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI -Preview"
+Invoke-Expression "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI -Preview"
 New-Item $PROFILE -Force
 ```
 
@@ -23,7 +23,7 @@ Then install [chocolatey](https://chocolatey.org/)
 ```powershell
 cd ~
 set-ExecutionPolicy remotesigned
-Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 ```
 
 And the packages you want
@@ -57,7 +57,7 @@ New-Item -ItemType file $ENV:DEN_ROOT/scripts/powershell/limbs/functions.ps1
 Install Modules
 
 ```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; iex $env:DEN_ROOT/install/windows/powershell_modules.ps1
+Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression $env:DEN_ROOT/install/windows/powershell_modules.ps1
 ```
 
 Make system links

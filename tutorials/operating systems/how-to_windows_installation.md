@@ -56,7 +56,7 @@ TODO: implement all the small steps into an automatically running script
 Install powershell 7, start it and set a new profile
 
 ```powershell
-iex "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI -Preview"
+Invoke-Expression "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI -Preview"
 New-Item $PROFILE -Force
 ```
 
@@ -101,7 +101,7 @@ Then install [chocolatey](https://chocolatey.org/)
 ```powershell
 cd ~
 set-ExecutionPolicy remotesigned
-Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 ```
 
 `choco feature enable -n allowGlobalConfirmation`
@@ -139,7 +139,7 @@ $ Get-AppXPackage | Select-Object Name
 TODO: set script to use "DEN_ROOT"
 
 ```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; iex !den/install/windows/remove_unwantedClutter.ps1
+Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression !den/install/windows/remove_unwantedClutter.ps1
 ```
 
 set the explorer settings from your choices in the script
@@ -155,7 +155,7 @@ ForceExplorerRestart
 Install Modules
 
 ```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; iex !den/install/windows/powershell_modules.ps1
+Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression !den/install/windows/powershell_modules.ps1
 ```
 
 For a full install: install all packages from a proper set-up xml

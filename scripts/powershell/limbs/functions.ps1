@@ -94,7 +94,7 @@ function python-update{
 		$current_path = $pwd
 		Set-Location -Path (Split-Path -Path $env:PYENV -Parent)
 		$git_command = "git pull"
-		iex $git_command
+		Invoke-Expression $git_command
 		Set-Location -Path $current_path
 		}
 	else {
@@ -130,7 +130,7 @@ Set-Alias -Name time -Value Get-TimeStamp -Description "Gets time stamp"
 function zen{  # activates zen-mode
 	$zen_cmd = "'function prompt {Write-Host \`"\`" -NoNewline -ForegroundColor white;\`"% \`";Write-Host \`" \`" -NoNewline -ForegroundColor white};cls'"
 	$zenmode = $powershell_location + "\PowerShell.exe -NoLogo -NoExit -Command " + $zen_cmd + " -new_console:t:zen -new_console:W:'" + $console + "\console_zen.png' -new_console:C:" + $icons + "\zen.ico"
-	iex $zenmode
+	Invoke-Expression $zenmode
 }
 
 function weather{  # weather <city> <country>
@@ -143,7 +143,7 @@ Set-Alias -Name wetter -Value weather -Description "Wetterbericht"
 
 function shell{
 	$newtab = $powershell_location + "\PowerShell.exe -NoLogo -NoExit -new_console:t:PowerShell -new_console:W:'" + $console + "\console.png' -new_console:C:" + $icons + "\cyberise.ico"
-	iex $newtab
+	Invoke-Expression $newtab
 }
 Set-Alias -Name newtab -Value shell -Description "opens new tab"
 

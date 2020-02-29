@@ -8,9 +8,9 @@ THIS TUTORIAL IS IN NO WAY COMPLETE NOR TESTET. NO WARRANTIES
 
 ```powershell
 
-  Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+  Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
   
-  Set-ExecutionPolicy Bypass -Scope Process -Force; iex $env:DEN_ROOT/install/windows/powershell_modules.ps1
+  Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression $env:DEN_ROOT/install/windows/powershell_modules.ps1
   
   choco feature enable -n allowGlobalConfirmation
   choco install $env:DEN_ROOT/install/windows/choco_win10_minimal_developer.config -y

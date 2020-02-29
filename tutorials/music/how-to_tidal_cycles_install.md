@@ -9,7 +9,7 @@ THIS TUTORIAL IS IN NO WAY COMPLETE NOR TESTET. NO WARRANTIES
 I am using the package-mananger [chocolaty](https://chocolatey.org), you can install it via an admin-powershell:
 
 ```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 ```
 
 And [visual studio code](https://code.visualstudio.com/) (to install type: `choco install vscode`) for live-coding.

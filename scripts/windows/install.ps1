@@ -3,7 +3,7 @@
 
 # 1. start an elevated powershell
 # install powershell 7 preview
-iex "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI -Preview"
+Invoke-Expression "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI -Preview"
 # set a new hostname and restart
 $hostname = "testclient"
 Rename-Computer -ComputerName $env:computername -NewName $hostname
@@ -20,7 +20,7 @@ $PROJECTS_DIR = "c:\local_projects"
 New-Item $PROFILE -Force
 
 Set-ExecutionPolicy remotesigned
-Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
 # 3. reopen elevated shell
 choco install git hub -y
