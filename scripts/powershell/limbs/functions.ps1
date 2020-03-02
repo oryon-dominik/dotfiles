@@ -61,29 +61,6 @@ function lock{
 	c:\windows\system32\rundll32.exe user32.dll, LockWorkStation
 }
 
-
-function update{
-	Write-Host "'Update' not implemented: Try 'upgrade' (Full System-Upgrade), 'windows-update', 'repo-update' or 'script-update' instead"
-}
-
-function upgrade{  # update all choco-packages, including windows-update
-	. (Join-Path -Path $script_location -ChildPath "\powershell\limbs\system_upgrade.ps1")
-}
-
-function windows-update{
-	$update_message = "Windows Update"
-	Write-Host "Installing Windows Updates.."
-	Write-Output (-join('{"message": "', $($update_message), '", "timestamp": "', $(Get-TimeStamp), '"},')) | Out-file (Join-Path -Path $env:DEN_ROOT -ChildPath ".local\logs\updates.log") -append
-	Import-Module PSWindowsUpdate
-	Get-WindowsUpdate -AcceptAll -IgnoreUserInput -Confirm:$false
-	wmic qfe list
-}
-
-function script-update{
-	Write-Host "Updating local Python-Scripts.."
-	. (Join-Path -Path $script_location -ChildPath "\python\update_scripts.py")
-}
-
 function python-update{
 	Write-Host "Updating pip.."
 	python -m pip install --upgrade pip
@@ -107,6 +84,28 @@ function python-update{
 	Write-Host ""
 }
 
+function update{
+	Write-Host "'Update' not implemented: Try 'upgrade' (Full System-Upgrade), 'windows-update', 'repo-update' or 'script-update' instead"
+}
+
+function upgrade{  # update all choco-packages, including windows-update
+	. (Join-Path -Path $script_location -ChildPath "\powershell\limbs\system_upgrade.ps1")
+}
+
+function windows-update{
+	$update_message = "Windows Update"
+	Write-Host "Installing Windows Updates.."
+	Write-Output (-join('{"message": "', $($update_message), '", "timestamp": "', $(Get-TimeStamp), '"},')) | Out-file (Join-Path -Path $env:DEN_ROOT -ChildPath ".local\logs\updates.log") -append
+	Import-Module PSWindowsUpdate
+	Get-WindowsUpdate -AcceptAll -IgnoreUserInput -Confirm:$false
+	wmic qfe list
+}
+
+function script-update{
+	Write-Host "Updating local Python-Scripts.."
+	. (Join-Path -Path $script_location -ChildPath "\python\update_scripts.py")
+}
+
 function python-packages-update{
 	Write-Host "Updating python-packages.."
 	pip install --upgrade ((pip list -o | Select-Object -Skip 2) | Foreach-Object {$_.Split()[0]})
@@ -116,6 +115,10 @@ function python-packages-update{
 function repo-update{
 	Write-Host "Updating local repositories.."
 	. (Join-Path -Path $script_location -ChildPath "\powershell\limbs\update_repositories.ps1")
+}
+
+function generate_password ([int]$pass_length = 50) {
+	python -c "import random; print(''.join([random.choice('abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)') for i in range($pass_length)]))"
 }
 
 function new_project {
