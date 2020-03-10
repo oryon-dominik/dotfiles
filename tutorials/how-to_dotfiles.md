@@ -8,10 +8,10 @@ Make sure you have installed a [powershell](https://github.com/PowerShell/PowerS
 
 1. Set up your `ssh-key` and your `git config` (you can read how-to do it in the preparations part of my [git-repo-tutorial](how-to_init_a_git_repo.md#preparations))
 
-2. I suggest, setting an environment variable (`$env:DEN_ROOT`) to the location you want to install your config to. Suggested example: `$env:userprofile\ + '.den'`
+2. I suggest, setting an environment variable (`$env:DEN_ROOT`) to the location you want to install your config to. Suggested example: `$env:userprofile\ + '_dotfiles'`
 
     ```powershell
-    $den_loc = Join-Path -Path $env:userprofile -ChildPath "\.den"
+    $den_loc = Join-Path -Path $env:userprofile -ChildPath "\_dotfiles"
     [Environment]::SetEnvironmentVariable("DEN_ROOT", "$den_loc", "User")
     ```
 
@@ -24,7 +24,7 @@ Make sure you have installed a [powershell](https://github.com/PowerShell/PowerS
 
     ```json
     {
-        "den_location": ".den",
+        "den_location": "_dotfiles",
         "cloud": "<X:\\endpoint_of_your_cloud>",
         "projects": "<path_to_projects>",
         "heap": "<path_to_not_so_important_stuff>",
