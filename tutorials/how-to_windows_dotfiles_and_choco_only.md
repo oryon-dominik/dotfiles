@@ -10,7 +10,7 @@ New-Item $PROFILE -Force
 Set environment-variables (or get 'em from repo :P):
 
 - $hostname = the name of your machine
-- $dotfile_location = the path to your dotfiles ('\.den')
+- $dotfile_location = the path to your dotfiles ('\_dotfiles')
 - `$den_loc = Join-Path -Path $home -ChildPath "$dotfile_location"`
 - `[Environment]::SetEnvironmentVariable("DEN_ROOT", "$den_loc", "User")`
 
@@ -35,7 +35,7 @@ choco install ~\.config\install\windows\choco_win10_minimal_developer.config
 
 Refresh the environment variables with `refreshenv`
 
-Clone the repo `git clone https://github.com/oryon-dominik/dotfiles-den $env:DEN_ROOT`.\
+Clone the repo `git clone https://github.com/oryon-dominik/dotfiles-den $env:DEN_ROOT`.
 
 Set settings `env_settings.json` in `.local`:
 
