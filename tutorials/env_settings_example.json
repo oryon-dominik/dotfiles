@@ -1,0 +1,13 @@
+{
+  "den_location": "_dotfiles",
+  "cloud": "X:\\My Cloud",
+  "projects": "X:\\My Cloud\\_projects",
+  "heap": "C:\\localprojects",
+  "shortcuts": ".local\\shortcuts",
+  "residence": ["Alamo", "US"],
+  "coordinates": [37.234332396, -115.80666344],
+  "files_url": "https://github.com/username/reponame",
+  "local_url": "https://github.com/username/reponame",
+  "files_location": "files",
+  "git_pulls": ".local\\git_pulls.txt"
+}
