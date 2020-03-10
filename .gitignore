@@ -1,16 +1,15 @@
 ## GIT is ignoring...
 
-# hidden secrets
-.secrets/*
+# # hidden secrets
+# .secrets/*
 
-# local environment settings
-.local/*.*
-.local/shortcuts/*.*
-!.local/env_settings_example.json
-
-# local environment variables
-.env
-!.env.example  # don't forget to set them on a fork using the .env.example
+# # local environment settings
+.local/*
+.local/shortcuts/*
+.local/logs/*
+.local/.secrets/*
+# settings need sync-scripts and polishing, maybe pack them to another module
+.local/settings/*
 
 # submodule-files containing your private galleries
 files/icons/*
@@ -22,9 +21,6 @@ files/images/user/*
 files/plymouth_theme/*
 files/systemsounds/*
 files/windows_software_addons/*
-
-# all manual-pdfs (mostly copyrighted and as such not distributable) from internet_sources
-tutorials/manual_*
 
 # git itself
 .git/*
@@ -60,8 +56,6 @@ scripts/powershell/limbs/projects.ps1
 tutorials/editors\ -\ coding\ &\ shell/how-to_emacs.md
 tutorials/editors\ -\ coding\ &\ shell/how-to_vim.md
 tutorials/operating\ systems/how-to_ubuntu-server.md
-# settings need sync-scripts and polishing, maybe pack them to another module
-settings/*
 # all install-files are under heavy construction
 install/*
 !install/windows/choco_win10_minimal_developer.config
