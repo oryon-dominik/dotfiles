@@ -121,6 +121,10 @@ function generate_password ([int]$pass_length = 50) {
 	python -c "import random; print(''.join([random.choice('abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)') for i in range($pass_length)]))"
 }
 
+function orga {
+	emacs (Join-Path -Path $settings.cloud -ChildPath "\_orga\zeiterfassung.org")
+}
+
 function new_project {
 	. (Join-Path -Path $script_location -ChildPath "\python\new_project.py")
 }
