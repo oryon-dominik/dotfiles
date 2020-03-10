@@ -69,6 +69,8 @@ TODO: add / update index, better chapter-marks & titles / sort the list with mor
 
 ## Preparations
 
+on which shell are you: `echo $0`
+
 install fedora
 
 - TODO: create a good, readable tutorial on using bash from these notes
