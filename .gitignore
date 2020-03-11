@@ -1,10 +1,10 @@
 ## GIT is ignoring...
 
 # # local environment settings, config & secrets
-.local/
+# .local/
 
 # submodule-files containing your private galleries
-files/
+# files/
 
 
 # git itself
