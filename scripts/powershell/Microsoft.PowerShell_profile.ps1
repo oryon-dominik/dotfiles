@@ -62,6 +62,9 @@ $icons = Join-Path -Path $file_location -ChildPath '\icons'
 # load aliases & function-definitions
 . $PSScriptRoot\limbs\aliases.ps1
 
+# load local dotenv
+. $PSScriptRoot\commands\load_envs.ps1
+
 # loading custom paths
 $env:path += Join-Path -Path $script_location -ChildPath "\python"
 $env:path += Join-Path -Path $script_location -ChildPath "\batch"
