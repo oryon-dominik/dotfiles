@@ -47,7 +47,6 @@ scripts/powershell/machines/*.*
 !scripts/powershell/machines/load_machine.ps1
 
 # these two are secret, put your own location-aliases and project-aliases here
-# TODO: sumodule for local "secret" config-parts I still want to share between machines
 scripts/powershell/limbs/locations.ps1
 scripts/powershell/limbs/projects.ps1
 
@@ -56,9 +55,7 @@ scripts/powershell/limbs/projects.ps1
 tutorials/editors\ -\ coding\ &\ shell/how-to_emacs.md
 tutorials/editors\ -\ coding\ &\ shell/how-to_vim.md
 tutorials/operating\ systems/how-to_ubuntu-server.md
-# all install-files are under heavy construction
-install/*
-!install/windows/choco_win10_minimal_developer.config
+
 # TODO work full_version into readme
 README_full.md
 # the todo-list, TODO: should also be synced via gist or something
