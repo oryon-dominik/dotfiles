@@ -19,7 +19,7 @@ create an ssh-key and [register](https://help.github.com/en/enterprise/2.15/user
 
 ```powershell
 # register a new key using a UNIQUE_IDENTIFIER, e.g: GITHUB)
-ssh-keygen -t rsa -C your@email.address ~/.ssh/id_rsa_GITHUB
+ssh-keygen -t rsa -C your@email.address -f ~/.ssh/id_rsa_GITHUB
 # copy the public key to the clipboard
 clip < ~/.ssh/id_rsa_GITHUB.pub
 ```
