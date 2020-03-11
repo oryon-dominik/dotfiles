@@ -79,8 +79,6 @@ Set-PSReadlineOption -EditMode vi -BellStyle None
 
 # TODO: use geolocation for open-weather api
 
-# TODO: add check for last upgrade (logged in .local/logs/updates.log) and recommend upgrade if too long ago
-
 # TODO: config wsl-linux distributions
 
 # TODO: if projects are created with new_project script there should be a name and a lsvirtualenv.. so maybe add a shortcut to it to projects and import that to aliases too
