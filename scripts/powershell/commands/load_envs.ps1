@@ -2,7 +2,7 @@
 # inspired by https://github.com/rajivharris/Set-PsEnv
 function LoadDotEnv {
     [CmdletBinding(SupportsShouldProcess = $true, ConfirmImpact = 'Low')]
-    param($dotenv = "$env:DEN_ROOT\.local\.env")
+    param($dotenv = "$env:DEN_ROOT\$settings.local_location\.env")
 
     # does env exist?
     if (!( Test-Path $dotenv)) {

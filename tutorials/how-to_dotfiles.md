@@ -17,7 +17,7 @@ Make sure you have installed a [powershell](https://github.com/PowerShell/PowerS
 
 3. clone the dotfile-den repo into `$DEN_ROOT` with `git clone git@github.com:oryon-dominik/dotfiles-den $ENV:DEN_ROOT`
 
-4. edit the `env_settings_example.json` in the `.local`-directory to your needs and and save it to `env_settings.json`\
+4. edit the `env_settings_example.json` in the `local`-directory to your needs and and save it to `env_settings.json`\
     TODO: get it from private settings-repo via install-script\
 
     example:
@@ -28,7 +28,7 @@ Make sure you have installed a [powershell](https://github.com/PowerShell/PowerS
         "cloud": "<X:\\endpoint_of_your_cloud>",
         "projects": "<path_to_projects>",
         "heap": "<path_to_not_so_important_stuff>",
-        "shortcuts": ".local\\shortcuts",
+        "shortcuts": "local\\shortcuts",
         "residence": ["<cityname>", "<country_abbrev_ISO-Alpha-2>"],
         "coordinates": [<latitude>, <longitude>],
         "files_url": "<url_to_your_files_repository",
@@ -36,7 +36,7 @@ Make sure you have installed a [powershell](https://github.com/PowerShell/PowerS
     }
     ```
 
-5. Create an empty logfile for your updates `New-Item -ItemType file $ENV:DEN_ROOT/.local/logs/updates.log`\
+5. Create an empty logfile for your updates `New-Item -ItemType file $ENV:DEN_ROOT/local/logs/$env:computername/updates.log`\
     TODO: put into install script
 
 6. If you do not have a file-repository: I suggest to create another repository for your shared system files (system-images, shared icons and so on..).
@@ -114,7 +114,7 @@ Make sure you have installed a [powershell](https://github.com/PowerShell/PowerS
     - share your thoughts with me
 
 \
-TODO: 12. put your program-links into .local/shortcuts and add them to your desktop or taskbar via script\
+TODO: 12. put your program-links into local/$env:computername/shortcuts and add them to your desktop or taskbar via script\
 TODO: link to windows-installation tutorial\
 TODO: write install-script following this tutorial\
 TODO: expand to private settings & how-to-hold-secrets

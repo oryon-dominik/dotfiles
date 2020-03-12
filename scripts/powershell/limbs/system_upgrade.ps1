@@ -4,7 +4,7 @@
 $update_message = "Full System Upgrade"
 Write-Host "Starting Full System Upgrade..."
 Write-Host ""
-Write-Output (-join('{"message": "', $($update_message), '", "timestamp": "', $(Get-TimeStamp), '"},')) | Out-file (Join-Path -Path $env:DEN_ROOT -ChildPath ".local\logs\updates.log") -append
+Write-Output (-join('{"message": "', $($update_message), '", "timestamp": "', $(Get-TimeStamp), '"},')) | Out-file (Join-Path -Path $env:DEN_ROOT -ChildPath "$settings.local_location\logs\$env:computername\updates.log") -append
 Write-Host "Updating local Python-Scripts.."
 . (Join-Path -Path $script_location -ChildPath "\python\update_scripts.py")
 Write-Host ""

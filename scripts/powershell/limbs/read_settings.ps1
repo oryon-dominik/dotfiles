@@ -4,8 +4,8 @@
 # requirements:
 # $env:DEN_ROOT has to be set to your configs location
 # the paths below may be customized
-$env_settings = "\.local\env_settings.json"
-$env_settings_example = "\.local\env_settings_example.json"
+$env_settings = "\$settings.local_location\env_settings.json"
+$env_settings_example = "\$settings.local_location\env_settings_example.json"
 
 $settings_path = Join-Path -Path $env:DEN_ROOT -ChildPath $env_settings
 if (Test-Path $settings_path) { 

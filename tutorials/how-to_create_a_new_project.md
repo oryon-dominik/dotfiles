@@ -37,7 +37,7 @@ To continue with git see my small [git tutorial](how-to_init_a_git_repo.md)
 
 TODO: expand new_project.py:
 
-From `project_settings.json` in `scripts/python` or your `.local/project_settings.json`\
+From `project_settings.json` in `scripts/python` or your `local/project_settings.json`\
     choose the ssh-keyring to use (add the right ssh_key to an env) eg: `sshCommand = ssh -i ~/.ssh/id_rsa_GITHUB`\
     choose username, email, repo-system (azure/github)\
     choose a license\

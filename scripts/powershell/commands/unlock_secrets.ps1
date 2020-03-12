@@ -1,6 +1,6 @@
-# imports secret key from $env_DEN_ROOT/.local/.secrets
+# imports secret key from $env_DEN_ROOT/$settings.local_location/.secrets
 # to add a secret:
-# - store the key inside a file in <.local/.secrets> with its pure value
+# - store the key inside a file in <$settings.local_location/.secrets> with its pure value
 # - name the file exactly how you want the ENV-name to be
 
 Param(
@@ -13,7 +13,7 @@ if($is_admin) {
 
     # TODO: move the decrypt from sysstart to a function
 
-    $files = Get-ChildItem "$env:DEN_ROOT\.local\.secrets\"
+    $files = Get-ChildItem "$env:DEN_ROOT\$settings.local_location\.secrets\"
 
     foreach ($_ in $files){
         $name = [System.IO.Path]::GetFileNameWithoutExtension($_.FullName)

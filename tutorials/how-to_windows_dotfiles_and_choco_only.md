@@ -37,10 +37,10 @@ Refresh the environment variables with `refreshenv`
 
 Clone the repo `git clone https://github.com/oryon-dominik/dotfiles-den $env:DEN_ROOT`.
 
-Set settings `env_settings.json` in `.local`:
+Set settings `env_settings.json` in `local`:
 
 ```powershell
-$env_settings = "\.local\env_settings.json"
+$env_settings = "\local\env_settings.json"
 $settings_path = Join-Path -Path $env:DEN_ROOT -ChildPath $env_settings
 $settings = Get-Content -Raw -Path $settings_path | ConvertFrom-Json
 ```
@@ -48,7 +48,7 @@ $settings = Get-Content -Raw -Path $settings_path | ConvertFrom-Json
 Create the missing-files
 
 ```powershell
-New-Item -ItemType file $ENV:DEN_ROOT/.local/logs/updates.log
+New-Item -ItemType file $ENV:DEN_ROOT/local/logs/$env:computername/updates.log
 New-Item -ItemType file "$ENV:DEN_ROOT/scripts/powershell/machines/$hostname.ps1"
 New-Item -ItemType file $ENV:DEN_ROOT/scripts/powershell/limbs/locations.ps1
 New-Item -ItemType file $ENV:DEN_ROOT/scripts/powershell/limbs/functions.ps1

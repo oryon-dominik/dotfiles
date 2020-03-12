@@ -846,7 +846,7 @@ Periodical settings can also be entered as in this crontab template:
 
 # mm  hh  DD  MM  W /path/progam [--option]...  ( W = weekday: 0-6 [Sun=0] )
   21  01  *   *   * /usr/bin/systemctl hibernate
-  @weekly           $HOME/.local/bin/trash-empty
+  @weekly           $HOME/local/bin/trash-empty
 ```
 
 Here are some self-explanatory crontab syntax examples:
@@ -1007,7 +1007,7 @@ tracker daemon -t
 cd ~/.config/autostart
 cp -v /etc/xdg/autostart/tracker-* ./
 for FILE in tracker-*.desktop; do echo Hidden=true >> $FILE; done
-rm -rf ~/.cache/tracker ~/.local/share/tracker
+rm -rf ~/.cache/tracker ~/local/share/tracker
 ```
 
 to switch off tracker see this [gist](https://gist.github.com/vancluever/d34b41eb77e6d077887c)

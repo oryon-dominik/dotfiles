@@ -85,7 +85,7 @@ def read_settings(filename="project_settings.json", settings=DEFAULTS):
     """ reads settings file from disk """
     script_path = Path(__file__).resolve().parent
     settings_path = Path(script_path, filename)
-    # TODO: get settings from ENVS and/or .local directory
+    # TODO: get settings from ENVS and/or local directory
     if not settings_path.exists():
         return settings
     else:

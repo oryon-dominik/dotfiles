@@ -95,7 +95,7 @@ function upgrade{  # update all choco-packages, including windows-update
 function windows-update{
 	$update_message = "Windows Update"
 	Write-Host "Installing Windows Updates.."
-	Write-Output (-join('{"message": "', $($update_message), '", "timestamp": "', $(Get-TimeStamp), '"},')) | Out-file (Join-Path -Path $env:DEN_ROOT -ChildPath ".local\logs\updates.log") -append
+	Write-Output (-join('{"message": "', $($update_message), '", "timestamp": "', $(Get-TimeStamp), '"},')) | Out-file (Join-Path -Path $env:DEN_ROOT -ChildPath "$settings.local_location\logs\updates.log") -append
 	Import-Module PSWindowsUpdate
 	Get-WindowsUpdate -AcceptAll -IgnoreUserInput -Confirm:$false
 	wmic qfe list

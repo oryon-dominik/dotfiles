@@ -56,7 +56,7 @@
 9. (if your using my dotfiles-den) add the repository to the the repository update-list
 
     ```powershell
-        Add-Content $env:DEN_ROOT\.local\repository_updates.txt "$env:USERPROFILE\.pyenv"
+        Add-Content $env:DEN_ROOT\$settings.local_location\repository_updates.txt "$env:USERPROFILE\.pyenv"
     ```
 
 ## available commands

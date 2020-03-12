@@ -1,6 +1,6 @@
 ﻿# required: set variables to your configs locations
 # 			($env:DEN_ROOT, $console, $icons, $powershell_location, $shortcuts, $position)
-# required: the dircetory .local/logs/ must be available | TODO: implement check on install script and create first logfiles manually..
+# required: the dircetory .$settings.local_location/logs/ must be available | TODO: implement check on install script and create first logfiles manually..
 
 # load functions
 . $PSScriptRoot\functions.ps1
