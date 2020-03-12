@@ -1,6 +1,7 @@
 
 # inspired by https://github.com/rajivharris/Set-PsEnv
 function LoadDotEnv {
+    [CmdletBinding(SupportsShouldProcess = $true, ConfirmImpact = 'Low')]
     param($dotenv = "$env:DEN_ROOT\.local\.env")
 
     # does env exist?
@@ -11,6 +12,7 @@ function LoadDotEnv {
     $environment_variables = Get-Content $dotenv -ErrorAction Stop
 
     foreach ($line in $environment_variables) {
+        if (!$line) { continue };
         if ($line.StartsWith("#")) { continue };
         if ($line.Trim()) {
             $line = $line.Replace("`"","")
