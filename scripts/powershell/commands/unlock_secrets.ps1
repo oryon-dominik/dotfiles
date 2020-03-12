@@ -13,7 +13,7 @@ if($is_admin) {
 
     # TODO: move the decrypt from sysstart to a function
 
-    $files = Get-ChildItem "$env:DEN_ROOT\$settings.local_location\.secrets\"
+    $files = Get-ChildItem "$env:DEN_ROOT\local\.secrets\"
 
     foreach ($_ in $files){
         $name = [System.IO.Path]::GetFileNameWithoutExtension($_.FullName)

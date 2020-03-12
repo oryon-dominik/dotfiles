@@ -3,7 +3,7 @@
 # requirements:
 # $env:DEN_ROOT has to be set to your configs location
 # the path below may be customized
-$update_logs = "\$settings.local_location\logs\$env:computername\updates.log"
+$update_logs = "\local\logs\$env:computername\updates.log"
 
 $log_path = Join-Path -Path $env:DEN_ROOT -ChildPath $update_logs
 if (Test-Path $log_path) { 
