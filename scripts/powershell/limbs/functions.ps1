@@ -118,7 +118,7 @@ function repo-update{
 }
 
 function generate_password ([int]$pass_length = 50) {
-	python -c "import random; print(''.join([random.choice('abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)') for i in range($pass_length)]))"
+	python -c "import random; print(''.join([random.choice('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSRTUVWXYZ0123456789!@#$%^&*(-_=+)') for i in range($pass_length)]))"
 }
 
 function orga {
