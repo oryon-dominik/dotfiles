@@ -3,4 +3,4 @@
 	url = git@github.com:oryon-dominik/files
 [submodule "local"]
 	path = local
-	url = https://github.com/oryon-dominik/local_config.git
+	url = git@github.com:oryon-dominik/local_config
