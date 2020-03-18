@@ -229,6 +229,8 @@ configure path [git\bin to path (C:\Program Files\Git\bin) etc]
 
 assign sounds theme
 
+create a chrome browser-profile for presentations to cutomers (without the goolge accounts logged in)
+
 $ tasklist > processes_progs_install.txt  # dump file with processes
 
 !IMAGE!
