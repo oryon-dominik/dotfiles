@@ -6,9 +6,17 @@
         (Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python
     ```
 
-2. `refreshenv`
+2. Edit `C:\Users\<username>\.poetry\bin\poetry.bat to represent your _real_ username, e.g:
 
-3. For a fit to my dotfiles-settings, change the virtualenvs-directory setting
+    ```powershell
+        @echo off
+
+        python "C:\Users\oryon\.poetry\bin\poetry" %*
+    ```
+
+3. `refreshenv`
+
+4. For a fit to my dotfiles-settings, change the virtualenvs-directory setting
 
     ```powershell
         poetry config virtualenvs.path $env:USERPROFILE\Envs
