@@ -4,6 +4,9 @@ To uninstall all local user packages
 
 ```shell
 pip uninstall -y -r <(pip freeze)
+
+# powershell:
+pip uninstall -y -r (pip freeze)
 ```
 
 Generate a random-key (e.g for Django-Secret-Key)
