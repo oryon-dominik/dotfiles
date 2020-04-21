@@ -95,10 +95,21 @@ function upgrade{  # update all choco-packages, including windows-update
 function windows-update{
 	$update_message = "Windows Update"
 	Write-Host "Installing Windows Updates.."
-	Write-Output (-join('{"message": "', $($update_message), '", "timestamp": "', $(Get-TimeStamp), '"},')) | Out-file (Join-Path -Path $env:DEN_ROOT -ChildPath "local\logs\updates.log") -append
-	Import-Module PSWindowsUpdate
-	Get-WindowsUpdate -AcceptAll -IgnoreUserInput -Confirm:$false
-	wmic qfe list
+	$updates = Start-WUScan
+	if($updates.count -gt 0) {
+		Write-Host "Updating.."
+		Write-Output (-join('{"message": "', $($update_message), '", "timestamp": "', $(Get-TimeStamp), '"},')) | Out-file (Join-Path -Path $env:DEN_ROOT -ChildPath "local\logs\$env:computername\updates.log") -append
+			foreach($update in $updates)
+			{ 
+				Write-Host $update.title
+				Write-Host "Success:"
+				Install-WUUpdates -Updates $update
+			}
+			Write-Host "Updates finished.."
+		 } else {
+			Write-Host "No new Windows Updates found.." 
+		}
+	
 }
 
 function script-update{

@@ -18,6 +18,15 @@ Write-Host "Updating installed Software Packages.."
 choco upgrade all
 Write-Host ""
 Write-Host "Installing Windows Updates.."
+
+$updates = Start-WUScan
+foreach($update in $updates)
+{ 
+    Write-Host $update.title
+    Write-Host "Success:"
+    Install-WUUpdates -Updates $update
+}
+
 Import-Module PSWindowsUpdate
 Get-WUInstall -AcceptAll -IgnoreUserInput -Confirm:$false
 wmic qfe list
