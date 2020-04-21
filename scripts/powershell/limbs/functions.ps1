@@ -219,3 +219,7 @@ function spool { . $env:DEN_ROOT\scripts\batch\printer_restart.bat }
 # SpeedTest
 function speedtest { . $env:DEN_ROOT\scripts\powershell\commands\SpeedTest.ps1 }
 Set-Alias speed speedtest
+
+# python-poetry add requirements.txt
+function poetry_add_requirements { foreach($requirement in (Get-Content "$pwd\requirements.txt")) {Invoke-Expression "poetry add $requirement"} }
+
