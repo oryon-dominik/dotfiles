@@ -29,6 +29,10 @@ Set-Alias -Name grep -Value linux_grep -Description "Linux like grep"
 
 function md5($filepath) {Get-FileHash $filepath -Algorithm MD5}
 
+# docker-compose
+Set-Alias -Name dc -Value docker-compose -Description "Docker-Compose"
+
+
 # development
 function webserver { python "-m http.server 80" }
 
