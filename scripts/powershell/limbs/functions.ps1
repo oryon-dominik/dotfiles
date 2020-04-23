@@ -223,3 +223,23 @@ Set-Alias speed speedtest
 # python-poetry add requirements.txt
 function poetry_add_requirements { foreach($requirement in (Get-Content "$pwd\requirements.txt")) {Invoke-Expression "poetry add $requirement"} }
 
+function CreateAssociation {
+	Param(
+		[parameter(Mandatory=$true, HelpMessage="File extension name")] [String[]] $extension,
+	 	[parameter(Mandatory=$true, HelpMessage="Path to executable")] [String[]] $pathToExecutable)
+	
+	# create the filetype
+    $filetype = cmd /c "assoc $extension 2>NUL"
+
+	if ($filetype) { # Association already exists: override it
+        $filetype = $filetype.Split('=')[1]
+		Write-Output "Overwriting filetype $filetype ($extension)"
+    } else { # Name doesn't exist: create it
+        $filetype = "$($extension.Replace('.',''))file" # ".log.1" becomes "log1file"
+		Write-Output "Creating filetype $filetype ($extension)"
+        cmd /c 'assoc $extension=$filetype'
+    }
+    Write-Output "Associating filetype $filetype ($extension) with $pathToExecutable.."
+	cmd /c "ftype $filetype=`"$pathToExecutable`" `"%1`""
+}
+
