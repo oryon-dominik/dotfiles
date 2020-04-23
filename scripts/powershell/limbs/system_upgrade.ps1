@@ -17,8 +17,12 @@ Write-Host ""
 Write-Host "Updating installed Software Packages.."
 choco upgrade all
 Write-Host ""
-Write-Host "Installing Windows Updates.."
 
+Write-Host "Adding installed chocolatey packages to local list"
+Write-Output choco list -lo -r -y | Out-file (Join-Path -Path $env:DEN_ROOT -ChildPath "local\installedPackages\$env:computername\choco_installed_packages.txt")
+Write-Host ""
+
+Write-Host "Installing Windows Updates.."
 $updates = Start-WUScan
 foreach($update in $updates)
 { 
