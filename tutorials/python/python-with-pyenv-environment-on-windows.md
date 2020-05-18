@@ -34,7 +34,7 @@
 6. Merge some important open pull-requests
 
     I recommend using the newest pull-requests from pyenv-win, because they really enhance the functionality.\
-    So, switch to the newest release branch and fetch all the pull request-branches you want
+    So, switch to the newest release branch and fetch all the pull request-branches you want. (I merged #65, #85, #86, #87, #88 and #89)
 
     ```powershell
         git checkout <branchname> # at write time of this tutorial branchname is: v1.2.5
@@ -53,7 +53,6 @@
     ```powershell
         git merge <pull-request-name>  # for every pull-request you picked
     ```
-
 
 7. Install your prefered python(s) (On Windows-64 bit you have to add `-amd64` when NOT using the merge-technique I showed you on 6.)
 
