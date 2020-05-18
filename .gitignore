@@ -17,7 +17,7 @@
 
 # vscode/settings
 .vscode/*
-den.code-workspace
+dotfiles.code-workspace
 
 # python precompiled
 __pycache__/
