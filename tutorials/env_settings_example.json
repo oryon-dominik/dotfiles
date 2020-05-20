@@ -10,5 +10,6 @@
   "local_url": "https://github.com/username/reponame",
   "files_location": "files",
   "local_location": "local",
-  "git_pulls": "local\\git_pulls.txt"
+  "git_pulls": "local\\git_pulls.txt",
+  "git_prompt_ignore": "local\\git_too_big_to_prompt.txt"
 }

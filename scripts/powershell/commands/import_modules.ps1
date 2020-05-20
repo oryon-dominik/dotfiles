@@ -33,6 +33,17 @@ $GitPromptSettings.BranchIdenticalStatusToForegroundColor = "White"
 $GitPromptSettings.DefaultPromptAbbreviateHomeDirectory = $true
 # $GitPromptSettings.DefaultPromptPath
 
+# exclude some repositories from Git prompt, to speed up
+$prompt_ignores_paths = Join-Path -Path $env:DEN_ROOT -ChildPath $settings.git_prompt_ignore
+if (Test-Path -Path $prompt_ignores_paths -PathType Leaf) { 
+    $ignored_prompts = Get-Content $prompt_ignores_paths
+    foreach($prompt_path in $ignored_prompts)
+    { 
+      $GitPromptSettings.RepositoriesInWhichToDisableFileStatus += $prompt_path
+    }
+}
+
+
 # Weather-Script
 . $PSScriptRoot\Get-Weather.ps1
 
