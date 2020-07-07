@@ -51,7 +51,7 @@ Create the missing-files
 New-Item -ItemType file $ENV:DEN_ROOT/local/logs/$env:computername/updates.log
 New-Item -ItemType file "$ENV:DEN_ROOT/scripts/powershell/machines/$hostname.ps1"
 New-Item -ItemType file $ENV:DEN_ROOT/scripts/powershell/limbs/locations.ps1
-New-Item -ItemType file $ENV:DEN_ROOT/scripts/powershell/limbs/functions.ps1
+New-Item -ItemType file $ENV:DEN_ROOT/scripts/powershell/limbs/projects.ps1
 ```
 
 Install Modules
