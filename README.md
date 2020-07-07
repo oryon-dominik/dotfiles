@@ -21,7 +21,7 @@ explanation: "den" = cave, hive, nest, sanctuary..
 
 ...
 
-you can follow the [tutorial on how to setup your own dotfiles here](basic-tutorials/how-to_denfiles.md)
+you can follow the [tutorial on how to setup your own dotfiles here](tutorials/how-to_denfiles.md)
 
 ...
 
