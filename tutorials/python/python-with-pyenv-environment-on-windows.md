@@ -17,7 +17,7 @@
 2. Set the ennvironment variable `PYENV`
 
     ```powershell
-        [Environment]::SetEnvironmentVariable("PYENV", "$env:USERPROFILE\.pyenv\pyenv-win", "Machine")
+        [Environment]::SetEnvironmentVariable("PYENV", "$env:USERPROFILE\.pyenv\pyenv-win", "User")
     ```
 
 3. `refreshenv`
