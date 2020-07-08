@@ -19,10 +19,12 @@ create an ssh-key and [register](https://help.github.com/en/enterprise/2.15/user
 
 ```powershell
 # register a new key using a UNIQUE_IDENTIFIER, e.g: GITHUB)
-ssh-keygen -t rsa -C your@email.address -f ~/.ssh/id_rsa_GITHUB
+ssh-keygen -t rsa -C your@email.address -f $env:USERPROFILE/.ssh/id_rsa_GITHUB
 # copy the public key to the clipboard
-clip < ~/.ssh/id_rsa_GITHUB.pub
+clip < $env:USERPROFILE/.ssh/id_rsa_GITHUB.pub
 ```
+
+choose your editor `git config --global core.editor "vim"`, `git config --global core.editor "emacs"` or `git config --global core.editor "notepad"`
 
 Configure (`git config -e --global`) your global git settings to work with your unique identifier (you can also use different keys on a project-to-project basis - `git config -e --local`)
 
@@ -32,6 +34,7 @@ Configure (`git config -e --global`) your global git settings to work with your 
     email = email@adress
 [core]
     sshCommand = ssh -i ~/.ssh/id_rsa_GITHUB
+    autocrlf = true
 ```
 
 To remotely create repositories completey from your command line interface, supplementary to the credentials yo need a [GIT-Token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line)
@@ -160,3 +163,21 @@ To remotely create repositories completey from your command line interface, supp
     git flow hotfix start <release number>
     git flow hotfix finish <release number>
     ```
+
+## Some practicable tipps
+
+## show unpushed commits
+
+git log --branches --not --remotes
+
+## show the last git details
+
+git log -1
+
+## change the last git mesage
+
+git commit --amend -m "New message"
+
+## merge a pull-request
+
+git fetch upstream/<id>/head:<pull-requst-branch-name-without-user>
