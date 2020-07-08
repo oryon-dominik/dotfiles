@@ -85,11 +85,21 @@ More on git in my [git-repo-tutorial](how-to_init_a_git_repo.md#preparations))
         
         echo "function server {ssh serverip}" >> $ENV:DOTFILES/scripts/powershell/limbs/projects.ps1
 
+    Restart your shell.
     From here on you should be good to go and use your config, feel free to customize and follow the rest of my tutorial.
+
+5. Install Additional packages & powershell Modules, place additional symlinks
+
+        choco install $ENV:DOTFILES/install/windows/choco_win10_minimal_developer.config
+        Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression $env:DEN_ROOT/install/windows/powershell_modules.ps1
+
+        # example symlink to your cloud
+        $link_to = "C:\cloud"
+        cmd /c mklink /j $link_to "$settings.cloud"
 
     TODO: put into install script
 
-5. If you do not have a file-repository: I suggest to create another repository for your shared system files (system-images, shared icons and so on..).
+6. If you do not have a file-repository: I suggest to create another repository for your shared system files (system-images, shared icons and so on..).
 
     We create a sub-repository for that (If you keep your dotfiles private, you could just sync them with the dotfiles and skip this step..)
 
@@ -113,12 +123,12 @@ More on git in my [git-repo-tutorial](how-to_init_a_git_repo.md#preparations))
         $NAME = <insert the file-repos name here, suggested: 'files'>
         curl -Uri https://api.github.com/user/repos -Method POST -Body (@{private="true";name=$NAME} | ConvertTo-Json) -Headers @{Authorization="token $GIT_TOKEN"}
 
-6. If you already have a file-repository: Add your file-repo as submodule to `files`
+7. If you already have a file-repository: Add your file-repo as submodule to `files`
 
         git submodule add git@github.com:<username>/<files-repo> files
         git commit -m 'Added files as submodule'
 
-7. If the submodul is correctly setup in your git-repo ..
+8. If the submodul is correctly setup in your git-repo ..
 
         git submodule init
         git submodule update
@@ -127,9 +137,9 @@ More on git in my [git-repo-tutorial](how-to_init_a_git_repo.md#preparations))
         git submodule update
         # don't forget to checkout a branch BEFORE a commit (git checkout -b added) inside the submodules or the header will get messed up!
 
-8. check if everything runs as expected (install more powershell-modules, etc.)\
+9. check if everything runs as expected (install more powershell-modules, etc.)\
 
-9. customize
+10. customize
 
     - edit `aliases.ps1`, `functions.ps1`, `intro.ps1` & `prompt_colors.ps1` in `scripts/powershell/limbs/` to your taste\
     - customize installed modules & scripts\
