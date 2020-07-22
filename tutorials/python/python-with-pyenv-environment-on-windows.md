@@ -84,6 +84,8 @@
         Add-Content $env:DEN_ROOT\local\git_pulls.txt "$env:USERPROFILE\.pyenv"
     ```
 
+11. Install your indispensable standard-modules to your system-python (e.g: `pip install pywin32`)
+
 ## available commands
 
 ```pyenv
