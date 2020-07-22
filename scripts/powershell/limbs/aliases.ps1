@@ -4,8 +4,7 @@
 
 # load functions
 . $PSScriptRoot\functions.ps1
-# load locations
-. $PSScriptRoot\locations.ps1
+
 # load projects
 . $PSScriptRoot\projects.ps1
 # load machine
@@ -63,3 +62,7 @@ Set-Alias -Name np -Value notepad++ -Description "edit file fast"
 
 # docker
 function up {docker-compose up}
+
+# loading local aliases last, to overwrite existing ones
+# load locations
+. $PSScriptRoot\locations.ps1
