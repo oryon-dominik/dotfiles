@@ -40,10 +40,10 @@ if not activate_script_path.exists():
 with open(activate_script_path, 'r+') as f:
     lines = f.readlines()
     for i, l in enumerate(lines):
-        if i == 216 and "Write-Host -NoNewline -ForegroundColor" in l:
+        if "Write-Host -NoNewline -ForegroundColor" in l and '"($_PYTHON_VENV_PROMPT_PREFIX) "' in l:
             old_color = l.split()[3]
             color = args.color.lower().capitalize()
             print(f'Current color is {old_color}, switching to {color}')
             lines[i] = f'        Write-Host -NoNewline -ForegroundColor {color} "($_PYTHON_VENV_PROMPT_PREFIX) "'
     f.seek(0)
-    f.write('\n'.join(lines))
+    f.write(''.join(lines))
