@@ -185,6 +185,9 @@ for powershell 7:
 `cmd /c mklink /j C:\<cloud> "x:\<cloud>"`
 `cmd /c mklink /j C:\<my-company> "x:\<cloud>"`
 
+alternative for your cloud:
+`cmd /c mklink /j C:\<cloud> "$settings.cloud"`
+
 TODO: Install updates (you can do that with the corresponding choco module too)
 
 Add your files-den to the repo.
