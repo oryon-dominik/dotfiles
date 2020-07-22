@@ -50,8 +50,11 @@ $file_location = Join-Path -Path $env:DEN_ROOT -ChildPath '\files'
 $console = Join-Path -Path $file_location -ChildPath '\images\console'
 $icons = Join-Path -Path $file_location -ChildPath '\icons'
 
-# set geolocation from google-API
-. $PSScriptRoot\commands\device_location.ps1
+# TODO: load the machines to include from a list or from settings "exclude_from_geo_location_service"
+if (-not ($settings.exclude_from_geo_location_service)) {
+  # set geolocation from google-API
+  . $PSScriptRoot\commands\device_location.ps1
+}
 
 # import modules
 . $PSScriptRoot\commands\import_modules.ps1
