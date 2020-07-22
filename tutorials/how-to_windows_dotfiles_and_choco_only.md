@@ -54,11 +54,6 @@ New-Item -ItemType file $ENV:DEN_ROOT/scripts/powershell/limbs/locations.ps1
 New-Item -ItemType file $ENV:DEN_ROOT/scripts/powershell/limbs/projects.ps1
 ```
 
-Install Modules
-
-```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression $env:DEN_ROOT/install/windows/powershell_modules.ps1
-```
 
 Make system links
 
@@ -68,6 +63,6 @@ Make system links
 # for powershell 7:
 `cmd /c mklink /j "C:\Users\<username>\Documents\PowerShell" "$env:DEN_ROOT\scripts\powershell"`
 
-# your cloud:
-`cmd /c mklink /j C:\<cloud> "$settings.cloud"`
+
+
 ```
