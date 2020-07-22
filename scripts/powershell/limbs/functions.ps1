@@ -163,6 +163,10 @@ function shell{
 	$newtab = $powershell_location + "\PowerShell.exe -NoLogo -NoExit -new_console:t:PowerShell -new_console:W:'" + $console + "\console.png' -new_console:C:" + $icons + "\cyberise.ico"
 	Invoke-Expression $newtab
 }
+function adminshell{
+	$newtab = $powershell_location + "\PowerShell.exe -NoLogo -NoExit -new_console:t:PowerShell -new_console:W:'" + $console + "\console.png' -new_console:C:" + $icons + "\cyberise.ico"
+	Invoke-Expression $newtab
+}
 Set-Alias -Name newtab -Value shell -Description "opens new tab"
 
 # are you admin [BOOL] ?
@@ -176,8 +180,8 @@ function scripts { set-location $env:DEN_ROOT\scripts }
 function powershell_config { notepad++ "$env:DEN_ROOT\scripts\powershell\Microsoft.PowerShell_profile.ps1" }
 Set-Alias -Name config -Value powershell_config -Description "edit Powershell-Profile"
 
-function alias_config { notepad++ "$env:DEN_ROOT\scripts\powershell\limbs\aliases.ps1" }
-Set-Alias -Name aliases -Value alias_config -Description "edit Powershell-Aliases"
+function alias_config { notepad++ "$env:DEN_ROOT\scripts\powershell\limbs\locations.ps1" }
+Set-Alias -Name aliases -Value alias_config -Description "edit lokal Powershell-location-Aliases"
 
 function sysinfo {
 	Get-CimInstance -ClassName Win32_processor | ft -AutoSize Name,MaxClockSpeed,NumberOfCores
@@ -188,6 +192,8 @@ function sysinfo {
 	Get-CimInstance -ClassName WIN32_DiskDrive -ComputerName $server
 	# Get-CimInstance -ClassName Win32_Networkadapter | ft -AutoSize DeviceID,Name,ServiceName
 }
+
+function venv { . .\utils\activate.ps1 }  # TODO: get a more sophisticated location of the next matching activate.ps1
 
 function ver {
 	$name = (Get-CimInstance -ClassName Win32_OperatingSystem).caption
