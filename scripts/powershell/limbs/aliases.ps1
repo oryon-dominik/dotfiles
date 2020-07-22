@@ -60,3 +60,6 @@ Set-Alias -Name excel -Value "C:\Program Files\Microsoft Office\root\Office16\ex
 Set-Alias -Name mail -Value "C:\Program Files (x86)\Mozilla Thunderbird\thunderbird.exe" -Description "Open thunderbird"
 Set-Alias -Name pdf -Value SumatraPDF -Description "reads pdf"
 Set-Alias -Name np -Value notepad++ -Description "edit file fast"
+
+# docker
+function up {docker-compose up}

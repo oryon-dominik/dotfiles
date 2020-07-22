@@ -249,3 +249,10 @@ function CreateAssociation {
 	cmd /c "ftype $filetype=`"$pathToExecutable`" `"%1`""
 }
 
+function venvName {
+	python $env:DEN_ROOT\scripts\python\get_venv_name.py
+}
+
+function venvColor {
+	python $env:DEN_ROOT\scripts\python\change_venv_color.py
+}

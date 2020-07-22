@@ -300,5 +300,9 @@ install c compiler with all packages into c:\tools\cygwin from `http://win-build
 $ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
 (or: choco install wsl)
 
+remove Office from choco updates (because automaitc updates do not work)
+$ choco pin add -n=microsoft-office-deployment
+
+# hide menu in windows-explorer: ctrl+f1
 
 ```
