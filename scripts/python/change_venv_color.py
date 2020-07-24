@@ -44,6 +44,6 @@ with open(activate_script_path, 'r+') as f:
             old_color = l.split()[3]
             color = args.color.lower().capitalize()
             print(f'Current color is {old_color}, switching to {color}')
-            lines[i] = f'        Write-Host -NoNewline -ForegroundColor {color} "($_PYTHON_VENV_PROMPT_PREFIX) "'
+            lines[i] = f'        Write-Host -NoNewline -ForegroundColor {color} "($_PYTHON_VENV_PROMPT_PREFIX) "\n'
     f.seek(0)
     f.write(''.join(lines))
