@@ -7,10 +7,26 @@ from pathlib import Path
 
 "unfortunately this is not the same result, as poetry builds :()"
 
+
+def encode(string, encodings=None):
+    if isinstance(string, bytes):
+        return string
+
+    encodings = encodings or ["utf-8", "latin1", "ascii"]
+
+    for encoding in encodings:
+        try:
+            return string.encode(encoding)
+        except (UnicodeEncodeError, UnicodeDecodeError):
+            pass
+
+    return string.encode(encodings[0], errors="ignore")
+
+
 def generate_env_name(name: str, cwd: str) -> str:    
     name = name.lower()
     sanitized = re.sub(r'[ $`!*@"\\\r\n\t]', "_", name)[:42]
-    hsh = hashlib.sha256(cwd.encode("utf-8")).digest()
+    hsh = hashlib.sha256(encode(cwd)).digest()
     hsh = base64.urlsafe_b64encode(hsh).decode()[:8]
     return f"{sanitized}-{hsh}"
 
