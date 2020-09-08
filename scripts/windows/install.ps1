@@ -54,15 +54,22 @@ New-Item ~/_dotfiles/local/env_settings.json
 Add-Content ~/_dotfiles/local/env_settings.json "{`n    `"den_location`": `"_dotfiles`",`n    `"cloud`": `"C:\\local_projects`",`n    `"projects`": `"C:\\local_projects`",`n    `"heap`": `"C:\\local_projects`",`n    `"shortcuts`": `"local\\shortcuts`",`n    `"residence`": [`"Alamo`", `"US`"],`n    `"coordinates`": [37.234332396, -115.80666344],`n    `"files_url`": `"https://github.com/oryon-dominik/files`",`n    `"files_location`": `"files`"`n}"
 
 # install the required powershell modules
-Install-Module -Name PowerShellGet -verbose
-Install-Module -Name PSWindowsUpdate -verbose
-Install-Module -Name PowerBash -verbose
-Install-Module Find-String -verbose
-Install-Module DockerCompletion -verbose
-Install-Module PSReadLine -AllowPrerelease -Force -verbose
-Install-Module -Name Get-ChildItemColor -AllowClobber -verbose
+Install-Module -Name PowerShellGet
+Install-Module -Name PSWindowsUpdate
+Install-Module -Name PSPuTTY
+Install-Module -Name PSnmap
+Install-Module -Name PowerBash
+Install-Module Find-String
+Install-Module psgoogle
+Install-Module DockerCompletion
+Install-Module PSReadLine -AllowPrerelease -Force
+Install-Module -Name Get-ChildItemColor -AllowClobber
+Install-Module -Name lolcat
+# needed for window-update to work correctly:
 # will take a while:
-Install-Package System.ServiceProcess.ServiceController -verbose
+# Install-Package System.ServiceProcess.ServiceController
+
+Install-Script -Name Speedtest
 
 refreshenv
 

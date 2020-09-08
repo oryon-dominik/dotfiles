@@ -19,7 +19,7 @@ $PSDefaultParameterValues = @{'*:Encoding' = 'utf8'}
 #        ./+sssssoo++/+shdmmmhs/`         
 #            .:/ossyyyyss+/-`             
 
-. $PSScriptRoot\limbs\intro.ps1  # load the intro
+lolcat $PSScriptRoot\limbs\intro  # load the intro
 
 # check admin-rights
 $is_admin = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
