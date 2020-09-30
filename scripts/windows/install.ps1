@@ -10,8 +10,8 @@ Rename-Computer -ComputerName $env:computername -NewName $hostname
 Restart-Computer
 
 # 2. start elevated ps7
-mkdir ~/_dotfiles
-$den_loc = Join-Path -Path $home -ChildPath "\_dotfiles"
+mkdir ~/.dotfiles
+$den_loc = Join-Path -Path $home -ChildPath "\.dotfiles"
 [Environment]::SetEnvironmentVariable("DEN_ROOT", "$den_loc", "User")
 
 mkdir c:\local_projects
@@ -37,12 +37,12 @@ cmd /c mklink /j ($ps7_path) ($den_loc)
 
 # create directory structure
 # local may be a suprepository too!
-mkdir ~/_dotfiles/local/.secrets
-mkdir ~/_dotfiles/local/logs/$env:computername
-mkdir ~/_dotfiles/local/shortcuts
-New-Item ~/_dotfiles/local/logs/updates.log
-New-Item ~/_dotfiles/scripts/powershell/limbs/locations.ps1
-New-Item ~/_dotfiles/scripts/powershell/limbs/projects.ps1
+mkdir ~/.dotfiles/local/.secrets
+mkdir ~/.dotfiles/local/logs/$env:computername
+mkdir ~/.dotfiles/local/shortcuts
+New-Item ~/.dotfiles/local/logs/updates.log
+New-Item ~/.dotfiles/scripts/powershell/limbs/locations.ps1
+New-Item ~/.dotfiles/scripts/powershell/limbs/projects.ps1
 
 # install programms
 choco feature enable -n allowGlobalConfirmation
@@ -50,8 +50,8 @@ choco install python vscode vscode-insiders less get-childitemcolor vim poshgit 
 
 refreshenv
 
-New-Item ~/_dotfiles/local/env_settings.json
-Add-Content ~/_dotfiles/local/env_settings.json "{`n    `"den_location`": `"_dotfiles`",`n    `"cloud`": `"C:\\local_projects`",`n    `"projects`": `"C:\\local_projects`",`n    `"heap`": `"C:\\local_projects`",`n    `"shortcuts`": `"local\\shortcuts`",`n    `"residence`": [`"Alamo`", `"US`"],`n    `"coordinates`": [37.234332396, -115.80666344],`n    `"files_url`": `"https://github.com/oryon-dominik/files`",`n    `"files_location`": `"files`"`n}"
+New-Item ~/.dotfiles/local/env_settings.json
+Add-Content ~/.dotfiles/local/env_settings.json "{`n    `"den_location`": `".dotfiles`",`n    `"cloud`": `"C:\\local_projects`",`n    `"projects`": `"C:\\local_projects`",`n    `"heap`": `"C:\\local_projects`",`n    `"shortcuts`": `"local\\shortcuts`",`n    `"residence`": [`"Alamo`", `"US`"],`n    `"coordinates`": [37.234332396, -115.80666344],`n    `"files_url`": `"https://github.com/oryon-dominik/files`",`n    `"files_location`": `"files`"`n}"
 
 # install the required powershell modules
 Install-Module -Name PowerShellGet
