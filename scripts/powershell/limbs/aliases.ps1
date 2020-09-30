@@ -62,9 +62,11 @@ Set-Alias -Name np -Value notepad++ -Description "edit file fast"
 
 # docker
 function up {docker-compose up}
+function build {docker-compose build}
 function mm {docker-compose run --rm django python manage.py makemigrations}
 function mig {docker-compose run --rm django python manage.py migrate}
 function te {docker-compose run --rm django pytest}
+function init {docker-compose run --rm django python manage.py initialize; docker-compose run --rm django python manage.py createusers}
 
 # loading local aliases last, to overwrite existing ones
 # load locations
