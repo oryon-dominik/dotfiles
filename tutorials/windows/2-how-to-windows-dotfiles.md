@@ -31,12 +31,12 @@ Make system links from the cloned powershell profile to the generic powershell-p
 This will delete the old folders (don't forget to backup your old powershell configs).
 
 ```powershell
-Remove-Item -path "$env:userprofile\Documents\WindowsPowerShell" -recurse
-cmd /c mklink /j "$env:userprofile\Documents\WindowsPowerShell" "$env:DOTFILES\scripts\powershell"
+Remove-Item -path "$env:USERPROFILE\Documents\WindowsPowerShell" -recurse
+cmd /c mklink /j "$env:USERPROFILE\Documents\WindowsPowerShell" "$env:DOTFILES\scripts\powershell"
 
 # for powershell 7:
-Remove-Item -path "$env:userprofile\Documents\PowerShell" -recurse
-cmd /c mklink /j "$env:userprofile\Documents\PowerShell" "$env:DOTFILES\scripts\powershell"
+Remove-Item -path "$env:USERPROFILE\Documents\PowerShell" -recurse
+cmd /c mklink /j "$env:USERPROFILE\Documents\PowerShell" "$env:DOTFILES\scripts\powershell"
 ```
 
 Install the additional powershell-modules.
@@ -49,7 +49,13 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression $env:DOTFILE
 If you like add the most basic proprietary software for your everyday work (Microsoft-Windows-Terminal, Visual Studio Code, Google Chrome, Google Drive Filestream).
 
 ```powershell
-choco install $ENV:DOTFILES/install/windows/choco_win10_minimal.config
+choco install $env:DOTFILES/install/windows/choco_win10_minimal.config
+```
+
+You could also add your dotfiles location to explorers quick-access
+
+```powershell
+(new-object -com shell.application).Namespace("$env:DOTFILES").Self.InvokeVerb("pintohome")
 ```
 
 Restart your shell.

@@ -9,10 +9,10 @@ Invoke-Expression "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI -P
 New-Item $PROFILE -Force
 ```
 
-(Optional) Set a new hostname
+(Optional) Set a new [hostname](http://seriss.com/people/erco/unixtools/hostnames.html)
 
 ```powershell
-Rename-Computer -ComputerName $env:computername -NewName "yourHostname"
+Rename-Computer -ComputerName $env:computername -NewName "enceladus"
 ```
 
 Then install [chocolatey](https://chocolatey.org/)
@@ -34,7 +34,7 @@ Set up your `ssh-key`.
 
 ```powershell
     mkdir $env:USERPROFILE/.ssh/
-    ssh-keygen -t rsa -C your@email.address -f $env:USERPROFILE/.ssh/id_rsa_GITHUB
+    ssh-keygen -t rsa -C "A comment of your choice" -f $env:USERPROFILE/.ssh/id_rsa
 ```
 
 Set up your `git config`.
@@ -42,7 +42,7 @@ Set up your `git config`.
 ```powershell
     git config --global user.name "Your Name"
     git config --global user.email "your_email@address.domain"
-    git config --global core.sshCommand "ssh -i ~/.ssh/id_rsa_GITHUB"
+    git config --global core.sshCommand "ssh -i ~/.ssh/id_rsa"
     git config --global core.autocrlf "true"
 ```
 
