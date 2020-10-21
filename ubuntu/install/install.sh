@@ -122,4 +122,4 @@ eval (python -m virtualfish)
 vf install compat_aliases
 
 # change the shell to fish
-echo "to change your shell to fish: chsh --shell /bin/fish"
+sudo chsh --shell /bin/fish "$USER"
