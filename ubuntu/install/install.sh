@@ -22,7 +22,8 @@ sudo apt install -y fish
 sudo apt install -y fortune-mod fortune-anarchism lolcat
 
 # clone the dotfiles repository
-mkdir -p ~/.dotfiles && git clone https://github.com/oryon-dominik/dotfiles.git ~/.dotfiles
+mkdir -p ~/.dotfiles
+git -C ~/.dotfiles pull || git clone https://github.com/oryon-dominik/dotfiles.git ~/.dotfiles
 
 # message of the day
 sudo ln -sfv ~/.dotfiles/ubuntu/motd/motd /etc/
