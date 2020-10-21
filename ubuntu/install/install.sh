@@ -2,6 +2,7 @@
 
 # set environment variables
 export DOTFILES=~/.dotfiles
+export PYENV_ROOT=~/.pyenv
 export PYTHON_VERSION=3.8.5
 
 ## install required software
@@ -10,55 +11,55 @@ sudo apt update
 sudo apt upgrade
 
 # htop
-sudo apt install htop -y
+sudo apt install -y htop
 
 # Install required packages, including git (for the plugins) and fzf for completion
-sudo apt install software-properties-common git hub git-flow fzf -y
+sudo apt install -y software-properties-common git hub git-flow fzf
 sudo apt-add-repository ppa:fish-shell/release-3
 sudo apt update
-sudo apt install fish -y
+sudo apt install -y fish
 # for fish-motd:
-sudo apt install fortune-mod fortune-anarchism lolcat
+sudo apt install -y fortune-mod fortune-anarchism lolcat
 
 # clone the dotfiles repository
-mkdir ~/.dotfiles && git clone https://github.com/oryon-dominik/dotfiles.git ~/.dotfiles
+mkdir -p ~/.dotfiles && git clone https://github.com/oryon-dominik/dotfiles.git ~/.dotfiles
 
 # message of the day
-ln -sv ~/.dotfiles/ubuntu/motd/motd /etc/motd
+ln -sfv ~/.dotfiles/ubuntu/motd/motd /etc/
 # We don't need the help text
-sudo rm /etc/update-motd.d/10-help-text
+sudo rm --force /etc/update-motd.d/10-help-text
 # And we deactivate the dynamic news
 sudo sed -i -e 's/ENABLED=1/ENABLED=0/g' /etc/default/motd-news
 
 # setup fish
-mkdir ~/.config && mkdir ~/.config/fish && mkdir ~/.config/fish/functions
+mkdir -p ~/.config && mkdir -p ~/.config/fish && mkdir -p ~/.config/fish/functions
 
-ln -sv ~/.dotfiles/ubuntu/home/.config/fish/config.fish ~/.config/fish/config.fish
-ln -sv ~/.dotfiles/ubuntu/home/.config/fish/functions/fish_prompt.fish ~/.config/fish/functions/fish_prompt.fish
-ln -sv ~/.dotfiles/ubuntu/home/.config/fish/functions/last_command_as_sudo.fish ~/.config/fish/functions/last_command_as_sudo.fish
-
-curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
-
-# To add extended command-completion, async prompt, gitnow & dracula theme & pyenv
-fisher add jethrokuan/fzf
-fisher add acomagu/fish-async-prompt
-fisher add joseluisq/gitnow
-fisher add dracula/fish
-fisher add daenney/pyenv
+ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/config.fish ~/.config/fish/config.fish
+ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/functions/fish_prompt.fish ~/.config/fish/functions/fish_prompt.fish
+ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/functions/last_command_as_sudo.fish ~/.config/fish/functions/last_command_as_sudo.fish
 
 # create some dirs
-mkdir ~/projects
-mkdir ~/.virtualenvs
+mkdir -p ~/projects
+mkdir -p ~/.virtualenvs
 
 # symlink all the configs from ubuntu/home
-ln -sv ~/.dotfiles/ubuntu/home/.bash_profile ~
-ln -sv ~/.dotfiles/ubuntu/home/.bash_aliases ~
-ln -sv ~/.dotfiles/ubuntu/home/.bash_logout ~
-ln -sv ~/.dotfiles/ubuntu/home/.bash_profile ~
-ln -sv ~/.dotfiles/ubuntu/home/.bashrc ~
-ln -sv ~/.dotfiles/ubuntu/home/.profile ~
+ln -sfv ~/.dotfiles/ubuntu/home/.bash_profile ~
+ln -sfv ~/.dotfiles/ubuntu/home/.bash_aliases ~
+ln -sfv ~/.dotfiles/ubuntu/home/.bash_logout ~
+ln -sfv ~/.dotfiles/ubuntu/home/.bash_profile ~
+ln -sfv ~/.dotfiles/ubuntu/home/.bashrc ~
+ln -sfv ~/.dotfiles/ubuntu/home/.profile ~
 # htop
-ln -sv ~/.dotfiles/ubuntu/home/.config/htoprc ~/.config/htoprc
+ln -sfv ~/.dotfiles/ubuntu/home/.config/htoprc ~/.config/
+
+# install vim-plugins
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# Install docker
+sudo apt install -y docker.io
+# sudo systemctl start docker
+sudo systemctl enable docker
 
 ## pyenv
 # we need a c compiler & other dependencies
@@ -66,26 +67,18 @@ sudo apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
 libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
 xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
 
+sudo rm -rf ~/.pyenv
 sudo curl https://pyenv.run | bash
-pyenv update
-
-# for fish we already installed the pyenv plugin,
-# but we have to fix it, since it's a little deprecated
-ln -sv ~/.dotfiles/ubuntu/home/.config/fish/functions/pyenv.fish ~/.config/fish/functions/pyenv.fish
-
-# install vim-plugins
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Install python
 pyenv update
 # then install your desired python (pyenv install --list)
 # this may take a while!
 pyenv install $PYTHON_VERSION
-pyenv rehash
 # show if everthing is right
-pyenv versions
 pyenv global $PYTHON_VERSION
+pyenv versions
+pyenv rehash
 python -m pip install --upgrade pip
 
 # And poetry
@@ -101,10 +94,6 @@ eval (python -m virtualfish)
 touch ~/.config/fish/conf.d/virtualfish-loader.fish
 vf install compat_aliases
 
-# Install docker
-sudo apt install docker.io -y
-sudo systemctl start docker
-sudo systemctl enable docker
 
 # We are changing fish to our standard-shell now
 fish
@@ -118,3 +107,17 @@ set -U fish_user_paths /usr/local/bin /sbin $PYENV_ROOT/bin $PYENV_ROOT/shims
 sudo echo "/bin/fish" >> /etc/shells
 chsh -s (which fish)
 # enter the users password
+
+
+curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
+
+# To add extended command-completion, async prompt, gitnow & dracula theme & pyenv
+fisher add jethrokuan/fzf
+fisher add acomagu/fish-async-prompt
+fisher add joseluisq/gitnow
+fisher add dracula/fish
+fisher add daenney/pyenv
+
+# for fish we already installed the pyenv plugin,
+# but we have to fix it, since it's a little deprecated
+ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/functions/pyenv.fish ~/.config/fish/functions/
