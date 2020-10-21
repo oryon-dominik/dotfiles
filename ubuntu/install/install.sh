@@ -88,13 +88,16 @@ source $HOME/.poetry/env
 poetry config virtualenvs.path ~/.virtualenvs/
 
 python -m pip install virtualenvwrapper
-# And virtualfish (virtualenvwrapper for fish), including plugins
-python -m pip install virtualfish
-# to activate the vf-command
-eval (python -m virtualfish)
-mkdir -p ~/.config/fish/conf.d
-touch ~/.config/fish/conf.d/virtualfish-loader.fish
-vf install compat_aliases
+
+# add /bin/fish to /etc/shells
+sudo sh -c "echo /bin/fish >> /etc/shells"
+
+# activate fish-shell
+fish
+# and add poetry & pyenv to the path
+set -U fish_user_paths $fish_user_paths $HOME/.poetry/bin
+set -U PYENV_ROOT $HOME/.pyenv
+set -U fish_user_paths /usr/local/bin /sbin $PYENV_ROOT/bin $PYENV_ROOT/shims
 
 # add fisher and fish plugins
 curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
@@ -110,15 +113,13 @@ fisher add daenney/pyenv
 # but we have to fix it, since it's a little deprecated
 ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/functions/pyenv.fish ~/.config/fish/functions/
 
-# add /bin/fish to /etc/shells
-sudo echo "/bin/fish" >> /etc/shells
-
-# activate fish-shell
-fish
-# and add poetry & pyenv to the path
-set -U fish_user_paths $fish_user_paths $HOME/.poetry/bin
-set -U PYENV_ROOT $HOME/.pyenv
-set -U fish_user_paths /usr/local/bin /sbin $PYENV_ROOT/bin $PYENV_ROOT/shims
+# And virtualfish (virtualenvwrapper for fish), including plugins
+python -m pip install virtualfish
+mkdir -p ~/.config/fish/conf.d
+touch ~/.config/fish/conf.d/virtualfish-loader.fish
+# to activate the vf-command
+eval (python -m virtualfish)
+vf install compat_aliases
 
 # change the shell to fish
 chsh -s (which fish)
