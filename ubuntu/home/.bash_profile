@@ -9,8 +9,10 @@ fi
 # Virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/projects
-export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
-source /usr/local/bin/virtualenvwrapper_lazy.sh
+export PYTHON_PATH=$(realpath $(which python))
+export VIRTUALENVWRAPPER_SCRIPT="$(dirname $PYTHON_PATH)/virtualenvwrapper.sh"
+export VIRTUALENVWRAPPER_LAZY_SCRIPT="$(dirname $PYTHON_PATH)/virtualenvwrapper_lazy.sh"
+source $VIRTUALENVWRAPPER_LAZY_SCRIPT
 
 # pyenv & poetry
 export PYENV_ROOT="$HOME/.pyenv"

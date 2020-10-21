@@ -87,10 +87,13 @@ source $HOME/.poetry/env
 # set the path inline with virtualfish
 poetry config virtualenvs.path ~/.virtualenvs/
 
-python -m pip install virtualenvwrapper
+python -m pip install --user virtualenvwrapper
 
 # add /bin/fish to /etc/shells
 sudo sh -c "echo /bin/fish >> /etc/shells"
+# change the shell to fish
+chsh --shell /bin/fish
+# enter the users password
 
 # activate fish-shell
 fish -i
@@ -122,6 +125,3 @@ eval (python -m virtualfish)
 vf install compat_aliases
 
 exit
-# change the shell to fish
-chsh --shell /bin/fish
-# enter the users password
