@@ -25,7 +25,7 @@ sudo apt install -y fortune-mod fortune-anarchism lolcat
 mkdir -p ~/.dotfiles && git clone https://github.com/oryon-dominik/dotfiles.git ~/.dotfiles
 
 # message of the day
-ln -sfv ~/.dotfiles/ubuntu/motd/motd /etc/
+sudo ln -sfv ~/.dotfiles/ubuntu/motd/motd /etc/
 # We don't need the help text
 sudo rm --force /etc/update-motd.d/10-help-text
 # And we deactivate the dynamic news
@@ -83,6 +83,7 @@ python -m pip install --upgrade pip
 
 # And poetry
 curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+source $HOME/.poetry/env
 # set the path inline with virtualfish
 poetry config virtualenvs.path ~/.virtualenvs/
 
@@ -91,24 +92,11 @@ python -m pip install virtualenvwrapper
 python -m pip install virtualfish
 # to activate the vf-command
 eval (python -m virtualfish)
+mkdir -p ~/.config/fish/conf.d
 touch ~/.config/fish/conf.d/virtualfish-loader.fish
 vf install compat_aliases
 
-
-# We are changing fish to our standard-shell now
-fish
-# and add poetry & pyenv to the path
-source $HOME/.poetry/env
-set -U fish_user_paths $fish_user_paths $HOME/.poetry/bin
-set -U PYENV_ROOT $HOME/.pyenv
-set -U fish_user_paths /usr/local/bin /sbin $PYENV_ROOT/bin $PYENV_ROOT/shims
-
-# add /bin/fish to /etc/shells
-sudo echo "/bin/fish" >> /etc/shells
-chsh -s (which fish)
-# enter the users password
-
-
+# add fisher and fish plugins
 curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
 
 # To add extended command-completion, async prompt, gitnow & dracula theme & pyenv
@@ -121,3 +109,17 @@ fisher add daenney/pyenv
 # for fish we already installed the pyenv plugin,
 # but we have to fix it, since it's a little deprecated
 ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/functions/pyenv.fish ~/.config/fish/functions/
+
+# add /bin/fish to /etc/shells
+sudo echo "/bin/fish" >> /etc/shells
+
+# activate fish-shell
+fish
+# and add poetry & pyenv to the path
+set -U fish_user_paths $fish_user_paths $HOME/.poetry/bin
+set -U PYENV_ROOT $HOME/.pyenv
+set -U fish_user_paths /usr/local/bin /sbin $PYENV_ROOT/bin $PYENV_ROOT/shims
+
+# change the shell to fish
+chsh -s (which fish)
+# enter the users password

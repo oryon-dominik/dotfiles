@@ -9,6 +9,7 @@ ATTENTION. THIS SCRIPT WILL REPLACE THE FOLLOWING FILES WITHOUT ASKING
 
 ```bash
 /etc/motd
+~/.pyenv
 ~/.bash_profile
 ~/.bash_aliases
 ~/.bash_logout
