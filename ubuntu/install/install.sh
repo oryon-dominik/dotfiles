@@ -121,6 +121,7 @@ touch ~/.config/fish/conf.d/virtualfish-loader.fish
 eval (python -m virtualfish)
 vf install compat_aliases
 
+exit
 # change the shell to fish
-chsh -s (which fish)
+chsh --shell /bin/fish
 # enter the users password
