@@ -93,7 +93,7 @@ python -m pip install virtualenvwrapper
 sudo sh -c "echo /bin/fish >> /etc/shells"
 
 # activate fish-shell
-fish
+fish -i
 # and add poetry & pyenv to the path
 set -U fish_user_paths $fish_user_paths $HOME/.poetry/bin
 set -U PYENV_ROOT $HOME/.pyenv
