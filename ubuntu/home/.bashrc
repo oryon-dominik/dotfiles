@@ -56,12 +56,20 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# Colors:
+#   purple \[\033[35m\]
+#   red \[\033[31m\]
+#   white \[\033[37m\]
+#   blue \[\033[34m\]
+#   yellow \[\033[33m\]
+
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1="${debian_chroot:+($debian_chroot)}\[\033[35m\]\v \[\033[01;37m\]\u\[\033[31m\]@\[\033[37m\]\h \[\033[34m\][\[\033[37m\]\t\[\033[34m\]] \[\033[01;33m\]\w \[\033[37m\]git \[\033[35m\]> \[\033[37m\]"
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
+
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in

@@ -1,6 +1,6 @@
 # Windows 10 wsl-setup
 
-If you followed the windows tutorials [1-post-installation-windows10](1-post-installation-windows10.md), [2-how-to-windows-dotfiles] and
+If you followed the windows tutorials [1-post-installation-windows10](1-post-installation-windows10.md), [2-how-to-windows-dotfiles](2-how-to-windows-dotfiles.md) and
 
 
 Enable WSL
