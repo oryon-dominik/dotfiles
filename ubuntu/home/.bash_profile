@@ -1,6 +1,7 @@
 if grep --quiet microsoft /proc/version; then
     # "WSL"
-    echo "MOTD"
+    # e.g: MOTD
+    : 
 else
     # "native linux"
     :

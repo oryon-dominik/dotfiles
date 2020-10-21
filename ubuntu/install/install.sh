@@ -91,9 +91,6 @@ python -m pip install --user virtualenvwrapper
 
 # add /bin/fish to /etc/shells
 sudo sh -c "echo /bin/fish >> /etc/shells"
-# change the shell to fish
-chsh --shell /bin/fish
-# enter the users password
 
 # activate fish-shell
 fish -i
@@ -124,4 +121,5 @@ touch ~/.config/fish/conf.d/virtualfish-loader.fish
 eval (python -m virtualfish)
 vf install compat_aliases
 
-exit
+# change the shell to fish
+echo "to change your shell to fish: chsh --shell /bin/fish"
