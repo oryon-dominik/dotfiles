@@ -43,9 +43,11 @@ Set up your `git config`.
     git config --global user.name "Your Name"
     git config --global user.email "your_email@address.domain"
     git config --global core.sshCommand "ssh -i ~/.ssh/id_rsa"
-    git config --global core.autocrlf "true"
+    git config --global core.autocrlf "input"
 ```
 
-More on git in my [git-repo-tutorial](how-to_init_a_git_repo.md#preparations))
+~~More on git in my [git-repo-tutorial](how-to_init_a_git_repo.md#preparations).~~
+
+Continue with [installing the dotfiles from this repo](2-how-to-windows-dotfiles.md)
 
 Reboot, setup dotfiles.

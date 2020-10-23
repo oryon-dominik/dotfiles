@@ -29,7 +29,7 @@ $is_admin = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).g
 
 # initializing DEN-root environment variable, if not already set properly
 if (-not (Test-Path env:DEN_ROOT)) { 
-    $den_loc = Join-Path -Path $home -ChildPath "\!den"
+    $den_loc = Join-Path -Path $home -ChildPath "\.dotfiles"
     $env:DEN_ROOT = $den_loc }
 
 # load local settings

@@ -1,9 +1,9 @@
-Install-Module -Name PowerShellGet -Scope CurrentUser
-Install-Module -Name PSWindowsUpdate -Scope CurrentUser
-Install-Module -Name PowerBash -Scope CurrentUser
-Install-Module -Name Find-String -Scope CurrentUser
-Install-Module -Name DockerCompletion -Scope CurrentUser
-Install-Module -Name PSReadLine -AllowPrerelease -Force -Scope CurrentUser
-Install-Module -Name Get-ChildItemColor -AllowClobber -Scope CurrentUser
-Install-Module -Name lolcat -Scope CurrentUser
-Install-Script -Name Speedtest -Scope CurrentUser
+Install-Module -Name PowerShellGet -Force -Scope CurrentUser
+Install-Module -Name PSWindowsUpdate -Force -Scope CurrentUser
+Install-Module -Name PowerBash -Force -Scope CurrentUser
+Install-Module -Name Find-String -Force -Scope CurrentUser
+Install-Module -Name DockerCompletion -Force -Scope CurrentUser
+Install-Module -Name PSReadLine -Force -Scope CurrentUser
+Install-Module -Name Get-ChildItemColor -Force -AllowClobber -Scope CurrentUser
+Install-Module -Name lolcat -Force -Scope CurrentUser
+Install-Script -Name Speedtest -Force -Scope CurrentUser

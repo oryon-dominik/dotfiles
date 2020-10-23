@@ -26,7 +26,7 @@ function fish_prompt
     set_color blue
     echo -n "] "
     set_color $fish_color_cwd
-    echo -n (prompt_pwd)
+    echo -n (prompt_pwd)(fish_git_prompt)
     set_color $admin_color
     echo -n " > "
     set_color normal
