@@ -5,7 +5,7 @@
 """
 dumps installed packages to the windows install-directory
 
-requirements: set 'DEN_ROOT' environment variable to the directory containing
+requirements: set 'DOTFILES' environment variable to the directory containing
 all the dotfile-settings (should be setup via your dotfile-repo installation,
 if you've used: https://github.com/oryon-dominik/dotfiles-den)
 """
@@ -32,7 +32,7 @@ packets = [p.split()[0] for p in packet_list if (
 ]
 
 # preparing the directory containing the file
-dotfile_directory = os.environ["DEN_ROOT"]
+dotfile_directory = os.environ["DOTFILES"]
 target_directory = Path(dotfile_directory) / "install" / "windows"
 file_path = target_directory / f"choco_installed_packages_{socket.gethostname()}.config"
 

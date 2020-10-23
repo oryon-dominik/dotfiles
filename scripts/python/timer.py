@@ -52,8 +52,8 @@ if __name__ == "__main__":
         minutes, seconds = divmod(time_left, 60)
         print(f"Time left: - {minutes:02d}:{seconds:02d}", end="\n")
 
-    if os.getenv("DEN_ROOT") and filename:
-        cfg_root = Path(os.getenv("DEN_ROOT"))
+    if os.getenv("DOTFILES") and filename:
+        cfg_root = Path(os.getenv("DOTFILES"))
         soundfile = cfg_root / "files" / "systemsounds" / filename
     elif filename:
         cwd = Path(".")

@@ -98,7 +98,7 @@ function windows-update{
 	$updates = Start-WUScan
 	if($updates.count -gt 0) {
 		Write-Host "Updating.."
-		Write-Output (-join('{"message": "', $($update_message), '", "timestamp": "', $(Get-TimeStamp), '"},')) | Out-file (Join-Path -Path $env:DEN_ROOT -ChildPath "local\logs\$env:computername\updates.log") -append
+		Write-Output (-join('{"message": "', $($update_message), '", "timestamp": "', $(Get-TimeStamp), '"},')) | Out-file (Join-Path -Path $env:DOTFILES -ChildPath "local\logs\$env:computername\updates.log") -append
 			foreach($update in $updates)
 			{ 
 				Write-Host $update.title
@@ -172,15 +172,15 @@ Set-Alias -Name newtab -Value shell -Description "opens new tab"
 # are you admin [BOOL] ?
 function isadmin {[bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")}
 
-function cfg { set-location $env:DEN_ROOT }  # config (DEN) folder
+function cfg { set-location $env:DOTFILES }  # config (DEN) folder
 
-function scripts { set-location $env:DEN_ROOT\scripts }
+function scripts { set-location $env:DOTFILES\scripts }
 
 # edit powershell_profile in notepad
-function powershell_config { notepad++ "$env:DEN_ROOT\scripts\powershell\Microsoft.PowerShell_profile.ps1" }
+function powershell_config { notepad++ "$env:DOTFILES\scripts\powershell\Microsoft.PowerShell_profile.ps1" }
 Set-Alias -Name config -Value powershell_config -Description "edit Powershell-Profile"
 
-function alias_config { notepad++ "$env:DEN_ROOT\scripts\powershell\limbs\locations.ps1" }
+function alias_config { notepad++ "$env:DOTFILES\scripts\powershell\limbs\locations.ps1" }
 Set-Alias -Name aliases -Value alias_config -Description "edit lokal Powershell-location-Aliases"
 
 function sysinfo {
@@ -216,14 +216,14 @@ function ip { (Invoke-WebRequest -uri "http://ident.me").Content }
 function envs {gci env:* | sort-object name }  # -Description "displays all environment variables"
 Set-Alias listenvs envs
 
-function noadmin { . $env:DEN_ROOT\scripts\powershell\commands\shell_no_admin.ps1 }
+function noadmin { . $env:DOTFILES\scripts\powershell\commands\shell_no_admin.ps1 }
 
-function restart { . $env:DEN_ROOT\scripts\batch\cmder_restart.bat }
+function restart { . $env:DOTFILES\scripts\batch\cmder_restart.bat }
 
-function spool { . $env:DEN_ROOT\scripts\batch\printer_restart.bat }
+function spool { . $env:DOTFILES\scripts\batch\printer_restart.bat }
 
 # SpeedTest
-function speedtest { . $env:DEN_ROOT\scripts\powershell\commands\SpeedTest.ps1 }
+function speedtest { . $env:DOTFILES\scripts\powershell\commands\SpeedTest.ps1 }
 Set-Alias speed speedtest
 
 # python-poetry add requirements.txt
@@ -250,9 +250,9 @@ function CreateAssociation {
 }
 
 function venvName {
-	python $env:DEN_ROOT\scripts\python\get_venv_name.py
+	python $env:DOTFILES\scripts\python\get_venv_name.py
 }
 
 function venvColor($color) {
-	python $env:DEN_ROOT\scripts\python\change_venv_color.py $color
+	python $env:DOTFILES\scripts\python\change_venv_color.py $color
 }

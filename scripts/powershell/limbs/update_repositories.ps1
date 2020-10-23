@@ -1,7 +1,7 @@
 # requirements: git installed
 
 # init respositories to update
-$respository_path = Join-Path -Path $env:DEN_ROOT -ChildPath $settings.git_pulls
+$respository_path = Join-Path -Path $env:DOTFILES -ChildPath $settings.git_pulls
 if (Test-Path -Path $respository_path -PathType Leaf) { 
     $repositories = Get-Content $respository_path
 }

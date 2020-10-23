@@ -28,9 +28,9 @@ $is_admin = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).g
 . $PSScriptRoot\commands\unlock_secrets.ps1 -is_admin $is_admin
 
 # initializing DEN-root environment variable, if not already set properly
-if (-not (Test-Path env:DEN_ROOT)) { 
+if (-not (Test-Path env:DOTFILES)) { 
     $den_loc = Join-Path -Path $home -ChildPath "\.dotfiles"
-    $env:DEN_ROOT = $den_loc }
+    $env:DOTFILES = $den_loc }
 
 # load local settings
 . $PSScriptRoot\limbs\read_settings.ps1
@@ -43,10 +43,10 @@ if (-not (Test-Path env:DEN_ROOT)) {
 if (-not (Test-Path env:PROJECTS_DIR)) { $env:PROJECTS_DIR = $settings.projects }
 
 # set powershell variables
-$shortcuts = Join-Path -Path $env:DEN_ROOT -ChildPath $settings.shortcuts
+$shortcuts = Join-Path -Path $env:DOTFILES -ChildPath $settings.shortcuts
 $powershell_location = Join-Path -Path $env:windir -ChildPath '\System32\WindowsPowerShell\v1.0'
-$script_location = Join-Path -Path $env:DEN_ROOT -ChildPath '\scripts'
-$file_location = Join-Path -Path $env:DEN_ROOT -ChildPath '\files'
+$script_location = Join-Path -Path $env:DOTFILES -ChildPath '\scripts'
+$file_location = Join-Path -Path $env:DOTFILES -ChildPath '\files'
 $console = Join-Path -Path $file_location -ChildPath '\images\console'
 $icons = Join-Path -Path $file_location -ChildPath '\icons'
 
