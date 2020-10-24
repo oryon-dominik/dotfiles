@@ -34,7 +34,7 @@ if (-not (Test-Path env:DOTFILES)) {
 
 # load local settings
 . $PSScriptRoot\limbs\read_settings.ps1
-# TODO: check for existence of ($settings.den_location, $settings.cloud, $settings.projects, $settings.shortcuts)
+# TODO: check for existence of ($settings.dotfiles_location, $settings.cloud, $settings.projects, $settings.shortcuts)
 # calculate last update
 . $PSScriptRoot\limbs\read_update_log.ps1
 

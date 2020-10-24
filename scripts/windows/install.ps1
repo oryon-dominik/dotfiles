@@ -51,7 +51,7 @@ choco install python vscode vscode-insiders less get-childitemcolor vim poshgit 
 refreshenv
 
 New-Item ~/.dotfiles/local/env_settings.json
-Add-Content ~/.dotfiles/local/env_settings.json "{`n    `"den_location`": `".dotfiles`",`n    `"cloud`": `"C:\\local_projects`",`n    `"projects`": `"C:\\local_projects`",`n    `"heap`": `"C:\\local_projects`",`n    `"shortcuts`": `"local\\shortcuts`",`n    `"residence`": [`"Alamo`", `"US`"],`n    `"coordinates`": [37.234332396, -115.80666344],`n    `"files_url`": `"https://github.com/oryon-dominik/files`",`n    `"files_location`": `"files`"`n}"
+Add-Content ~/.dotfiles/local/env_settings.json "{`n    `"dotfiles_location`": `".dotfiles`",`n    `"cloud`": `"C:\\local_projects`",`n    `"projects`": `"C:\\local_projects`",`n    `"heap`": `"C:\\local_projects`",`n    `"shortcuts`": `"local\\shortcuts`",`n    `"residence`": [`"Alamo`", `"US`"],`n    `"coordinates`": [37.234332396, -115.80666344],`n    `"files_url`": `"https://github.com/oryon-dominik/files`",`n    `"files_location`": `"files`"`n}"
 
 # install the required powershell modules
 Install-Module -Name PowerShellGet
