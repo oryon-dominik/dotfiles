@@ -11,10 +11,10 @@ TODO: automatically create an emtpy env_settings, when file does not exist
 ```powershell
 # example:
     {
-    "den_location": ".dotfiles",
-    "cloud": "X:\\Meine Ablage",
-    "projects": "X:\\Meine Ablage\\_projects",
-    "heap": "C:\\local_projects",
+    "dotfiles_location": ".dotfiles",
+    "cloud": "X:\\",
+    "projects": "X:\\projects",
+    "heap": "X:\\dev",
     "shortcuts": "local\\shortcuts",
     "residence": ["Dusseldorf", "DE"],
     "coordinates": [51.23548, 6.839653],
