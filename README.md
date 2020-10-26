@@ -2,8 +2,8 @@
 
 > project to configure and install your systems and settings from anywhere
 
-*For an intro in git you may read my [tutorial](tutorials/how-to_init_a_git_repo.md) or watch [this video](https://www.youtube.com/watch?v=SWYqp7iY_Tc)*
-*For an introduction using version control with `vscode` there is a nice post in the [docs](https://code.visualstudio.com/docs/editor/versioncontrol)*
+*For an intro in git you may read my [tutorial](tutorials/how-to_init_a_git_repo.md) or watch [this video](https://www.youtube.com/watch?v=SWYqp7iY_Tc)*  
+*For an introduction using version control with `vscode` there is a nice post in the [docs](https://code.visualstudio.com/docs/editor/versioncontrol)*  
 
 ## Content
 
@@ -24,11 +24,9 @@ Ubuntu: [tutorial how to setup ubunutu dotfiles](tutorials/ubuntu/1-how-to-ubunt
 
 ---
 
-work still in progress, just have a look around the script files
-
-if you are interested in something special, you need a feature or an advice you may write me a message or create an issue.
-
-this repos' main purpose is serving as a private dump - so no warranties at all for anything
+work still in progress, just have a look around the script files  
+if you are interested in something special, you need a feature or an advice you may write me a message or create an issue.  
+this repos' main purpose is serving as a private dump - so no warranties at all for anything  
 
 > especially all scripts & install-files are under heavy construction
 

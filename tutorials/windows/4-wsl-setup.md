@@ -13,20 +13,16 @@ Set the version to wsl2
     Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -NoRestart
     wsl.exe --set-default-version 2
 
-Download the kernel-component update for wsl2:
+Download the kernel-component update for wsl2. It's possible, that you have to download and install [the
+wsl-2-kernel](https://docs.microsoft.com/de-de/windows/wsl/wsl2-kernel) manually by hand.
 
-    Invoke-WebRequest -Uri https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi -OutFile $env:USERPROFILE/Downloads/wsl_update_x64.msi
-    Start-Process "msiexec.exe" -ArgumentList "/I $env:USERPROFILE/Downloads/wsl_update_x64.msi /quiet" -Wait -NoNewWindow
+    ~~Invoke-WebRequest -Uri https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi -OutFile $env:USERPROFILE/Downloads/wsl_update_x64.msi~~
+    ~~Start-Process "msiexec.exe" -ArgumentList "/I $env:USERPROFILE/Downloads/wsl_update_x64.msi /quiet" -Wait -NoNewWindow~~
 
-Download and install ubuntu-20.04 directly from the Microsoft-Store (recommended), or
+Download and install ubuntu-20.04 directly from the Microsoft-Store (recommended).
 
-    Invoke-WebRequest -Uri https://aka.ms/wslubuntu2004 -OutFile $env:USERPROFILE/Downloads/Ubuntu2004.appx -UseBasicParsing
-    Add-AppxPackage $env:USERPROFILE/Downloads/Ubuntu2004.appx
-
-    # FIXME: enable dev-mode?!
-    Set-ExecutionPolicy Bypass -Scope Process
-    $env:USERPROFILE/.dotfiles/scripts/powershell/utils/enable_dev_mode.ps1
-    # restart?
+    ~~Invoke-WebRequest -Uri https://aka.ms/wslubuntu2004 -OutFile $env:USERPROFILE/Downloads/Ubuntu2004.appx -UseBasicParsing~~
+    ~~Add-AppxPackage $env:USERPROFILE/Downloads/Ubuntu2004.appx~~
 
 Verify the installation
 
@@ -35,6 +31,7 @@ Verify the installation
 Set the default version for wsl
 
     wsl --set-version Ubuntu-20.04 2
+    wsl --set-default Ubuntu-20.04
 
 Pin the wsl-mount-point to your explorer quick access
 

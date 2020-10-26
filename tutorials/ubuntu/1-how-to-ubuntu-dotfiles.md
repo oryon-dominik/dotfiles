@@ -24,5 +24,5 @@ ATTENTION. THIS SCRIPT WILL REPLACE THE FOLLOWING FILES WITHOUT ASKING
 ```
 
 ```bash
-    curl -s https://raw.githubusercontent.com/oryon-dominik/dotfiles/master/ubuntu/install/install.sh | bash -i
+curl -s https://raw.githubusercontent.com/oryon-dominik/dotfiles/master/ubuntu/install/install.sh | bash -i
 ```

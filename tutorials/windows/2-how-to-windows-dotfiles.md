@@ -17,7 +17,8 @@ Set an environment variable (`$env:DOTFILES`) to the location you want to instal
 
 ```powershell
 mkdir "$env:USERPROFILE/.dotfiles"
-[Environment]::SetEnvironmentVariable("DOTFILES", "$env:USERPROFILE/.dotfiles", "User")
+$env:DOTFILES = Convert-Path "$env:USERPROFILE/.dotfiles"
+[Environment]::SetEnvironmentVariable("DOTFILES", "$env:DOTFILES", "User")
 refreshenv
 ```
 
@@ -43,7 +44,7 @@ Install the additional powershell-modules.
 
 ```powershell
 refreshenv
-Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression $env:DOTFILES/install/windows/additional_powershell_modules.ps1
+Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression $env:DOTFILES/windows/install/additional_powershell_modules.ps1
 ```
 
 If you like add the most basic proprietary software for your everyday work (Microsoft-Windows-Terminal, Visual Studio Code, Google Chrome, Google Drive Filestream).
