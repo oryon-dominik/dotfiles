@@ -11,8 +11,8 @@ import shutil
 
 clitube_new, clitube_old = Path(""), Path("")
 
-if os.getenv("DEN_ROOT"):
-    root = Path(os.getenv("DEN_ROOT"))
+if os.getenv("DOTFILES"):
+    root = Path(os.getenv("DOTFILES"))
     clitube_old = root / "scripts" / "python" / "cliTube.py"
 
 if os.getenv("PROJECTS_DIR"):

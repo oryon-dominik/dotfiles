@@ -1,5 +1,5 @@
 ﻿# required: set variables to your configs locations
-# 			($env:DEN_ROOT, $console, $icons, $powershell_location, $shortcuts, $position)
+# 			($env:DOTFILES, $console, $icons, $powershell_location, $shortcuts, $position)
 # required: the dircetory .$settings.local_location/logs/ must be available | TODO: implement check on install script and create first logfiles manually..
 
 # load functions

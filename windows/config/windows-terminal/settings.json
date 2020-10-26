@@ -48,10 +48,10 @@
                 "snapOnInput": true,
                 "closeOnExit": "graceful",
 
-                "backgroundImage" : "C:/Users/oryon/!den/files/images/console/console.png",
+                "backgroundImage" : "C:/Users/oryon/.dotfiles/files/images/console/console.png",
                 "backgroundImageOpacity" : 0.18,
                 "backgroundImageStretchMode" : "uniformToFill",
-                "icon": "C:/Users/oryon/!den/files/icons/cyberise.ico",
+                "icon": "C:/Users/oryon/.dotfiles/files/icons/cyberise.ico",
                 "padding": "10, 10, 10, 10",
 
                 "fontFace": "Cascadia Mono",
@@ -65,7 +65,7 @@
                 "name": "Powershell (elevated)",
                 "commandline": "pwsh.exe -command Start-Process -Verb RunAs \"shell:appsFolder\\Microsoft.WindowsTerminal_8wekyb3d8bbwe!App\"",
                 "hidden": false,
-                "icon": "C:/Users/oryon/!den/files/icons/cyberise.ico"
+                "icon": "C:/Users/oryon/.dotfiles/files/icons/cyberise.ico"
             },
             {
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",

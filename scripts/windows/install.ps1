@@ -12,7 +12,7 @@ Restart-Computer
 # 2. start elevated ps7
 mkdir ~/.dotfiles
 $den_loc = Join-Path -Path $home -ChildPath "\.dotfiles"
-[Environment]::SetEnvironmentVariable("DEN_ROOT", "$den_loc", "User")
+[Environment]::SetEnvironmentVariable("DOTFILES", "$den_loc", "User")
 
 mkdir c:\local_projects
 $PROJECTS_DIR = "c:\local_projects"
@@ -25,11 +25,11 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object
 # 3. reopen elevated shell
 choco install git hub -y
 refreshenv
-git clone https://github.com/oryon-dominik/dotfiles-den $env:DEN_ROOT
+git clone https://github.com/oryon-dominik/dotfiles-den $env:DOTFILES
 
 $ps_path = Join-Path -Path $env:userprofile -ChildPath '\Documents\WindowsPowerShell'
 $ps7_path = Join-Path -Path $env:userprofile -ChildPath '\Documents\PowerShell'
-$den_loc = Join-Path -Path $env:DEN_ROOT -ChildPath 'scripts\powershell'
+$den_loc = Join-Path -Path $env:DOTFILES -ChildPath 'scripts\powershell'
 Remove-Item -path $ps_path -recurse
 Remove-Item -path $ps7_path -recurse
 cmd /c mklink /j ($ps_path) ($den_loc)
