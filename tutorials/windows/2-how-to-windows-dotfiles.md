@@ -28,6 +28,12 @@ Clone (or create a new) dotfile repo into `$env:DOTFILES`.
 git clone https://github.com/oryon-dominik/dotfiles $env:DOTFILES
 ```
 
+Set the execution policy, to make your scripts executable. (You could also
+elaborate on that to a script-by-script policy)
+```powershell
+Set-ExecutionPolicy RemoteSigned
+```
+
 Make system links from the cloned powershell profile to the generic powershell-profile-folders.
 This will delete the old folders (don't forget to backup your old powershell configs).
 
