@@ -62,6 +62,14 @@ sudo apt install -y docker.io
 # sudo systemctl start docker
 sudo systemctl enable docker
 
+if grep --quiet microsoft /proc/version; then
+    #--WSL----
+    :
+else
+    # "native linux"
+    :
+fi
+
 ## pyenv
 # we need a c compiler & other dependencies
 sudo apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
@@ -90,15 +98,22 @@ poetry config virtualenvs.path ~/.virtualenvs/
 
 python -m pip install --user virtualenvwrapper
 
+# install pipx
+python -m pip install --user pipx
+python -m pipx ensurepath
+
+# yarn
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update && sudo apt install -y yarn
+
 # add /bin/fish to /etc/shells
 sudo sh -c "echo /bin/fish >> /etc/shells"
 
 # activate fish-shell
 fish -i
 # and add poetry & pyenv to the path
-set -U fish_user_paths $fish_user_paths $HOME/.poetry/bin
 set -U PYENV_ROOT $HOME/.pyenv
-set -U fish_user_paths /usr/local/bin /sbin $PYENV_ROOT/bin $PYENV_ROOT/shims
+set -U fish_user_paths /usr/local/bin /sbin $HOME/.poetry/bin $HOME/.local/bin $PYENV_ROOT/bin $PYENV_ROOT/shims (yarn global bin) $fish_user_paths
 
 # add fisher and fish plugins
 curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
