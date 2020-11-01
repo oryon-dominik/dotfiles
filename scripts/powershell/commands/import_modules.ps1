@@ -43,6 +43,9 @@ if (Test-Path -Path $prompt_ignores_paths -PathType Leaf) {
     }
 }
 
+# Upgrades & Updates
+. $PSScriptRoot\Upgrades.ps1
+
 # Weather-Script
 . $PSScriptRoot\Get-Weather.ps1
 
