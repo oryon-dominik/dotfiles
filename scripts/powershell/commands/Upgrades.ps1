@@ -65,23 +65,33 @@ function PythonUpdate {
     python -m pip install --upgrade pip
     Write-Host ""
 
-    Write-Host "Updating pyenv.."
-    pyenv update
-    if (Test-Path env:PYENV) {
-        $current_path = $pwd
-        Set-Location -Path (Split-Path -Path $env:PYENV -Parent)
-        $git_command = "git pull"
-        Invoke-Expression $git_command
-        Set-Location -Path $current_path
-        }
-    else {
-        Write-Host "env:PYENV not found, skipping repository"
+    if (![bool](Get-Command -Name 'pyenv' -ErrorAction SilentlyContinue)) {
+        Write-Host "could not find pyenv on path, skipping.."
     }
-    Write-Host ""
-
-    Write-Host "Updating poetry.."
-    poetry self update
-    Write-Host ""
+    else {
+        Write-Host "Updating pyenv.."
+        pyenv update
+        if (Test-Path env:PYENV) {
+            $current_path = $pwd
+            Set-Location -Path (Split-Path -Path $env:PYENV -Parent)
+            $git_command = "git pull"
+            Invoke-Expression $git_command
+            Set-Location -Path $current_path
+            }
+        else {
+            Write-Host "env:PYENV not found, skipping repository"
+        }
+        Write-Host ""
+    }
+    
+    if (![bool](Get-Command -Name 'poetry' -ErrorAction SilentlyContinue)) {
+        Write-Host "could not find poetry on path, skipping.."
+    }
+    else {
+        Write-Host "Updating poetry.."
+        poetry self update
+        Write-Host ""
+    }
 }
 
 
