@@ -7,6 +7,9 @@ function upgrade {
     param(
         [string] $argument
     )
+    # check admin-rights
+    $is_admin = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
+    if (!$is_admin) { Write-Host "Running upgrades without admin-rights is not supported"; return}
     if ( -not $argument ) {
         Write-Host "please provide an argument:"
         Write-Host "    all                 Full System-Upgrade"
@@ -15,6 +18,7 @@ function upgrade {
         Write-Host "    repos               Update the repositores that are set in $env:DOTFILES\local\git_pulls.txt"
         Write-Host "    python              Update pyenv, poetry and pip"
         Write-Host "    python-packages     Updates all python packages of the active repositories"
+        Write-Host "    powershell          Update powershell"
         Write-Host ""
         return
     }
@@ -22,6 +26,7 @@ function upgrade {
     if ($argument -eq "windows") { WindowsUpdate }
     if ($argument -eq "repos") { UpdateRepositories }
     if ($argument -eq "python") { PythonUpdate }
+    if ($argument -eq "powershell") { PowershellUpdate }
     if ($argument -eq "python-packages") { PythonPackagesUpdate }
     if ($argument -eq "choco") { UpgradeChocolatey }
 }
@@ -94,6 +99,11 @@ function PythonUpdate {
     }
 }
 
+function PowershellUpdate {
+    Write-Host "Updating powershell.."
+    iex "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI -Preview"
+    Write-Host ""
+}
 
 function WindowsUpdate {
     Write-Host "Installing Windows Updates.."
