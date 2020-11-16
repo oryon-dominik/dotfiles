@@ -9,7 +9,7 @@ function upgrade {
     )
     # check admin-rights
     $is_admin = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
-    if (!$is_admin) { Write-Host "Running upgrades without admin-rights is not supported"; return}
+    if (!$is_admin) { Write-Host "Running upgrades without admin-rights is not recommended" }
     if ( -not $argument ) {
         Write-Host "please provide an argument:"
         Write-Host "    all                 Full System-Upgrade"
