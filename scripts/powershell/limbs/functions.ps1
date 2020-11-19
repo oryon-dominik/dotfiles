@@ -107,8 +107,6 @@ function isadmin {[bool](([System.Security.Principal.WindowsIdentity]::GetCurren
 
 function cfg { set-location $env:DOTFILES }  # config (DEN) folder
 
-function scripts { set-location $env:DOTFILES\scripts }
-
 # edit powershell_profile in notepad
 function powershell_config { notepad++ "$env:DOTFILES\scripts\powershell\Microsoft.PowerShell_profile.ps1" }
 Set-Alias -Name config -Value powershell_config -Description "edit Powershell-Profile"

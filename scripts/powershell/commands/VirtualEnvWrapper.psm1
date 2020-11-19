@@ -152,7 +152,7 @@ function Find-Python ($Python) {
 
     # No python given, get the default one
     if (!$Python) {
-        return Get-Command "python.exe" | Select-Object -ExpandProperty Source
+        return Get-Command "python" | Select-Object -ExpandProperty Source
     }
 
     # The python path doesn't exist
