@@ -41,7 +41,7 @@ Set-Alias git hub  # integrates hub into git command-line (https://github.com/gi
 $env:path += ";C:\Program Files\VideoLAN\VLC\vlc.exe"
 Set-Alias -Name play -Value vlc -Description "Plays media with vlc"
 
-Set-Alias -Name tube -Value (Join-Path -Path $script_location -ChildPath "\python\cliTube.py") -Description "Plays Youtube Search-Results"  # needs cliTube.py in $script_location
+Set-Alias -Name clitube -Value (Join-Path -Path $script_location -ChildPath "\python\cliTube.py") -Description "Plays Youtube Search-Results"  # needs cliTube.py in $script_location
 Set-Alias -Name timer -Value (Join-Path -Path $script_location -ChildPath "\python\timer.py") -Description "Starts a timer"  # needs timer.py in $script_location
 
 # programs
