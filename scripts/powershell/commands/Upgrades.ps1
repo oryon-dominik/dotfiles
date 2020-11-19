@@ -62,7 +62,7 @@ function UpgradeChocolatey {
 function PythonUpdate {
     Write-Host "Updating python.."
     Write-Host "Updating pip.."
-    python -m pip install --upgrade pip
+    python -m pip install --upgrade pip --no-warn-script-location
     Write-Host ""
 
     if (![bool](Get-Command -Name 'pyenv' -ErrorAction SilentlyContinue)) {
@@ -92,6 +92,9 @@ function PythonUpdate {
         poetry self update
         Write-Host ""
     }
+    Write-Host "Updating pipx.."
+    python -m pip install --user -U pipx
+    # python -m pipx ensurepath
 }
 
 
