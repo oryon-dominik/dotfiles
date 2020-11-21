@@ -22,13 +22,14 @@ function upgrade {
         Write-Host ""
         return
     }
-    if ($argument -eq "all") { UpgradeAll }
-    if ($argument -eq "windows") { WindowsUpdate }
-    if ($argument -eq "repos") { UpdateRepositories }
-    if ($argument -eq "python") { PythonUpdate }
-    if ($argument -eq "powershell") { PowershellUpdate }
-    if ($argument -eq "python-packages") { PythonPackagesUpdate }
-    if ($argument -eq "choco") { UpgradeChocolatey }
+    if ($argument -eq "all") { UpgradeAll; return }
+    if ($argument -eq "windows") { WindowsUpdate; return }
+    if ($argument -eq "repos") { UpdateRepositories; return }
+    if ($argument -eq "python") { PythonUpdate; return }
+    if ($argument -eq "powershell") { PowershellUpdate; return }
+    if ($argument -eq "python-packages") { PythonPackagesUpdate; return }
+    if ($argument -eq "choco") { UpgradeChocolatey; return }
+    Write-Host "(upgrade) invalid argument: 'upgrade $argument' not found"
 }
 
 function UpgradeAll {
@@ -61,11 +62,14 @@ function UpgradeChocolatey {
     else {
         Write-Host "ERROR: $choco_packages_log_path not found"
     }
+    LogUpdate -Message "Chocolatey packages upgrade"
     Write-Host ""
 }
 
 function PythonUpdate {
-    Write-Host "Updating python.."
+    $update_message = "Updating python.."
+    Write-Host $update_message
+    LogUpdate -Message $update_message
     Write-Host "Updating pip.."
     python -m pip install --upgrade pip --no-warn-script-location
     Write-Host ""
