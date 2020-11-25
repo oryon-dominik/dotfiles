@@ -35,7 +35,7 @@ function upgrade {
 function UpgradeAll {
     $update_message = "Full System Upgrade"
     Write-Host "Starting $update_message..."
-    LogUpdate -Message $update_message
+    LogUpdate -Message "$update_message"
 
     PythonUpdate
     UpdateRepositories
@@ -69,7 +69,7 @@ function UpgradeChocolatey {
 function PythonUpdate {
     $update_message = "Updating python.."
     Write-Host $update_message
-    LogUpdate -Message $update_message
+    LogUpdate -Message "$update_message"
     Write-Host "Updating pip.."
     python -m pip install --upgrade pip --no-warn-script-location
     Write-Host ""
