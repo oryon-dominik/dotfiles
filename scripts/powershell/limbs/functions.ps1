@@ -149,7 +149,8 @@ Set-Alias listenvs envs
 
 function noadmin { . $env:DOTFILES\scripts\powershell\commands\shell_no_admin.ps1 }
 
-function restart { . $env:DOTFILES\scripts\batch\cmder_restart.bat }
+# deprecated
+# function restart { . $env:DOTFILES\scripts\batch\terminal_restart.bat }
 
 function spool { . $env:DOTFILES\scripts\batch\printer_restart.bat }
 
