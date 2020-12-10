@@ -8,13 +8,12 @@ It builds Tube-URLS from artist & title arguments
 '''
 
 
-__version__ = '0.1.3' # github release, added secrets
+__version__ = '0.1.4' # refactored
 __author__ = 'oryon/dominik'
 __date__ = 'November 28, 2018'
-__updated__ = 'April 16, 2019'
+__updated__ = 'Dezember 10, 2020'
 
 
-import json
 import numpy as np
 import subprocess
 import os
@@ -30,19 +29,12 @@ YOUTUBE_API_VERSION = 'v3'
 
 
 def get_key():
-    secret_path = Path(__file__).resolve().parent / 'secret.py'
-    if secret_path.exists():
-        from secret import DEVELOPER_KEY
-        return DEVELOPER_KEY
-    elif os.environ.get('DEVELOPER_KEY'):
-        return os.environ['DEVELOPER_KEY']
-
+    return os.environ.get('DEVELOPER_KEY') # TODO: get from .env or env
 
 def stringify(args):
     return ' '.join(args.search)
 
-
-def get_SearchResults_from_Youtube(search):
+def get_search_results_from_youtube(search):
     """ returns actual data of results from SearchString """
 
     youtube = build(
@@ -59,39 +51,22 @@ def get_SearchResults_from_Youtube(search):
 
     return search_response
 
-
-def choose(results):
+def choose(results, choice=""):
     """ chooses the video randomly """
     probabilities = [.3, .25, .2, .1, .05, .025, .025, .025, .0125, .0125]
-    hits, videos = {}, []
-    choice = ''
-
-    if 'items' in results:
-        for match in results['items']:
-            if 'id' in match and 'snippet' in match:
-                if 'videoId' in match['id'] and 'title' in match['snippet']:
-                    ident = match['id']['videoId']
-                    title = match['snippet']['title']
-                    hits[f'{ident}'] = title
-
-        # print(json.dumps(hits, indent=4))  # these are the Videos concerned
-
-        for hit in hits:
-            videoURL = f'https://www.youtube.com/watch?v={hit}'
-            videos.append(videoURL)
-
-        if videos:
-            if len(videos) >= 10:
-                choice = np.random.choice(videos, p=probabilities)
-            else:
-                choice = np.random.choice(videos)
-        else:
-            print('No results for searchTerm')
-    else:
+    hits = {f"{match.get('id', {}).get('videoId')}" : match.get('snippet', {}).get('title') for match in results.get('items', [])}
+    if not hits:
         print('No items found in search result')
-
+        return choice
+    videos = [f'https://www.youtube.com/watch?v={hit}' for hit in hits]
+    if videos:
+        if len(videos) >= 10:
+            choice = np.random.choice(videos, p=probabilities)
+        else:
+            choice = np.random.choice(videos)
+    else:
+        print('No results for searchTerm')
     return choice
-
 
 def play(url):
     startupinfo = subprocess.STARTUPINFO()
@@ -99,13 +74,11 @@ def play(url):
     subprocess.Popen(["vlc", f"{url}"], startupinfo=startupinfo)
 
 
-# handling the arguments
 parser = ArgumentParser(
     description=__doc__, prog='cliTube',
     epilog='Have fun tubing!',
     formatter_class=RawTextHelpFormatter,
     )
-
 parser.add_argument('--version', action='version', version=__version__)
 parser.add_argument('search', metavar='Searchterm', help='the searchstring (Artist & Title) you are looking for', nargs='*')
 
@@ -114,16 +87,15 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     DEVELOPER_KEY = get_key()
-
     if not DEVELOPER_KEY:
         raise SystemExit('Did not find environment variable DEVELOPER_KEY')
 
     if not args.search:
         parser.print_help()
 
-    else:
+    else:  # play
         search = stringify(args)
-        results = get_SearchResults_from_Youtube(search)
+        results = get_search_results_from_youtube(search)
         match = choose(results)
         if match:
             play(match)
