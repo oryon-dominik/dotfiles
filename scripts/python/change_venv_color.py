@@ -3,7 +3,7 @@ import os
 import sys
 from pathlib import Path
 
-"change your venv color"
+"change your venv color for powershell-virtualenvwrapper shells"
 
 AVAILABLE_COLORS = [
     'black', 'darkBlue', 'darkGreen', 'darkCyan', 'darkRed', 'darkMagenta', 'darkYellow',
