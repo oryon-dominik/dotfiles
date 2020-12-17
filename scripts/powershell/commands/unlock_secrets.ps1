@@ -12,18 +12,13 @@ Param(
 if($is_admin) {
 
     # TODO: move the decrypt from sysstart to a function
-    $catched_secrets_error = $false
-    try {
-        $files = Get-ChildItem "$env:DOTFILES\local\.secrets\"
-    }
-    catch {
-        $catched_secrets_error = $true
-    }
 
-    if ($catched_secrets_error) {
+    $files_path = "$env:DOTFILES\local\.secrets\"
+    if (!( Test-Path $files_path)) {
         Write-Warning "secrets not found. You probably did not finish your setup."
     }
     else {
+        $files = Get-ChildItem $files_path
         foreach ($_ in $files){
             $name = [System.IO.Path]::GetFileNameWithoutExtension($_.FullName)
             $key = [IO.File]::ReadAllText($_.FullName)
