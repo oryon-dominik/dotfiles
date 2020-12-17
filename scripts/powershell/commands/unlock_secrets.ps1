@@ -5,25 +5,34 @@
 
 Param(
     [Parameter( Mandatory = $true)]
-    $is_admin = "False"    
+    $is_admin = "False"
 )
 
 
 if($is_admin) {
 
     # TODO: move the decrypt from sysstart to a function
-
-    $files = Get-ChildItem "$env:DOTFILES\local\.secrets\"
-
-    foreach ($_ in $files){
-        $name = [System.IO.Path]::GetFileNameWithoutExtension($_.FullName)
-        $key = [IO.File]::ReadAllText($_.FullName)
-        Set-Item "env:$name" $key
+    $catched_secrets_error = $false
+    try {
+        $files = Get-ChildItem "$env:DOTFILES\local\.secrets\"
     }
-    
-    $name = ''
-    $key = ''
+    catch {
+        $catched_secrets_error = $true
+    }
 
-    # TODO: move the encrypt from sysstart to a function
+    if ($catched_secrets_error) {
+        Write-Warning "secrets not found. You probably did not finish your setup."
+    }
+    else {
+        foreach ($_ in $files){
+            $name = [System.IO.Path]::GetFileNameWithoutExtension($_.FullName)
+            $key = [IO.File]::ReadAllText($_.FullName)
+            Set-Item "env:$name" $key
+        }
 
+        $name = ''
+        $key = ''
+
+        # TODO: move the encrypt from sysstart to a function
+    }
 }
