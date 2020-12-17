@@ -1,10 +1,40 @@
 # gets devices location from GPS-sensor or from 
 
 # TODO: hint to GEOCODING-API key
-$home_latitude = $settings.coordinates[0]
-$home_longitude = $settings.coordinates[1]
-$home_city = $settings.residence[0]
-$home_country = $settings.residence[1]
+# catching errors, if settings not set and defaulting to DUS :)
+$catched_location_error = $false
+try {
+    $home_latitude = $settings.coordinates[0]
+}
+catch {
+    $home_latitude = 51.23548
+    $catched_location_error = $true
+
+}
+try {
+    $home_longitude = $settings.coordinates[1]
+}
+catch {
+    $home_longitude = 6.839653
+    $catched_location_error = $true
+}
+try {
+    $home_city = $settings.residence[0]
+}
+catch {
+    $home_city = "Dusseldorf"
+    $catched_location_error = $true
+}
+try {
+    $home_country = $settings.residence[1]
+}
+catch {
+    $home_country = "DE"
+    $catched_location_error = $true
+}
+if ($catched_location_error) {
+    Write-Warning "Location settings not found. Using 'Dusseldorf' as fallback."
+}
 
 Add-type -AssemblyName System.Device
 $gps_location = New-Object System.Device.Location.GeoCoordinate
