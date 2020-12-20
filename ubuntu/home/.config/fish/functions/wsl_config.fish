@@ -5,8 +5,8 @@ function wsl_config
     # openGL for the X-server
     set -U LIBGL_ALWAYS_INDIRECT 1
     # remove windows pyenv and poetry from path
-    set PATH '(echo "$PATH" | sed -e "s|:/mnt/c/Users/oryon/.poetry/bin$||")'
-    set PATH '(echo "$PATH" | sed -e "s|:/mnt/c/Users/oryon/.pyenv/pyenv-win/bin$||")'
-    set PATH '(echo "$PATH" | sed -e "s|:/mnt/c/Users/oryon/.pyenv/pyenv-win/shims$||")'
-    set PATH '(echo "$PATH" | sed -e "s|:/mnt/c/Users/oryon/AppData/Roaming/Python/Python39/Scripts/$||")'
+    set -U PATH '(echo "$PATH" | sed -e "s|:/mnt/c/Users/oryon/.poetry/bin$||g")'
+    set -U PATH '(echo "$PATH" | sed -e "s|:/mnt/c/Users/oryon/.pyenv/pyenv-win/bin$||g")'
+    set -U PATH '(echo "$PATH" | sed -e "s|:/mnt/c/Users/oryon/.pyenv/pyenv-win/shims$||g")'
+    set -U PATH '(echo "$PATH" | sed -e "s|:/mnt/c/Users/oryon/AppData/Roaming/Python/Python39/Scripts/$||g")'
 end
