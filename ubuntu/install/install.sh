@@ -3,7 +3,7 @@
 # set environment variables
 export DOTFILES=~/.dotfiles
 export PYENV_ROOT=~/.pyenv
-export PYTHON_VERSION=3.8.5
+export PYTHON_VERSION=3.9.1
 
 ## install required software
 # update first
@@ -37,6 +37,7 @@ mkdir -p ~/.config && mkdir -p ~/.config/fish && mkdir -p ~/.config/fish/functio
 
 ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/config.fish ~/.config/fish/config.fish
 ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/functions/fish_prompt.fish ~/.config/fish/functions/fish_prompt.fish
+ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/functions/wsl_config.fish ~/.config/fish/functions/wsl_config.fish
 ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/functions/last_command_as_sudo.fish ~/.config/fish/functions/last_command_as_sudo.fish
 
 # create some dirs

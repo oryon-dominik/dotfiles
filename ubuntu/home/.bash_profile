@@ -4,6 +4,10 @@ if grep --quiet microsoft /proc/version; then
     export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):10.0
     # openGL for the X-server 
     export LIBGL_ALWAYS_INDIRECT=1
+    # remove pyenv and poetry from the windows paths
+    PATH=$(echo "$PATH" | sed -e 's|:/mnt/c/Users/oryon/.poetry/bin$||')
+    PATH=$(echo "$PATH" | sed -e 's|:/mnt/c/Users/oryon/.pyenv/pyenv-win/bin$||')
+    PATH=$(echo "$PATH" | sed -e 's|:/mnt/c/Users/oryon/.pyenv/pyenv-win/shims$||')
 else
     # "native linux"
     :
