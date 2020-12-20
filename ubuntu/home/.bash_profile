@@ -20,6 +20,7 @@ if grep --quiet microsoft /proc/version; then
     # export VIRTUALENVWRAPPER_LAZY_SCRIPT="$HOME/.local/lib/python3.9/site-packages/virtualenvwrapper_lazy.sh"
 else
     # "native linux"
+    :
     # export VIRTUALENVWRAPPER_SCRIPT="$(dirname $PYTHON_PATH)/virtualenvwrapper.sh"
     # export VIRTUALENVWRAPPER_LAZY_SCRIPT="$(dirname $PYTHON_PATH)/virtualenvwrapper_lazy.sh"
 fi
