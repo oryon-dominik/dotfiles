@@ -8,4 +8,5 @@ function wsl_config
     set PATH '(echo "$PATH" | sed -e "s|:/mnt/c/Users/oryon/.poetry/bin$||")'
     set PATH '(echo "$PATH" | sed -e "s|:/mnt/c/Users/oryon/.pyenv/pyenv-win/bin$||")'
     set PATH '(echo "$PATH" | sed -e "s|:/mnt/c/Users/oryon/.pyenv/pyenv-win/shims$||")'
+    set PATH '(echo "$PATH" | sed -e "s|:/mnt/c/Users/oryon/AppData/Roaming/Python/Python39/Scripts/$||")'
 end

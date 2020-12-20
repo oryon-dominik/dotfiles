@@ -8,6 +8,7 @@ if grep --quiet microsoft /proc/version; then
     PATH=$(echo "$PATH" | sed -e 's|:/mnt/c/Users/oryon/.poetry/bin$||')
     PATH=$(echo "$PATH" | sed -e 's|:/mnt/c/Users/oryon/.pyenv/pyenv-win/bin$||')
     PATH=$(echo "$PATH" | sed -e 's|:/mnt/c/Users/oryon/.pyenv/pyenv-win/shims$||')
+    PATH=$(echo "$PATH" | sed -e 's|:/mnt/c/Users/oryon/AppData/Roaming/Python/Python39/Scripts/$||')
 else
     # "native linux"
     :
