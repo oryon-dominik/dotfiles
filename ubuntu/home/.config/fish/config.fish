@@ -24,7 +24,7 @@ alias cd..="cd .."
 alias !!!="last_command_as_sudo"
 
 # pipx completions
-register-python-argcomplete --shell fish pipx | source
+# register-python-argcomplete --shell fish pipx | source
 
 set fish_color_cwd yellow
 

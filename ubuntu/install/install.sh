@@ -122,11 +122,11 @@ set -U fish_user_paths /usr/local/bin /sbin $HOME/.poetry/bin $HOME/.local/bin $
 curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
 
 # To add extended command-completion, async prompt, gitnow & dracula theme & pyenv
-fisher add jethrokuan/fzf
-fisher add acomagu/fish-async-prompt
-fisher add joseluisq/gitnow
-fisher add dracula/fish
-fisher add daenney/pyenv
+fisher install jethrokuan/fzf
+# fisher add acomagu/fish-async-prompt  ## possibly broken
+fisher install joseluisq/gitnow
+fisher install dracula/fish
+fisher install daenney/pyenv
 
 # for fish we already installed the pyenv plugin,
 # but we have to fix it, since it's a little deprecated
