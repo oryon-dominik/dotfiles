@@ -39,6 +39,7 @@ ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/config.fish ~/.config/fish/config.f
 ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/functions/fish_prompt.fish ~/.config/fish/functions/fish_prompt.fish
 ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/functions/wsl_config.fish ~/.config/fish/functions/wsl_config.fish
 ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/functions/last_command_as_sudo.fish ~/.config/fish/functions/last_command_as_sudo.fish
+ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/functions/start_program_with_xserver.fish ~/.config/fish/functions/start_program_with_xserver.fish
 
 # create some dirs
 mkdir -p ~/projects

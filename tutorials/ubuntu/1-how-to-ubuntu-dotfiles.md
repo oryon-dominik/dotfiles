@@ -21,6 +21,7 @@ ATTENTION. THIS SCRIPT WILL REPLACE THE FOLLOWING FILES WITHOUT ASKING
 ~/.config/fish/config.fish
 ~/.config/fish/functions/fish_prompt.fish
 ~/.config/fish/functions/last_command_as_sudo.fish
+~/.config/fish/functions/start_program_with_xserver.fish
 ~/.config/fish/functions/pyenv.fish
 ```
 
