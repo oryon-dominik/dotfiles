@@ -20,10 +20,6 @@ set -U EDITOR vi
 alias cls="clear"
 alias cd..="cd .."
 
-# custom fish-function
-alias !!!="last_command_as_sudo"
-alias xserve="start_program_with_xserver"
-
 # pipx completions
 register-python-argcomplete --shell fish pipx | source
 
