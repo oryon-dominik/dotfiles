@@ -9,4 +9,5 @@ function wsl_config
     set -U PATH '(echo "$PATH" | sed -e "s|:/mnt/c/Users/oryon/.pyenv/pyenv-win/bin$||g")'
     set -U PATH '(echo "$PATH" | sed -e "s|:/mnt/c/Users/oryon/.pyenv/pyenv-win/shims$||g")'
     set -U PATH '(echo "$PATH" | sed -e "s|:/mnt/c/Users/oryon/AppData/Roaming/Python/Python39/Scripts/$||g")'
+    set -U PATH '(echo "$PATH" | sed -e "s|:/mnt/c/Program Files/Git/cmd/git.exe/$||g")'
 end
