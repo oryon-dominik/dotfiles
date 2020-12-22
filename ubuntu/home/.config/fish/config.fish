@@ -27,3 +27,7 @@ alias !!!="last_command_as_sudo"
 register-python-argcomplete --shell fish pipx | source
 
 set fish_color_cwd yellow
+
+if status is-interactive
+  cd $HOME
+end

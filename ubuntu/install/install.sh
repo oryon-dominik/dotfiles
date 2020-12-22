@@ -51,6 +51,7 @@ ln -sfv ~/.dotfiles/ubuntu/home/.bash_logout ~
 ln -sfv ~/.dotfiles/ubuntu/home/.bash_profile ~
 ln -sfv ~/.dotfiles/ubuntu/home/.bashrc ~
 ln -sfv ~/.dotfiles/ubuntu/home/.profile ~
+ln -sfv ~/.dotfiles/ubuntu/home/.gitconfig ~
 # htop
 ln -sfv ~/.dotfiles/ubuntu/home/.config/htoprc ~/.config/
 
@@ -137,7 +138,8 @@ mkdir -p ~/.config/fish/conf.d
 touch ~/.config/fish/conf.d/virtualfish-loader.fish
 # to activate the vf-command
 eval (python -m virtualfish)
-vf install compat_aliases
+vf install
+vf addplugins compat_aliases
 
 # change the shell to fish
 sudo chsh --shell /bin/fish "$USER"

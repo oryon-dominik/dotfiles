@@ -27,7 +27,8 @@ fi
 
 # source $VIRTUALENVWRAPPER_LAZY_SCRIPT
 
-
+# go
+export PATH=$PATH:/usr/local/go/bin
 # pyenv, poetry & pipx
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:$HOME/.poetry/bin:`yarn global bin`:$PATH"
@@ -37,3 +38,5 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 eval "$(register-python-argcomplete pipx)"
 source $(pyenv root)/completions/pyenv.bash
+
+cd $HOME
