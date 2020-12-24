@@ -53,25 +53,28 @@ Chris Warrick
 2018-07-17, updated 2020-05-28  
 https://chriswarrick.com/blog/2018/07/17/pipenv-promises-a-lot-delivers-very-little/  
 
-Python: Declaring Dynamic Attributes
-Amir Rachum
-2016-10-05
-https://amir.rachum.com/blog/2016/10/05/python-dynamic-attributes/
+Python: Declaring Dynamic Attributes  
+Amir Rachum  
+2016-10-05  
+https://amir.rachum.com/blog/2016/10/05/python-dynamic-attributes/  
 
-Python: Understanding python class instantiation
-Amir Rachum
-2016-10-03
-https://amir.rachum.com/blog/2016/10/03/understanding-python-class-instantiation/
+Python: Understanding python class instantiation  
+Amir Rachum  
+2016-10-03  
+https://amir.rachum.com/blog/2016/10/03/understanding-python-class-instantiation/  
 
-Building Cloud Storage from Scratch
-Ryan Abrams
-2020-12
-https://lambdascheme.com/blocks.html
+Building Cloud Storage from Scratch  
+Ryan Abrams  
+2020-12  
+https://lambdascheme.com/blocks.html  
 
 
 ## Security
 
-...
+NAT Slipstreaming, take control over javascript  
+Samy Kamkar  
+2020-10-31  
+https://samy.pl/slipstream/  
 
 
 ## General
@@ -92,7 +95,7 @@ Christine Dodrill
 2020-05-19  
 https://christine.website/blog/how-http-requests-work-2020-05-19  
 
-Shared Libraries: Understanding Dynamic Loading [in linux systems..]
-Amir Rachum
-2016-09-17
-https://amir.rachum.com/blog/2016/09/17/shared-libraries/
+Shared Libraries: Understanding Dynamic Loading [in linux systems..]  
+Amir Rachum  
+2016-09-17  
+https://amir.rachum.com/blog/2016/09/17/shared-libraries/  
