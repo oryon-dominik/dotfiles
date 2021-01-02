@@ -189,7 +189,7 @@ function venvColor($color) {
     python $env:DOTFILES\scripts\python\change_venv_color.py $color
 }
 
-function restic-local {
+function restic-apollon {
     $is_admin = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
     if (-not $is_admin) {
         Write-Warning "Please run backups as root"
@@ -205,9 +205,24 @@ function backup() {
         [string]$path = "" 
     )
     if ( $(Try { Test-Path -Path $path } Catch { $false }) ) {
-        restic-local backup $args
+        restic-apollon --tag custom backup $args
     }
     else {
         Write-Warning "Please provide a valid path to backup"
+    }
+}
+
+function backups {
+    $is_admin = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
+    if (-not $is_admin) {
+        Write-Warning "Please run backups as root"
+    }
+    else {
+        Write-Host --------------------------------------------
+        Write-Host starting backup at (Get-Date)
+        Write-Host --------------------------------------------
+
+        restic-apollon --tag apollon --exclude-file $env:DOTFILES\local\restic-excludefile backup c:\dev d:\keep
+        restic-apollon forget --prune --keep-last=7 --keep-daily=30 --keep-weekly=52 --keep-monthly=24 --keep-yearly=10
     }
 }
