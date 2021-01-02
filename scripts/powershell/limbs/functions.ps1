@@ -23,54 +23,54 @@ function cdrom{
 }
 
 function download{  # download <url> <destination_file_name>
-	Param(
-		[Parameter(Mandatory=$false)] [string]$url, [Parameter(Mandatory=$false)] [string]$filename)
-		if($url){
-			if($filename){
-				$current_path = $(Get-Location)
-				$request = New-Object System.Net.WebClient
-				$target = "$current_path\$filename"
-				$request.DownloadFile($url, $target)
-			}
-			else{
-				Write-Host "Specify output filename"
-			}
-		}
-		else{
-			Write-Host "No URL specified"
-		}
+    Param(
+        [Parameter(Mandatory=$false)] [string]$url, [Parameter(Mandatory=$false)] [string]$filename)
+        if($url){
+            if($filename){
+                $current_path = $(Get-Location)
+                $request = New-Object System.Net.WebClient
+                $target = "$current_path\$filename"
+                $request.DownloadFile($url, $target)
+            }
+            else{
+                Write-Host "Specify output filename"
+            }
+        }
+        else{
+            Write-Host "No URL specified"
+        }
 }
 
 function sudo{  # TODO fix BUGs for complicated args (stringify or whatever..)
-	Param(
-		[Parameter(Mandatory=$false)] [String]$sudo_command)
-		if($sudo_command){
-			if($args){
-				start-process -verb runAs $sudo_command -argumentlist $args
-			}
-			else{
-				start-process -verb runAs $sudo_command
-			}
-		}
-		else{
-			Write-Host "No command specified"
-		}
+    Param(
+        [Parameter(Mandatory=$false)] [String]$sudo_command)
+        if($sudo_command){
+            if($args){
+                start-process -verb runAs $sudo_command -argumentlist $args
+            }
+            else{
+                start-process -verb runAs $sudo_command
+            }
+        }
+        else{
+            Write-Host "No command specified"
+        }
 }
 
 function lock{
-	c:\windows\system32\rundll32.exe user32.dll, LockWorkStation
+    c:\windows\system32\rundll32.exe user32.dll, LockWorkStation
 }
 
 function generate_password ([int]$pass_length = 50) {
-	python -c "import random; print(''.join([random.choice('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSRTUVWXYZ0123456789!@#$%^&*(-_=+)') for i in range($pass_length)]))"
+    python -c "import random; print(''.join([random.choice('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSRTUVWXYZ0123456789!@#$%^&*(-_=+)') for i in range($pass_length)]))"
 }
 
 function orga {
-	emacs (Join-Path -Path $settings.cloud -ChildPath "\_orga\zeiterfassung.org")
+    emacs (Join-Path -Path $settings.cloud -ChildPath "\_orga\zeiterfassung.org")
 }
 
 function new_project {
-	. (Join-Path -Path $script_location -ChildPath "\python\new_project.py")
+    . (Join-Path -Path $script_location -ChildPath "\python\new_project.py")
 }
 
 function Get-TimeStamp {
@@ -79,26 +79,26 @@ function Get-TimeStamp {
 Set-Alias -Name time -Value Get-TimeStamp -Description "Gets time stamp"
 
 function zen{  # activates zen-mode
-	$zen_cmd = "'function prompt {Write-Host \`"\`" -NoNewline -ForegroundColor white;\`"% \`";Write-Host \`" \`" -NoNewline -ForegroundColor white};cls'"
-	$zenmode = $powershell_location + "\PowerShell.exe -NoLogo -NoExit -Command " + $zen_cmd + " -new_console:t:zen -new_console:W:'" + $console + "\console_zen.png' -new_console:C:" + $icons + "\zen.ico"
-	Invoke-Expression $zenmode
+    $zen_cmd = "'function prompt {Write-Host \`"\`" -NoNewline -ForegroundColor white;\`"% \`";Write-Host \`" \`" -NoNewline -ForegroundColor white};cls'"
+    $zenmode = $powershell_location + "\PowerShell.exe -NoLogo -NoExit -Command " + $zen_cmd + " -new_console:t:zen -new_console:W:'" + $console + "\console_zen.png' -new_console:C:" + $icons + "\zen.ico"
+    Invoke-Expression $zenmode
 }
 
 function weather{  # weather <city> <country>
-	Param([Parameter(Mandatory=$false)] [String]$city = $position.city, [Parameter(Mandatory=$false)] [String]$country = $position.country) # default-city
-	Write-Host ""
-	Get-Weather -City $city -Country $country
-	Write-Host ""
+    Param([Parameter(Mandatory=$false)] [String]$city = $position.city, [Parameter(Mandatory=$false)] [String]$country = $position.country) # default-city
+    Write-Host ""
+    Get-Weather -City $city -Country $country
+    Write-Host ""
 }
 Set-Alias -Name wetter -Value weather -Description "Wetterbericht"
 
 function shell{
-	$newtab = $powershell_location + "\PowerShell.exe -NoLogo -NoExit -new_console:t:PowerShell -new_console:W:'" + $console + "\console.png' -new_console:C:" + $icons + "\cyberise.ico"
-	Invoke-Expression $newtab
+    $newtab = $powershell_location + "\PowerShell.exe -NoLogo -NoExit -new_console:t:PowerShell -new_console:W:'" + $console + "\console.png' -new_console:C:" + $icons + "\cyberise.ico"
+    Invoke-Expression $newtab
 }
 function adminshell{
-	$newtab = $powershell_location + "\PowerShell.exe -NoLogo -NoExit -new_console:t:PowerShell -new_console:W:'" + $console + "\console.png' -new_console:C:" + $icons + "\cyberise.ico"
-	Invoke-Expression $newtab
+    $newtab = $powershell_location + "\PowerShell.exe -NoLogo -NoExit -new_console:t:PowerShell -new_console:W:'" + $console + "\console.png' -new_console:C:" + $icons + "\cyberise.ico"
+    Invoke-Expression $newtab
 }
 Set-Alias -Name newtab -Value shell -Description "opens new tab"
 
@@ -115,28 +115,28 @@ function alias_config { notepad++ "$env:DOTFILES\scripts\powershell\limbs\locati
 Set-Alias -Name aliases -Value alias_config -Description "edit lokal Powershell-location-Aliases"
 
 function sysinfo {
-	Get-CimInstance -ClassName Win32_processor | ft -AutoSize Name,MaxClockSpeed,NumberOfCores
-	Get-CimInstance -ClassName Win32_Physicalmemory | ft -AutoSize Manufacturer,PartNumber,Configuredclockspeed,Capacity
-	Get-CimInstance -ClassName Win32_VideoController | ft -AutoSize Name,AdapterRAM,DriverVersion
-	Get-CimInstance -ClassName Win32_BaseBoard | ft -AutoSize Manufacturer,Product
-	Get-CimInstance -ClassName win32_bios | ft -AutoSize Manufacturer,Version,Name
-	Get-CimInstance -ClassName WIN32_DiskDrive -ComputerName $server
-	# Get-CimInstance -ClassName Win32_Networkadapter | ft -AutoSize DeviceID,Name,ServiceName
+    Get-CimInstance -ClassName Win32_processor | ft -AutoSize Name,MaxClockSpeed,NumberOfCores
+    Get-CimInstance -ClassName Win32_Physicalmemory | ft -AutoSize Manufacturer,PartNumber,Configuredclockspeed,Capacity
+    Get-CimInstance -ClassName Win32_VideoController | ft -AutoSize Name,AdapterRAM,DriverVersion
+    Get-CimInstance -ClassName Win32_BaseBoard | ft -AutoSize Manufacturer,Product
+    Get-CimInstance -ClassName win32_bios | ft -AutoSize Manufacturer,Version,Name
+    Get-CimInstance -ClassName WIN32_DiskDrive -ComputerName $server
+    # Get-CimInstance -ClassName Win32_Networkadapter | ft -AutoSize DeviceID,Name,ServiceName
 }
 
 function venv { . .\utils\activate.ps1 }  # TODO: get a more sophisticated location of the next matching activate.ps1
 
 function ver {
-	$name = (Get-CimInstance -ClassName Win32_OperatingSystem).caption
-	$bit = (Get-CimInstance -ClassName Win32_OperatingSystem).OSArchitecture
-	$ver = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ReleaseId
-	$build = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").BuildLabEx
-	Write-Host $name, $bit, " Version:", $ver, "- Build:", $build
+    $name = (Get-CimInstance -ClassName Win32_OperatingSystem).caption
+    $bit = (Get-CimInstance -ClassName Win32_OperatingSystem).OSArchitecture
+    $ver = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ReleaseId
+    $build = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").BuildLabEx
+    Write-Host $name, $bit, " Version:", $ver, "- Build:", $build
 }
 
 function lan {
-	$networks = Get-CimInstance -ClassName win32_networkadapter | select netconnectionid, name, InterfaceIndex, netconnectionstatus
-	Write-Host $networks
+    $networks = Get-CimInstance -ClassName win32_networkadapter | select netconnectionid, name, InterfaceIndex, netconnectionstatus
+    Write-Host $networks
 }
 
 # link <destination> <target>               create a junction
@@ -162,29 +162,52 @@ Set-Alias speed speedtest
 function poetry_add_requirements { foreach($requirement in (Get-Content "$pwd\requirements.txt")) {Invoke-Expression "poetry add $requirement"} }
 
 function CreateAssociation {
-	Param(
-		[parameter(Mandatory=$true, HelpMessage="File extension name")] [String[]] $extension,
-	 	[parameter(Mandatory=$true, HelpMessage="Path to executable")] [String[]] $pathToExecutable)
-	
-	# create the filetype
+    Param(
+        [parameter(Mandatory=$true, HelpMessage="File extension name")] [String[]] $extension,
+         [parameter(Mandatory=$true, HelpMessage="Path to executable")] [String[]] $pathToExecutable)
+    
+    # create the filetype
     $filetype = cmd /c "assoc $extension 2>NUL"
 
-	if ($filetype) { # Association already exists: override it
+    if ($filetype) { # Association already exists: override it
         $filetype = $filetype.Split('=')[1]
-		Write-Output "Overwriting filetype $filetype ($extension)"
+        Write-Output "Overwriting filetype $filetype ($extension)"
     } else { # Name doesn't exist: create it
         $filetype = "$($extension.Replace('.',''))file" # ".log.1" becomes "log1file"
-		Write-Output "Creating filetype $filetype ($extension)"
+        Write-Output "Creating filetype $filetype ($extension)"
         cmd /c 'assoc $extension=$filetype'
     }
     Write-Output "Associating filetype $filetype ($extension) with $pathToExecutable.."
-	cmd /c "ftype $filetype=`"$pathToExecutable`" `"%1`""
+    cmd /c "ftype $filetype=`"$pathToExecutable`" `"%1`""
 }
 
 function venvName {
-	python $env:DOTFILES\scripts\python\get_venv_name.py
+    python $env:DOTFILES\scripts\python\get_venv_name.py
 }
 
 function venvColor($color) {
-	python $env:DOTFILES\scripts\python\change_venv_color.py $color
+    python $env:DOTFILES\scripts\python\change_venv_color.py $color
+}
+
+function restic-local {
+    $is_admin = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
+    if (-not $is_admin) {
+        Write-Warning "Please run backups as root"
+    }
+    else {
+        $REPOSITORY = "G:\backups"
+        restic -r $REPOSITORY -p $env:HOME/.secrets/backups $args
+    }
+}
+
+function backup() {
+    param (
+        [string]$path = "" 
+    )
+    if ( $(Try { Test-Path -Path $path } Catch { $false }) ) {
+        restic-local backup $args
+    }
+    else {
+        Write-Warning "Please provide a valid path to backup"
+    }
 }
