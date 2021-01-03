@@ -172,6 +172,7 @@ function UpdateRepositories {
     Set-Location -Path $current_path
     Write-Host "Repository update finished :-)"
     Write-Host ""
+    LogUpdate -Message "Repository Update"
 }
 
 
@@ -179,7 +180,7 @@ function LogUpdate {
     param([Parameter(Mandatory=$True)][string]$message = $(throw "Parameter -Message is required."))
     $update_log_path = (Join-Path -Path $env:DOTFILES -ChildPath "local\logs\$env:computername\updates.log")
     if (Test-Path -Path $update_log_path -PathType Leaf) {
-        Write-Output (-join('{"message": "', $($update_message), '", "timestamp": "', $(Get-TimeStamp), '"},')) | Out-file $update_log_path -append
+        Write-Output (-join('{"message": "', $($message), '", "timestamp": "', $(Get-TimeStamp), '"},')) | Out-file $update_log_path -append
     }
     else {
         Write-Host "ERROR: Logfile not found"
