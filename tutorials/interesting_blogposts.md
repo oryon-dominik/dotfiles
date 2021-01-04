@@ -76,6 +76,11 @@ Samy Kamkar
 2020-10-31  
 https://samy.pl/slipstream/  
 
+Unauthd - Logic bugs FTW
+Ilias Morad  
+2020-07-31  
+https://a2nkf.github.io/unauthd_Logic_bugs_FTW/  
+
 
 ## General
 
