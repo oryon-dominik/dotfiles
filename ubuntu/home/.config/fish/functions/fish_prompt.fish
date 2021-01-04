@@ -33,7 +33,7 @@ function fish_prompt
     set_color white
     echo -n (date +"%T")
     set_color $bracket_color
-    echo -n "] "
+    echo -n "]"
     echo -n (fish_git_prompt)
     echo ""
 
