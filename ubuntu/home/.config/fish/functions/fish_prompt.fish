@@ -31,11 +31,11 @@ function fish_prompt
     set_color $bracket_color
     echo -n "]"
     echo -n (fish_git_prompt)
-    echo ""
 
     if set -q VIRTUAL_ENV
         echo -n -s (set_color $bracket_color) "[" (set_color -b blue white) (basename "$VIRTUAL_ENV") (set_color $bracket_color) "]" (set_color normal)
     end
+    echo ""
 
     set_color $bracket_color
     echo -n "└["
