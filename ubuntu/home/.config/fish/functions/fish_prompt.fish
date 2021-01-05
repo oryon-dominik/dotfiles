@@ -1,8 +1,4 @@
 function fish_prompt
-    if set -q VIRTUAL_ENV
-        echo -n -s (set_color -b blue white) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " "
-    end
-
     if test -z (sudo -nv 2>&1)
         set bracket_color purple
         set reversed_bracket_color blue
@@ -36,6 +32,10 @@ function fish_prompt
     echo -n "]"
     echo -n (fish_git_prompt)
     echo ""
+
+    if set -q VIRTUAL_ENV
+        echo -n -s (set_color $bracket_color) "[" (set_color -b blue white) (basename "$VIRTUAL_ENV") (set_color $bracket_color) "]" (set_color normal)
+    end
 
     set_color $bracket_color
     echo -n "└["

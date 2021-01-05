@@ -64,6 +64,15 @@ function Prompt
     Write-Host "]" -NoNewline -ForegroundColor $brackets
 
     Write-VcsStatus  # posh-git status, alternative: #& $GitPromptScriptBlock
+
+    # $VIRTUAL_ENV_DISABLE_PROMPT should be set to $true to avoid doublettes
+    if (Test-Path env:VIRTUAL_ENV) {
+        Write-Host " [" -NoNewline -ForegroundColor $brackets
+        $venv_name = $env:VIRTUAL_ENV.Split("\")[-1]
+        Write-Host $venv_name -NoNewline -ForegroundColor white
+        Write-Host "]" -NoNewline -ForegroundColor $brackets
+    }
+
     Write-Host ""
 
     Write-Host "└[" -NoNewline -ForegroundColor $brackets
