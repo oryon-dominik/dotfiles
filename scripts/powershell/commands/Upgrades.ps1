@@ -19,6 +19,7 @@ function upgrade {
         Write-Host "    python              Update pyenv, poetry and pip"
         Write-Host "    python-packages     Updates all python packages of the active repositories"
         Write-Host "    powershell          Update powershell"
+        Write-Host "    log                 Just Update the log"
         Write-Host ""
         return
     }
@@ -29,18 +30,20 @@ function upgrade {
     if ($argument -eq "powershell") { PowershellUpdate; return }
     if ($argument -eq "python-packages") { PythonPackagesUpdate; return }
     if ($argument -eq "choco") { UpgradeChocolatey; return }
+    if ($argument -eq "log") { JustUpgradeLogMessage; return }
     Write-Host "(upgrade) invalid argument: 'upgrade $argument' not found"
 }
 
 function UpgradeAll {
     $update_message = "Full System Upgrade"
     Write-Host "Starting $update_message..."
-    LogUpdate -Message "$update_message"
 
     PythonUpdate
     UpdateRepositories
     UpgradeChocolatey
     WindowsUpdate
+
+    LogUpdate -Message "$update_message"
 
     Write-Host ""
     Write-Host "Updates finished"
@@ -109,7 +112,13 @@ function PythonUpdate {
 function PowershellUpdate {
     Write-Host "Updating powershell.."
     iex "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI -Preview"
+    LogUpdate -Message "Powershell Update"
     Write-Host ""
+}
+
+function JustUpgradeLogMessage {
+    Write-Host "Updating the logfile.."
+    LogUpdate -Message "Updated this logfile to surpress the notification"
 }
 
 function WindowsUpdate {
@@ -135,6 +144,7 @@ function WindowsUpdate {
 function PythonPackagesUpdate {
     Write-Host "Updating python-packages.."
     pip install --upgrade ((pip list -o | Select-Object -Skip 2) | Foreach-Object {$_.Split()[0]}) --no-warn-script-location
+    LogUpdate -Message "Python packages Update"
     Write-Host ""
 }
 
