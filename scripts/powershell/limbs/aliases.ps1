@@ -1,6 +1,6 @@
 ﻿# required: set variables to your configs locations
-# 			($env:DOTFILES, $console, $icons, $powershell_location, $shortcuts, $position)
-# required: the dircetory .$settings.local_location/logs/ must be available | TODO: implement check on install script and create first logfiles manually..
+#             ($env:DOTFILES, $console, $icons, $powershell_location, $shortcuts, $position)
+# required: the directory .$settings.local_location/logs/ must be available | TODO: implement check on install script and create first logfiles manually..
 
 # load functions
 . $PSScriptRoot\functions.ps1
@@ -9,6 +9,9 @@
 . $PSScriptRoot\projects.ps1
 # load machine
 . $PSScriptRoot\..\machines\load_machine.ps1
+
+Set-Alias -Name ll -Value Get-ChildItem -Description "linux ll like"
+Set-Alias -Name la -Value Get-ChildItem -Force -Description "linux ll like"
 
 Set-Alias -Name draw -Value Write-Pixel -Description "Draws pictures in pixel into shell"
 
@@ -31,7 +34,6 @@ function md5($filepath) {Get-FileHash $filepath -Algorithm MD5}
 # docker-compose
 Set-Alias -Name dc -Value docker-compose -Description "Docker-Compose"
 
-
 # development
 function webserver { python "-m http.server 80" }
 
@@ -46,9 +48,7 @@ Set-Alias -Name timer -Value (Join-Path -Path $script_location -ChildPath "\pyth
 
 # programs
 function jup {jupyter notebook}
-
 function netflix { Start-Process -FilePath "$shortcuts\netflix.lnk" }
-
 function pocketcast { Start-Process -FilePath "$shortcuts\Pocket Casts.lnk" }
 Set-Alias -Name steam -Value "D:\Steam\Steam.exe" -Description "start gameclient steam"
 
