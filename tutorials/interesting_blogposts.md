@@ -82,6 +82,14 @@ Ilias Morad
 https://a2nkf.github.io/unauthd_Logic_bugs_FTW/  
 
 
+## Frontend
+
+The Ultimate Guide to handling JWTs on frontend clients (GraphQL)  
+Vladimir Novick & Tanmai Gopal  
+2019-09-09  
+https://hasura.io/blog/best-practices-of-using-jwt-with-graphql/  
+
+
 ## General
 
 Regular Expression Matching Can Be Simple And Fast  
