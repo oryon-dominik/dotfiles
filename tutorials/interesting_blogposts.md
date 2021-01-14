@@ -90,6 +90,14 @@ Vladimir Novick & Tanmai Gopal
 https://hasura.io/blog/best-practices-of-using-jwt-with-graphql/  
 
 
+## Infrastructure
+
+Building a Kubernetes cluster on Google Cloud with Rancher and Terraform  
+Christian Frank  
+2021-01-13  
+https://medium.com/@chfrank_cgn/updated-building-a-kubernetes-cluster-on-google-cloud-with-rancher-and-terraform-4ac57d5eb303  
+
+
 ## General
 
 Regular Expression Matching Can Be Simple And Fast  
