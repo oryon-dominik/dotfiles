@@ -36,6 +36,7 @@ sudo sed -i -e 's/ENABLED=1/ENABLED=0/g' /etc/default/motd-news
 mkdir -p ~/.config && mkdir -p ~/.config/fish && mkdir -p ~/.config/fish/functions
 
 ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/config.fish ~/.config/fish/config.fish
+ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/aliases.fish ~/.config/fish/aliases.fish
 ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/functions/fish_prompt.fish ~/.config/fish/functions/fish_prompt.fish
 ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/functions/wsl_config.fish ~/.config/fish/functions/wsl_config.fish
 ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/functions/last_command_as_sudo.fish ~/.config/fish/functions/last_command_as_sudo.fish
