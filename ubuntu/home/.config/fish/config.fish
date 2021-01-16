@@ -17,6 +17,10 @@ end
 
 set -U EDITOR vi
 
+# setup aliases
+if test -e ~/.config/fish/aliases.fish
+    . ~/.config/fish/aliases.fish
+end
 
 
 # pipx completions
