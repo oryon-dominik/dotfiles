@@ -1,4 +1,4 @@
-#!/usr/bin/fish
+#!/usr/bin/env fish
 # custom fish-config-file
 function fish_greeting
     echo ''
