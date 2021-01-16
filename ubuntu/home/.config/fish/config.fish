@@ -1,3 +1,4 @@
+#!/usr/bin/fish
 # custom fish-config-file
 function fish_greeting
     echo ''
@@ -16,9 +17,7 @@ end
 
 set -U EDITOR vi
 
-# windows-alises - i'm too used to them ;-]
-alias cls="clear"
-alias cd..="cd .."
+
 
 # pipx completions
 register-python-argcomplete --shell fish pipx | source
