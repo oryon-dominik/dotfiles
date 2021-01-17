@@ -105,7 +105,10 @@ Set-Alias -Name newtab -Value shell -Description "opens new tab"
 # are you admin [BOOL] ?
 function isadmin {[bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")}
 
-function cfg { set-location $env:DOTFILES }  # config (DEN) folder
+function cfg { 
+    set-location $env:DOTFILES  # config (DEN) folder
+    deactivate  # deactivate any active env, to work on "pure" system-python
+}
 
 # edit powershell_profile in notepad
 function powershell_config { notepad++ "$env:DOTFILES\scripts\powershell\Microsoft.PowerShell_profile.ps1" }
