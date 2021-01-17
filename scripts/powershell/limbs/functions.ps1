@@ -166,6 +166,10 @@ Set-Alias speed speedtest
 # python-poetry add requirements.txt
 function poetry_add_requirements { foreach($requirement in (Get-Content "$pwd\requirements.txt")) {Invoke-Expression "poetry add $requirement"} }
 
+function ansible {
+    Write-Host "ERROR: Ansible does not support windows. To use ansible, switch to WSL"
+}
+
 function CreateAssociation {
     Param(
         [parameter(Mandatory=$true, HelpMessage="File extension name")] [String[]] $extension,
