@@ -107,7 +107,7 @@ function isadmin {[bool](([System.Security.Principal.WindowsIdentity]::GetCurren
 
 function cfg { 
     set-location $env:DOTFILES  # config (DEN) folder
-    if (Get-Command deactivate -errorAction SilentlyContinue) {
+    if (Get-Command 'deactivate' -errorAction Ignore) {
         deactivate
     }  # deactivate any active env, to work on "pure" system-python
 }
