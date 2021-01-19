@@ -123,16 +123,27 @@ function JustUpgradeLogMessage {
 
 function WindowsUpdate {
     Write-Host "Installing Windows Updates.."
-    $updates = Start-WUScan
+    if (!$is_admin) { 
+        Write-Host "Running windows upgrades without admin-rights is not possbile"
+        return
+    }
+    if (-not (Get-Module -Name "PSWindowsUpdate")) {
+        Write-Host "Module PSWindowsUpdate is not installed."
+        $confirmation = Read-Host "Do you want to install the module? [y/n]"
+        if ($confirmation -eq 'y') {
+            Install-Module -Name PSWindowsUpdate
+        }
+        else {
+            Write-Host "No Windows Update possible. Exiting .."
+            return
+        }
+    }
+    Import-Module PSWindowsUpdate
+    $updates = Get-WUInstall
     if($updates.count -gt 0) {
         Write-Host "Updating .."
         LogUpdate -Message "Windows Update"
-        foreach($update in $updates)
-        {
-            Write-Host $update.title
-            Write-Host -NoNewLine "Success:"
-            Install-WUUpdates -Updates $update
-        }
+        Get-WindowsUpdate -Install -AcceptAll
         Write-Host "Windows Updates finished.."
     }
     else {
