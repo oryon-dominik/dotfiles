@@ -108,7 +108,10 @@ function isadmin {[bool](([System.Security.Principal.WindowsIdentity]::GetCurren
 function cfg { 
     set-location $env:DOTFILES  # config (DEN) folder
     if (Get-Command 'deactivate' -errorAction Ignore) {
-        deactivate
+        Try {
+            deactivate | out-null
+        }
+        Catch {}
     }  # deactivate any active env, to work on "pure" system-python
 }
 
@@ -147,7 +150,7 @@ function lan {
 # link <destination> <target>               create a junction
 function link($destination,$target){New-Item -Path $destination -ItemType Junction -Value $target}
 
-function ip { (Invoke-WebRequest -uri "http://ident.me").Content }
+function ip { (Invoke-WebRequest -uri "http://ipinfo.io/json").Content }  # or: http://ident.me
 
 function envs {gci env:* | sort-object name }  # -Description "displays all environment variables"
 Set-Alias listenvs envs
