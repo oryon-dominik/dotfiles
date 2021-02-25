@@ -89,6 +89,16 @@ Vladimir Novick & Tanmai Gopal
 2019-09-09  
 https://hasura.io/blog/best-practices-of-using-jwt-with-graphql/  
 
+Composition API in Vue.js 1/2 (german)
+Antony Konstantinidis
+2020-11-17
+https://vuejs.de/artikel/composition-api-teil-1/
+
+Composition API in Vue.js part 2/2 (german)
+Antony Konstantinidis
+2020-12-18
+https://vuejs.de/artikel/composition-api-teil-2/
+
 
 ## Infrastructure
 
@@ -96,6 +106,29 @@ Building a Kubernetes cluster on Google Cloud with Rancher and Terraform
 Christian Frank  
 2021-01-13  
 https://medium.com/@chfrank_cgn/updated-building-a-kubernetes-cluster-on-google-cloud-with-rancher-and-terraform-4ac57d5eb303  
+
+
+## MQTT & Raspberry
+
+ESP32, RFID und MQTT (german)
+Simon Schliesky
+2020-06-24
+https://plantprogrammer.de/esp32-rfid-and-mqtt/
+
+MQTT auf dem Raspberry Pi - Mosquitto Part I (german)
+Simon Schliesky
+2021-01-05
+https://plantprogrammer.de/mqtt-auf-dem-raspberry-pi-mosquitto/
+
+MQTT-Kommunikation, aber sicher: TLS und Berechtigungen - Mosquitto Part II (german)
+Simon Schliesky
+2021-01-17
+https://plantprogrammer.de/mqtt-auf-dem-raspberry-pi-mosquitto-part-ii/
+
+Es Werde Licht mit McLighting - MQTT Part III (german)
+Simon Schliesky
+2021-02-12
+https://plantprogrammer.de/mqtt-auf-dem-raspberry-pi-mosquitto-part-iii/
 
 
 ## General
