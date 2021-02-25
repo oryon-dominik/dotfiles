@@ -1,4 +1,13 @@
-# Interesting Blogposts
+# Interesting Blogposts & Talks
+
+1. [Django](#django)
+2. [Numpy & Rust](#numpy-&-rust)
+3. [Python](#python)
+4. [Security](#security)
+5. [Frontend](#frontend)
+6. [Infrastructure](#infrastructure)
+7. [MQTT & Raspberry](#mqtt-&-raspberry)
+8. [General](#general)
 
 
 ## Django
@@ -31,6 +40,11 @@ Thin Views (Custom Querysets)
 Luke Plant  
 2020  
 https://spookylukey.github.io/django-views-the-right-way/thin-views.html  
+
+Assets in Django without losing your hair (Pycon talk - video)  
+Jacob Kaplan-Moss  
+2020-05-06  
+https://www.youtube.com/watch?v=E613X3RBegI&list=PLqD-1O-TBkB9nG4h8p8bJGQRFUq9dr-O0&t=10s  
 
 
 ## Numpy & Rust
@@ -68,6 +82,21 @@ Ryan Abrams
 2020-12  
 https://lambdascheme.com/blocks.html  
 
+Die Threads (Europython talk / video)  
+David Beazley  
+2018-07-25  
+https://www.youtube.com/watch?v=xOyJiN3yGfU  
+
+
+Python Pandas For Your Granpa (Tutorial series / video)  
+Ben Gorman  
+2021-02-13  
+https://www.youtube.com/playlist?list=PL9oKUrtC4VP7ry0um1QOUUfJBXKnkf-dA  
+
+Python Numpy For Your Granma (Tutorial series / video)
+Ben Gorman  
+2021-02-13  
+https://www.youtube.com/playlist?list=PL9oKUrtC4VP6gDp1Vq3BzfViO0TWgR0vR  
 
 ## Security
 
@@ -89,15 +118,15 @@ Vladimir Novick & Tanmai Gopal
 2019-09-09  
 https://hasura.io/blog/best-practices-of-using-jwt-with-graphql/  
 
-Composition API in Vue.js 1/2 (german)
-Antony Konstantinidis
-2020-11-17
-https://vuejs.de/artikel/composition-api-teil-1/
+Composition API in Vue.js 1/2 (german)  
+Antony Konstantinidis  
+2020-11-17  
+https://vuejs.de/artikel/composition-api-teil-1/  
 
-Composition API in Vue.js part 2/2 (german)
-Antony Konstantinidis
-2020-12-18
-https://vuejs.de/artikel/composition-api-teil-2/
+Composition API in Vue.js part 2/2 (german)  
+Antony Konstantinidis  
+2020-12-18  
+https://vuejs.de/artikel/composition-api-teil-2/  
 
 
 ## Infrastructure
@@ -110,25 +139,25 @@ https://medium.com/@chfrank_cgn/updated-building-a-kubernetes-cluster-on-google-
 
 ## MQTT & Raspberry
 
-ESP32, RFID und MQTT (german)
-Simon Schliesky
-2020-06-24
-https://plantprogrammer.de/esp32-rfid-and-mqtt/
+ESP32, RFID und MQTT (german)  
+Simon Schliesky  
+2020-06-24  
+https://plantprogrammer.de/esp32-rfid-and-mqtt/  
 
-MQTT auf dem Raspberry Pi - Mosquitto Part I (german)
-Simon Schliesky
-2021-01-05
-https://plantprogrammer.de/mqtt-auf-dem-raspberry-pi-mosquitto/
+MQTT auf dem Raspberry Pi - Mosquitto Part I (german)  
+Simon Schliesky  
+2021-01-05  
+https://plantprogrammer.de/mqtt-auf-dem-raspberry-pi-mosquitto/  
 
-MQTT-Kommunikation, aber sicher: TLS und Berechtigungen - Mosquitto Part II (german)
-Simon Schliesky
-2021-01-17
-https://plantprogrammer.de/mqtt-auf-dem-raspberry-pi-mosquitto-part-ii/
+MQTT-Kommunikation, aber sicher: TLS und Berechtigungen - Mosquitto Part II (german)  
+Simon Schliesky  
+2021-01-17  
+https://plantprogrammer.de/mqtt-auf-dem-raspberry-pi-mosquitto-part-ii/  
 
-Es Werde Licht mit McLighting - MQTT Part III (german)
-Simon Schliesky
-2021-02-12
-https://plantprogrammer.de/mqtt-auf-dem-raspberry-pi-mosquitto-part-iii/
+Es Werde Licht mit McLighting - MQTT Part III (german)  
+Simon Schliesky  
+2021-02-12  
+https://plantprogrammer.de/mqtt-auf-dem-raspberry-pi-mosquitto-part-iii/  
 
 
 ## General
