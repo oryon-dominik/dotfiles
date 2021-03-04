@@ -98,6 +98,7 @@ Ben Gorman
 2021-02-13  
 https://www.youtube.com/playlist?list=PL9oKUrtC4VP6gDp1Vq3BzfViO0TWgR0vR  
 
+
 ## Security
 
 NAT Slipstreaming, take control over javascript  
