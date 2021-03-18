@@ -67,7 +67,14 @@ function init {docker-compose run --rm django python manage.py initialize; docke
 
 # custom-dotfiles-scripts
 Set-Alias -Name clitube -Value (Join-Path -Path $script_location -ChildPath "\python\cliTube.py") -Description "Plays Youtube Search-Results"  # needs cliTube.py in $script_location
-Set-Alias -Name timer -Value (Join-Path -Path $script_location -ChildPath "\python\timer.py") -Description "Starts a timer"  # needs timer.py in $script_location
+function clock { # "Starts a timer"  # needs timer.py in $script_location
+    $timer_script_path = (Join-Path -Path $script_location -ChildPath "\python\timer.py")
+    if (-Not (Test-Path -Path $timer_script_path -PathType Leaf)) {
+        Write-Host "aborting: clock/timer script $timer_script_path not found"
+        return
+    }
+    python $timer_script $args
+}
 
 # loading local aliases last, to overwrite existing ones
 # load locations
