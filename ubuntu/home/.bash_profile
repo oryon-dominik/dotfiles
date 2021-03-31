@@ -3,6 +3,7 @@
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/projects
 export PYTHON_PATH=$(realpath $(which python))
+export VIRTUAL_ENV_DISABLE_PROMPT=true
 
 if grep --quiet microsoft /proc/version; then
     #--WSL----

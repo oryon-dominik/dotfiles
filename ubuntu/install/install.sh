@@ -142,5 +142,7 @@ eval (python -m virtualfish)
 vf install
 vf addplugins compat_aliases
 
+set -U VIRTUAL_ENV_DISABLE_PROMPT true
+
 # change the shell to fish
 sudo chsh --shell /bin/fish "$USER"
