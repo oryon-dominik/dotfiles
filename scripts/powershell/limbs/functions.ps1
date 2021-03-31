@@ -105,7 +105,15 @@ Set-Alias -Name newtab -Value shell -Description "opens new tab"
 # are you admin [BOOL] ?
 function isadmin {[bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")}
 
-function cfg { set-location $env:DOTFILES }  # config (DEN) folder
+function cfg { 
+    set-location $env:DOTFILES  # config (DEN) folder
+    if (Get-Command 'deactivate' -errorAction Ignore) {
+        Try {
+            deactivate | out-null
+        }
+        Catch {}
+    }  # deactivate any active env, to work on "pure" system-python
+}
 
 # edit powershell_profile in notepad
 function powershell_config { notepad++ "$env:DOTFILES\scripts\powershell\Microsoft.PowerShell_profile.ps1" }
@@ -142,7 +150,7 @@ function lan {
 # link <destination> <target>               create a junction
 function link($destination,$target){New-Item -Path $destination -ItemType Junction -Value $target}
 
-function ip { (Invoke-WebRequest -uri "http://ident.me").Content }
+function ip { (Invoke-WebRequest -uri "http://ipinfo.io/json").Content }  # or: http://ident.me
 
 function envs {gci env:* | sort-object name }  # -Description "displays all environment variables"
 Set-Alias listenvs envs
@@ -160,6 +168,10 @@ Set-Alias speed speedtest
 
 # python-poetry add requirements.txt
 function poetry_add_requirements { foreach($requirement in (Get-Content "$pwd\requirements.txt")) {Invoke-Expression "poetry add $requirement"} }
+
+function ansible {
+    Write-Host "ERROR: Ansible does not support windows. To use ansible, switch to WSL"
+}
 
 function CreateAssociation {
     Param(
