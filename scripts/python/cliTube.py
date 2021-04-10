@@ -5,31 +5,69 @@
 '''
 cliTube plays Internet-Music from CLI on Windows with preinstalled VLC
 It builds Tube-URLS from artist & title arguments
+
+requires a GOOGLE_API_KEY set as dotenv or environment variable
+
+required modules:
+    python -m pip install google-api-python-client numpy
+
+to build as exe:
+    python -m pip install pyinstaller
+    pyinstaller.exe --onefile cliTube.py --distpath . --clean
+    # have to clean up the mess manually..
+    rm clitube.spec; rm build
 '''
 
 
-__version__ = '0.1.4' # refactored
+__version__ = '0.1.5' # api-fix
 __author__ = 'oryon/dominik'
 __date__ = 'November 28, 2018'
-__updated__ = 'Dezember 10, 2020'
+__updated__ = 'April 10, 2021'
 
 
-import numpy as np
 import subprocess
 import os
 
 from argparse import ArgumentParser, RawTextHelpFormatter
 from pathlib import Path
 
-from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
+try:
+    from dotenv import load_dotenv
+    import numpy as np
+    from googleapiclient.discovery import build
+    from googleapiclient.errors import HttpError
+    
+except ImportError as error:
+    raise SystemExit(f"Import failed. {error}. 'python -m pip install google-api-python-client numpy python-dotenv'.")
 
 YOUTUBE_API_SERVICE_NAME = 'youtube'
 YOUTUBE_API_VERSION = 'v3'
 
 
-def get_key():
-    return os.environ.get('DEVELOPER_KEY') # TODO: get from .env or env
+def get_key(custom_dotenv_path=None):
+    """precedence: 1. os 2. .env"""
+    # get the key from os
+    developer_key = os.environ.get('GOOGLE_API_KEY')
+    if developer_key is not None:
+        return developer_key
+
+    # get it from dotfiles instead
+    dotfiles_path = os.environ.get('DOTFILES')
+    if dotfiles_path is None:
+        raise SystemExit('Did neither find environment variables DOTFILES nor GOOGLE_API_KEY. Setup failed.')
+
+    # read .env
+    if custom_dotenv_path is not None:
+        envs = Path(custom_dotenv_path)
+    else:
+        envs = Path(dotfiles_path) / "local" / ".env"
+    if not envs.exists():
+        raise SystemExit('.env not found')
+    load_dotenv(envs)
+    developer_key = os.environ.get('GOOGLE_API_KEY')
+    if developer_key is None:
+        raise SystemExit('Did not find GOOGLE_API_KEY in .env')
+    return developer_key
 
 def stringify(args):
     return ' '.join(args.search)
@@ -87,8 +125,6 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     DEVELOPER_KEY = get_key()
-    if not DEVELOPER_KEY:
-        raise SystemExit('Did not find environment variable DEVELOPER_KEY')
 
     if not args.search:
         parser.print_help()
