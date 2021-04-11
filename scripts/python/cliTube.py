@@ -36,12 +36,9 @@ try:
     import numpy as np
     from googleapiclient.discovery import build
     from googleapiclient.errors import HttpError
-    
+
 except ImportError as error:
     raise SystemExit(f"Import failed. {error}. 'python -m pip install google-api-python-client numpy python-dotenv'.")
-
-YOUTUBE_API_SERVICE_NAME = 'youtube'
-YOUTUBE_API_VERSION = 'v3'
 
 
 def get_key(custom_dotenv_path=None):
@@ -74,20 +71,29 @@ def stringify(args):
 
 def get_search_results_from_youtube(search):
     """ returns actual data of results from SearchString """
+    YOUTUBE_API_SERVICE_NAME = 'youtube'
+    YOUTUBE_API_VERSION = 'v3'
 
-    youtube = build(
-        YOUTUBE_API_SERVICE_NAME,
-        YOUTUBE_API_VERSION,
-        developerKey=DEVELOPER_KEY
-    )
+    try:
+        youtube = build(
+            YOUTUBE_API_SERVICE_NAME,
+            YOUTUBE_API_VERSION,
+            developerKey=DEVELOPER_KEY
+        )
+    except Exception as error:
+        raise SystemExit(f'{error}\nYoutube API-setup failed.')
 
-    search_response = youtube.search().list(
+    search_request = youtube.search().list(
         q=search,
         part='id,snippet',
         maxResults=10
-    ).execute()
+    )
+    try:
+        response = search_request.execute()
+    except HttpError as error:
+        raise SystemExit(f'{error}\nConnection failed.')
 
-    return search_response
+    return response
 
 def choose(results, choice=""):
     """ chooses the video randomly """
