@@ -19,7 +19,7 @@ to build as exe:
 '''
 
 
-__version__ = '0.1.5' # api-fix
+__version__ = '0.3'  # api-fixes, better error-handling
 __author__ = 'oryon/dominik'
 __date__ = 'November 28, 2018'
 __updated__ = 'April 10, 2021'
@@ -41,7 +41,10 @@ except ImportError as error:
     raise SystemExit(f"Import failed. {error}. 'python -m pip install google-api-python-client numpy python-dotenv'.")
 
 
-def get_key(custom_dotenv_path=None):
+CUSTOM_DOTENV_PATH = None  # modify this (pathlib-style), if you want to use your own dotenvs-location
+
+
+def get_google_api_key(custom_dotenv_path=None):
     """precedence: 1. os 2. .env"""
     # get the key from os
     developer_key = os.environ.get('GOOGLE_API_KEY')
@@ -66,19 +69,18 @@ def get_key(custom_dotenv_path=None):
         raise SystemExit('Did not find GOOGLE_API_KEY in .env')
     return developer_key
 
+
 def stringify(args):
     return ' '.join(args.search)
 
-def get_search_results_from_youtube(search):
-    """ returns actual data of results from SearchString """
-    YOUTUBE_API_SERVICE_NAME = 'youtube'
-    YOUTUBE_API_VERSION = 'v3'
 
+def get_search_results_from_youtube(search, api_key, youtube_api_service_name="youtube", youtube_api_version="v3"):
+    """ returns actual data of results from SearchString """
     try:
         youtube = build(
-            YOUTUBE_API_SERVICE_NAME,
-            YOUTUBE_API_VERSION,
-            developerKey=DEVELOPER_KEY
+            youtube_api_service_name,
+            youtube_api_version,
+            developerKey=api_key,
         )
     except Exception as error:
         raise SystemExit(f'{error}\nYoutube API-setup failed.')
@@ -95,34 +97,54 @@ def get_search_results_from_youtube(search):
 
     return response
 
-def choose(results, choice=""):
+
+def choose(results):
     """ chooses the video randomly """
     probabilities = [.3, .25, .2, .1, .05, .025, .025, .025, .0125, .0125]
-    hits = {f"{match.get('id', {}).get('videoId')}" : match.get('snippet', {}).get('title') for match in results.get('items', [])}
-    if not hits:
-        print('No items found in search result')
-        return choice
-    videos = [f'https://www.youtube.com/watch?v={hit}' for hit in hits]
-    if videos:
+
+    try:
+        assert 'items' in results, 'No items found in search result'
+
+        matches = [
+            match for match in results['items']
+            if 'id' in match and 'snippet' in match and 'videoId' in match['id'] and 'title' in match['snippet']
+        ]
+        hits = {}
+        for match in matches:
+            ident = match['id']['videoId']
+            title = match['snippet']['title']
+            hits.update({
+                f'{ident}': title
+            })
+
+        # print(json.dumps(hits, indent=4))  # these are the Videos concerned
+        videos = [f'https://www.youtube.com/watch?v={hit}' for hit in hits]
+        assert videos, "No results for searchTerm"
+
         if len(videos) >= 10:
             choice = np.random.choice(videos, p=probabilities)
         else:
             choice = np.random.choice(videos)
-    else:
-        print('No results for searchTerm')
+    except AssertionError as e:
+        print(e)
+        choice = ''
+
     return choice
+
 
 def play(url):
     startupinfo = subprocess.STARTUPINFO()
     startupinfo.wShowWindow = 4  # this sends the window into the background on windows
-    subprocess.Popen(["vlc", f"{url}"], startupinfo=startupinfo)
+    subprocess.run(["vlc", f"{url}"], startupinfo=startupinfo)
 
 
+# handling the arguments
 parser = ArgumentParser(
     description=__doc__, prog='cliTube',
     epilog='Have fun tubing!',
     formatter_class=RawTextHelpFormatter,
     )
+
 parser.add_argument('--version', action='version', version=__version__)
 parser.add_argument('search', metavar='Searchterm', help='the searchstring (Artist & Title) you are looking for', nargs='*')
 
@@ -130,14 +152,14 @@ parser.add_argument('search', metavar='Searchterm', help='the searchstring (Arti
 if __name__ == '__main__':
     args = parser.parse_args()
 
-    DEVELOPER_KEY = get_key()
-
     if not args.search:
         parser.print_help()
+        raise SystemExit(f'')
 
-    else:  # play
-        search = stringify(args)
-        results = get_search_results_from_youtube(search)
-        match = choose(results)
-        if match:
-            play(match)
+    # play
+    api_key = get_google_api_key(custom_dotenv_path=CUSTOM_DOTENV_PATH)
+    search = stringify(args)
+    results = get_search_results_from_youtube(search, api_key)
+    match = choose(results)
+    if match:
+        play(match)
