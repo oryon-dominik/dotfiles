@@ -19,7 +19,7 @@ to build as exe:
 '''
 
 
-__version__ = '0.3'  # api-fixes, better error-handling
+__version__ = '0.4'  # updateable youtube.lua
 __author__ = 'oryon/dominik'
 __date__ = 'November 28, 2018'
 __updated__ = 'April 10, 2021'
@@ -32,13 +32,14 @@ from argparse import ArgumentParser, RawTextHelpFormatter
 from pathlib import Path
 
 try:
+    import httpx
     from dotenv import load_dotenv
     import numpy as np
     from googleapiclient.discovery import build
     from googleapiclient.errors import HttpError
 
 except ImportError as error:
-    raise SystemExit(f"Import failed. {error}. 'python -m pip install google-api-python-client numpy python-dotenv'.")
+    raise SystemExit(f"Import failed. {error}. 'python -m pip install google-api-python-client numpy httpx python-dotenv'.")
 
 
 CUSTOM_DOTENV_PATH = None  # modify this (pathlib-style), if you want to use your own dotenvs-location
@@ -117,25 +118,63 @@ def choose(results):
                 f'{ident}': title
             })
 
-        # print(json.dumps(hits, indent=4))  # these are the Videos concerned
+        # these are the Videos concerned:
+        # import json
+        # print(json.dumps(hits, indent=4))
+
         videos = [f'https://www.youtube.com/watch?v={hit}' for hit in hits]
         assert videos, "No results for searchTerm"
 
         if len(videos) >= 10:
-            choice = np.random.choice(videos, p=probabilities)
+            choice_url = np.random.choice(videos, p=probabilities)
         else:
-            choice = np.random.choice(videos)
+            choice_url = np.random.choice(videos)
     except AssertionError as e:
         print(e)
-        choice = ''
+        choice_url = ""
 
-    return choice
+    try:
+        hit = choice_url.split('watch?v=')[-1]
+    except IndexError:
+        hit = ""
+    name = hits.get(hit, '')
+    return choice_url, name
 
 
-def play(url):
+def play(url, name):
     startupinfo = subprocess.STARTUPINFO()
     startupinfo.wShowWindow = 4  # this sends the window into the background on windows
-    subprocess.run(["vlc", f"{url}"], startupinfo=startupinfo)
+    try:
+        subprocess.Popen(["vlc", f"{url}"], startupinfo=startupinfo)
+    except FileNotFoundError:
+        raise SystemExit(f"Could not find VLC on Path")
+    raise SystemExit(f"Playing {name}\n{url}")
+
+
+def update():
+    """update vlc youtube.lua from github"""
+    lua_url =  "https://raw.githubusercontent.com/videolan/vlc/master/share/lua/playlist/youtube.lua"
+    vlc_path = Path("C:\Program Files\VideoLAN\VLC")
+    playlist_path = vlc_path / "lua" / "playlist"
+    lua_path = playlist_path / "youtube.lua"
+
+    try:
+        response = httpx.get(lua_url)
+        response.raise_for_status()
+    except httpx.RequestError as exc:
+        raise SystemExit(f"An error occurred while requesting a new 'youtube.lua' from github.")
+    except httpx.HTTPStatusError as exc:
+        raise SystemExit(f"Error response {exc.response.status_code} while requesting a new 'youtube.lua' from github.")
+
+    if not vlc_path.exists():
+        raise SystemExit(f"Can't find VLC (expected to be in: {vlc_path.resolve()}).")
+
+    playlist_path.mkdir(parents=True, exist_ok=True)
+    try:
+        with open(lua_path, 'wb') as lua:
+            lua.write(response.content)
+    except OSError as exc:
+        raise SystemExit(f"An error occurred while writing to {lua_path.resolve()}: {exc}.")
 
 
 # handling the arguments
@@ -147,10 +186,15 @@ parser = ArgumentParser(
 
 parser.add_argument('--version', action='version', version=__version__)
 parser.add_argument('search', metavar='Searchterm', help='the searchstring (Artist & Title) you are looking for', nargs='*')
+parser.add_argument('--update', action="store_true", default=False)
 
 
 if __name__ == '__main__':
     args = parser.parse_args()
+
+    if args.update:
+        update()
+        raise SystemExit(f"Successfully updated 'youtube.lua'.")
 
     if not args.search:
         parser.print_help()
@@ -160,6 +204,6 @@ if __name__ == '__main__':
     api_key = get_google_api_key(custom_dotenv_path=CUSTOM_DOTENV_PATH)
     search = stringify(args)
     results = get_search_results_from_youtube(search, api_key)
-    match = choose(results)
-    if match:
-        play(match)
+    url, name = choose(results)
+    if url:
+        play(url, name)
