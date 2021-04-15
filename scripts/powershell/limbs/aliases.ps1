@@ -72,7 +72,7 @@ function clock { # "Starts a timer"  # needs timer.py in $script_location
         Write-Host "aborting: clock/timer script $timer_script_path not found"
         return
     }
-    python $timer_script $args
+    python $timer_script_path $args
 }
 
 # loading local aliases last, to overwrite existing ones

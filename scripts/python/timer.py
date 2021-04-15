@@ -6,7 +6,7 @@ Timer - for pomodore-sessions and meetings - for Windows
 plays waves from your preconfigured files-repo
 """
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __author__ = "oryon/dominik"
 __date__ = "April 12, 2019"
 __updated__ = "July 27, 2019"
@@ -14,9 +14,14 @@ __updated__ = "July 27, 2019"
 from argparse import ArgumentParser, RawTextHelpFormatter
 import time
 import winsound
-import win32com.client as wincl
 from pathlib import Path
 import os
+
+try:
+    import win32com.client as wincl
+except ImportError as error:
+    raise SystemExit(f"Import failed. {error}. 'python -m pip install pywin32'.")
+
 
 # handling the arguments
 parser = ArgumentParser(

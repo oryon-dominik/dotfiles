@@ -201,6 +201,15 @@ function venvColor($color) {
     python $env:DOTFILES\scripts\python\change_venv_color.py $color
 }
 
+function clock { # "Starts a timer"  # needs timer.py in $script_location
+    $timer_script_path = (Join-Path -Path $script_location -ChildPath "\python\timer.py")
+    if (-Not (Test-Path -Path $timer_script_path -PathType Leaf)) {
+        Write-Host "aborting: clock/timer script $timer_script_path not found"
+        return
+    }
+    python $timer_script_path $args
+}
+
 function cliTube {
     $cliTube_path = Join-Path -Path $script_location -ChildPath "\python\cliTube.py"
     if (!( Test-Path $cliTube_path)) {
