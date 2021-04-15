@@ -66,8 +66,6 @@ function te {docker-compose run --rm django pytest}
 function init {docker-compose run --rm django python manage.py initialize; docker-compose run --rm django python manage.py createusers}
 
 # custom-dotfiles-scripts
-Set-Alias -Name clitube -Value (Join-Path -Path $script_location -ChildPath "\python\cliTube.exe") -Description "Plays Youtube Search-Results"  # needs cliTube.py in $script_location
-Set-Alias -Name tube -Value clitube
 function clock { # "Starts a timer"  # needs timer.py in $script_location
     $timer_script_path = (Join-Path -Path $script_location -ChildPath "\python\timer.py")
     if (-Not (Test-Path -Path $timer_script_path -PathType Leaf)) {

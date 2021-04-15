@@ -201,6 +201,16 @@ function venvColor($color) {
     python $env:DOTFILES\scripts\python\change_venv_color.py $color
 }
 
+function cliTube {
+    $cliTube_path = Join-Path -Path $script_location -ChildPath "\python\cliTube.py"
+    if (!( Test-Path $cliTube_path)) {
+        Write-Warning "could not find $cliTube_path"
+        return
+    }
+    python $cliTube_path $args
+}
+Set-Alias -Name tube -Value cliTube -Description "Plays Youtube Search-Results"  # needs cliTube.py in $script_location
+
 function restic-apollon {
     $is_admin = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
     if (-not $is_admin) {
