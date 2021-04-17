@@ -10,3 +10,7 @@ Install-Module -Name Get-ChildItemColor -Force -AllowClobber -Scope CurrentUser
 Install-Module -Name lolcat -Force -Scope CurrentUser
 Install-Module -Name PSFzf  -Force -Scope CurrentUser
 Install-Script -Name Speedtest -Force -Scope CurrentUser
+
+# FzF options
+# Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
+# Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
