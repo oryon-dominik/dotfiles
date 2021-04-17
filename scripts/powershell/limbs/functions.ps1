@@ -232,14 +232,15 @@ function restic-apollon {
 }
 
 function backup() {
-    param (
-        [string]$path = "" 
-    )
-    if ( $(Try { Test-Path -Path $path } Catch { $false }) ) {
+    if (!$args) { 
+        Write-Warning "Please provide a valid path to backup"
+        return
+    }
+    if ( $(Try { Test-Path -Path $args } Catch { $false }) ) {
         restic-apollon --tag custom backup $args
     }
     else {
-        Write-Warning "Please provide a valid path to backup"
+        Write-Warning "Invalid path. Please provide a valid path to backup"
     }
 }
 
