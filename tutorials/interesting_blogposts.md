@@ -183,3 +183,8 @@ Shared Libraries: Understanding Dynamic Loading [in linux systems..]
 Amir Rachum  
 2016-09-17  
 https://amir.rachum.com/blog/2016/09/17/shared-libraries/  
+
+How long should you work on a problem ?  
+Daniel Lemire  
+2021-06-14  
+https://lemire.me/blog/2021/06/14/how-long-should-you-work-on-a-problem/  
