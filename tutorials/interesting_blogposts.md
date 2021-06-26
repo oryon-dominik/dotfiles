@@ -188,3 +188,8 @@ How long should you work on a problem ?
 Daniel Lemire  
 2021-06-14  
 https://lemire.me/blog/2021/06/14/how-long-should-you-work-on-a-problem/  
+
+What have you tried?  
+Matt Gemmell  
+2008-12-08  
+https://mattgemmell.com/what-have-you-tried / http://whathaveyoutried.com/  
