@@ -27,10 +27,10 @@ $is_admin = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).g
 # unlock secrets (conditional)
 . $PSScriptRoot\commands\unlock_secrets.ps1 -is_admin $is_admin
 
-# initializing DEN-root environment variable, if not already set properly
+# initializing dotfiles environment variable, if not already set properly
 if (-not (Test-Path env:DOTFILES)) { 
-    $den_loc = Join-Path -Path $home -ChildPath "\.dotfiles"
-    $env:DOTFILES = $den_loc }
+    $dotfiles_location = Join-Path -Path $home -ChildPath "\.dotfiles"
+    $env:DOTFILES = $dotfiles_location }
 
 # load local settings
 . $PSScriptRoot\limbs\read_settings.ps1
