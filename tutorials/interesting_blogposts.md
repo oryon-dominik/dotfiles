@@ -1,5 +1,7 @@
 # Interesting Blogposts & Talks
 
+_also includes some other interesting stuff, on the broader topic of computer-science_
+
 1. [Django](#django)
 2. [Numpy & Rust](#numpy-&-rust)
 3. [Python](#python)
@@ -87,16 +89,30 @@ David Beazley
 2018-07-25  
 https://www.youtube.com/watch?v=xOyJiN3yGfU  
 
-
 Python Pandas For Your Granpa (Tutorial series / video)  
 Ben Gorman  
 2021-02-13  
 https://www.youtube.com/playlist?list=PL9oKUrtC4VP7ry0um1QOUUfJBXKnkf-dA  
 
-Python Numpy For Your Granma (Tutorial series / video)
+Python Numpy For Your Granma (Tutorial series / video)  
 Ben Gorman  
 2021-02-13  
 https://www.youtube.com/playlist?list=PL9oKUrtC4VP6gDp1Vq3BzfViO0TWgR0vR  
+
+Thoughts On @staticmethod Usage In Python  
+Julius Seporaitis  
+2020-05-05  
+https://www.seporaitis.net/posts/2020/05/05/python-staticmethod-usage/  
+
+The Little Book of Python Anti-Patterns  
+Andreas Dewes (quantifiedcode)  
+2014-07-25  
+https://docs.quantifiedcode.com/python-anti-patterns/  
+
+A from-scratch tour of Bitcoin in Python  
+Andrej Karpathy  
+2021-06-12  
+https://karpathy.github.io/2021/06/21/blockchain/  
 
 
 ## Security
