@@ -5,9 +5,9 @@ function wsl_config
     # openGL for the X-server
     set -U LIBGL_ALWAYS_INDIRECT 1
     # remove windows pyenv and poetry from path
-    set -U PATH '(echo "$PATH" | sed -e "s|:/mnt/c/Users/oryon/.poetry/bin$||g")'
-    set -U PATH '(echo "$PATH" | sed -e "s|:/mnt/c/Users/oryon/.pyenv/pyenv-win/bin$||g")'
-    set -U PATH '(echo "$PATH" | sed -e "s|:/mnt/c/Users/oryon/.pyenv/pyenv-win/shims$||g")'
-    set -U PATH '(echo "$PATH" | sed -e "s|:/mnt/c/Users/oryon/AppData/Roaming/Python/Python39/Scripts/$||g")'
-    set -U PATH '(echo "$PATH" | sed -e "s|:/mnt/c/Program Files/Git/cmd/git.exe/$||g")'
+    set -U PATH '(echo "$PATH" | sd "/mnt/c/Users/oryon/.poetry/bin" "")'
+    set -U PATH '(echo "$PATH" | sd ":/mnt/c/Users/oryon/.pyenv/pyenv-win/bin" "")'
+    set -U PATH '(echo "$PATH" | sd ":/mnt/c/Users/oryon/.pyenv/pyenv-win/shims" "")'
+    set -U PATH '(echo "$PATH" | sd ":/mnt/c/Users/oryon/AppData/Roaming/Python/Python39/Scripts/" "")'
+    set -U PATH '(echo "$PATH" | sd ":/mnt/c/Program Files/Git/cmd/git.exe/$" "")'
 end
