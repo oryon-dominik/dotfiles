@@ -29,7 +29,7 @@ register-python-argcomplete --shell fish pipx | source
 set fish_color_cwd yellow
 
 # ssh-agent
-if not pgrep -f ssh-agent > /dev/null
+if not pgrep --full ssh-agent | string collect > /dev/null
   eval (ssh-agent -c) > /dev/null
   set -Ux SSH_AGENT_PID $SSH_AGENT_PID
   set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
