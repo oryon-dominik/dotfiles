@@ -17,16 +17,16 @@ $Host.PrivateData.ProgressBackgroundColor = "DarkCyan"
 
 
 # dracula colors
-Set-PSReadlineOption -Color @{
-    "Command" = [ConsoleColor]::White
-    "Parameter" = [ConsoleColor]::Magenta
-    "Operator" = [ConsoleColor]::Green
-    "Variable" = [ConsoleColor]::Red
-    "String" = [ConsoleColor]::Yellow
-    "Number" = [ConsoleColor]::Blue
-    "Type" = [ConsoleColor]::Cyan
-    "Comment" = [ConsoleColor]::DarkCyan
-}
+# Set-PSReadlineOption -Color @{
+#     "Command" = [ConsoleColor]::White
+#     "Parameter" = [ConsoleColor]::Magenta
+#     "Operator" = [ConsoleColor]::Green
+#     "Variable" = [ConsoleColor]::Red
+#     "String" = [ConsoleColor]::Yellow
+#     "Number" = [ConsoleColor]::Blue
+#     "Type" = [ConsoleColor]::Cyan
+#     "Comment" = [ConsoleColor]::DarkCyan
+# }
 
 # prompt
 function Prompt
