@@ -114,6 +114,11 @@ Andrej Karpathy
 2021-06-12  
 https://karpathy.github.io/2021/06/21/blockchain/  
 
+The rinds of the Cheese Shop menu  
+Ben Nuttall  
+2021-08-02  
+https://blog.piwheels.org/the-rinds-of-the-cheese-shop-menu/  
+
 
 ## Security
 
