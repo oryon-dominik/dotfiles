@@ -31,7 +31,10 @@ $GitPromptSettings.BranchGoneStatusForegroundColor = "Blue"
 $GitPromptSettings.BranchIdenticalStatusToForegroundColor = "White"
 # abbreviate home
 $GitPromptSettings.DefaultPromptAbbreviateHomeDirectory = $true
+$GitPromptSettings.EnableWindowTitle = $true
+$GitPromptSettings.UntrackedFilesMode = "all"
 # $GitPromptSettings.DefaultPromptPath
+# $GitPromptSettings.DefaultPromptSuffix = $('>' * ($nestedPromptLevel + 1))
 
 # exclude some repositories from Git prompt, to speed up
 $prompt_ignores_paths = Join-Path -Path $env:DOTFILES -ChildPath $settings.git_prompt_ignore
