@@ -119,6 +119,11 @@ Ben Nuttall
 2021-08-02  
 https://blog.piwheels.org/the-rinds-of-the-cheese-shop-menu/  
 
+The New Way To Generate Secure Tokens in Python  
+Miguel Grinberg  
+2018-02-16  
+https://blog.miguelgrinberg.com/post/the-new-way-to-generate-secure-tokens-in-python  
+
 
 ## Security
 
