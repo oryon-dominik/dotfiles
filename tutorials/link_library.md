@@ -215,7 +215,7 @@ https://godly.website/
 ## Security
 
 *Security for everyone*  
-A great introduction to the most common vulnerabilities by Richard Perez.  
+A great introduction to the most common vulnerabilities by Richard Adams.  
 https://sudo.pagerduty.com/for_everyone/  
 https://sudo.pagerduty.com/for_everyone_part_ii/  
 https://sudo.pagerduty.com/for_engineers/  
