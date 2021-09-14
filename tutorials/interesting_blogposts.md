@@ -132,7 +132,7 @@ Samy Kamkar
 2020-10-31  
 https://samy.pl/slipstream/  
 
-Unauthd - Logic bugs FTW
+Unauthd - Logic bugs FTW  
 Ilias Morad  
 2020-07-31  
 https://a2nkf.github.io/unauthd_Logic_bugs_FTW/  
@@ -225,3 +225,7 @@ Programmers don't understand hash-functions
 2021-08-24  
 https://soatok.blog/2021/08/24/programmers-dont-understand-hash-functions/  
 
+Master the Docker command line for container ops  
+Alan R. Earls  
+2017-08-10  
+https://searchitoperations.techtarget.com/feature/Master-the-Docker-command-line-for-container-ops  
