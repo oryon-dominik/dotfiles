@@ -2,14 +2,17 @@
 # coding: utf-8
 
 
-'''
+REQUIREMENTS = "google-api-python-client numpy httpx python-dotenv"
+
+
+__doc__ = f'''
 cliTube plays Internet-Music from CLI on Windows with preinstalled VLC
 It builds Tube-URLS from artist & title arguments
 
 requires a GOOGLE_API_KEY set as dotenv or environment variable
 
 required modules:
-    python -m pip install google-api-python-client numpy
+    python -m pip install {REQUIREMENTS}
 
 to build as exe:
     python -m pip install pyinstaller
@@ -19,10 +22,10 @@ to build as exe:
 '''
 
 
-__version__ = '0.4'  # updateable youtube.lua
+__version__ = '0.5'  # explicit requirements
 __author__ = 'oryon/dominik'
 __date__ = 'November 28, 2018'
-__updated__ = 'April 10, 2021'
+__updated__ = 'October 03, 2021'
 
 
 import subprocess
@@ -39,7 +42,7 @@ try:
     from googleapiclient.errors import HttpError
 
 except ImportError as error:
-    raise SystemExit(f"Import failed. {error}. 'python -m pip install google-api-python-client numpy httpx python-dotenv'.")
+    raise SystemExit(f"Import failed. {error}. 'python -m pip install {REQUIREMENTS}'.")
 
 
 CUSTOM_DOTENV_PATH = None  # modify this (pathlib-style), if you want to use your own dotenvs-location

@@ -220,6 +220,15 @@ function cliTube {
 }
 Set-Alias -Name tube -Value cliTube -Description "Plays Youtube Search-Results"  # needs cliTube.py in $script_location
 
+function hawks { # needs hawks.py in $script_location, plays Chicago Blackhawks Highlights.
+    $hawks_path = Join-Path -Path $script_location -ChildPath "\python\hawks.py"
+    if (!( Test-Path $hawks_path)) {
+        Write-Warning "could not find $hawks_path"
+        return
+    }
+    python $hawks_path $args
+}
+
 function restic-apollon {
     $is_admin = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
     if (-not $is_admin) {
