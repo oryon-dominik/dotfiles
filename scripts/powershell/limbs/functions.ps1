@@ -229,12 +229,7 @@ function nhl { # needs nhl.py in $script_location, plays NHL Highlights.
     python $nhl_path $args
 }
 function hawks {
-    if (!$args) {
-        $arguments = 0
-    }
-    else {
-        $arguments = $args
-    }
+    if (!$args) { $arguments = 0 } else { $arguments = $args }
     nhl --team "Blackhawks" $arguments
 }
 
