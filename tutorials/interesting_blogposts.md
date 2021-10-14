@@ -137,6 +137,15 @@ Ilias Morad
 2020-07-31  
 https://a2nkf.github.io/unauthd_Logic_bugs_FTW/  
 
+The pitfalls of using ssh-agent, or how to use an agent safely  
+Carlo Contavalli  
+2014-11-12  
+https://rabexc.org/posts/pitfalls-of-ssh-agents  
+
+Netcat - All you need to know  
+Michael Ikua  
+2021-07-08  
+https://blog.ikuamike.io/posts/2021/netcat/  
 
 ## Frontend
 

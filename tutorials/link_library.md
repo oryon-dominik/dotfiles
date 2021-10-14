@@ -104,6 +104,10 @@ https://learnpythonthehardway.org/python3/
 Learn design patterns (see: gang of four) in your favourite language  
 https://refactoring.guru/design-patterns/python  
 
+*python design patterns*  
+Gang of four explained by Brandon Rhodes  
+https://python-patterns.guide/  
+
 *python anti-patterns*  
 Learn on worse practices.  
 https://docs.quantifiedcode.com/python-anti-patterns/  
