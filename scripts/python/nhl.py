@@ -5,8 +5,8 @@
 REQUIREMENTS = "google-api-python-client numpy httpx python-dotenv rich"
 
 __doc__ = f'''
-A simple CLI Interface to play Highlight Videos from Chicago Blackhawks NHL 
-Games with the single CLI command `hawks`.
+A simple CLI Interface to play Highlight Videos from the official NHL-Channel.
+Watch Games with the single CLI command `nhl`.
 (With preinstalled VLC)
 
 requires a GOOGLE_API_KEY set as dotenv or environment variable
@@ -16,15 +16,15 @@ required modules:
 
 to build as exe:
     python -m pip install pyinstaller
-    pyinstaller.exe --onefile hawks.py --distpath . --clean
+    pyinstaller.exe --onefile nhl.py --distpath . --clean
     # have to clean up the mess manually..
-    rm hawks.spec; rm build
+    rm nhl.spec; rm build
 '''
 
-__version__ = '0.1'  # initial setup
+__version__ = '0.2'  # from playing hawks only to the whole NHL
 __author__ = 'oryon/dominik'
 __date__ = 'October 03, 2021'
-__updated__ = 'October 03, 2021'
+__updated__ = 'October 14, 2021'
 
 
 import subprocess
@@ -46,11 +46,17 @@ except ImportError as error:
     raise SystemExit(f"Import failed. {error}. 'python -m pip install {REQUIREMENTS}'.")
 
 
-CUSTOM_DOTENV_PATH = None  # modify this (pathlib-style), if you want to use your own dotenvs-location
-TEAM = "Blackhawks"
+CUSTOM_DOTENV_PATH = None  # modify this (pathlib-style), if you want to use your own dotenvs-location (-> for the GOOGLE_API_KEY)
+TEAMS = (
+    "Bruins", "Sabres", "Red Wings", "Panthers", "Canadiens", "Senators", "Lightning", "Maple Leafs",  # Atlantic
+    "Hurricanes", "Blue Jackets", "Devils", "Islanders", "Rangers", "Flyers", "Penguins", "Capitals",  # Metropolitan
+    "Coyotes", "Blackhawks", "Avalanche", "Stars", "Wild", "Predators", "Blues", "Jets",  # Central
+    "Ducks", "Flames", "Oilers", "Kings", "Sharks", "Kraken", "Canucks", "Golden Knights",  # Pacific
+)
 PLAYLIST_URL = "https://www.youtube.com/playlist?list=PL1NbHSfosBuHInmjsLcBuqeSV256FqlOO"
-REQUEST_ATLEAST_X_GAMES = 15
-
+REQUEST_ATLEAST_X_GAMES = 20
+NETWORK_CACHING = 10000  # ms VLC-buffer
+INSTANT_PLAY = False
 
 console = Console()
 
@@ -91,7 +97,8 @@ def get_channel_id(playlist_url=PLAYLIST_URL):
         raise SystemExit('Malformed PLAYLIST_URL.')
     return channel_id
 
-def get_hits_from_response(response, team=TEAM) -> dict:
+def get_hits_from_response(response, request_atleast_x_games, team=None) -> dict:
+    teams = [team] if team is not None else TEAMS
     hits = {}
     items: list = response.get('items', [])
     matches = [
@@ -101,13 +108,21 @@ def get_hits_from_response(response, team=TEAM) -> dict:
     for match in matches:
         ident = match['snippet']['resourceId']['videoId']
         title = match['snippet']['title']
-        if team in title:
+        if any([team in title for team in teams]):
             hits.update({
                 f'{ident}': title
             })
+        if len(hits) >= request_atleast_x_games:
+            break
     return hits
     
-def get_nhl_highlights_from_youtube(api_key, request_atleast_x_games, youtube_api_service_name="youtube", youtube_api_version="v3"):
+def get_nhl_highlights_from_youtube(
+    api_key,
+    request_atleast_x_games,
+    team=None,
+    youtube_api_service_name="youtube",
+    youtube_api_version="v3"
+):
     """
     returns actual hits from results from playlist
 
@@ -137,9 +152,12 @@ def get_nhl_highlights_from_youtube(api_key, request_atleast_x_games, youtube_ap
     except HttpError as error:
         raise SystemExit(f'{error}\nConnection failed.')
 
-    hits = get_hits_from_response(response)
+    hits = get_hits_from_response(response, request_atleast_x_games, team=team)
 
     while next_page_token := response.get('nextPageToken'):
+        if len(hits) >= request_atleast_x_games:
+            break
+        
         next_page = youtube.playlistItems().list(
             playlistId=channel_id,
             pageToken=next_page_token,
@@ -148,9 +166,7 @@ def get_nhl_highlights_from_youtube(api_key, request_atleast_x_games, youtube_ap
         )
         response = next_page.execute()
 
-        hits.update(get_hits_from_response(response))
-        if len(hits) >= request_atleast_x_games:
-            break
+        hits.update(get_hits_from_response(response, request_atleast_x_games, team=team))
 
     youtube.close()
     
@@ -158,20 +174,42 @@ def get_nhl_highlights_from_youtube(api_key, request_atleast_x_games, youtube_ap
 
 def get_team_color(name) -> str:
     colors = {
-        "Blues": "blue",
+        "Bruins": "gold3",
+        "Sabres": "blue",
+        "Red Wings": "red3",
+        "Panthers": "red3",
+        "Canadiens": "red",
+        "Senators": "tan",
+        "Lightning": "dark_blue",
+        "Maple Leafs": "royal_blue1",
+        "Hurricanes": "bright_red",
         "Blue Jackets": "blue",
-        "Blackhawks": "red",
-        "Hurricanes": "white",
-        "Panthers": "white",
-        "Lightning": "blue",
-        "Predators": "yellow",
+        "Devils": "indian_red",
+        "Islanders": "light_slate_blue",
+        "Rangers": "dodger_blue3",
+        "Flyers": "dark_orange3",
+        "Penguins": "yellow",
+        "Capitals": "white",
+        "Coyotes": "magenta",
+        "Blackhawks": "red3",
+        "Avalanche": "orchid",
         "Stars": "white",
-        "Red Wings": "red",
+        "Wild": "dark_sea_green1",
+        "Predators": "yellow1",
+        "Blues": "blue",
+        "Jets": "blue",
+        "Ducks": "aquamarine1",
+        "Flames": "red",
+        "navajo_white1": "white",
+        "Kings": "grey82",
+        "Sharks": "pale_turquoise4",
+        "Kraken": "bright_cyan",
+        "Canucks": "steel_blue1",
+        "Golden Knights": "gold3",
     }
     return colors.get(name, "white")
 
 def print_hits_available(hits):
-    from rich.table import Table
     table = Table(show_header=True, header_style="bold magenta")
     table.add_column("Date", style="dim", width=12)
     table.add_column("Index", style="dim", width=5)
@@ -179,16 +217,21 @@ def print_hits_available(hits):
 
     console.print('Available Highlights:')
     ix = 0
-    for _, value in hits.items():
+    for key, value in hits.items():
         modern_pairing = value.split('|')[0]
         pairs = modern_pairing.split('@')
         home_date = pairs[-1].strip().split(' ')
         away = pairs[0].strip()
+        playoffs = " "
+        if "Gm" in away:
+            playoffs = f" {' '.join(away.split()[:-1])} "
+            away = away.split(' ')[-1].strip()
         date = home_date[-1]
         home = " ".join(home_date[0:-1]).strip()
         home_color = get_team_color(home)
         away_color = get_team_color(away)
-        table.add_row(date, f"{ix}", f'[{home_color}]{home}[/{home_color}] @ [{away_color}]{away}[/{away_color}]')
+        link = f"https://www.youtube.com/watch?v={key}"
+        table.add_row(date, f"{ix}", f'[link={link}][{home_color}]{home}[/{home_color}] @{playoffs}[{away_color}]{away}[/{away_color}][/link]')
         ix += 1
     console.print(table)
 
@@ -222,11 +265,14 @@ def choose(hits: dict, index: int):
     return choice_url, name
 
 
-def play(url, name):
+def play(url, name, cache=False):
     startupinfo = subprocess.STARTUPINFO()
     startupinfo.wShowWindow = 4  # this sends the window into the background on windows
     try:
-        subprocess.Popen(["vlc", f"{url}"], startupinfo=startupinfo)
+        command = f"vlc {url}"
+        if cache:
+            command += f" --network-caching={NETWORK_CACHING}"
+        subprocess.Popen(command.split(), startupinfo=startupinfo)
     except FileNotFoundError:
         raise SystemExit(f"Could not find VLC on Path")
     raise SystemExit(f"Playing {name}\n{url}")
@@ -260,15 +306,17 @@ def update():
 
 # handling the arguments
 parser = ArgumentParser(
-    description=__doc__, prog='hakws',
-    epilog='Have fun watching the chicago blackhawks!',
+    description=__doc__, prog='nhl',
+    epilog='Have fun watching NHL games!',
     formatter_class=RawTextHelpFormatter,
     )
 
 parser.add_argument('--version', action='version', version=__version__)
-parser.add_argument('index', metavar='Index', help='the index you want to go back in history', nargs='?', type=int, default=0)
-parser.add_argument('--update', action="store_true", default=False)
-
+parser.add_argument('index', metavar='Index', help='the result index of the video you want to play', nargs='?', type=int, default=0)
+parser.add_argument('--update', action="store_true", default=False, help='update the youtube.lua file')
+parser.add_argument('--cache', action="store_true", default=False)
+parser.add_argument('--play', action="store_true", default=False, help='instantly stream the selected video with VLC')
+parser.add_argument('--team', dest="team",  nargs='?', default=None, help='the team you want to filter for')
 
 if __name__ == '__main__':
     args = parser.parse_args()
@@ -277,9 +325,11 @@ if __name__ == '__main__':
         update()
         raise SystemExit(f"Successfully updated 'youtube.lua'.")
 
+    team = args.team if args.team in TEAMS else None
+
     # play
     api_key = get_google_api_key(custom_dotenv_path=CUSTOM_DOTENV_PATH)
-    hits = get_nhl_highlights_from_youtube(api_key, REQUEST_ATLEAST_X_GAMES)
+    hits = get_nhl_highlights_from_youtube(api_key, REQUEST_ATLEAST_X_GAMES, team=team)
     url, name = choose(hits=hits, index=args.index)
-    if url:
-        play(url, name)
+    if url and (args.play or INSTANT_PLAY):
+        play(url, name, cache=args.cache)

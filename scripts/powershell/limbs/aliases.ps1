@@ -32,7 +32,7 @@ Set-Alias -Name cat -Value lolcat -Description "Replace cat with colors :) from 
 
 Set-Alias -Name draw -Value Write-Pixel -Description "Draws pictures in pixel into shell"
 function md5($filepath) {Get-FileHash $filepath -Algorithm MD5}
-
+function sha256($filepath) {Get-FileHash $filepath -Algorithm SHA256}
 
 # development
 Set-Alias git hub  # integrates hub into git command-line (https://github.com/github/hub)

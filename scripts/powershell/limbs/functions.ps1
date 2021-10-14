@@ -220,13 +220,22 @@ function cliTube {
 }
 Set-Alias -Name tube -Value cliTube -Description "Plays Youtube Search-Results"  # needs cliTube.py in $script_location
 
-function hawks { # needs hawks.py in $script_location, plays Chicago Blackhawks Highlights.
-    $hawks_path = Join-Path -Path $script_location -ChildPath "\python\hawks.py"
-    if (!( Test-Path $hawks_path)) {
-        Write-Warning "could not find $hawks_path"
+function nhl { # needs nhl.py in $script_location, plays NHL Highlights.
+    $nhl_path = Join-Path -Path $script_location -ChildPath "\python\nhl.py"
+    if (!( Test-Path $nhl_path)) {
+        Write-Warning "could not find $nhl_path"
         return
     }
-    python $hawks_path $args
+    python $nhl_path $args
+}
+function hawks {
+    if (!$args) {
+        $arguments = 0
+    }
+    else {
+        $arguments = $args
+    }
+    nhl --team "Blackhawks" $arguments
 }
 
 function restic-apollon {
