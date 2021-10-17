@@ -231,7 +231,7 @@ def print_hits_available(hits):
         home_color = get_team_color(home)
         away_color = get_team_color(away)
         link = f"https://www.youtube.com/watch?v={key}"
-        table.add_row(date, f"{ix}", f'[link={link}][{home_color}]{home}[/{home_color}] @{playoffs}[{away_color}]{away}[/{away_color}][/link]')
+        table.add_row(date, f"{ix}", f'[link={link}][{away_color}]{away}[/{away_color}] @{playoffs}[{home_color}]{home}[/{home_color}][/link]')
         ix += 1
     console.print(table)
 
