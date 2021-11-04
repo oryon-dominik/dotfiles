@@ -41,20 +41,13 @@ function download{  # download <url> <destination_file_name>
         }
 }
 
-function sudo{  # TODO fix BUGs for complicated args (stringify or whatever..)
-    Param(
-        [Parameter(Mandatory=$false)] [String]$sudo_command)
-        if($sudo_command){
-            if($args){
-                start-process -verb runAs $sudo_command -argumentlist $args
-            }
-            else{
-                start-process -verb runAs $sudo_command
-            }
-        }
-        else{
-            Write-Host "No command specified"
-        }
+function sudo () {
+    if ($args.Length -lt 1) {
+        Write-Host "No command specified."
+    }
+    if ($args.Length -ge 1) {  # Opens a new elevated Powershell in Windows-Terminal.
+        Start-Process wt.exe -ArgumentList "PowerShell.exe", "-NoExit", "-Command", "$args" -verb "runAs"
+    }
 }
 
 function lock{

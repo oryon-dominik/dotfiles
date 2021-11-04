@@ -97,7 +97,7 @@ function PythonUpdate {
         pyenv update
         Write-Host ""
     }
-    
+
     if (![bool](Get-Command -Name 'poetry' -ErrorAction SilentlyContinue)) {
         Write-Host "Could not find poetry on path, skipping.."
     }

@@ -28,7 +28,7 @@ Set-Alias -Name grep -Value linux_grep -Description "Linux like grep"
 
 Set-Alias -Name whereis -Value Get-Command -Description "Shows commands locations"
 Set-Alias -Name manpage -Value Get-help -Description "Manpage"
-Set-Alias -Name cat -Value lolcat -Description "Replace cat with colors :) from lolcat (installation required)"
+Set-Alias -Name cat -Value lolcat -Description "Replace cat with colors :) from lolcat (installation required)" -Option AllScope
 
 Set-Alias -Name draw -Value Write-Pixel -Description "Draws pictures in pixel into shell"
 function md5($filepath) {Get-FileHash $filepath -Algorithm MD5}
