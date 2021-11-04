@@ -70,8 +70,9 @@ function UpgradeChocolatey {
 }
 
 function PythonUpdate {
-    $update_message = "Updating python.."
+    $update_message = "=== === === Updating PYTHON === === ==="
     Write-Host $update_message
+    Write-Host ""
     LogUpdate -Message "$update_message"
     Write-Host "Updating pip.."
     python -m pip install --upgrade pip --no-warn-script-location
@@ -82,22 +83,23 @@ function PythonUpdate {
     }
     else {
         Write-Host "Updating pyenv.."
-        pyenv update
         if (Test-Path env:PYENV) {
             $current_path = $pwd
             Set-Location -Path (Split-Path -Path $env:PYENV -Parent)
-            $git_command = "git pull"
-            Invoke-Expression $git_command
+            Invoke-Expression "git pull"
+            Invoke-Expression "git checkout -- pyenv-win/.versions_cache.xml"
             Set-Location -Path $current_path
             }
         else {
-            Write-Host "env:PYENV not found, skipping repository"
+            Write-Host "env:PYENV not found, skipping repository pull"
         }
+        Write-Host "Ask for new python versions available to pyenv.."
+        pyenv update
         Write-Host ""
     }
     
     if (![bool](Get-Command -Name 'poetry' -ErrorAction SilentlyContinue)) {
-        Write-Host "could not find poetry on path, skipping.."
+        Write-Host "Could not find poetry on path, skipping.."
     }
     else {
         Write-Host "Updating poetry.."
@@ -105,8 +107,10 @@ function PythonUpdate {
         Write-Host ""
     }
     Write-Host "Updating pipx.."
-    python -m pip install --user -U pipx
+    python -m pip install --quiet --user -U pipx
+    Write-Host ""
     # python -m pipx ensurepath
+    Write-Host "=== === === PYTHON Update Finished === === ==="
 }
 
 function PowershellUpdate {
@@ -183,12 +187,16 @@ function UpdateRepositories {
     # pull the repos
     foreach($repo in $repositories)
     {
-        Write-Host "Updating" $repo
-        Set-Location -Path $repo
-        $git_command = "git pull"
-        Invoke-Expression $git_command
+        if ($repo -and (Test-Path $path -PathType Leaf)) {
+            Write-Host "Updating" $repo
+            Set-Location -Path $repo
+            $git_command = "git pull"
+            Invoke-Expression $git_command
+        }
+        else {
+            Write-Host "Skipping" $repo
+        }
     }
-    $repositories = $null
     Write-Host "Switching back to your directory.."
     Set-Location -Path $current_path
     Write-Host "Repository update finished :-)"
