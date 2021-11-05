@@ -59,3 +59,6 @@ if (Test-Path -Path $prompt_ignores_paths -PathType Leaf) {
 Import-Module $PSScriptRoot\..\Modules\Get-ChildItemColor
 Set-Alias l Get-ChildItemColor -option AllScope
 Set-Alias ls Get-ChildItemColorFormatWide -option AllScope
+
+# The Tutorial for this CLI
+. $PSScriptRoot\Tutorial.ps1

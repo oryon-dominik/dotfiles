@@ -23,8 +23,14 @@ Set-Alias -Name ll -Value Get-ChildItem -Description "linux ll like"
 Set-Alias -Name la -Value Get-ChildItem -Force -Description "linux ll like"
 Set-Alias -Name touch -Value New-Item -Description "Creates a file"
 
-function linux_grep($string, $file) {sls $string .\$file -ca}
-Set-Alias -Name grep -Value linux_grep -Description "Linux like grep"
+function run_fzf {fzf $args}  # needs fzf installed
+Set-PSReadlineKeyHandler -Key Ctrl+r -BriefDescription fzf -LongDescription "Reverse History search with fzf" ` -ScriptBlock {run_fzf}
+
+Set-Alias -Name z -Value zoxide  # needs zoxide installed
+
+
+# function linux_grep($string, $file) {sls $string .\$file -ca}
+Set-Alias -Name grep -Value rg -Description "Linux like grep"
 
 Set-Alias -Name whereis -Value Get-Command -Description "Shows commands locations"
 Set-Alias -Name manpage -Value Get-help -Description "Manpage"

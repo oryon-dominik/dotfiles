@@ -14,3 +14,29 @@ Install-Script -Name Speedtest -Force -Scope CurrentUser
 # FzF options
 # Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
 # Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
+
+## Rust modules
+Write-Host "Installing Rust modules..."
+# bottom (process/system visualization)
+cargo install bottom
+# procs (process/system visualization)
+cargo install procs
+# lsDeluxe # TODO: add config form local to: %appdata%\lsd\config.yaml
+cargo install lsd
+# dust - disk usage
+cargo install du-dust
+# hyperfine - CLI benchmarking
+cargo install hyperfine
+
+
+# gtop (process/system visualization)
+npm install gtop -g
+
+Write-Host "Install this additional packages from github to cargo binaries:"
+Write-Host "$(Join-Path -Path $env:USERPROFILE -ChildPath "\.cargo\bin\")"
+
+Write-Host "dog - dns lookup"
+Write-Host "https://github.com/ogham/dog/releases/download/v0.1.0/dog-v0.1.0-x86_64-pc-windows-msvc.zip"
+Write-Host ""
+Write-Host "jq - "
+Write-Host "https://github.com/stedolan/jq/releases/download/jq-1.6/jq-win64.exe"

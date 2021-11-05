@@ -69,9 +69,10 @@ if (-not ($settings.exclude_from_geo_location_service)) {
 . $PSScriptRoot\commands\load_envs.ps1
 
 # loading custom paths
-$env:path += Join-Path -Path $script_location -ChildPath "\python"
-$env:path += Join-Path -Path $script_location -ChildPath "\batch"
-$env:path += ";C:\Program Files\NASM"  # netwide-assembler
+$env:path += ";$(Join-Path -Path $script_location -ChildPath "\python")"
+$env:path += ";$(Join-Path -Path $script_location -ChildPath "\batch")"
+$env:path += ";$Env:Programfiles\NASM"  # netwide-assembler
+$env:path += ";$(Join-Path -Path $env:USERPROFILE -ChildPath "\.cargo\bin\")"  # rust commands
 
 # vi-edit-mode
 # Set-PSReadlineOption -EditMode vi -BellStyle None
