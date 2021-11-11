@@ -124,6 +124,10 @@ Miguel Grinberg
 2018-02-16  
 https://blog.miguelgrinberg.com/post/the-new-way-to-generate-secure-tokens-in-python  
 
+Python behind the scenes #1: how the CPython VM works  
+Victor Skvortsov  
+2020-08-31  
+https://tenthousandmeters.com/blog/python-behind-the-scenes-1-how-the-cpython-vm-works/  
 
 ## Security
 
