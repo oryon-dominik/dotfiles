@@ -70,7 +70,8 @@ function UpgradeChocolatey {
 }
 
 function PythonUpdate {
-    $update_message = "=== === === Updating PYTHON === === ==="
+    Write-Host "=== === === PYTHON Update === === ==="
+    $update_message = "Updating PYTHON (pip, pyenv, poetry, pipx).."
     Write-Host $update_message
     Write-Host ""
     LogUpdate -Message "$update_message"
