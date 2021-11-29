@@ -60,7 +60,9 @@ if (-not ($settings.exclude_from_geo_location_service)) {
 . $PSScriptRoot\commands\import_modules.ps1
 
 # set prompt
-. $PSScriptRoot\limbs\prompt_colors.ps1
+$ENV:STARSHIP_CONFIG = "$HOME\.dotfiles\common\starship\starship.toml"
+Invoke-Expression (&starship init powershell)
+# . $PSScriptRoot\limbs\prompt_colors.ps1
 
 # load aliases & function-definitions
 . $PSScriptRoot\limbs\aliases.ps1

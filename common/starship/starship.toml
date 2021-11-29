@@ -1,5 +1,7 @@
 # ~/.config/starship.toml
 
+# TODO: reintegrate the old admin-colors -> if ($is_admin -eq "True") {$brackets = "magenta"} else { $brackets = "blue" }
+
 # Inserts a blank line between shell prompts
 add_newline = false
 # Wait 30 milliseconds for starship to check files under the current directory.
@@ -42,6 +44,7 @@ truncation_symbol = ""
 fish_style_pwd_dir_length = 1
 use_logical_path = true  # true: symlinks not resovled
 home_symbol = "~"
+# TODO: $settings.cloud -> '☁'
 
 [time]
 disabled = false
@@ -67,7 +70,7 @@ symbol = ""
 style = "bold white"
 format = "[$symbol$branch]($style)"
 always_show_remote = false
-truncation_length = 12
+truncation_length = 30
 truncation_symbol = "..."
 
 [git_commit]
