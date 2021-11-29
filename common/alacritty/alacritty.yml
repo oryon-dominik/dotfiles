@@ -1,0 +1,135 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+
+# Config-Path
+# posix: "$HOME/.config/alacritty/alacritty.yml"
+# windows: "$env:APPDATA/alacritty/alacrityy.yml"
+
+# Import additional configuration files
+import:
+  - ~/.dotfiles/common/alacritty/dracula.yml
+  - ~/.dotfiles/common/alacritty/hints.yml
+  - ~/.dotfiles/common/alacritty/bindings.yml
+
+env:  # environment variables.
+  TERM: alacritty
+
+window:
+  # lines/columns count (not pixels). At least `2`. `0` will fall back to the
+  # window manager's recommended size.
+  dimensions:
+    columns: 130
+    lines: 37
+  # Position (fallback=windowmanager), specified in number of pixels.
+  # position:
+  #   x: 0  
+  #   y: 50
+  # Blank space added around the window in pixels. Scaled by DPI and the
+  # specified value is always added at both opposing sides.
+  padding:
+    x: 5
+    y: 5
+  # Spread additional padding evenly around the terminal content.
+  dynamic_padding: true  
+  # `decorations`: full: Borders and title bar / none: Neither borders nor title bar
+  decorations: full
+  # opacity from `0.0` (transparent) to `1.0`. (opaque)
+  opacity: 0.7
+  # startup_mode: Windowed / Maximized / Fullscreen
+  startup_mode: Windowed
+  title: Alacritty
+  # Allow terminal applications to change Alacritty's window title.
+  dynamic_title: true
+  class:
+    # Application instance name
+    instance: Alacritty
+    # General application class
+    general: Alacritty
+  # `dark` / `light`. Set this to `None` to use the default theme variant.
+  gtk_theme_variant: None
+
+scrolling:
+  # Max  lines in the buffer. Specifying '0' will disable scrolling.
+  history: 10000
+  # Scrolling distance multiplier.
+  multiplier: 5
+
+font:
+  # Normal (roman) font face
+  normal:
+    family: Cascadia Mono
+  # bold:
+  #   family: Cascadia Code
+  #   style: Bold
+  # italic:
+  #   family: Cascadia Code
+  #   style: Italic
+  # bold_italic:
+  #   family: Cascadia Code
+  #   style: Bold Italic
+  size: 12.0
+  offset:
+    x: 0  # letter spacing
+    y: 0  # line spacing
+  glyph_offset:
+    x: 0  # moves the glyph to the right
+    y: 0  # moves the glyph upward
+  # Thin strokes are suitable for retina displays, but for non-retina screens
+  # it is recommended to set `use_thin_strokes` to `false`.
+  use_thin_strokes: true
+draw_bold_text_with_bright_colors: false
+
+colors:
+  transparent_background_colors: true
+
+# The bell is rung every time the BEL control character is received.
+bell:  # (test the ASCII bell, type: $ "`a")
+  # Animation effect for flashing the screen when the visual bell is rung.
+  # Ease / EaseOut / EaseOutSine / EaseOutQuad / EaseOutCubic / EaseOutQuart / EaseOutQuint / EaseOutExpo / EaseOutCirc / Linear
+  animation: Ease
+  # Duration of the flash in milliseconds. `0` will disable the visual bell animation.
+  duration: 250
+  # Visual bell animation color.
+  color: '#861A22'
+  command: None
+
+cursor:
+  style:
+    # ▇ Block / _ Underline / | Beam
+    shape: Beam
+    #   - Never: Prevent the cursor from ever blinking
+    #   - Off: Disable blinking by default
+    #   - On: Enable blinking by default
+    #   - Always: Force the cursor to always blink
+    blinking: On
+  # Cursor blinking interval in milliseconds.
+  blink_interval: 750
+  unfocused_hollow: false
+  # Thickness of the cursor relative to the cell width as floating point number
+  # from `0.0` to `1.0`.
+  thickness: 0.14
+live_config_reload: true
+
+shell:
+  program: powershell
+  # program: /bin/fish
+  # args: --login
+
+working_directory: None  # inherits from parent process
+
+mouse:
+  # The `double_click` and `triple_click` settings control the time
+  # alacritty should wait for accepting multiple clicks as one double
+  # or triple click.
+  double_click: { threshold: 300 }
+  triple_click: { threshold: 300 }
+  # Hide the mousecursor when typing.
+  hide_when_typing: true
+
+debug:
+  # Display the time it takes to redraw each frame.
+  render_timer: false
+  # Keep the log file after quitting Alacritty.
+  persistent_logging: false
+  log_level: Warn  # Off / Error / Warn / Info / Debug / Trace
+  # Print all received window events.
+  print_events: false

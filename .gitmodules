@@ -1,6 +1,6 @@
 [submodule "files"]
-	path = files
-	url = git@github.com:oryon-dominik/files
+    path = files
+    url = git@github.com:oryon-dominik/files
 [submodule "local"]
-	path = local
-	url = git@github.com:oryon-dominik/local_config
+    path = local
+    url = git@github.com:oryon-dominik/local_config

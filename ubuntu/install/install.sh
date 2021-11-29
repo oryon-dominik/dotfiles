@@ -45,6 +45,7 @@ ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/functions/xserve.fish ~/.config/fis
 # create some dirs
 mkdir -p ~/projects
 mkdir -p ~/.virtualenvs
+mkdir -p ~/.config/alacritty
 
 # symlink all the configs from ubuntu/home and common
 ln -sfv ~/.dotfiles/ubuntu/home/.bash_profile ~
@@ -54,6 +55,11 @@ ln -sfv ~/.dotfiles/ubuntu/home/.bash_profile ~
 ln -sfv ~/.dotfiles/ubuntu/home/.bashrc ~
 ln -sfv ~/.dotfiles/ubuntu/home/.profile ~
 ln -sfv ~/.dotfiles/common/git/.gitconfig ~
+# alacritty
+ln -sfv ~/.dotfiles/common/alacritty/alacritty.yml ~/.config/alacritty/
+ln -sfv ~/.dotfiles/common/alacritty/bindings.yml ~/.config/alacritty/
+ln -sfv ~/.dotfiles/common/alacritty/dracula.yml ~/.config/alacritty/
+ln -sfv ~/.dotfiles/common/alacritty/hints.yml ~/.config/alacritty/
 # htop
 ln -sfv ~/.dotfiles/ubuntu/home/.config/htoprc ~/.config/
 
