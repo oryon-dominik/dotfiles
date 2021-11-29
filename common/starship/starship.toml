@@ -1,0 +1,159 @@
+# ~/.config/starship.toml
+
+# Inserts a blank line between shell prompts
+add_newline = false
+# Wait 30 milliseconds for starship to check files under the current directory.
+scan_timeout = 30
+# Timeout for commands executed by starship (in milliseconds).
+command_timeout = 500
+
+format = '''
+[┌\[](bold blue)[$username[@](bold red)$hostname](bold white)[\]](bold blue) [\[](bold blue)$shell[\]](bold blue) [\[](bold blue)$time[\]](bold blue) ([\[](bold blue)$git_branch $git_state$git_status$git_commit[\]](bold blue))( [\[](bold blue)$python$nodejs$docker_context$rust$terraform$memory_usage$nix_shell$env_var$custom$status[\]](bold blue))
+[└\[](bold blue)[$directory](bold yellow)[\]](bold blue)$character'''
+
+right_format = """$all"""
+
+[username]
+style_user = "white bold"
+style_root = "red bold"
+format = "[$user]($style)"
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+format = "[$hostname](bold white)"
+trim_at = ""
+disabled = false
+
+[directory]
+# The number of parent folders that the current directory should be truncated to.
+truncation_length = 0
+# Whether or not to truncate to the root of the git repo that you're currently in.
+truncate_to_repo = false
+# The style for the root of the git repo when truncate_to_repo option is set to false.
+repo_root_style = ""
+format = """[$path]($style)[$read_only]($read_only_style)"""
+style = "bold yellow"
+read_only = " 🔒"  # The symbol indicating current directory is read only.
+read_only_style = "red"
+# The symbol to prefix to truncated paths. eg: "…/"
+truncation_symbol = ""
+fish_style_pwd_dir_length = 1
+use_logical_path = true  # true: symlinks not resovled
+home_symbol = "~"
+
+[time]
+disabled = false
+format = '[$time]($style)'
+time_format = "%T"
+style = "bold white"
+use_12hr = false
+utc_time_offset = "local"
+time_range = "-"
+
+[shell]
+fish_indicator = "fish"
+powershell_indicator = "ps"
+bash_indicator = "bash"
+zsh_indicator = "zsh"
+format = "[$indicator]($style)"
+unknown_indicator = "mystery shell"
+style = "white bold"
+disabled = false
+
+[git_branch]
+symbol = ""
+style = "bold white"
+format = "[$symbol$branch]($style)"
+always_show_remote = false
+truncation_length = 12
+truncation_symbol = "..."
+
+[git_commit]
+commit_hash_length = 8
+style = "bold green"
+only_detached = true
+tag_disabled = false
+tag_symbol = "🔖 "
+format = " [\\($hash$tag\\)]($style)"
+
+[git_state]
+style = "bold white"
+format = '[\($state ($progress_current of $progress_total)\)]($style)'
+cherry_pick = "[🍒 PICKING](bold red)"
+rebase = "[REBASE](bold red)"
+merge = "[MERGE](bold red)"
+revert = "[REVERT](bold red)"
+bisect = "[BISECT](bold red)"
+am = "[AM](bold red)"
+am_or_rebase = "[AM/REBASE](bold red)"
+
+[git_metrics]
+added_style = "bold green"
+deleted_style = "bold red"
+only_nonzero_diffs = true
+format = '([+$added]($added_style))([ -$deleted]($deleted_style) )'
+disabled = false
+
+[git_status]
+conflicted = "="
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+up_to_date = "≡"
+untracked = "?"
+stashed = "📦"
+modified = "!"
+staged = '[++\($count\)](green)'
+renamed = ">>"
+deleted = "✘"
+format = '([$ahead_behind]($style)[$conflicted$stashed$staged]($style))'
+style = "bold white"
+
+[python]
+symbol = " 🐍 "
+pyenv_version_name = false
+format = '[${symbol}${pyenv_prefix}${version}]($style)[ (\($virtualenv\))]($style)'
+version_format = "v${raw}"
+style = "bold white"
+pyenv_prefix = "pyenv"
+python_binary = ["python"]
+detect_extensions = ["py", "ipynb"]
+detect_files = [".python-version", "Pipfile", "__init__.py", "pyproject.toml", "requirements.txt", "setup.py", "tox.ini"]
+
+[nodejs]
+symbol = " node "
+format = "[$symbol($version) ]($style)"
+
+# $rust$terraform$memory_usage$nix_shell$env_var$custom$status
+[docker_context]
+format = "[$symbol$context ]($style) "
+symbol = " 🐳 "
+
+[rust]
+symbol = " ⚙️ "
+format = "[$symbol$version ](red bold)"
+
+[terraform]
+format = "[$symbol$version$workspace ]($style)"
+version_format = "v${raw}"
+symbol = " TF "
+disabled = true
+
+[memory_usage]
+disabled = false
+
+[nix_shell]
+symbol = " ❄️ "
+format = '[$symbol$state( \($name\)) ]($style) '
+
+[env_var]
+disabled = true
+
+[status]
+format = "[ $symbol$status ]($style)"
+disabled = false
+
+[character]
+success_symbol = "[❯](bold green)"

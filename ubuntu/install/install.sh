@@ -35,25 +35,25 @@ sudo sed -i -e 's/ENABLED=1/ENABLED=0/g' /etc/default/motd-news
 # setup fish
 mkdir -p ~/.config && mkdir -p ~/.config/fish && mkdir -p ~/.config/fish/functions
 
-ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/config.fish ~/.config/fish/config.fish
+ln -sfv ~/.dotfiles/common/fish/config.fish ~/.config/fish/config.fish
 ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/aliases.fish ~/.config/fish/aliases.fish
 ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/functions/fish_prompt.fish ~/.config/fish/functions/fish_prompt.fish
 ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/functions/wsl_config.fish ~/.config/fish/functions/wsl_config.fish
-ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/functions/last_command_as_sudo.fish ~/.config/fish/functions/last_command_as_sudo.fish
+ln -sfv ~/.dotfiles/common/fish/functions/last_command_as_sudo.fish ~/.config/fish/functions/last_command_as_sudo.fish
 ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/functions/xserve.fish ~/.config/fish/functions/xserve.fish
 
 # create some dirs
 mkdir -p ~/projects
 mkdir -p ~/.virtualenvs
 
-# symlink all the configs from ubuntu/home
+# symlink all the configs from ubuntu/home and common
 ln -sfv ~/.dotfiles/ubuntu/home/.bash_profile ~
 ln -sfv ~/.dotfiles/ubuntu/home/.bash_aliases ~
 ln -sfv ~/.dotfiles/ubuntu/home/.bash_logout ~
 ln -sfv ~/.dotfiles/ubuntu/home/.bash_profile ~
 ln -sfv ~/.dotfiles/ubuntu/home/.bashrc ~
 ln -sfv ~/.dotfiles/ubuntu/home/.profile ~
-ln -sfv ~/.dotfiles/ubuntu/home/.gitconfig ~
+ln -sfv ~/.dotfiles/common/git/.gitconfig ~
 # htop
 ln -sfv ~/.dotfiles/ubuntu/home/.config/htoprc ~/.config/
 

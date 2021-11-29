@@ -1,0 +1,74 @@
+[user]
+        email = oryon@cyberise.de
+        name = oryon-dominik
+[core]
+        sshCommand = ssh -i ~/.ssh/id_rsa_GITHUB
+        autocrlf = input
+        editor = code --wait
+[merge]
+    tool = vscode
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
+[diff]
+    tool = vscode
+[difftool "vscode"]
+        cmd = code --wait --diff $LOCAL $REMOTE
+[core]
+    autocrlf = input
+    editor = code --wait
+    pager = delta
+    ignorecase = false
+    sshCommand = ssh -i ~/.ssh/id_ecdsa_GITHUB
+[merge]
+    tool = vscode
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
+[diff]
+    tool = vscode
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[alias]
+    logs = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[user]
+    email = oryon@cyberise.de
+    name = oryon-dominik
+
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+
+[delta]
+    features = woolly-mammoth
+    side-by-side = true
+
+[delta "interactive"]
+    keep-plus-minus-markers = false
+
+[delta "woolly-mammoth"]
+    # author: https://github.com/Kr1ss-XD
+    commit-decoration-style = 232 130 box
+    commit-style = 232 bold italic 130
+    dark = true
+    file-added-label = [+]
+    file-copied-label = [C]
+    file-decoration-style = "#606018" overline
+    file-modified-label = [M]
+    file-removed-label = [-]
+    file-renamed-label = [R]
+    file-style = 232 bold 184
+    hunk-header-decoration-style = none
+    hunk-header-style = syntax bold italic 237
+    line-numbers = true
+    line-numbers-left-format = "{nm:>1}┊"
+    line-numbers-left-style = red
+    line-numbers-minus-style = red italic black
+    line-numbers-plus-style = green italic black
+    line-numbers-right-format = "{np:>1}┊"
+    line-numbers-right-style = green
+    line-numbers-zero-style = "#545474" italic
+    minus-emph-style = syntax bold "#780000"
+    minus-style = syntax "#400000"
+    plus-emph-style = syntax bold "#007800"
+    plus-style = syntax "#004000"
+    syntax-theme = Vibrant Sunburst
+    whitespace-error-style = "#280050" reverse
+    zero-style = syntax
