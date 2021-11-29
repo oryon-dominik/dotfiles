@@ -140,8 +140,8 @@ function lan {
     Write-Host $networks
 }
 
-# link <destination> <target>               create a junction
-function link($destination,$target){New-Item -Path $destination -ItemType Junction -Value $target}
+# link <target> <destination>              create a junction
+function link($target,$destination){New-Item -Path $target -ItemType Junction -Value $destination}
 
 function ip { (Invoke-WebRequest -uri "http://ipinfo.io/json").Content }  # or: http://ident.me
 

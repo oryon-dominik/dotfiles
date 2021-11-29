@@ -39,12 +39,19 @@ This will delete the old folders (don't forget to backup your old powershell con
 
 ```powershell
 Remove-Item -path "$env:USERPROFILE\Documents\WindowsPowerShell" -recurse
-cmd /c mklink /j "$env:USERPROFILE\Documents\WindowsPowerShell" "$env:DOTFILES\scripts\powershell"
+mkdir "$env:USERPROFILE/Documents/WindowsPowerShell"
+New-Item -Path "$env:USERPROFILE/Documents/WindowsPowerShell" -ItemType Junction -Value "$env:DOTFILES/scripts/powershell"
 
 # for powershell 7:
 Remove-Item -path "$env:USERPROFILE\Documents\PowerShell" -recurse
-cmd /c mklink /j "$env:USERPROFILE\Documents\PowerShell" "$env:DOTFILES\scripts\powershell"
+mkdir "$env:USERPROFILE/Documents/PowerShell"
+New-Item -Path "$env:USERPROFILE/Documents/PowerShell" -ItemType Junction -Value "$env:DOTFILES/scripts/powershell"
+
+Remove-Item -path $env:APPDATA/alacritty -recurse
+mkdir $env:APPDATA/alacritty
+New-Item -Path "$env:APPDATA/alacritty" -ItemType Junction -Value "$env:DOTFILES/common/alacritty"
 ```
+
 
 Install the additional powershell-modules.
 
