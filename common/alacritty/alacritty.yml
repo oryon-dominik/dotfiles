@@ -2,7 +2,7 @@
 
 # Config-Path
 # posix: "$HOME/.config/alacritty/alacritty.yml"
-# windows: "$env:APPDATA/alacritty/alacrityy.yml"
+# windows: "$env:APPDATA/alacritty/alacritty.yml"
 
 # Import additional configuration files
 import:
