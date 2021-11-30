@@ -117,7 +117,7 @@ style = "bold white"
 [python]
 symbol = " 🐍 "
 pyenv_version_name = false
-format = '[${symbol}${pyenv_prefix}${version}]($style)[ (\($virtualenv\))]($style)'
+format = '[${symbol}${pyenv_prefix}${version}]($style)[ (\($virtualenv\)) ]($style)'
 version_format = "v${raw}"
 style = "bold white"
 pyenv_prefix = "pyenv"
