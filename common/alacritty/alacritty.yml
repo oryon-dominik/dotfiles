@@ -17,8 +17,8 @@ window:
   # lines/columns count (not pixels). At least `2`. `0` will fall back to the
   # window manager's recommended size.
   dimensions:
-    columns: 130
-    lines: 37
+    columns: 120
+    lines: 35
   # Position (fallback=windowmanager), specified in number of pixels.
   # position:
   #   x: 0  
@@ -66,7 +66,7 @@ font:
   # bold_italic:
   #   family: Cascadia Code
   #   style: Bold Italic
-  size: 12.0
+  size: 11.5
   offset:
     x: 0  # letter spacing
     y: 0  # line spacing
@@ -110,7 +110,7 @@ cursor:
 live_config_reload: true
 
 shell:
-  program: powershell
+  program: 'C:\Program Files\PowerShell\7\pwsh.exe'
   # program: /bin/fish
   # args: --login
 
