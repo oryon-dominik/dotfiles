@@ -90,7 +90,7 @@ A FAST webframework written in rust.
 https://actix.rs/  
 
 
-### python
+### Python
 
 *python*  
 parseltongue, my language of choice  
@@ -123,7 +123,7 @@ python packaging and dependency management made easy
 https://python-poetry.org/  
 
 
-#### some of my favourite modules
+#### Some of my favourite modules
 
 *httpx*  
 a next-generation HTTP client for python
@@ -165,7 +165,8 @@ https://pendulum.eustace.io/
 Human readable numbers.  
 https://pypi.org/project/humanize/  
 
-*pelican* static site generator, powered by python  
+*pelican*  
+static site generator, powered by python  
 https://blog.getpelican.com/  
 
 
@@ -224,15 +225,19 @@ https://sudo.pagerduty.com/for_everyone/
 https://sudo.pagerduty.com/for_everyone_part_ii/  
 https://sudo.pagerduty.com/for_engineers/  
 
-*types of attacks*  
+*pwn.college*  
+Arizona State University Computer Systems Security course  
+https://pwn.college/  
+
+*Types of attacks*  
 XSS, CSRF, MitM, Sessions explained by Mozilla  
 https://developer.mozilla.org/en-US/docs/Web/Security/Types_of_attacks  
 
-*cors*  
+*CORS*  
 Cross-Origin Resource Sharing (CORS)  
 https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS  
 
-*jwt*  
+*JWT*  
 Be aware on using them securely with trusted algorithms and correct header setup.  
 https://jwt.io/  
 
