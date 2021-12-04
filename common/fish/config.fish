@@ -7,15 +7,20 @@ function fish_greeting
     echo ''
 end
 
+source aliases.fish
+
 zoxide init fish | source
 mcfly init fish | source
 starship init fish | source
 
-# ?? is this still valid?!
-# pipx completions
+# pyenv
+status is-login; and pyenv init --path | source
+status is-interactive; and pyenv init - | source
+
+# pipx completions, only run once after a fresh pipx install..
 # register-python-argcomplete --shell fish pipx | source
 
-# set fish_color_cwd yellow
+set fish_color_cwd yellow
 
 # # ssh-agent
 # if not pgrep --full ssh-agent | string collect > /dev/null
