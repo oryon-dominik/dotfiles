@@ -15,3 +15,5 @@ alias lt='exa --tree --color-scale --group-directories-first'
 alias l='exa --all --color-scale --long --header --git --group-directories-first'
 
 alias ports='netstat -tulpen'
+
+alias poetry="$HOME/.local/bin/poetry"
