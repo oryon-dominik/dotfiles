@@ -230,6 +230,16 @@ function hawks {
     if (!$args) { $arguments = 0 } else { $arguments = $args }
     hockey --league "NHL" --team "Blackhawks" $arguments
 }
+Remove-Alias -Name del
+function del {
+    if (!$args) { $arguments = 0 } else { $arguments = $args }
+    hockey --league "DEL" $arguments
+}
+function deg {
+    if (!$args) { $arguments = 0 } else { $arguments = $args }
+    hockey --league "DEL" --team "Düsseldorfer EG" $arguments
+}
+
 
 function restic-apollon {
     $is_admin = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
