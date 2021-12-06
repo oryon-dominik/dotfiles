@@ -110,8 +110,8 @@ cursor:
 live_config_reload: true
 
 shell:
-  program: 'C:\Program Files\PowerShell\7\pwsh.exe'
-  # program: /bin/fish
+  # program: 'C:\Program Files\PowerShell\7\pwsh.exe'
+  program: /bin/fish
   # args: --login
 
 working_directory: None  # inherits from parent process
