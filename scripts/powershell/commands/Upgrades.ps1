@@ -109,6 +109,7 @@ function PythonUpdate {
     }
     Write-Host "Updating pipx.."
     # TODO: automate clean up: e.g: in .local\pipx
+    # New-Item -Path "$env:USERPROFILE\.local\bin\python" -ItemType SymbolicLink -Value "$env:USERPROFILE\.pyenv\pyenv-win\shims\python.bat"
     python -m pip install --quiet --user -U pipx
 
     Write-Host ""
