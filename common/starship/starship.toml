@@ -10,7 +10,7 @@ scan_timeout = 30
 command_timeout = 500
 
 format = '''
-[┌\[](bold blue)[$username[@](bold red)$hostname](bold white)[\]](bold blue) [\[](bold blue)$shell[\]](bold blue) [\[](bold blue)$time[\]](bold blue) ([\[](bold blue)$git_branch $git_state$git_status$git_commit[\]](bold blue))( [\[](bold blue)$python$nodejs$docker_context$rust$terraform$memory_usage$nix_shell$env_var$custom$status[\]](bold blue))
+[┌\[](bold blue)[$username[@](bold red)$hostname](bold white)[\]](bold blue) [\[](bold blue)$shell[\]](bold blue) [\[](bold blue)$time[\]](bold blue) ([\[](bold blue)$git_branch $git_state$git_status$git_commit[\]](bold blue))( [\[](bold blue)$python$nodejs$docker_context$rust$golang$terraform$memory_usage$nix_shell$env_var$custom$status[\]](bold blue))
 [└\[](bold blue)[$directory](bold yellow)[\]](bold blue)$character'''
 
 right_format = """$all"""
@@ -136,6 +136,10 @@ symbol = " 🐳 "
 
 [rust]
 symbol = " ⚙️ "
+format = "[$symbol$version ](red bold)"
+
+[golang]
+symbol = " 🐹 "
 format = "[$symbol$version ](red bold)"
 
 [terraform]
