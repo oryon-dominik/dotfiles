@@ -72,11 +72,14 @@ function te {docker-compose run --rm django pytest}
 function init {docker-compose run --rm django python manage.py initialize; docker-compose run --rm django python manage.py createusers}
 
 # python
-function run_poetry {
-    $poetry_path = (Join-Path -Path $env:APPDATA -ChildPath "\Python\Scripts\poetry.exe")
-    & $poetry_path $args
-}
-Set-Alias -Name poetry -Value run_poetry -Description "Python Poetry"
+# ! poetry is installed via pipx right now
+# function run_poetry {
+#     $poetry_path = (Join-Path -Path $env:APPDATA -ChildPath "\Python\Scripts\poetry.exe")
+#     & $poetry_path $args
+# }
+# Set-Alias -Name poetry -Value run_poetry -Description "Python Poetry"
+
+
 
 # custom-dotfiles-scripts
 function clock { # "Starts a timer"  # needs timer.py in $script_location

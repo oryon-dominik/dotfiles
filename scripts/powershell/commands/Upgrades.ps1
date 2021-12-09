@@ -108,7 +108,9 @@ function PythonUpdate {
         Write-Host ""
     }
     Write-Host "Updating pipx.."
+    # TODO: automate clean up: e.g: in .local\pipx
     python -m pip install --quiet --user -U pipx
+
     Write-Host ""
     # python -m pipx ensurepath
     Write-Host "=== === === PYTHON Update Finished === === ==="
