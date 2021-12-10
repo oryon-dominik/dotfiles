@@ -208,6 +208,10 @@ https://tailwindui.com/
 Animated UI components used along with tailwind.css  
 https://headlessui.dev/  
 
+*animated tailwind*  
+A configuration to use Animate.css with Tailwind CSS  
+https://ikcb.github.io/animated-tailwindcss/  
+
 *cssgradient*  
 Easy gradient control.  
 https://cssgradient.io/  
