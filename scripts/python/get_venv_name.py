@@ -1,11 +1,11 @@
 import re
 import hashlib
 import base64
-import argparse
+import sys
 import os
 from pathlib import Path
 
-"unfortunately this is not the same result, as poetry builds :()"
+"Shows the venvname poetry will give your projects."
 
 
 def encode(string, encodings=None):
@@ -65,6 +65,6 @@ def read_pyproject(file):
 name, wd = get_env()
 if name:
     env_name = generate_env_name(name, wd)
-    print(f'{env_name} -- unfortunately this is not the same result, as poetry builds :()')
+    print(f'{env_name}-py{sys.version_info.major}.{sys.version_info.minor}')
 else:
     print(f'No project found')
