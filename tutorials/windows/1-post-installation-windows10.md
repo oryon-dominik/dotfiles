@@ -5,7 +5,7 @@ Open an admin-shell.
 Install powershell 7, start it and set a new profile
 
 ```powershell
-Invoke-Expression "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI -Preview"
+Invoke-Expression "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI"
 New-Item $PROFILE -Force
 ```
 
