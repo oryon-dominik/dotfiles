@@ -4,7 +4,7 @@ function Tutorial {
     Write-Host "================================== TUTORIAL ======================================================"
     Write-Host "Available Commands"
     Write-Host ""
-    Write-Host "    tldr                modern man page - use this on any command to quickly understand it's usage"  # https://github.com/tldr-pages/tldr
+    Write-Host "    tldr                via tealdeer - modern man page - use this on any command to quickly understand it's usage"  # https://github.com/dbrgn/tealdeer
     Write-Host ""
     Write-Host "    sudo                execute a command in a new elevated Powershell on a Windows-Terminal"
     Write-Host "    choco               Chocolatey - your package-manager."
@@ -33,6 +33,15 @@ function Tutorial {
     Write-Host "    jq                  command-line JSON processor."  # https://github.com/stedolan/jq/releases
     Write-Host "    hyperfine           A command-line benchmarking tool"  # https://github.com/sharkdp/hyperfine
     Write-Host "    dog                 command-line DNS client."  # https://github.com/ogham/dog
+    
+    Write-Host "    xh                  Friendly and fast tool for sending HTTP requests"  # https://github.com/ducaale/xh
+    Write-Host "    broot               A new way to see and navigate directory trees"  # https://github.com/Canop/broot
+    Write-Host "    grex                generating regular expressions from user-provided test cases"  # https://github.com/pemistahl/grex
+    Write-Host "    bandwhich           Terminal bandwidth utilization tool"  # https://github.com/imsnif/bandwhich
+    Write-Host "    tokei               Count your code, quickly."  # https://github.com/XAMPPRocky/tokei
+    Write-Host "    choose              fast alternative to cut and (sometimes) awk"  # https://github.com/theryangeary/choose
+    
+    
     Write-Host ""
     Write-Host "Python:"
     Write-Host ""
