@@ -99,18 +99,20 @@ function PythonUpdate {
         Write-Host ""
     }
 
+    Write-Host "Updating pipx.."
+    # TODO: automate clean up: e.g: in .local\pipx
+    # New-Item -Path "$env:USERPROFILE\.local\bin\python" -ItemType SymbolicLink -Value "$env:USERPROFILE\.pyenv\pyenv-win\shims\python.bat"
+    python -m pip install --quiet --user -U pipx
+
     if (![bool](Get-Command -Name 'poetry' -ErrorAction SilentlyContinue)) {
         Write-Host "Could not find poetry on path, skipping.."
     }
     else {
         Write-Host "Updating poetry.."
-        poetry self update
+        # poetry self update
+        pipx upgrade poetry
         Write-Host ""
     }
-    Write-Host "Updating pipx.."
-    # TODO: automate clean up: e.g: in .local\pipx
-    # New-Item -Path "$env:USERPROFILE\.local\bin\python" -ItemType SymbolicLink -Value "$env:USERPROFILE\.pyenv\pyenv-win\shims\python.bat"
-    python -m pip install --quiet --user -U pipx
 
     Write-Host ""
     # python -m pipx ensurepath
@@ -119,7 +121,7 @@ function PythonUpdate {
 
 function PowershellUpdate {
     Write-Host "Updating powershell.."
-    iex "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI -Preview"
+    iex "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI"
     LogUpdate -Message "Powershell Update"
     Write-Host ""
 }
