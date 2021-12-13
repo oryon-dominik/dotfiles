@@ -18,10 +18,22 @@ function hibernate {& "$env:windir\system32\shutdown.exe" /h}
 Set-Alias -Name hib -Value hibernate -Description "hibernation"
 Set-Alias -Name aus -Value Stop-Computer -Description "shutdown"
 
-# some linux aliases
-Set-Alias -Name ll -Value Get-ChildItem -Description "linux ll like"
-Set-Alias -Name la -Value Get-ChildItem -Force -Description "linux ll like"
+# ls -> exa
+Remove-Alias -Name ls
+function ls {exa --group-directories-first --git-ignore}
+function ll {exa --color-scale --long --header --group-directories-first}
+function la {exa --all --color-scale --long --header --group-directories-first}
+function lt {exa --tree --color-scale --group-directories-first}
+function l {exa --all --color-scale --long --header --git --group-directories-first}
+
 Set-Alias -Name touch -Value New-Item -Description "Creates a file"
+
+function .. {cd ..}
+
+Set-Alias -Name clear -Value cls
+
+function ports {netstat -n}
+
 
 function run_fzf {fzf $args}  # needs fzf installed
 Set-PSReadlineKeyHandler -Key Ctrl+r -BriefDescription fzf -LongDescription "Reverse History search with fzf" ` -ScriptBlock {run_fzf}
