@@ -28,6 +28,26 @@ cargo install du-dust
 # hyperfine - CLI benchmarking
 cargo install hyperfine
 
+cargo install xh
+cargo install broot
+cargo install tealdeer
+cargo install grex
+cargo install dog
+cargo install bandwhich
+cargo install tokei
+cargo install choose
+
+# git clone https://github.com/ogham/dog
+# cd dog
+# cargo install --path . --force
+
+## curlie
+# download tarball from https://github.com/rs/curlie/releases/tag/v1.6.7
+# unzip twice.. put into your users /bin
+
+## cheat
+go get -u github.com/cheat/cheat/cmd/cheat
+
 
 # gtop (process/system visualization)
 npm install gtop -g
