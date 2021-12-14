@@ -5,7 +5,6 @@ Install-Module -Name PowerBash -Force -Scope CurrentUser
 Install-Module -Name Find-String -Force -Scope CurrentUser
 Install-Module -Name DockerCompletion -Force -Scope CurrentUser
 Install-Module -Name PSReadLine -Force -Scope CurrentUser
-Install-Module -Name Get-ChildItemColor -Force -AllowClobber -Scope CurrentUser
 # Install-Module -Name GoogleCloud -Force -Scope CurrentUser
 Install-Module -Name lolcat -Force -Scope CurrentUser
 Install-Module -Name PSFzf  -Force -Scope CurrentUser

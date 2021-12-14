@@ -55,11 +55,6 @@ if (Test-Path -Path $prompt_ignores_paths -PathType Leaf) {
 # Cli-Pixel-Drawing
 . $PSScriptRoot\Write-Pixel.ps1
 
-# ls with Get-ChildItemColor
-Import-Module $PSScriptRoot\..\Modules\Get-ChildItemColor
-Set-Alias l Get-ChildItemColor -option AllScope
-Set-Alias ls Get-ChildItemColorFormatWide -option AllScope
-
 # Zoxide Utilities (show with zoxide init powershell)
 . $PSScriptRoot\zoxideUtilities.ps1
 
