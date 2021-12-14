@@ -60,5 +60,8 @@ Import-Module $PSScriptRoot\..\Modules\Get-ChildItemColor
 Set-Alias l Get-ChildItemColor -option AllScope
 Set-Alias ls Get-ChildItemColorFormatWide -option AllScope
 
+# Zoxide Utilities (show with zoxide init powershell)
+. $PSScriptRoot\zoxideUtilities.ps1
+
 # The Tutorial for this CLI
 . $PSScriptRoot\Tutorial.ps1

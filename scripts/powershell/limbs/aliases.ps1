@@ -38,9 +38,6 @@ function ports {netstat -n}
 function run_fzf {fzf $args}  # needs fzf installed
 Set-PSReadlineKeyHandler -Key Ctrl+r -BriefDescription fzf -LongDescription "Reverse History search with fzf" ` -ScriptBlock {run_fzf}
 
-Set-Alias -Name z -Value zoxide  # needs zoxide installed
-
-
 # function linux_grep($string, $file) {sls $string .\$file -ca}
 Set-Alias -Name grep -Value rg -Description "Linux like grep"
 
