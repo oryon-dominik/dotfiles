@@ -1,24 +1,12 @@
 [user]
-        email = oryon@cyberise.de
-        name = oryon-dominik
+    email = oryon@cyberise.de
+    name = oryon-dominik
 [core]
-        sshCommand = ssh -i ~/.ssh/id_rsa_GITHUB
-        autocrlf = input
-        editor = code --wait
-[merge]
-    tool = vscode
-[mergetool "vscode"]
-    cmd = code --wait $MERGED
-[diff]
-    tool = vscode
-[difftool "vscode"]
-        cmd = code --wait --diff $LOCAL $REMOTE
-[core]
+    sshCommand = ssh -i ~/.ssh/id_rsa_GITHUB
     autocrlf = input
     editor = code --wait
     pager = delta
     ignorecase = false
-    sshCommand = ssh -i ~/.ssh/id_ecdsa_GITHUB
 [merge]
     tool = vscode
 [mergetool "vscode"]
@@ -27,11 +15,10 @@
     tool = vscode
 [difftool "vscode"]
     cmd = code --wait --diff $LOCAL $REMOTE
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
 [alias]
     logs = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-[user]
-    email = oryon@cyberise.de
-    name = oryon-dominik
 
 [interactive]
     diffFilter = delta --color-only --features=interactive
