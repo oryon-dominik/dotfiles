@@ -7,6 +7,8 @@
     editor = code --wait
     pager = delta
     ignorecase = false
+[init]
+  defaultBranch = trunk
 [merge]
     tool = vscode
 [mergetool "vscode"]
@@ -22,6 +24,17 @@
 
 [interactive]
     diffFilter = delta --color-only --features=interactive
+
+[gitflow "branch"]
+    master = production
+    develop = trunk
+
+[gitflow "prefix"]
+    feature = feature/
+    release = release/
+    hotfix = hotfix/
+    support = support/
+
 
 [delta]
     features = woolly-mammoth
