@@ -140,8 +140,10 @@ function lan {
     Write-Host $networks
 }
 
-# link <target> <destination>              create a junction
-function link($target,$destination){New-Item -Path $target -ItemType Junction -Value $destination}
+# link <target> <source>              create a junction -> "symlink" for directories
+function linkdir($target, $source){New-Item -Path $target -ItemType Junction -Value $source}
+# symlink <target> <source>           create a symlink for files
+function link($target, $source){New-Item -Path $target -ItemType SymbolicLink -Value $source}
 
 function ip { (Invoke-WebRequest -uri "http://ipinfo.io/json").Content }  # or: http://ident.me
 
