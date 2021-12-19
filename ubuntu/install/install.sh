@@ -1,9 +1,9 @@
 #!/bin/sh
 
 # set environment variables
-export DOTFILES=~/.dotfiles
-export PYENV_ROOT=~/.pyenv
-export PYTHON_VERSION=3.9.1
+export DOTFILES=$HOME/.dotfiles
+export PYENV_ROOT=$HOME/.pyenv
+export PYTHON_VERSION=3.10.1
 
 ## install required software
 # update first
@@ -22,49 +22,47 @@ sudo apt install -y fish
 sudo apt install -y fortune-mod fortune-anarchism lolcat
 
 # clone the dotfiles repository
-mkdir -p ~/.dotfiles
-git -C ~/.dotfiles pull || git clone https://github.com/oryon-dominik/dotfiles.git ~/.dotfiles
+mkdir -p $HOME/.dotfiles
+git -C $HOME/.dotfiles pull || git clone https://github.com/oryon-dominik/dotfiles.git $HOME/.dotfiles
 
 # message of the day
-sudo ln -sfv ~/.dotfiles/ubuntu/motd/motd /etc/
+sudo ln -sfv $HOME/.dotfiles/common/motd/motd /etc/
 # We don't need the help text
 sudo rm --force /etc/update-motd.d/10-help-text
 # And we deactivate the dynamic news
 sudo sed -i -e 's/ENABLED=1/ENABLED=0/g' /etc/default/motd-news
 
 # setup fish
-mkdir -p ~/.config && mkdir -p ~/.config/fish && mkdir -p ~/.config/fish/functions
+mkdir -p $HOME/.config && mkdir -p $HOME/.config/fish && mkdir -p $HOME/.config/fish/functions
 
-ln -sfv ~/.dotfiles/common/fish/config.fish ~/.config/fish/config.fish
-ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/aliases.fish ~/.config/fish/aliases.fish
-ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/functions/fish_prompt.fish ~/.config/fish/functions/fish_prompt.fish
-ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/functions/wsl_config.fish ~/.config/fish/functions/wsl_config.fish
-ln -sfv ~/.dotfiles/common/fish/functions/last_command_as_sudo.fish ~/.config/fish/functions/last_command_as_sudo.fish
-ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/functions/xserve.fish ~/.config/fish/functions/xserve.fish
+ln -sfv $HOME/.dotfiles/common/fish/config.fish $HOME/.config/fish/config.fish
+ln -sfv $HOME/.dotfiles/common/fish/aliases.fish $HOME/.config/fish/aliases.fish
+
+ln -sfv $HOME/.dotfiles/common/fish/functions/wsl_config.fish $HOME/.config/fish/functions/wsl_config.fish
+ln -sfv $HOME/.dotfiles/common/fish/functions/last_command_as_sudo.fish $HOME/.config/fish/functions/last_command_as_sudo.fish
+
 
 # create some dirs
-mkdir -p ~/projects
-mkdir -p ~/.virtualenvs
-mkdir -p ~/.config/alacritty
+mkdir -p $HOME/projects
+mkdir -p $HOME/.virtualenvs
+mkdir -p $HOME/.config/alacritty
 
 # symlink all the configs from ubuntu/home and common
-ln -sfv ~/.dotfiles/ubuntu/home/.bash_profile ~
-ln -sfv ~/.dotfiles/ubuntu/home/.bash_aliases ~
-ln -sfv ~/.dotfiles/ubuntu/home/.bash_logout ~
-ln -sfv ~/.dotfiles/ubuntu/home/.bash_profile ~
-ln -sfv ~/.dotfiles/ubuntu/home/.bashrc ~
-ln -sfv ~/.dotfiles/ubuntu/home/.profile ~
-ln -sfv ~/.dotfiles/common/git/.gitconfig ~
+ln -sfv $HOME/.dotfiles/common/bash/.bash_aliases $HOME
+ln -sfv $HOME/.dotfiles/common/bash/.bash_logout $HOME
+# ln -sfv $HOME/.dotfiles/ubuntu/home/.bash_profile $HOME
+# ln -sfv $HOME/.dotfiles/ubuntu/home/.bashrc $HOME
+ln -sfv $HOME/.dotfiles/common/git/.gitconfig $HOME
 # alacritty
-ln -sfv ~/.dotfiles/common/alacritty/alacritty.yml ~/.config/alacritty/
-ln -sfv ~/.dotfiles/common/alacritty/bindings.yml ~/.config/alacritty/
-ln -sfv ~/.dotfiles/common/alacritty/dracula.yml ~/.config/alacritty/
-ln -sfv ~/.dotfiles/common/alacritty/hints.yml ~/.config/alacritty/
+ln -sfv $HOME/.dotfiles/common/alacritty/alacritty.yml $HOME/.config/alacritty/
+ln -sfv $HOME/.dotfiles/common/alacritty/bindings.yml $HOME/.config/alacritty/
+ln -sfv $HOME/.dotfiles/common/alacritty/dracula.yml $HOME/.config/alacritty/
+ln -sfv $HOME/.dotfiles/common/alacritty/hints.yml $HOME/.config/alacritty/
 # htop
-ln -sfv ~/.dotfiles/ubuntu/home/.config/htoprc ~/.config/
+ln -sfv $HOME/.dotfiles/common/htop/htoprc $HOME/.config/
 
 # install vim-plugins
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Install docker
@@ -86,7 +84,7 @@ sudo apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
 libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
 xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
 
-sudo rm -rf ~/.pyenv
+sudo rm -rf $HOME/.pyenv
 sudo curl https://pyenv.run | bash
 
 # Install python
@@ -104,7 +102,7 @@ python -m pip install --upgrade pip
 curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
 source $HOME/.poetry/env
 # set the path inline with virtualfish
-poetry config virtualenvs.path ~/.virtualenvs/
+poetry config virtualenvs.path $HOME/.virtualenvs/
 
 python -m pip install --user virtualenvwrapper
 
@@ -126,26 +124,18 @@ fish -i
 set -U PYENV_ROOT $HOME/.pyenv
 set -U fish_user_paths /usr/local/bin /sbin $HOME/.poetry/bin $HOME/.local/bin $PYENV_ROOT/bin $PYENV_ROOT/shims (yarn global bin) $fish_user_paths
 
-# add fisher and fish plugins
-curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
-
-# To add extended command-completion, async prompt, gitnow & dracula theme & pyenv
-fisher install jethrokuan/fzf
-# fisher add acomagu/fish-async-prompt  ## possibly broken
-fisher install joseluisq/gitnow
-fisher install dracula/fish
-fisher install daenney/pyenv
+source $HOME/.dotfiles/common/install_fisher_plugins.fish
 
 # for fish we already installed the pyenv plugin,
 # but we have to fix it, since it's a little deprecated
-ln -sfv ~/.dotfiles/ubuntu/home/.config/fish/functions/pyenv.fish ~/.config/fish/functions/
+ln -sfv $HOME/.dotfiles/common/fish/functions/pyenv.fish $HOME/.config/fish/functions/
 
 # And virtualfish (virtualenvwrapper for fish), including plugins
-python -m pip install virtualfish
-mkdir -p ~/.config/fish/conf.d
-touch ~/.config/fish/conf.d/virtualfish-loader.fish
+pipx install virtualfish
+# mkdir -p $HOME/.config/fish/conf.d
+# touch $HOME/.config/fish/conf.d/virtualfish-loader.fish
 # to activate the vf-command
-eval (python -m virtualfish)
+# eval (python -m virtualfish)
 vf install
 vf addplugins compat_aliases
 
