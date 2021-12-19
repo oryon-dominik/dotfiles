@@ -147,6 +147,7 @@ function ip { (Invoke-WebRequest -uri "http://ipinfo.io/json").Content }  # or: 
 
 function envs {gci env:* | sort-object name }  # -Description "displays all environment variables"
 Set-Alias listenvs envs
+Set-Alias printenv envs
 
 function noadmin { . $env:DOTFILES\scripts\powershell\commands\shell_no_admin.ps1 }
 
