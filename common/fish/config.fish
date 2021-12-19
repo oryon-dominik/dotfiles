@@ -1,13 +1,25 @@
-# ~/.config/fish/config.fish
+# $HOME/.config/fish/config.fish
 
 function fish_greeting
+    echo ''
+    echo $USER ' on ' $hostname | figlet -f smslant | lolcat
     echo ''
     echo 'Commander on deck' | lolcat
     fortune /etc/nixos/anarchy | lolcat
     echo ''
 end
 
-source aliases.fish
+if grep --quiet microsoft /proc/version
+    # WSL
+    wsl_config
+else
+    # Native posix
+    :
+end
+
+if test -e $HOME/.config/fish/aliases.fish
+    source $HOME/.config/fish/aliases.fish
+end
 
 zoxide init fish | source
 mcfly init fish | source
@@ -19,6 +31,8 @@ status is-interactive; and pyenv init - | source
 
 # pipx completions, only run once after a fresh pipx install..
 # register-python-argcomplete --shell fish pipx | source
+
+# set -U EDITOR vi
 
 set fish_color_cwd yellow
 

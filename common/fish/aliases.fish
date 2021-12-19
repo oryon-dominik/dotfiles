@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 
-# aliases
+# Aliases.
 
 alias ..='cd ..'
 alias cd..='cd ..'
@@ -16,3 +16,5 @@ alias l='exa --all --color-scale --long --header --git --group-directories-first
 alias ports='netstat -tulpen'
 
 alias poetry="$HOME/.local/bin/poetry"
+
+alias cfg="z $HOME/.dotfiles"
