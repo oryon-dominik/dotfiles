@@ -3,7 +3,7 @@
 Some introduction to mostly technical topics I find interesting occassionally.  
 Could also be my favourites collection..  
 
-For the pretty advanced stuff see my collection of [interesting blogposts](https://github.com/oryon-dominik/dotfiles/blob/master/tutorials/interesting_blogposts.md)  
+For the pretty advanced stuff see my collection of [interesting blogposts](https://github.com/oryon-dominik/dotfiles/blob/master/tutorials/interesting-blogposts.md)  
 
 
 ## Toolbox
