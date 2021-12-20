@@ -8,8 +8,8 @@ function upgrade {
         [string] $argument
     )
     # check admin-rights
-    $is_admin = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
-    if (!$is_admin) { Write-Host "Running upgrades without admin-rights is not recommended" }
+    $is_elevated = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
+    if (!$is_elevated) { Write-Host "Running upgrades without admin-rights is not recommended" }
     if ( -not $argument ) {
         Write-Host "please provide an argument:"
         Write-Host "    all                 Full System-Upgrade"
@@ -133,7 +133,7 @@ function JustUpgradeLogMessage {
 
 function WindowsUpdate {
     Write-Host "Installing Windows Updates.."
-    if (!$is_admin) { 
+    if (!$is_elevated) { 
         Write-Host "Running windows upgrades without admin-rights is not possbile. Exiting."
         return
     }

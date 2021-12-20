@@ -245,8 +245,8 @@ function deg {
 
 
 function restic-apollon {
-    $is_admin = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
-    if (-not $is_admin) {
+    $is_elevated = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
+    if (-not $is_elevated) {
         Write-Warning "Please run backups as root"
     }
     else {
@@ -269,8 +269,8 @@ function backup() {
 }
 
 function backups {
-    $is_admin = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
-    if (-not $is_admin) {
+    $is_elevated = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
+    if (-not $is_elevated) {
         Write-Warning "Please run backups as root"
     }
     else {

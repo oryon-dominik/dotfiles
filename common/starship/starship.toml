@@ -1,6 +1,6 @@
 # ~/.config/starship.toml
 
-# TODO: reintegrate the old admin-colors -> if ($is_admin -eq "True") {$brackets = "magenta"} else { $brackets = "blue" }
+# TODO: reintegrate the old admin-colors -> if ($is_elevated -eq "True") {$brackets = "magenta"} else { $brackets = "blue" }
 
 # Inserts a blank line between shell prompts
 add_newline = false

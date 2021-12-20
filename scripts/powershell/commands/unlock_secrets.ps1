@@ -5,11 +5,11 @@
 
 Param(
     [Parameter( Mandatory = $true)]
-    $is_admin = "False"
+    $is_elevated = "False"
 )
 
 
-if($is_admin) {
+if($is_elevated) {
 
     # TODO: move the decrypt from sysstart to a function
 

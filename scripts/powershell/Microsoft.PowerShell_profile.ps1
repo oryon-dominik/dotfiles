@@ -22,10 +22,10 @@ $PSDefaultParameterValues = @{'*:Encoding' = 'utf8'}
 lolcat $PSScriptRoot\limbs\intro  # load the intro
 
 # check admin-rights
-$is_admin = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
+$is_elevated = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
 
 # unlock secrets (conditional)
-. $PSScriptRoot\commands\unlock_secrets.ps1 -is_admin $is_admin
+. $PSScriptRoot\commands\unlock_secrets.ps1 -is_elevated $is_elevated
 
 # initializing dotfiles environment variable, if not already set properly
 if (-not (Test-Path env:DOTFILES)) { 

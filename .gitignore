@@ -19,7 +19,8 @@ bin/
 .vscode
 
 # python precompiled
-__pycache__/
+__pycache__
+.pytest_cache
 *.py[cod]
 
 # ignore locally installed powershell-modules & scripts
