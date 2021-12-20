@@ -5,16 +5,15 @@ export DOTFILES=$HOME/.dotfiles
 export PYENV_ROOT=$HOME/.pyenv
 export PYTHON_VERSION=3.10.1
 
-## install required software
 # update first
 sudo apt update
 sudo apt upgrade
 
-# htop
-sudo apt install -y htop
+# === install packages ========================================================
+# TODO: install from ansible-repo
 
-# Install required packages, including git (for the plugins) and fzf for completion
-sudo apt install -y software-properties-common git hub git-flow fzf
+sudo apt install -y htop
+sudo apt install -y software-properties-common git hub git-flow
 sudo apt-add-repository ppa:fish-shell/release-3
 sudo apt update
 sudo apt install -y fish
@@ -24,6 +23,8 @@ sudo apt install -y fortune-mod fortune-anarchism lolcat
 # clone the dotfiles repository
 mkdir -p $HOME/.dotfiles
 git -C $HOME/.dotfiles pull || git clone https://github.com/oryon-dominik/dotfiles.git $HOME/.dotfiles
+
+# === symlinks & configuration ================================================
 
 # message of the day
 sudo ln -sfv $HOME/.dotfiles/common/motd/motd /etc/
@@ -47,7 +48,7 @@ mkdir -p $HOME/projects
 mkdir -p $HOME/.virtualenvs
 mkdir -p $HOME/.config/alacritty
 
-# symlink all the configs from ubuntu/home and common
+# symlink all the configs from common applications
 ln -sfv $HOME/.dotfiles/common/bash/.bash_aliases $HOME
 ln -sfv $HOME/.dotfiles/common/bash/.bash_logout $HOME
 # ln -sfv $HOME/.dotfiles/ubuntu/home/.bash_profile $HOME
