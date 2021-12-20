@@ -6,9 +6,9 @@
 # submodule-files containing your private galleries
 # files/
 
+# binaries that are created during the install & build process
+bin/
 
-# git itself
-.git/*
 # git-modules (set them up yourself, see readme)
 .gitmodules
 
@@ -16,8 +16,7 @@
 *.log
 
 # vscode/settings
-.vscode/*
-dotfiles.code-workspace
+.vscode
 
 # python precompiled
 __pycache__/
