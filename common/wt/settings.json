@@ -48,10 +48,10 @@
                 "snapOnInput": true,
                 "closeOnExit": "graceful",
 
-                "backgroundImage" : "C:/Users/oryon/.dotfiles/files/images/console/console.png",
+                "backgroundImage" : "C:/Users/oryon/.dotfiles/shared/files/images/console/console.png",
                 "backgroundImageOpacity" : 0.18,
                 "backgroundImageStretchMode" : "uniformToFill",
-                "icon": "C:/Users/oryon/.dotfiles/files/icons/cyberise_black.ico",
+                "icon": "C:/Users/oryon/.dotfiles/shared/files/icons/cyberise_black.ico",
                 "padding": "10, 10, 10, 10",
 
                 "font": {
@@ -66,17 +66,17 @@
             {
                 "commandline": "pwsh.exe -command Start-Process -Verb RunAs \"shell:appsFolder\\Microsoft.WindowsTerminal_8wekyb3d8bbwe!App\"",
                 "hidden": false,
-                "icon": "C:/Users/oryon/.dotfiles/files/icons/cyberise_red.ico",
+                "icon": "C:/Users/oryon/.dotfiles/shared/files/icons/cyberise_red.ico",
                 "name": "Powershell (elevated)"
             },
             {
-                "backgroundImage": "C:/Users/oryon/.dotfiles/files/images/console/console.png",
+                "backgroundImage": "C:/Users/oryon/.dotfiles/shared/files/images/console/console.png",
                 "backgroundImageOpacity": 0.17999999999999999,
                 "backgroundImageStretchMode": "uniformToFill",
                 "closeOnExit": "graceful",
                 "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
                 "hidden": false,
-                "icon": "C:/Users/oryon/.dotfiles/files/icons/ubuntu.ico",
+                "icon": "C:/Users/oryon/.dotfiles/shared/files/icons/ubuntu.ico",
                 "name": "WSL - Ubuntu-20.04",
                 "snapOnInput": true,
                 "source": "Windows.Terminal.Wsl"
@@ -84,13 +84,13 @@
             {
                 "commandline": "pwsh.exe -command ssh cyberise",
                 "hidden": false,
-                "icon": "C:/Users/oryon/.dotfiles/files/icons/cyberise_rainbow.ico",
+                "icon": "C:/Users/oryon/.dotfiles/shared/files/icons/cyberise_rainbow.ico",
                 "name": "Cyberise Server"
             },
             {
                 "commandline": "pwsh.exe -command ssh phobos",
                 "hidden": false,
-                "icon": "C:/Users/oryon/.dotfiles/files/icons/cyberise_rainbow.ico",
+                "icon": "C:/Users/oryon/.dotfiles/shared/files/icons/cyberise_rainbow.ico",
                 "name": "Phobos Server"
             },
             {
