@@ -60,21 +60,21 @@ if (-not ($settings.exclude_from_geo_location_service)) {
 # Imports all custom-added-modules to the powershell-space
 Import-Module DockerCompletion
 # Virtualenvwrapper (https://github.com/regisf/virtualenvwrapper-powershell)
-Import-Module $PSScriptRoot\externals\VirtualEnvWrapper.psm1
+Import-Module $PSScriptRoot\ModulesInVersionControl\VirtualEnvWrapper.psm1
 # Upgrades & Update functionality
 . $PSScriptRoot\components\Upgrades.ps1
 # The Tutorial explaining common commands for this CLI
 . $PSScriptRoot\components\CmdTutorial.ps1
 # Win-EventTail (tails Windows Event Logs) (https://gist.github.com/jeffpatton1971/a908cac57489e6ca59a6)
-. $PSScriptRoot\externals\Get-WinEventTail.ps1
+. $PSScriptRoot\ModulesInVersionControl\Get-WinEventTail.ps1
 # Weather-Script
-. $PSScriptRoot\externals\Get-Weather.ps1
+. $PSScriptRoot\ModulesInVersionControl\Get-Weather.ps1
 # Metadata for files
-. $PSScriptRoot\externals\Get-FileMetaData.ps1
+. $PSScriptRoot\ModulesInVersionControl\Get-FileMetaData.ps1
 # Cli-Pixel-Drawing
-. $PSScriptRoot\externals\Write-Pixel.ps1
+. $PSScriptRoot\ModulesInVersionControl\Write-Pixel.ps1
 # Zoxide Utilities (show with zoxide init powershell)
-. $PSScriptRoot\externals\zoxideUtilities.ps1
+. $PSScriptRoot\ModulesInVersionControl\zoxideUtilities.ps1
 
 # load local dotenv
 . $PSScriptRoot\LoadDotEnv.ps1 

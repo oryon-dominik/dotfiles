@@ -1,6 +1,6 @@
 function Get-Weather {
 # originally published under MIT License (Copyright (c) 2016 Nick Tamm)
-# derived from https://github.com/obs0lete/Get-Weather modified by oryon/Dominik
+# derived from https://github.com/obs0lete/Get-Weather modified by oryon/dominik
 param(
     [string]$City,
     [string]$Country)
