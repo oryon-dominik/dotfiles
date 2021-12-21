@@ -24,11 +24,11 @@ __pycache__
 *.py[cod]
 
 # ignore locally installed powershell-modules & scripts
-scripts/powershell/Modules/*
-scripts/powershell/Scripts/*
+scripts/powershell/Modules
+scripts/powershell/Scripts
 scripts/powershell/machines/*.*
 # still load the local_machines'-scripts if available
-# (you can have a script here, that autoloads, when named like oyur machine)
+# (you can have a script here, that autoloads, when named like your machine)
 !scripts/powershell/machines/load_machine.ps1
 
 # these two are individual & secret, put your own location-aliases and project-aliases here
