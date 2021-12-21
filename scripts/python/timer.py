@@ -59,7 +59,7 @@ if __name__ == "__main__":
 
     if os.getenv("DOTFILES") and filename:
         cfg_root = Path(os.getenv("DOTFILES"))
-        soundfile = cfg_root / "files" / "systemsounds" / filename
+        soundfile = cfg_root / "shared" / "files" / "systemsounds" / filename
     elif filename:
         cwd = Path(".")
         soundfile = cwd / filename

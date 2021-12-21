@@ -1,16 +1,10 @@
 ## GIT is ignoring...
 
-# # local environment settings, config & secrets
-# .local/
-
-# submodule-files containing your private galleries
-# files/
-
 # binaries that are created during the install & build process
 bin/
 
-# git-modules (set them up yourself, see readme)
-.gitmodules
+# git repositories pulled on upgrade shall be local
+.repositories.txt
 
 # dotenv
 .env
@@ -36,3 +30,5 @@ scripts/powershell/machines/*.*
 
 # these two are individual & secret, put your own location-aliases and project-aliases here
 scripts/powershell/limbs/locations.ps1
+
+TODO

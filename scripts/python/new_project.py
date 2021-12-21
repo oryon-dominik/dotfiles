@@ -19,7 +19,7 @@ required:
     - virtualenvwrapper powershell (https://github.com/regisf/virtualenvwrapper-powershell)
     - a setup of your ENVIRONMENT-variables or a project_settings.json inside script-dir
       set at least:
-              "PROJECTS_DIR"  to your absolute project-path
+              "PROJECTS_DIR"  to your absolute project-path  # ! deprecated
               "TOKEN"         to your GITHUB-CLI-Access-Token
 """
 
@@ -58,7 +58,7 @@ CMD = "newproject"
 
 
 # DEFAULTS = {
-#     "PROJECTS_DIR": "x:\\Meine Ablage\\_projects",
+#     "PROJECTS_DIR": "x:\\Meine Ablage\\_projects",  # ! deprectated
 #     "REPO": "GITHUB",
 #     "RELEASE": "0.1",  # starting-release number
 #     "FEATURE": "Initial_Structure",  # first feature_name

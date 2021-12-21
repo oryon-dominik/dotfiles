@@ -6,41 +6,9 @@
 
 Start with customizing your local settings.
 
-create an `env_settings.json` in the `local`-directory
-
-TODO: automatically create an emtpy env_settings, when file does not exist
-
-```powershell
-# example:
-    {
-    "dotfiles_location": ".dotfiles",
-    "cloud": "X:\\",
-    "projects": "X:\\projects",
-    "heap": "X:\\dev",
-    "shortcuts": "local\\shortcuts",
-    "residence": ["Dusseldorf", "DE"],
-    "coordinates": [51.23548, 6.839653],
-    "files_url": "https://github.com/oryon-dominik/files",
-    "local_url": "https://github.com/oryon-dominik/local_config",
-    "files_location": "files",
-    "local_location": "local",
-    "git_pulls": "local\\git_pulls.txt",
-    "git_prompt_ignore": "local\\git_too_big_to_prompt.txt"
-    }
-```
-
-
-```powershell
-$env_settings = "\local\env_settings.json"
-$settings_path = Join-Path -Path $env:DOTFILES -ChildPath $env_settings
-$settings = Get-Content -Raw -Path $settings_path | ConvertFrom-Json
-```
-
 Create the missing-files  # TODO: create the missing files when checking for them
 
 ```powershell
-mkdir $env:DOTFILES/local/logs/$env:computername/
-New-Item -ItemType file $env:DOTFILES/local/logs/$env:computername/updates.log
 mkdir $env:DOTFILES/scripts/powershell/machines
 New-Item -ItemType file $env:DOTFILES/scripts/powershell/machines/$env:computername.ps1
 New-Item -ItemType file $env:DOTFILES/scripts/powershell/limbs/locations.ps1
@@ -67,7 +35,7 @@ New-Item -Path "$env:APPDATA/alacritty" -ItemType Junction -Value "$env:DOTFILES
 ```
 
 
-TODO: 12. put your program-links into local/$env:computername/shortcuts and add them to your desktop or taskbar via script\
+TODO: 12. put your program-links into shared/$env:computername/shortcuts and add them to your desktop or taskbar via script\
 TODO: link to windows-installation tutorial\
 TODO: write install-script following this tutorial
 
@@ -75,7 +43,7 @@ TODO: expand to private settings & how-to-hold-secrets
 
 Create and extend:
 
-locals/git_pulls.txt
+.repositories.txt
 locals/git_too_big_to_prompt
 
 
@@ -83,7 +51,7 @@ locals/git_too_big_to_prompt
 
     We create a sub-repository for that (If you keep your dotfiles private, you could just sync them with the dotfiles and skip this step..)
 
-    Init a new or clone an existing repository into the `files`-directory you specified in the `env_settings` (you could use [new_project.py](../scripts/python/new_project.py) for that or manually set it up over the website)
+    Init a new or clone an existing repository into the `shared`-directory (you could use [new_project.py](../scripts/python/new_project.py) for that or manually set it up over the website)
 
     Init example:
 
