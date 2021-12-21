@@ -12,6 +12,9 @@ bin/
 # git-modules (set them up yourself, see readme)
 .gitmodules
 
+# dotenv
+.env
+
 # all logs
 *.log
 
@@ -33,4 +36,3 @@ scripts/powershell/machines/*.*
 
 # these two are individual & secret, put your own location-aliases and project-aliases here
 scripts/powershell/limbs/locations.ps1
-scripts/powershell/limbs/projects.ps1
