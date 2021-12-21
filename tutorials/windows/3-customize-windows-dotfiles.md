@@ -2,6 +2,8 @@
 
 #### UNDER HEAVY CONSTRUCTION USE AT YOUR OWN RISK ########
 
+## THIS IS BROKEN FOR NOW -  DON'T USE
+
 Start with customizing your local settings.
 
 create an `env_settings.json` in the `local`-directory
@@ -38,12 +40,10 @@ Create the missing-files  # TODO: create the missing files when checking for the
 
 ```powershell
 mkdir $env:DOTFILES/local/logs/$env:computername/
-mkdir $ENV:DOTFILES/local/.secrets
 New-Item -ItemType file $env:DOTFILES/local/logs/$env:computername/updates.log
 mkdir $env:DOTFILES/scripts/powershell/machines
 New-Item -ItemType file $env:DOTFILES/scripts/powershell/machines/$env:computername.ps1
 New-Item -ItemType file $env:DOTFILES/scripts/powershell/limbs/locations.ps1
-New-Item -ItemType file $env:DOTFILES/scripts/powershell/limbs/projects.ps1
 ```
 
 Install Additional packages & powershell Modules, place additional symlinks
@@ -54,7 +54,17 @@ Customize scripts & aliases
 
 # examples
 echo "function dev { set-location (Join-Path -Path $settings.cloud -ChildPath '\Development') }" >> $ENV:DOTFILES/scripts/powershell/limbs/locations.ps1
-echo "function server {ssh serverip}" >> $ENV:DOTFILES/scripts/powershell/limbs/projects.ps1
+
+TODO: create an empty .env
+
+
+TODO: Symlink all the other programs. (after installing them)
+example:
+```powershell
+Remove-Item -path $env:APPDATA/alacritty -recurse
+mkdir $env:APPDATA/alacritty
+New-Item -Path "$env:APPDATA/alacritty" -ItemType Junction -Value "$env:DOTFILES/common/alacritty"
+```
 
 
 TODO: 12. put your program-links into local/$env:computername/shortcuts and add them to your desktop or taskbar via script\

@@ -1,4 +1,4 @@
-﻿# powershell-profile / oryon-dominik / 2019                                     
+﻿# powershell-profile / oryon-dominik / 2019
 
 $PSDefaultParameterValues = @{'*:Encoding' = 'utf8'}
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
@@ -19,15 +19,16 @@ $PSDefaultParameterValues = @{'*:Encoding' = 'utf8'}
 #        ./+sssssoo++/+shdmmmhs/`         
 #            .:/ossyyyyss+/-`             
 
-lolcat $PSScriptRoot\limbs\intro  # load the intro
+lolcat $PSScriptRoot\limbs\intro  # print an intro
 
-# check admin-rights
+# Check admin-rights
 $is_elevated = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
 
 # unlock secrets (conditional)
-. $PSScriptRoot\commands\unlock_secrets.ps1 -is_elevated $is_elevated
+# TODO: rework to decrypt envs..
+# . $PSScriptRoot\commands\unlock_secrets.ps1 -is_elevated $is_elevated
 
-# initializing dotfiles environment variable, if not already set properly
+# Initializing dotfiles environment variable, if not already set properly
 if (-not (Test-Path env:DOTFILES)) { 
     $dotfiles_location = Join-Path -Path $home -ChildPath "\.dotfiles"
     $env:DOTFILES = $dotfiles_location }
@@ -52,23 +53,40 @@ $icons = Join-Path -Path $file_location -ChildPath '\icons'
 
 # TODO: load the machines to include from a list or from settings "exclude_from_geo_location_service"
 if (-not ($settings.exclude_from_geo_location_service)) {
-  # set geolocation from google-API
-  . $PSScriptRoot\commands\device_location.ps1
+  # get geolocation from google-API
+  . $PSScriptRoot\components\GetDeviceLocation.ps1
 }
 
-# import modules
-. $PSScriptRoot\commands\import_modules.ps1
+# Imports all custom-added-modules to the powershell-space
+Import-Module DockerCompletion
+# Virtualenvwrapper (https://github.com/regisf/virtualenvwrapper-powershell)
+Import-Module $PSScriptRoot\externals\VirtualEnvWrapper.psm1
+# Upgrades & Update functionality
+. $PSScriptRoot\components\Upgrades.ps1
+# The Tutorial explaining common commands for this CLI
+. $PSScriptRoot\components\CmdTutorial.ps1
+# Win-EventTail (tails Windows Event Logs) (https://gist.github.com/jeffpatton1971/a908cac57489e6ca59a6)
+. $PSScriptRoot\externals\Get-WinEventTail.ps1
+# Weather-Script
+. $PSScriptRoot\externals\Get-Weather.ps1
+# Metadata for files
+. $PSScriptRoot\externals\Get-FileMetaData.ps1
+# Cli-Pixel-Drawing
+. $PSScriptRoot\externals\Write-Pixel.ps1
+# Zoxide Utilities (show with zoxide init powershell)
+. $PSScriptRoot\externals\zoxideUtilities.ps1
 
-# set prompt
+# load local dotenv
+. $PSScriptRoot\LoadDotEnv.ps1 
+LoadDotEnv("$env:DOTFILES\.env")
+
+# set prompt (via starship)
 $ENV:STARSHIP_CONFIG = "$HOME\.dotfiles\common\starship\starship.toml"
 Invoke-Expression (&starship init powershell)
-# . $PSScriptRoot\limbs\prompt_colors.ps1
 
 # load aliases & function-definitions
 . $PSScriptRoot\limbs\aliases.ps1
 
-# load local dotenv
-. $PSScriptRoot\commands\load_envs.ps1
 
 # loading custom paths
 $env:path += ";$(Join-Path -Path $script_location -ChildPath "\python")"
@@ -105,25 +123,3 @@ $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
-
-Import-Module PSReadLine
-# Set-PSReadLineKeyHandler -Chord Tab -Function MenuComplete
-$scriptblock = {
-    param($wordToComplete, $commandAst, $cursorPosition)
-    $Env:_COMMANDS.PY_COMPLETE = "complete_powershell"
-    $Env:_TYPER_COMPLETE_ARGS = $commandAst.ToString()
-    $Env:_TYPER_COMPLETE_WORD_TO_COMPLETE = $wordToComplete
-    commands.py | ForEach-Object {
-        $commandArray = $_ -Split ":::"
-        $command = $commandArray[0]
-        $helpString = $commandArray[1]
-        [System.Management.Automation.CompletionResult]::new(
-            $command, $command, 'ParameterValue', $helpString)
-    }
-    $Env:_COMMANDS.PY_COMPLETE = ""
-    $Env:_TYPER_COMPLETE_ARGS = ""
-    $Env:_TYPER_COMPLETE_WORD_TO_COMPLETE = ""
-}
-Register-ArgumentCompleter -Native -CommandName commands.py -ScriptBlock $scriptblock
-
-Import-Module 'C:\tools\poshgit\dahlbyk-posh-git-9bda399\src\posh-git.psd1'

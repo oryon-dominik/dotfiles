@@ -46,19 +46,18 @@ New-Item -Path "$env:USERPROFILE/Documents/WindowsPowerShell" -ItemType Junction
 Remove-Item -path "$env:USERPROFILE\Documents\PowerShell" -recurse
 mkdir "$env:USERPROFILE/Documents/PowerShell"
 New-Item -Path "$env:USERPROFILE/Documents/PowerShell" -ItemType Junction -Value "$env:DOTFILES/scripts/powershell"
-
-Remove-Item -path $env:APPDATA/alacritty -recurse
-mkdir $env:APPDATA/alacritty
-New-Item -Path "$env:APPDATA/alacritty" -ItemType Junction -Value "$env:DOTFILES/common/alacritty"
 ```
 
+TODO: Run the initial setup-script once (to prepare .env and so on..)
 
-Install the additional powershell-modules.
+
+Install the additional powershell-modules. 
 
 ```powershell
 refreshenv
-Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression $env:DOTFILES/windows/install/additional_powershell_modules.ps1
+Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression $env:DOTFILES/install/windows/additional_powershell_modules.ps1
 ```
+
 
 If you like add the most basic proprietary software for your everyday work (Microsoft-Windows-Terminal, Visual Studio Code, Google Chrome, Google Drive Filestream).
 

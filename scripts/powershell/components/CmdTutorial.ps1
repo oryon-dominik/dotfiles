@@ -1,6 +1,6 @@
 
-
-function Tutorial {
+# TODO: pretty print (maybe as rust-module?! or python rich?!)
+function CmdTutorial {
     Write-Host "================================== TUTORIAL ======================================================"
     Write-Host "Available Commands"
     Write-Host ""
@@ -56,4 +56,4 @@ function Tutorial {
     # cliTube
     # restic-backups
 }
-Set-Alias -Name tut -Value Tutorial -Description "Show a short introductory tutorial for this CLI configuration."
+Set-Alias -Name tut -Value CmdTutorial -Description "Show a short introductory tutorial for this CLI configuration."

@@ -5,8 +5,6 @@
 # load functions
 . $PSScriptRoot\functions.ps1
 
-# load projects
-. $PSScriptRoot\projects.ps1
 # load machine
 . $PSScriptRoot\..\machines\load_machine.ps1
 

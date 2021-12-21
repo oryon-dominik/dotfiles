@@ -151,8 +151,6 @@ function envs {gci env:* | sort-object name }  # -Description "displays all envi
 Set-Alias listenvs envs
 Set-Alias printenv envs
 
-function noadmin { . $env:DOTFILES\scripts\powershell\commands\shell_no_admin.ps1 }
-
 # deprecated
 # function restart { . $env:DOTFILES\scripts\batch\terminal_restart.bat }
 
