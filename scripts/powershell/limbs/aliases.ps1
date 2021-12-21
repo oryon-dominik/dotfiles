@@ -1,6 +1,6 @@
 ﻿# required: set variables to your configs locations
 #             ($env:DOTFILES, $console, $icons, $powershell_location, $shortcuts, $position)
-# required: the directory .$settings.local_location/logs/ must be available | TODO: implement check on install script and create first logfiles manually..
+# required: the directory shared/logs/ must be available | TODO: implement check on install script and create first logfiles manually..
 
 # load functions
 . $PSScriptRoot\functions.ps1
@@ -77,6 +77,14 @@ function mm {docker-compose run --rm django python manage.py makemigrations}
 function mig {docker-compose run --rm django python manage.py migrate}
 function te {docker-compose run --rm django pytest}
 function init {docker-compose run --rm django python manage.py initialize; docker-compose run --rm django python manage.py createusers}
+
+function cloud {
+    if (("{0}" -f $env:CLOUD_MOINT_POINT) -ne "") {
+        cd $env:CLOUD_MOINT_POINT
+    } else {
+        Write-Host "env:CLOUD_MOINT_POINT not set. Skipping."
+    }
+}
 
 # python
 # ! poetry is installed via pipx right now

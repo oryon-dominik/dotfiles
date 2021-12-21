@@ -1,25 +1,15 @@
 # Get Device Location from GPS-sensor or settings and asks google maps for the location
 
-# TODO: check if GEOCODING_KEY is set
-
-# catching errors, if settings not set and defaulting to DUS :)
-$catched_location_error = $false
-try {
-    $home_latitude = $settings.coordinates[0]
-    $home_longitude = $settings.coordinates[1]
-    $home_city = $settings.residence[0]
-    $home_country = $settings.residence[1]
-
-    # TODO: assert longitude and latitude are not null
-    # Else { Write-Warning "Latitude or Longitude data missing"; return}
+if (("{0}" -f $env:GOOGLE_MAPS_API_KEY) -eq "") {
+    Write-Host "No Google Maps API key found. Please set the environment variable GOOGLE_MAPS_API_KEY to your Google Maps API key."
+    return
 }
-catch {
-    $home_latitude = 51.23548
-    $home_longitude = 6.839653
-    $home_city = "Dusseldorf"
-    $home_country = "DE"
-    Write-Warning "Device Location settings not found. Using 'Dusseldorf' as fallback."
-}
+
+# set this to your "fallback", or home location
+$home_latitude = 51.23548
+$home_longitude = 6.839653
+$home_city = "Dusseldorf"
+$home_country = "DE"
 
 try { $connected = Test-Connection -Count 1 -ComputerName maps.googleapis.com -Quiet -InformationAction Ignore } catch { $connected = $false }
 if (!$connected) { Write-Warning "No Connection to GEOCODING-API possible"; return }
@@ -31,7 +21,7 @@ if ($connected) {
     $longitude = if (![System.Double]::IsNaN($gps_location.longitude)) { $gps_location.longitude } else { $home_longitude }
 
     # Retrieve Geolocation from Google Geocoding API
-    $url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=$latitude,$longitude&key=$GEOCODING_KEY"
+    $url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=$latitude,$longitude&key=$GOOGLE_MAPS_API_KEY"
 
     # TODO: catch network-errors
     $APIResults = ((Invoke-WebRequest $url).Content | ConvertFrom-Json | Select Results)

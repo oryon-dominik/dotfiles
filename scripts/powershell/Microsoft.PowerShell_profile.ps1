@@ -28,26 +28,23 @@ $is_elevated = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()
 # TODO: rework to decrypt envs..
 # . $PSScriptRoot\commands\unlock_secrets.ps1 -is_elevated $is_elevated
 
+# load local dotenv
+. $PSScriptRoot\LoadDotEnv.ps1 
+LoadDotEnv("$env:DOTFILES\.env")
+
 # Initializing dotfiles environment variable, if not already set properly
 if (-not (Test-Path env:DOTFILES)) { 
     $dotfiles_location = Join-Path -Path $home -ChildPath "\.dotfiles"
     $env:DOTFILES = $dotfiles_location }
 
-# load local settings
-. $PSScriptRoot\limbs\read_settings.ps1
-# TODO: check for existence of ($settings.dotfiles_location, $settings.cloud, $settings.projects, $settings.shortcuts)
 # calculate last update
-. $PSScriptRoot\limbs\read_update_log.ps1
-
-
-# init PROJECTS_DIR, if not set
-if (-not (Test-Path env:PROJECTS_DIR)) { $env:PROJECTS_DIR = $settings.projects }
+. $PSScriptRoot\components\upgrades\ReadUpdateLog.ps1
 
 # set powershell variables
-$shortcuts = Join-Path -Path $env:DOTFILES -ChildPath $settings.shortcuts
+$shortcuts = Join-Path -Path $env:DOTFILES -ChildPath "\shared\shortcuts"
 $powershell_location = Join-Path -Path $env:windir -ChildPath '\System32\WindowsPowerShell\v1.0'
 $script_location = Join-Path -Path $env:DOTFILES -ChildPath '\scripts'
-$file_location = Join-Path -Path $env:DOTFILES -ChildPath '\files'
+$file_location = Join-Path -Path $env:DOTFILES -ChildPath '\shared\files'
 $console = Join-Path -Path $file_location -ChildPath '\images\console'
 $icons = Join-Path -Path $file_location -ChildPath '\icons'
 
@@ -62,7 +59,7 @@ Import-Module DockerCompletion
 # Virtualenvwrapper (https://github.com/regisf/virtualenvwrapper-powershell)
 Import-Module $PSScriptRoot\ModulesInVersionControl\VirtualEnvWrapper.psm1
 # Upgrades & Update functionality
-. $PSScriptRoot\components\Upgrades.ps1
+. $PSScriptRoot\components\upgrades\Upgrades.ps1
 # The Tutorial explaining common commands for this CLI
 . $PSScriptRoot\components\CmdTutorial.ps1
 # Win-EventTail (tails Windows Event Logs) (https://gist.github.com/jeffpatton1971/a908cac57489e6ca59a6)
@@ -76,9 +73,6 @@ Import-Module $PSScriptRoot\ModulesInVersionControl\VirtualEnvWrapper.psm1
 # Zoxide Utilities (show with zoxide init powershell)
 . $PSScriptRoot\ModulesInVersionControl\zoxideUtilities.ps1
 
-# load local dotenv
-. $PSScriptRoot\LoadDotEnv.ps1 
-LoadDotEnv("$env:DOTFILES\.env")
 
 # set prompt (via starship)
 $ENV:STARSHIP_CONFIG = "$HOME\.dotfiles\common\starship\starship.toml"

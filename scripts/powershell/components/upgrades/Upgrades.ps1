@@ -15,7 +15,7 @@ function upgrade {
         Write-Host "    all                 Full System-Upgrade"
         Write-Host "    windows             Windows Update"
         Write-Host "    choco               Chocolatey Upgrade"
-        Write-Host "    repos               Update the repositores that are set in $env:DOTFILES\local\git_pulls.txt"
+        Write-Host "    repos               Update the repositores that are set in $env:DOTFILES\.repositories.txt"
         Write-Host "    python              Update pyenv, poetry and pip"
         Write-Host "    python-packages     Updates all python packages of the active repositories"
         Write-Host "    powershell          Update powershell"
@@ -58,7 +58,11 @@ function UpgradeChocolatey {
     choco upgrade all
     Write-Host ""
     Write-Host "Adding installed chocolatey packages to local list"
-    $choco_packages_log_path = (Join-Path -Path $env:DOTFILES -ChildPath "local\installedPackages\$env:computername\choco_installed_packages.txt")
+    $installed_packages_path = (Join-Path -Path $env:DOTFILES -ChildPath shared\installedPackages\$env:computername\)
+    if(!(test-path $installed_packages_path)) {
+      New-Item -ItemType Directory -Force -Path $installed_packages_path
+    }
+    $choco_packages_log_path = (Join-Path -Path $env:DOTFILES -ChildPath "shared\installedPackages\$env:computername\choco_installed_packages.txt")
     if (Test-Path -Path $choco_packages_log_path -PathType Leaf) {
         Write-Output (choco list -lo -r -y) | Out-file $choco_packages_log_path
     }
@@ -178,12 +182,12 @@ function UpdateRepositories {
         return
     }
     # are settings available?
-    if (!$settings.git_pulls) {
-        Write-Host "aborting: could not resolve a path to the repositories from settings"
+    if (!(Test-Path(Join-Path -Path $env:DOTFILES -ChildPath '.repositories.txt'))) {
+        Write-Host "aborting: could not resolve a path to the .repositories.txt"
         return
     }
     # init respositories to update
-    $respository_path = Join-Path -Path $env:DOTFILES -ChildPath $settings.git_pulls
+    $respository_path = Join-Path -Path $env:DOTFILES -ChildPath '.repositories.txt'
     if (-Not (Test-Path -Path $respository_path -PathType Leaf)) {
         Write-Host "aborting: repository config $respository_path not found"
         return
@@ -213,11 +217,13 @@ function UpdateRepositories {
 
 function LogUpdate {
     param([Parameter(Mandatory=$True)][string]$message = $(throw "Parameter -Message is required."))
-    $update_log_path = (Join-Path -Path $env:DOTFILES -ChildPath "local\logs\$env:computername\updates.log")
-    if (Test-Path -Path $update_log_path -PathType Leaf) {
-        Write-Output (-join('{"message": "', $($message), '", "timestamp": "', $(Get-TimeStamp), '"},')) | Out-file $update_log_path -append
+    $update_machine_path = (Join-Path -Path $env:DOTFILES -ChildPath "shared\logs\$env:computername\")
+    if(!(test-path $update_machine_path)) {
+        New-Item -ItemType Directory -Force -Path $update_machine_path
     }
-    else {
-        Write-Host "ERROR: Logfile not found"
+    $update_log_path = (Join-Path -Path $env:DOTFILES -ChildPath "shared\logs\$env:computername\updates.log")
+    if (!(Test-Path -Path $update_log_path -PathType Leaf)) {
+        New-Item -ItemType File -Force -Path $update_log_path
     }
+    Write-Output (-join('{"message": "', $($message), '", "timestamp": "', $(Get-TimeStamp), '"},')) | Out-file $update_log_path -append
 }
