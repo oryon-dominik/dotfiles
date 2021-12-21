@@ -44,7 +44,6 @@ ln -sfv $HOME/.dotfiles/common/fish/functions/last_command_as_sudo.fish $HOME/.c
 
 
 # create some dirs
-mkdir -p $HOME/projects
 mkdir -p $HOME/.virtualenvs
 mkdir -p $HOME/.config/alacritty
 
