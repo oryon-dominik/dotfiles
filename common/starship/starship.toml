@@ -44,7 +44,10 @@ truncation_symbol = ""
 fish_style_pwd_dir_length = 1
 use_logical_path = true  # true: symlinks not resovled
 home_symbol = "~"
-# TODO: $settings.cloud -> '☁'
+[directory.substitutions]
+"X:/Meine Ablage" = "🌈"  # gcloud on windows
+"/mnt/x/'Meine Ablage'" = "🌈"
+
 
 [time]
 disabled = false
