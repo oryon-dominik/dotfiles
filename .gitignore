@@ -29,6 +29,6 @@ scripts/powershell/machines/*.*
 !scripts/powershell/machines/load_machine.ps1
 
 # these two are individual & secret, put your own location-aliases and project-aliases here
-scripts/powershell/limbs/locations.ps1
+scripts/powershell/acronyms/locations.ps1
 
 TODO
