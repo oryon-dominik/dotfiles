@@ -108,4 +108,7 @@ function clock { # "Starts a timer"  # needs timer.py in $script_location
 
 # loading local aliases last, to overwrite existing ones
 # load locations
+if(!(test-path $PSScriptRoot\locations.ps1)) {
+    New-Item -ItemType File -Force -Path $PSScriptRoot\locations.ps1
+}
 . $PSScriptRoot\locations.ps1

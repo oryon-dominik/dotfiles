@@ -2,7 +2,7 @@
 
 # Elevated powershell
 $is_elevated = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
-if (!$is_elevated) { Write-Host "Can't install additional powershell modules as unprivileged user." }
+if (!$is_elevated) { Write-Host "Can't install additional powershell modules as unprivileged user."; return }
 
 Write-Host "Installing additional powershell modules for all users..."
 
