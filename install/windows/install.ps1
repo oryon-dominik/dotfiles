@@ -13,8 +13,9 @@ $dotfiles_location = Join-Path -Path $home -ChildPath "\.dotfiles"
 [Environment]::SetEnvironmentVariable("DOTFILES", "$dotfiles_location", "User")
 
 # Install package manager 'chocolatey'
-Set-ExecutionPolicy remotesigned
-Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+Set-ExecutionPolicy AllSigned
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+# deprecated: Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
 # 3. reopen elevated shell
 choco install git -y
@@ -84,16 +85,12 @@ function GetKeyPress([string]$regexPattern='[ynq]', [string]$message=$null, [int
 
 $key = GetKeyPress '[y]' "Press y to install additional software packages for essential use cases, web & media editing." 7
 if ($key -ne $null) {
-    Write-Host "pressed $key"
+    choco install $env:DOTFILES/install/windows/choco_web.config
+    choco install $env:DOTFILES/install/windows/choco_essentials.config
+    choco install $env:DOTFILES/install/windows/choco_media.config
+    choco install $env:DOTFILES/install/windows/choco_security.config
 } else {
     Write-Host "Skipped additional software installation."
 }
-
-
-choco install $env:DOTFILES/install/windows/choco_web.config
-choco install $env:DOTFILES/install/windows/choco_essentials.config
-choco install $env:DOTFILES/install/windows/choco_media.config
-choco install $env:DOTFILES/install/windows/choco_security.config
-
 
 Write-Host "Done :)"

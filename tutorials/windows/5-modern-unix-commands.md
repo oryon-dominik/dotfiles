@@ -33,8 +33,3 @@ manually adding the windows-branch
     cd exa
     git fetch origin pull/820/head:chesterliu/dev/win-support
     git checkout chesterliu/dev/win-support
-
-
-## still not working..
-
-cargo install mcfly

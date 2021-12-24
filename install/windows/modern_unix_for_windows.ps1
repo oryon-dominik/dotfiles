@@ -92,3 +92,4 @@ Write-Host "https://github.com/stedolan/jq/releases"
 Write-Host ""
 Write-Host "curlie - The power of curl, the ease of use of httpie."
 Write-Host "https://github.com/rs/curlie/releases"
+# TODO: add a windows-working version for 'mcfly' https://github.com/cantino/mcfly

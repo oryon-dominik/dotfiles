@@ -7,7 +7,7 @@
 If you followed the first tutorial [1-post-installation-windows10](1-post-installation-windows10.md) you're
 already set to start with the dotfiles environment. So skip the next paragraph.
 
-Make sure you have installed a [powershell](https://github.com/PowerShell/PowerShell#get-powershell) (This tutorial assumes, youre using `powershell7`), [chocolatey](https://chocolatey.org/) & [git](https://git-scm.com/) with [hub](https://hub.github.com/)
+Make sure you have installed a [powershell](https://github.com/PowerShell/PowerShell#get-powershell) (This tutorial assumes, youre using `powershell7`), [chocolatey](https://chocolatey.org/) & [git](https://git-scm.com/).
 
 Open an admin-powershell.
 
@@ -16,13 +16,11 @@ Open an admin-powershell.
 Set an environment variable (`$env:DOTFILES`) to the location you want to install your config to. 
 
 ```powershell
-mkdir "$env:USERPROFILE/.dotfiles"
 $env:DOTFILES = Convert-Path "$env:USERPROFILE/.dotfiles"
 [Environment]::SetEnvironmentVariable("DOTFILES", "$env:DOTFILES", "User")
-refreshenv
 ```
 
-Clone (or create a new) dotfile repo into `$env:DOTFILES`.
+Clone | Fork | Create a dotfile repo into `$env:DOTFILES`.
 
 ```powershell
 git clone https://github.com/oryon-dominik/dotfiles $env:DOTFILES
@@ -48,24 +46,27 @@ mkdir "$env:USERPROFILE/Documents/PowerShell"
 New-Item -Path "$env:USERPROFILE/Documents/PowerShell" -ItemType Junction -Value "$env:DOTFILES/scripts/powershell"
 ```
 
-TODO: Run the initial setup-script once (to prepare .env and so on..)
-
-
 Install the additional powershell-modules. 
 
 ```powershell
 refreshenv
 Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression $env:DOTFILES/install/windows/additional_powershell_modules.ps1
+choco install $env:DOTFILES/install/windows/choco_development.config
+choco install $env:DOTFILES/install/windows/choco_cli_enhanced.config
+choco install $env:DOTFILES/install/windows/choco_languages.config
+refreshenv
+Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression $env:DOTFILES/install/windows/modern_unix_for_windows.ps1
+
+# optional (If you like add essential software for your everyday work)
+choco install $env:DOTFILES/install/windows/choco_web.config
+choco install $env:DOTFILES/install/windows/choco_essentials.config
+choco install $env:DOTFILES/install/windows/choco_media.config
+choco install $env:DOTFILES/install/windows/choco_security.config
+refreshenv
 ```
 
 
-If you like add the most basic proprietary software for your everyday work (Microsoft-Windows-Terminal, Visual Studio Code, Google Chrome, Google Drive Filestream).
-
-```powershell
-choco install $env:DOTFILES/install/windows/choco_win10_minimal.config
-```
-
-You could also add your dotfiles location to explorers quick-access
+You can also add your dotfiles location to explorers quick-access.
 
 ```powershell
 (new-object -com shell.application).Namespace("$env:DOTFILES").Self.InvokeVerb("pintohome")
