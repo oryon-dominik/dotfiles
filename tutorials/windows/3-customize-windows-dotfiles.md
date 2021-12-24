@@ -11,7 +11,7 @@ Create the missing-files  # TODO: create the missing files when checking for the
 ```powershell
 mkdir $env:DOTFILES/scripts/powershell/machines
 New-Item -ItemType file $env:DOTFILES/scripts/powershell/machines/$env:computername.ps1
-New-Item -ItemType file $env:DOTFILES/scripts/powershell/limbs/locations.ps1
+New-Item -ItemType file $env:DOTFILES/scripts/powershell/acronyms/locations.ps1
 ```
 
 Install Additional packages & powershell Modules, place additional symlinks
@@ -21,7 +21,7 @@ Customize scripts & aliases
 # TODO: group aliases logically
 
 # examples
-echo "function dev { set-location (Join-Path -Path $settings.cloud -ChildPath '\Development') }" >> $ENV:DOTFILES/scripts/powershell/limbs/locations.ps1
+echo "function dev { set-location (Join-Path -Path $settings.cloud -ChildPath '\Development') }" >> $ENV:DOTFILES/scripts/powershell/acronyms/locations.ps1
 
 TODO: create an empty .env
 
@@ -93,6 +93,6 @@ locals/git_too_big_to_prompt
 
 10. customize
 
-    - edit `aliases.ps1`, `functions.ps1`, `intro.ps1` & `prompt_colors.ps1` in `scripts/powershell/limbs/` to your taste\
+    - edit `aliases.ps1`, `functions.ps1`, `intro.ps1` & `prompt_colors.ps1` in `scripts/powershell/acronyms/` to your taste\
     - customize installed modules & scripts\
     - share your thoughts with me

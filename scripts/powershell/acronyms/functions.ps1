@@ -1,98 +1,39 @@
 # TODO: implement write-to-log(message, logtype) function
 
-# custom function-commands
-$tray_open = $false
-function cdrom{
-    try {
-        $Diskmaster = New-Object -ComObject IMAPI2.MsftDiscMaster2
-        $DiskRecorder = New-Object -ComObject IMAPI2.MsftDiscRecorder2
-        $DiskRecorder.InitializeDiscRecorder($DiskMaster)
-
-        if (-Not $tray_open) {
-            $DiskRecorder.EjectMedia()
-            $global:tray_open = $true
-            }
-        elseif($tray_open) {
-            $DiskRecorder.CloseTray()
-            $global:tray_open = $false
-            }
-
-    } catch {
-        Write-Error "Failed to operate the disk. Details : $_"
-    }
-}
-
-function download{  # download <url> <destination_file_name>
-    Param(
-        [Parameter(Mandatory=$false)] [string]$url, [Parameter(Mandatory=$false)] [string]$filename)
-        if($url){
-            if($filename){
-                $current_path = $(Get-Location)
-                $request = New-Object System.Net.WebClient
-                $target = "$current_path\$filename"
-                $request.DownloadFile($url, $target)
-            }
-            else{
-                Write-Host "Specify output filename"
-            }
-        }
-        else{
-            Write-Host "No URL specified"
-        }
-}
-
 function sudo () {
     if ($args.Length -lt 1) {
         Write-Host "No command specified."
     }
     if ($args.Length -ge 1) {  # Opens a new elevated Powershell in Windows-Terminal.
-        Start-Process wt.exe -ArgumentList "PowerShell.exe", "-NoExit", "-Command", "$args" -verb "runAs"
+        Start-Process wt.exe -ArgumentList "pwsh.exe", "-NoExit", "-Command", "$args" -verb "runAs"
     }
 }
 
 function lock{
+    # locks the computer
     c:\windows\system32\rundll32.exe user32.dll, LockWorkStation
 }
 
-function generate_password ([int]$pass_length = 50) {
-    python -c "import random; print(''.join([random.choice('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSRTUVWXYZ0123456789!@#$%^&*(-_=+)') for i in range($pass_length)]))"
+function GeneratePassword ([int]$pass_length = 50) {
+    $Password =  ("!@#$%^&*0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz".tochararray() | sort {Get-Random})[0..$pass_length] -join ''
 }
 
-function new_project {
+function new {
     . (Join-Path -Path $script_location -ChildPath "\python\new_project.py")
 }
 
 function Get-TimeStamp {
     return "{0:yyyy-MM-dd} {0:HH:mm:ss}" -f (Get-Date)
 }
-Set-Alias -Name time -Value Get-TimeStamp -Description "Gets time stamp"
-
-function zen{  # activates zen-mode
-    $zen_cmd = "'function prompt {Write-Host \`"\`" -NoNewline -ForegroundColor white;\`"% \`";Write-Host \`" \`" -NoNewline -ForegroundColor white};cls'"
-    $zenmode = $powershell_location + "\PowerShell.exe -NoLogo -NoExit -Command " + $zen_cmd + " -new_console:t:zen -new_console:W:'" + $console + "\console_zen.png' -new_console:C:" + $icons + "\zen.ico"
-    Invoke-Expression $zenmode
-}
+Set-Alias -Name dt -Value Get-TimeStamp -Description "Gets time stamp"
 
 function weather{  # weather <city> <country>
     Param([Parameter(Mandatory=$false)] [String]$city = $position.city, [Parameter(Mandatory=$false)] [String]$country = $position.country) # default-city
-    Write-Host ""
     Get-Weather -City $city -Country $country
-    Write-Host ""
 }
 Set-Alias -Name wetter -Value weather -Description "Wetterbericht"
 
-function shell{
-    $newtab = $powershell_location + "\PowerShell.exe -NoLogo -NoExit -new_console:t:PowerShell -new_console:W:'" + $console + "\console.png' -new_console:C:" + $icons + "\cyberise.ico"
-    Invoke-Expression $newtab
-}
-function adminshell{
-    $newtab = $powershell_location + "\PowerShell.exe -NoLogo -NoExit -new_console:t:PowerShell -new_console:W:'" + $console + "\console.png' -new_console:C:" + $icons + "\cyberise.ico"
-    Invoke-Expression $newtab
-}
-Set-Alias -Name newtab -Value shell -Description "opens new tab"
-
-# are you admin [BOOL] ?
-function isadmin {[bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")}
+function isadmin {[bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")}  # are you admin [BOOL] ?
 
 function cfg { 
     set-location $env:DOTFILES  # config (DEN) folder
@@ -104,12 +45,7 @@ function cfg {
     }  # deactivate any active env, to work on "pure" system-python
 }
 
-# edit powershell_profile in notepad
-function powershell_config { notepad++ "$env:DOTFILES\scripts\powershell\Microsoft.PowerShell_profile.ps1" }
-Set-Alias -Name config -Value powershell_config -Description "edit Powershell-Profile"
-
-function alias_config { notepad++ "$env:DOTFILES\scripts\powershell\limbs\locations.ps1" }
-Set-Alias -Name aliases -Value alias_config -Description "edit lokal Powershell-location-Aliases"
+function aliases { notepad++ "$env:DOTFILES\scripts\powershell\acronyms\locations.ps1" }  # edit local Aliases
 
 function sysinfo {
     Get-CimInstance -ClassName Win32_processor | ft -AutoSize Name,MaxClockSpeed,NumberOfCores
@@ -121,8 +57,6 @@ function sysinfo {
     # Get-CimInstance -ClassName Win32_Networkadapter | ft -AutoSize DeviceID,Name,ServiceName
 }
 
-function venv { . .\utils\activate.ps1 }  # TODO: get a more sophisticated location of the next matching activate.ps1
-
 function ver {
     $name = (Get-CimInstance -ClassName Win32_OperatingSystem).caption
     $bit = (Get-CimInstance -ClassName Win32_OperatingSystem).OSArchitecture
@@ -131,43 +65,34 @@ function ver {
     Write-Host $name, $bit, " Version:", $ver, "- Build:", $build
 }
 
-function lan {
-    $networks = Get-CimInstance -ClassName win32_networkadapter | select netconnectionid, name, InterfaceIndex, netconnectionstatus
-    Write-Host $networks
-}
-
 # link <target> <source>              create a junction -> "symlink" for directories
 function linkdir($target, $source){New-Item -Path $target -ItemType Junction -Value $source}
 # symlink <target> <source>           create a symlink for files
 function link($target, $source){New-Item -Path $target -ItemType SymbolicLink -Value $source}
 
-function ip { (Invoke-WebRequest -uri "http://ipinfo.io/json").Content }  # or: http://ident.me
+function ip { xh ident.me --body }  # == (Invoke-WebRequest -uri "http://ipinfo.io/json").Content }
 
 function envs {gci env:* | sort-object name }  # -Description "displays all environment variables"
-Set-Alias listenvs envs
 Set-Alias printenv envs
 
-# deprecated
-# function restart { . $env:DOTFILES\scripts\batch\terminal_restart.bat }
 
 function spool { . $env:DOTFILES\scripts\batch\printer_restart.bat }
 
-# SpeedTest
-function speedtest { . $env:DOTFILES\scripts\powershell\commands\SpeedTest.ps1 }
-Set-Alias speed speedtest
 
-# python-poetry add requirements.txt
-function poetry_add_requirements { foreach($requirement in (Get-Content "$pwd\requirements.txt")) {Invoke-Expression "poetry add $requirement"} }
+function AddPoetryRequirements { foreach($requirement in (Get-Content "$pwd\requirements.txt")) {Invoke-Expression "poetry add $requirement"} }
+
 
 function ansible {
-    Write-Host "ERROR: Ansible does not support windows. To use ansible, switch to WSL"
+    Write-Host "ERROR: Ansible does not support windows (yet?). To use ansible, switch to WSL"
 }
+
 
 function CreateAssociation {
     Param(
         [parameter(Mandatory=$true, HelpMessage="File extension name")] [String[]] $extension,
-         [parameter(Mandatory=$true, HelpMessage="Path to executable")] [String[]] $pathToExecutable)
-    
+        [parameter(Mandatory=$true, HelpMessage="Path to executable")] [String[]] $pathToExecutable
+    )
+
     # create the filetype
     $filetype = cmd /c "assoc $extension 2>NUL"
 
@@ -183,13 +108,11 @@ function CreateAssociation {
     cmd /c "ftype $filetype=`"$pathToExecutable`" `"%1`""
 }
 
+
 function venvName {
     python $env:DOTFILES\scripts\python\get_venv_name.py
 }
 
-function venvColor($color) {
-    python $env:DOTFILES\scripts\python\change_venv_color.py $color
-}
 
 function clock { # "Starts a timer"  # needs timer.py in $script_location
     $timer_script_path = (Join-Path -Path $script_location -ChildPath "\python\timer.py")
@@ -209,6 +132,7 @@ function cliTube {
     python $cliTube_path $args
 }
 Set-Alias -Name tube -Value cliTube -Description "Plays Youtube Search-Results"  # needs cliTube.py in $script_location
+
 
 function hockey { # Plays Highlights from different hockey leagues.
 # you can create a symbolic link to that script with:  New-Item -Path "$env:DOTFILES/scripts/python/hockey.py" -ItemType SymbolicLink -Value "<location-of-your>/hockey.py"
@@ -238,6 +162,7 @@ function deg {
 }
 
 
+# restic backups
 function restic-apollon {
     $is_elevated = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
     if (-not $is_elevated) {
@@ -274,5 +199,24 @@ function backups {
 
         restic-apollon --tag apollon --exclude-file $env:DOTFILES\local\restic-excludefile backup c:\dev d:\keep
         restic-apollon forget --prune --keep-last=7 --keep-daily=30 --keep-weekly=52 --keep-monthly=24 --keep-yearly=10
+    }
+}
+
+
+# call command shortcuts, used for python projects
+function cc () {
+    $commands = ".\commands.py"
+    $cwd = (Get-Location)
+    $parent = Split-Path -Path $cwd
+    if (Test-Path $commands -PathType leaf)    {
+        python commands.py $args
+    }
+    elseif (Test-Path (Join-Path -Path $parent -ChildPath $commands) -PathType leaf) {
+        Set-Location $parent
+        python commands.py $args
+        Set-Location $cwd
+    }
+    else {
+        Write-Host "commands.py not found" 
     }
 }

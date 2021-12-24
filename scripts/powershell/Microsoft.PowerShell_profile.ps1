@@ -19,14 +19,10 @@ $PSDefaultParameterValues = @{'*:Encoding' = 'utf8'}
 #        ./+sssssoo++/+shdmmmhs/`         
 #            .:/ossyyyyss+/-`             
 
-lolcat $PSScriptRoot\limbs\intro  # print an intro
+lolcat $PSScriptRoot\intro  # print the intro-graphic
 
 # Check admin-rights
 $is_elevated = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
-
-# unlock secrets (conditional)
-# TODO: rework to decrypt envs..
-# . $PSScriptRoot\commands\unlock_secrets.ps1 -is_elevated $is_elevated
 
 # load local dotenv
 . $PSScriptRoot\LoadDotEnv.ps1 
@@ -48,11 +44,7 @@ $file_location = Join-Path -Path $env:DOTFILES -ChildPath '\shared\files'
 $console = Join-Path -Path $file_location -ChildPath '\images\console'
 $icons = Join-Path -Path $file_location -ChildPath '\icons'
 
-# TODO: load the machines to include from a list or from settings "exclude_from_geo_location_service"
-if (-not ($settings.exclude_from_geo_location_service)) {
-  # get geolocation from google-API
-  . $PSScriptRoot\components\GetDeviceLocation.ps1
-}
+. $PSScriptRoot\components\GetDeviceLocation.ps1
 
 # Imports all custom-added-modules to the powershell-space
 Import-Module DockerCompletion
@@ -79,18 +71,18 @@ $ENV:STARSHIP_CONFIG = "$HOME\.dotfiles\common\starship\starship.toml"
 Invoke-Expression (&starship init powershell)
 
 # load aliases & function-definitions
-. $PSScriptRoot\limbs\aliases.ps1
+. $PSScriptRoot\acronyms\aliases.ps1
 
 
 # loading custom paths
+$env:path += ";$Env:Programfiles\\VideoLAN\VLC\vlc.exe"
+$env:path += ";$Env:Programfiles\NASM"  # netwide-assembler
 $env:path += ";$(Join-Path -Path $script_location -ChildPath "\python")"
 $env:path += ";$(Join-Path -Path $script_location -ChildPath "\batch")"
-$env:path += ";$Env:Programfiles\NASM"  # netwide-assembler
 $env:path += ";$(Join-Path -Path $env:USERPROFILE -ChildPath "\.cargo\bin\")"  # rust commands
 
 # vi-edit-mode
 # Set-PSReadlineOption -EditMode vi -BellStyle None
-
 
 # ======================================================
 
@@ -98,17 +90,11 @@ $env:path += ";$(Join-Path -Path $env:USERPROFILE -ChildPath "\.cargo\bin\")"  #
 
 # TODO: add-pomodore-timer (https://andrewpla.github.io/A-Toasty-Pomodoro-Timer/)
 
-# TODO: use geolocation for open-weather api
-
 # TODO: config wsl-linux distributions
-
-# TODO: if projects are created with new_project script there should be a name and a lsvirtualenv.. so maybe add a shortcut to it to projects and import that to aliases too
 
 # TODO: haxx : highlight every ip-location for every connection on world-map
 
 # TODO: add powershell-history (https://software.intel.com/en-us/blogs/2014/06/17/giving-powershell-a-persistent-history-of-commands)
-
-# TODO: add a ps-script aliases-structrue that includes all the scripts named as the localhost, so that you load the local-aliases too
 
 # ======================================================
 
