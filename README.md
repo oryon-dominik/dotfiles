@@ -15,11 +15,11 @@
 ## How to create a dotfiles repository on windows
 
 After a fresh windows installation start with the [post-installation preparation](tutorials/windows/1-post-installation-windows10.md),
- or directly follow the  on how to [setup your own windows dotfiles](tutorials/windows/2-how-to-windows-dotfiles.md)
+ or directly proceed to [setup your own windows dotfiles](tutorials/windows/2-how-to-windows-dotfiles.md).
 
 ## How to create a dotfiles repository on ubuntu
 
-Tutorial how to setup [ubunutu dotfiles](tutorials/ubuntu/1-how-to-ubuntu-dotfiles.md)
+Tutorial how to setup [ubunutu dotfiles](tutorials/ubuntu/1-how-to-ubuntu-dotfiles.md).
 
 ---
 
@@ -30,4 +30,13 @@ This repos' main purpose is serving as a private dump - so no warranties at all 
 
 > Especially all install- and shell- scripts are under heavy construction. Use with caution - *know* what you're doing.
   
-newest_version: 20.12.2021
+newest_version: 25.12.2021
+
+
+### Hooks
+
+To enable the git commit hooks on the machine (Requires installation of [python](tutorials/python/pyenv-on-windows.md) + [poetry](tutorials/python/poetry-on-windows.md))
+
+    poetry install
+    poetry shell
+    pre-commit install

@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "dotfiles"
+version = "1.0.0"
+description = "oryons dotfiles"
+authors = ["oryon-dominik <oryon@cyberise.de>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pre-commit = "^2.16.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
