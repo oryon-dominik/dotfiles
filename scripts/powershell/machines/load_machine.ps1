@@ -4,4 +4,4 @@
 # place any machine-specific code to run inside that file.
 
 $machine_path = Join-Path -Path $PSScriptRoot -ChildPath "$env:computername.ps1"
-If (Test-Path $machine_path -eq $True) {. $machine_path}
+If ((Test-Path $machine_path) -eq $True) {. $machine_path}
