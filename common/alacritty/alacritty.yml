@@ -68,8 +68,8 @@ font:
   #   style: Bold Italic
   size: 11.5
   offset:
-    x: 0  # letter spacing
-    y: 0  # line spacing
+    x: 1  # letter spacing
+    y: 2  # line spacing
   glyph_offset:
     x: 0  # moves the glyph to the right
     y: 0  # moves the glyph upward
@@ -110,9 +110,11 @@ cursor:
 live_config_reload: true
 
 shell:
-  # program: 'C:\Program Files\PowerShell\7\pwsh.exe'
-  program: /bin/fish
+  program: 'C:\Program Files\PowerShell\7\pwsh.exe'
+  # program: /bin/fish
   # args: --login
+winpty_backend: true
+
 
 working_directory: None  # inherits from parent process
 
