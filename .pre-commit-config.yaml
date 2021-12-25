@@ -1,0 +1,6 @@
+repos:
+  - repo: https://github.com/oryon-dominik/pre-commit-alacritty-os-specific-shell
+    sha: df37504f177340f8811e2799c5256bea6898eaed
+    hooks:
+      - id: alacritty-osspecific-shell
+        args: [--posix]
