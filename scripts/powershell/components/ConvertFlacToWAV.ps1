@@ -1,5 +1,6 @@
 #!/usr/bin/env pwsh
 
+Write-Host "Converting all Flac in current directory to WAV."
 $files = Get-ChildItem "."
 foreach ($f in $files){
     if ($f.Name -Like "*.flac") {
