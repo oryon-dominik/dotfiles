@@ -26,7 +26,7 @@ ATTENTION. THIS SCRIPT WILL REPLACE THE FOLLOWING FILES WITHOUT ASKING
 ```
 
 ```bash
-curl -s https://raw.githubusercontent.com/oryon-dominik/dotfiles/master/ubuntu/install/install.sh | bash -i
+curl -s https://raw.githubusercontent.com/oryon-dominik/dotfiles/master/install/ubuntu/install.sh | bash -i
 ```
 
 The script will clone the dotfiles via https, to use ssh add your key and change the origin.
