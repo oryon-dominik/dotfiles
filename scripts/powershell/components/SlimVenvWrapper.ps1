@@ -1,15 +1,56 @@
-
-# TODO: write a custom and pretty replacement "SlimVenvWrapper" for virtualenvwrapper-powershell" (using "rich"?)
+# Virtualenvwrapper aliases for powershell
 
 # https://docs.python.org/3/library/venv.html
+function mkvirtualenv ([parameter(mandatory=$true)] [string] $venvName) {
+    $venvDir = "$env:WORKON_HOME/$venvName"
+    if (Test-Path -Path $venvDir) {
+        Write-Host "Virtualenv $venvName already exists."
+    } else {
+        $pythonVersion = (python --version)
+        Write-Host "Creating $pythonVersion virtualenv '$venvName'..."
+        # optional: venv.EnvBuilder.create(env_dir)
+        python -m venv $venvDir
+    }
+}
 
-# mkvirtualenv:
-# python -m venv ~Envs\venvName
-# venv.EnvBuilder.create(env_dir)
+function workon ($venvName) {
+    if ($venvName -eq $null) {
+        $venvName = (venvName)
+    } 
+    $venvDir = "$env:WORKON_HOME/$venvName"
+    if (Test-Path -Path $venvDir) {
+        . "$venvDir/Scripts/activate.ps1"
+    } else {
+        Write-Host "Could not find venv: $venvName."
+    }
+}
 
-# workon
-# ~Envs\venvName\Scripts\activate.ps1
-# or default: workon (venvName)
+# deactivate is not needed, as it is automatically added by the activate.ps1 Script.
+function lsvirtualenv {
+    $venvsDir = $env:WORKON_HOME
+    if (Test-Path -Path $venvsDir) {
+        $venvDirs = Get-ChildItem -Path $venvsDir
+        $venvs = foreach ($venv in $venvDirs) {
+            $venvName = $venv.Name
+            $pythonVersion = ((Get-Content -Path "$env:WORKON_HOME/$venvName/pyvenv.cfg" -TotalCount 1) -split '\\')[-1]
+            @{Name=$venvName;PythonVersion=$pythonVersion}
+        }
+        $venvs | % { new-object PSObject -Property $_} | Format-Table -AutoSize -Property Name, Version
 
-# lsvirtualenv
-# rmvirtualenv
+    } else {
+        Write-Host "No virtualenvs found in $venvsDir."
+    }
+}
+
+function rmvirtualenv ($venvName) {
+    if ($venvName -eq $null) {
+        $venvName = (venvName)
+    }
+    $venvDir = "$env:WORKON_HOME/$venvName"
+    if (Test-Path -Path $venvDir) {
+        Write-Host "Removing virtualenv $venvName..."
+        Remove-Item -Path $venvDir -Recurse -Force
+    } else {
+        Write-Host "Could not find venv: $venvName."
+    }
+}

@@ -29,7 +29,7 @@ $is_elevated = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()
 LoadDotEnv("$env:DOTFILES\.env")
 
 # Initializing dotfiles environment variable, if not already set properly
-if (-not (Test-Path env:DOTFILES)) { 
+if (-not (Test-Path $env:DOTFILES)) { 
     $dotfiles_location = Join-Path -Path $home -ChildPath "\.dotfiles"
     $env:DOTFILES = $dotfiles_location }
 
@@ -48,8 +48,9 @@ $icons = Join-Path -Path $file_location -ChildPath '\icons'
 
 # Imports all custom-added-modules to the powershell-space
 Import-Module DockerCompletion
-# Virtualenvwrapper (https://github.com/regisf/virtualenvwrapper-powershell)
-Import-Module $PSScriptRoot\ModulesInVersionControl\VirtualEnvWrapper.psm1
+# Virtualenvwrapper bindings
+$env:WORKON_HOME = "$env:USERPROFILE\Envs"
+. $PSScriptRoot\components\SlimVenvWrapper.ps1
 # Upgrades & Update functionality
 . $PSScriptRoot\components\upgrades\Upgrades.ps1
 # The Tutorial explaining common commands for this CLI
@@ -67,7 +68,7 @@ Import-Module $PSScriptRoot\ModulesInVersionControl\VirtualEnvWrapper.psm1
 
 
 # set prompt (via starship)
-$ENV:STARSHIP_CONFIG = "$HOME\.dotfiles\common\starship\starship.toml"
+$env:STARSHIP_CONFIG = "$HOME\.dotfiles\common\starship\starship.toml"
 Invoke-Expression (&starship init powershell)
 
 # load aliases & function-definitions
