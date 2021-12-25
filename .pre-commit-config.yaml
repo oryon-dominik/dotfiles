@@ -3,4 +3,4 @@ repos:
     rev: 1.0.1
     hooks:
       - id: alacritty-os-specific-shell
-        args: [--posix=C:/Program Files/PowerShell/7/pwsh.exe --posix=/bin/fish]
+        args: [--windows=C:/Program Files/PowerShell/7/pwsh.exe --posix=/bin/fish]
