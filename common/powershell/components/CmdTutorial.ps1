@@ -1,6 +1,7 @@
 
 # TODO: pretty print (maybe as rust-module?! or python rich?!)
 function CmdTutorial {
+
     Write-Host "================================== TUTORIAL ======================================================"
     Write-Host "Available Commands"
     Write-Host ""
@@ -33,15 +34,14 @@ function CmdTutorial {
     Write-Host "    jq                  command-line JSON processor."  # https://github.com/stedolan/jq/releases
     Write-Host "    hyperfine           A command-line benchmarking tool"  # https://github.com/sharkdp/hyperfine
     Write-Host "    dog                 command-line DNS client."  # https://github.com/ogham/dog
-    
+
     Write-Host "    xh                  Friendly and fast tool for sending HTTP requests"  # https://github.com/ducaale/xh
     Write-Host "    broot               A new way to see and navigate directory trees"  # https://github.com/Canop/broot
     Write-Host "    grex                generating regular expressions from user-provided test cases"  # https://github.com/pemistahl/grex
     Write-Host "    bandwhich           Terminal bandwidth utilization tool"  # https://github.com/imsnif/bandwhich
     Write-Host "    tokei               Count your code, quickly."  # https://github.com/XAMPPRocky/tokei
     Write-Host "    choose              fast alternative to cut and (sometimes) awk"  # https://github.com/theryangeary/choose
-    
-    
+
     Write-Host ""
     Write-Host "Python:"
     Write-Host ""
@@ -49,11 +49,15 @@ function CmdTutorial {
     Write-Host "    poetry              manage your projects dependencies and package"
     Write-Host "    pipx                manage external binaries"
     Write-Host ""
+
     # TODO: sort, pretty-print  +clean up + add section for
     # generate_password
     # speedtest
     # weather
     # cliTube
     # restic-backups
+    # functions defined in scripts/powershell/System.ps1
+    # showssh
+
 }
 Set-Alias -Name tut -Value CmdTutorial -Description "Show a short introductory tutorial for this CLI configuration."
