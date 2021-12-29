@@ -21,17 +21,14 @@ $PSDefaultParameterValues = @{'*:Encoding' = 'utf8'}
 
 lolcat $PSScriptRoot\intro  # print the intro-graphic
 
-# Check admin-rights
-$is_elevated = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
-
-# load local dotenv
-. $PSScriptRoot\LoadDotEnv.ps1 
-LoadDotEnv("$env:DOTFILES\.env")
-
 # Initializing dotfiles environment variable, if not already set properly
 if (-not (Test-Path $env:DOTFILES)) { 
     $dotfiles_location = Join-Path -Path $home -ChildPath "\.dotfiles"
     $env:DOTFILES = $dotfiles_location }
+
+# load local dotenv
+. $PSScriptRoot\components\LoadDotEnv.ps1
+LoadDotEnv("$env:DOTFILES\.env")
 
 # calculate last update
 . $PSScriptRoot\components\upgrades\ReadUpdateLog.ps1
@@ -44,6 +41,7 @@ $file_location = Join-Path -Path $env:DOTFILES -ChildPath '\shared\files'
 $console = Join-Path -Path $file_location -ChildPath '\images\console'
 $icons = Join-Path -Path $file_location -ChildPath '\icons'
 
+# Get device location.
 . $PSScriptRoot\components\GetDeviceLocation.ps1
 
 # Imports all custom-added-modules to the powershell-space
@@ -69,11 +67,11 @@ $env:WORKON_HOME = "$env:USERPROFILE\Envs"
 $env:STARSHIP_CONFIG = "$HOME\.dotfiles\common\starship\starship.toml"
 Invoke-Expression (&starship init powershell)
 
-# load aliases & function-definitions
+# load aliases & system-function-definitions
 . $PSScriptRoot\Aliases.ps1
 
 
-# loading custom paths
+# add custom paths
 $env:path += ";$Env:Programfiles\\VideoLAN\VLC\vlc.exe"
 $env:path += ";$Env:Programfiles\NASM"  # netwide-assembler
 $env:path += ";$(Join-Path -Path $script_location -ChildPath "\python")"
