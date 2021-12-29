@@ -70,7 +70,7 @@ $env:STARSHIP_CONFIG = "$HOME\.dotfiles\common\starship\starship.toml"
 Invoke-Expression (&starship init powershell)
 
 # load aliases & function-definitions
-. $PSScriptRoot\acronyms\aliases.ps1
+. $PSScriptRoot\Aliases.ps1
 
 
 # loading custom paths

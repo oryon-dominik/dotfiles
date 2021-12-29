@@ -2,11 +2,12 @@
 #             ($env:DOTFILES, $shortcuts, $position)
 # required: the directory shared/logs/ must be available | TODO: implement check on install script and create first logfiles manually..
 
-# load functions
-. $PSScriptRoot\functions.ps1
+# load system functions
+. $env:DOTFILES\scripts\powershell\System.ps1
+. $env:DOTFILES\scripts\powershell\Tube.ps1
 
 # load machine
-. $PSScriptRoot\..\machines\load_machine.ps1
+. $env:DOTFILES\scripts\powershell\machines\LoadMachine.ps1
 
 # managing the computer's state
 Set-Alias -Name reboot -Value Restart-Computer -Description "reboot"
@@ -40,20 +41,16 @@ Set-PSReadlineKeyHandler -Key Ctrl+r -BriefDescription fzf -LongDescription "Rev
 function md5($filepath) {Get-FileHash $filepath -Algorithm MD5}
 function sha256($filepath) {Get-FileHash $filepath -Algorithm SHA256}
 
+# symlinks
+# link <target> <source>              create a junction -> "symlink" for directories
+function linkdir($target, $source){New-Item -Path $target -ItemType Junction -Value $source}
+# symlink <target> <source>           create a symlink for files
+function link($target, $source){New-Item -Path $target -ItemType SymbolicLink -Value $source}
+
 # media
 Set-Alias -Name play -Value vlc -Description "Plays media with vlc"
 
-# programs
-function netflix { Start-Process -FilePath "$shortcuts\netflix.lnk" }
-function pocketcast { Start-Process -FilePath "$shortcuts\Pocket Casts.lnk" }
-Set-Alias -Name steam -Value "D:\Steam\Steam.exe" -Description "start gameclient steam"
-
 # office
-Set-Alias -Name word -Value "C:\Program Files\Microsoft Office\root\Office16\winword.exe" -Description "start word"
-Set-Alias -Name ppt -Value "C:\Program Files\Microsoft Office\root\Office16\powerpnt.exe" -Description "start powerpoint"
-Set-Alias -Name excel -Value "C:\Program Files\Microsoft Office\root\Office16\excel.exe" -Description "start excel"
-Set-Alias -Name mail -Value "C:\Program Files (x86)\Mozilla Thunderbird\thunderbird.exe" -Description "Open thunderbird"
-Set-Alias -Name pdf -Value SumatraPDF -Description "reads pdf"
 Set-Alias -Name np -Value notepad++ -Description "edit file fast"
 Set-Alias -Name npp -Value notepad++ -Description "edit file fast"
 Set-Alias -Name notepad -Value notepad++ -Description "edit file fast"
@@ -66,9 +63,19 @@ function cloud {  # cd into your mounted cloud drive
     }
 }
 
+# python
+function ansible { Write-Host "ERROR: Ansible does not support windows (yet?). To use ansible, switch to WSL" }
+
+# config
+function cfg { 
+    set-location $env:DOTFILES  # dir to the config (the dotfiles) folder.
+    if (Get-Command 'deactivate' -errorAction Ignore) { Try { deactivate | out-null } Catch {} }  # deactivate any active env, to work on "pure" system-python
+}
+# edit the local aliases
+function aliases { notepad++ "$env:DOTFILES\common\powershell\Locations.ps1" }  # edit local Aliases
 # loading local aliases last, to overwrite existing ones
 # load locations
-if(!(test-path $PSScriptRoot\locations.ps1)) {
-    New-Item -ItemType File -Force -Path $PSScriptRoot\locations.ps1
+if(!(test-path $PSScriptRoot\Locations.ps1)) {
+    New-Item -ItemType File -Force -Path $PSScriptRoot\Locations.ps1
 }
-. $PSScriptRoot\locations.ps1
+. $PSScriptRoot\Locations.ps1

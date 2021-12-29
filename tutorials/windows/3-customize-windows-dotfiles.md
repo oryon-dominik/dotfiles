@@ -11,7 +11,6 @@ Create the missing-files  # TODO: create the missing files when checking for the
 ```powershell
 mkdir $env:DOTFILES/scripts/powershell/machines
 New-Item -ItemType file $env:DOTFILES/scripts/powershell/machines/$env:computername.ps1
-New-Item -ItemType file $env:DOTFILES/scripts/powershell/acronyms/locations.ps1
 ```
 
 Install Additional packages & powershell Modules, place additional symlinks
@@ -21,7 +20,7 @@ Customize scripts & aliases
 # TODO: group aliases logically
 
 # examples
-echo "function dev { set-location (Join-Path -Path $settings.cloud -ChildPath '\Development') }" >> $ENV:DOTFILES/scripts/powershell/acronyms/locations.ps1
+echo "function dev { set-location (Join-Path -Path $settings.cloud -ChildPath '\Development') }" >> $ENV:DOTFILES/common/powershell/Locations.ps1
 
 TODO: create an empty .env
 
@@ -53,6 +52,6 @@ locals/git_too_big_to_prompt
 
 10. customize
 
-    - edit `aliases.ps1`, `functions.ps1` or `intro` in `scripts/powershell/**` to your taste  
+    - edit `Aliases.ps1`, or `intro` in `common/powershell/` to your taste  
     - customize installed modules & scripts  
     - share your thoughts with me  
