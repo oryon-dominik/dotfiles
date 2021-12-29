@@ -72,13 +72,6 @@ function CreateAssociation {
 }
 
 
-function ShowConfigSSH {
-    # "Show a brief ssh-config summary."
-    Write-Host "Show SSH-Config"
-}
-Set-Alias -Name showssh -Value ShowConfigSSH -Description "Show a brief ssh-config summary."
-
-
 function Get-TimeStamp {
     return "{0:yyyy-MM-dd} {0:HH:mm:ss}" -f (Get-Date)
 }

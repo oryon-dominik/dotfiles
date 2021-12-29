@@ -22,7 +22,10 @@ function cc () {
 
 # New project
 function new {
-    . (Join-Path -Path $script_location -ChildPath "\python\new_project.py")
+    $cwd = (Get-Location)
+    Set-Location (Join-Path -Path $script_location -ChildPath "\python\")
+    python new_project.py
+    Set-Location $cwd
 }
 
 
@@ -34,6 +37,16 @@ function clock { # "Starts a timer"  # needs timer.py in $script_location
     }
     python $timer_script_path $args
 }
+
+
+function ShowConfigSSH {
+    $cwd = (Get-Location)
+    Set-Location (Join-Path -Path $script_location -ChildPath "\python\")
+    python pretty_print_ssh_config.py
+    Set-Location $cwd
+}
+Set-Alias -Name showssh -Value ShowConfigSSH -Description "Show a brief ssh-config summary."
+
 
 
 function AddPoetryRequirements { foreach($requirement in (Get-Content "$pwd\requirements.txt")) {Invoke-Expression "poetry add $requirement"} }
