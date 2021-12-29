@@ -114,6 +114,15 @@ function venvName {
 }
 
 
+function ShowConfigSSH {
+    # "Show a brief ssh-config summary."
+    Write-Host "Show SSH-Config"
+}
+Set-Alias -Name showssh -Value ShowConfigSSH -Description "Show a brief ssh-config summary."
+
+
+
+
 function clock { # "Starts a timer"  # needs timer.py in $script_location
     $timer_script_path = (Join-Path -Path $script_location -ChildPath "\python\timer.py")
     if (-Not (Test-Path -Path $timer_script_path -PathType Leaf)) {

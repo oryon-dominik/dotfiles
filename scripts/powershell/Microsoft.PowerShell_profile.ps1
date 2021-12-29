@@ -61,8 +61,6 @@ $env:WORKON_HOME = "$env:USERPROFILE\Envs"
 . $PSScriptRoot\ModulesInVersionControl\Get-Weather.ps1
 # Metadata for files
 . $PSScriptRoot\ModulesInVersionControl\Get-FileMetaData.ps1
-# Cli-Pixel-Drawing
-. $PSScriptRoot\ModulesInVersionControl\Write-Pixel.ps1
 # Zoxide Utilities (show with zoxide init powershell)
 . $PSScriptRoot\ModulesInVersionControl\zoxideUtilities.ps1
 
