@@ -38,14 +38,14 @@ Write-Host "Meanwhile style your taskbar, desktop and color-theme (#861a22). Cus
 choco feature enable -n allowGlobalConfirmation
 
 Write-Host "Installing essentials for CLI and development."
-. $env:DOTFILES/install/windows/additional_powershell_modules.ps1
+. $env:DOTFILES/install/windows/InstallAdditionalPowershellModules.ps1
 
 choco install $env:DOTFILES/install/windows/choco_development.config
 choco install $env:DOTFILES/install/windows/choco_cli_enhanced.config
 choco install $env:DOTFILES/install/windows/choco_languages.config
 
 refreshenv
-. $env:DOTFILES/install/windows/modern_unix_for_windows.ps1
+. $env:DOTFILES/install/windows/InstallModernUnixForWindows.ps1
 
 Write-Host "Installing Visual Studio, please wait... you should customize your visualstudio installation to include all neccessary build tools (C/C++)."
 choco install visualstudio2022professional

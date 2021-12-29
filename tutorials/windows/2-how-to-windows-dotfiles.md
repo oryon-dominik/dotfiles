@@ -50,12 +50,12 @@ Install the additional powershell-modules.
 
 ```powershell
 refreshenv
-Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression $env:DOTFILES/install/windows/additional_powershell_modules.ps1
+Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression $env:DOTFILES/install/windows/InstallAdditionalPowershellModules.ps1
 choco install $env:DOTFILES/install/windows/choco_development.config
 choco install $env:DOTFILES/install/windows/choco_cli_enhanced.config
 choco install $env:DOTFILES/install/windows/choco_languages.config
 refreshenv
-Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression $env:DOTFILES/install/windows/modern_unix_for_windows.ps1
+Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression $env:DOTFILES/install/windows/InstallModernUnixForWindows.ps1
 
 # optional (If you like add essential software for your everyday work)
 choco install $env:DOTFILES/install/windows/choco_web.config
