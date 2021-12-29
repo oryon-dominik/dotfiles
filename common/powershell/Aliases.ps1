@@ -1,12 +1,11 @@
-﻿# required: set variables to your configs locations
-#             ($env:DOTFILES, $shortcuts, $position)
-# required: the directory shared/logs/ must be available | TODO: implement check on install script and create first logfiles manually..
+﻿# required: set variables to your configs locations ($env:DOTFILES)
 
 # load system functions
 . $env:DOTFILES\scripts\powershell\System.ps1
+. $env:DOTFILES\scripts\powershell\PythonPowershell.ps1
 . $env:DOTFILES\scripts\powershell\Tube.ps1
 
-# load machine
+# load machine specific scripts
 . $env:DOTFILES\scripts\powershell\machines\LoadMachine.ps1
 
 # managing the computer's state

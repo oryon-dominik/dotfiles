@@ -79,67 +79,13 @@ function ShowConfigSSH {
 Set-Alias -Name showssh -Value ShowConfigSSH -Description "Show a brief ssh-config summary."
 
 
-# Call command shortcuts, used for python projects
-function cc () {
-    $commands = ".\commands.py"
-    $cwd = (Get-Location)
-    $parent = Split-Path -Path $cwd
-    if (Test-Path $commands -PathType leaf)    {
-        python commands.py $args
-    }
-    elseif (Test-Path (Join-Path -Path $parent -ChildPath $commands) -PathType leaf) {
-        Set-Location $parent
-        python commands.py $args
-        Set-Location $cwd
-    }
-    else {
-        Write-Host "commands.py not found" 
-    }
-}
-
-
-# New project
-function new {
-    . (Join-Path -Path $script_location -ChildPath "\python\new_project.py")
-}
-
-
-function clock { # "Starts a timer"  # needs timer.py in $script_location
-    $timer_script_path = (Join-Path -Path $script_location -ChildPath "\python\timer.py")
-    if (-Not (Test-Path -Path $timer_script_path -PathType Leaf)) {
-        Write-Host "aborting: clock/timer script $timer_script_path not found"
-        return
-    }
-    python $timer_script_path $args
-}
-
-
-function AddPoetryRequirements { foreach($requirement in (Get-Content "$pwd\requirements.txt")) {Invoke-Expression "poetry add $requirement"} }
-
-
-function venvName {
-    python $env:DOTFILES\scripts\python\get_venv_name.py
-}
-
-
-function AssurePython {
-    if (Test-Path "python.exe") {
-        return $true
-    }
-    else {
-        Write-Host "Python not found"
-        return $false
-    }
-}
-
-
 function Get-TimeStamp {
     return "{0:yyyy-MM-dd} {0:HH:mm:ss}" -f (Get-Date)
 }
 Set-Alias -Name dt -Value Get-TimeStamp -Description "Gets time stamp"
 
 
-function weather{  # weather <city> <country>
+function weather{  # weather <city> <country>  # requies a working GetDeviceLocation
     Param([Parameter(Mandatory=$false)] [String]$city = $position.city, [Parameter(Mandatory=$false)] [String]$country = $position.country) # default-city
     Get-Weather -City $city -Country $country
 }
