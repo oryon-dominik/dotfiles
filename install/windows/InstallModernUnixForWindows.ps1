@@ -37,6 +37,27 @@ if (Test-Path "cargo") {
     # field selection from content - https://github.com/theryangeary/choose
     cargo install choose
 
+    # simple, fast and user-friendly alternative to 'find' - https://github.com/sharkdp/fd
+    cargo install fd-find
+
+    # recursively searches directories for a regex pattern - https://github.com/BurntSushi/ripgrep
+    cargo install ripgrep
+
+    # smarter cd command - https://github.com/ajeetdsouza/zoxide
+    cargo install zoxide
+
+    # cat clone with syntax highlighting and Git integration - https://github.com/sharkdp/bat
+    cargo install bat
+
+    # highlighting for diff - https://github.com/dandavison/delta
+    cargo install git-delta
+
+    # Ping, but with a graph - https://github.com/orf/gping
+    cargo install gping
+
+    # find & replace - https://github.com/chmln/sd
+    cargo install sd
+
     if (Test-Path "git") {
         # create the (gitignored) .dotfiles/bin directory if it doesn't exist
         mkdir $env:DOTFILES/bin -ErrorAction SilentlyContinue
