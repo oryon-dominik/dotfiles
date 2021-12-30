@@ -14,6 +14,7 @@ Set-Alias -Name reb -Value Restart-Computer -Description "reboot"
 # %windir%\System32\rundll32.exe powrprof.dll,SetSuspendState Hibernate
 function hibernate {& "$env:windir\system32\shutdown.exe" /h}
 Set-Alias -Name hib -Value hibernate -Description "hibernation"
+Set-Alias -Name off -Value Stop-Computer -Description "shutdown"
 Set-Alias -Name aus -Value Stop-Computer -Description "shutdown"
 
 # ls -> exa

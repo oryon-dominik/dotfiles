@@ -19,7 +19,7 @@ function CmdTutorial {
     Write-Host "    delta               diff files"  # https://github.com/dandavison/delta
     Write-Host "    duf                 Disk usage"  # https://github.com/muesli/duf
     Write-Host "    fd                  Find entries in the filesystem"  # https://github.com/sharkdp/fd
-    Write-Host "    lsd                 LSDeluxe"  # https://github.com/Peltoche/lsd
+    Write-Host "    exa                 Modern ls replacement"  # https://github.com/ogham/exa
 
     Write-Host "    rg                  'ripgrep' recursively searches the current directory for a regex pattern"  # https://github.com/BurntSushi/ripgrep
     Write-Host "    sd                  s[earch] & d[isplace]"  # https://github.com/chmln/sd
@@ -49,6 +49,20 @@ function CmdTutorial {
     Write-Host "    poetry              manage your projects dependencies and package"
     Write-Host "    pipx                manage external binaries"
     Write-Host ""
+
+    Write-Host "System:"
+    Write-Host ""
+    Write-Host "    ip                  current ip address"
+    Write-Host "    sysinfo             infos on your hardware"
+    Write-Host "    ver                 windows version"
+    Write-Host "    envs                show all envs set"
+    Write-Host ""
+    Write-Host "    off                 power off"
+    Write-Host "    hib                 hibernate"
+    Write-Host "    reb                 reboot"
+    Write-Host "    lock                lock the screen"
+    Write-Host ""
+
 
     # TODO: sort, pretty-print  +clean up + add section for
     # generate_password
