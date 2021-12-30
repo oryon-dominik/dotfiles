@@ -85,9 +85,10 @@ function weather{  # weather <city> <country>  # requies a working GetDeviceLoca
 Set-Alias -Name wetter -Value weather -Description "Wetterbericht"
 
 
-function GeneratePassword ([int]$pass_length = 50) {
+function GenerateRandomPassword ([int]$pass_length = 50) {
     $Password =  ("!@#$%^&*0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz".tochararray() | sort {Get-Random})[0..$pass_length] -join ''
 }
+
 
 # Restart a hung up printer.
 function spool { . $env:DOTFILES\scripts\batch\printer_restart.bat }

@@ -53,6 +53,16 @@
 
 10. Install your indispensable standard-modules to your system-python (e.g: `pip install pywin32`)
 
+These dotfiles use:
+
+    passlib
+    python-dotenv
+    rich
+    httpx
+    google-api-python-client
+    numpy
+
+
 ## available commands
 
 ```pyenv
