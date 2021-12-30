@@ -19,7 +19,7 @@ After a fresh windows installation start with the [post-installation preparation
 
 ## How to create a dotfiles repository on ubuntu
 
-Tutorial how to setup [ubunutu dotfiles](tutorials/ubuntu/1-how-to-ubuntu-dotfiles.md).
+Tutorial how to setup [ubuntu dotfiles](tutorials/ubuntu/1-how-to-ubuntu-dotfiles.md).
 
 ---
 
