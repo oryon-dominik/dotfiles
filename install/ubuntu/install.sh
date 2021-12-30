@@ -12,8 +12,11 @@ sudo apt upgrade
 # === install packages ========================================================
 # TODO: install from ansible-repo
 
+
+# WARNING: all code below is deprecated, use ansible instead
+
 sudo apt install -y htop
-sudo apt install -y software-properties-common git hub git-flow
+sudo apt install -y software-properties-common git git-flow
 sudo apt-add-repository ppa:fish-shell/release-3
 sudo apt update
 sudo apt install -y fish
@@ -36,30 +39,12 @@ sudo sed -i -e 's/ENABLED=1/ENABLED=0/g' /etc/default/motd-news
 # setup fish
 mkdir -p $HOME/.config && mkdir -p $HOME/.config/fish && mkdir -p $HOME/.config/fish/functions
 
-ln -sfv $HOME/.dotfiles/common/fish/config.fish $HOME/.config/fish/config.fish
-ln -sfv $HOME/.dotfiles/common/fish/aliases.fish $HOME/.config/fish/aliases.fish
-
-ln -sfv $HOME/.dotfiles/common/fish/functions/wsl_config.fish $HOME/.config/fish/functions/wsl_config.fish
-ln -sfv $HOME/.dotfiles/common/fish/functions/last_command_as_sudo.fish $HOME/.config/fish/functions/last_command_as_sudo.fish
 
 
 # create some dirs
 mkdir -p $HOME/.virtualenvs
 mkdir -p $HOME/.config/alacritty
 
-# symlink all the configs from common applications
-ln -sfv $HOME/.dotfiles/common/bash/.bash_aliases $HOME
-ln -sfv $HOME/.dotfiles/common/bash/.bash_logout $HOME
-# ln -sfv $HOME/.dotfiles/ubuntu/home/.bash_profile $HOME
-# ln -sfv $HOME/.dotfiles/ubuntu/home/.bashrc $HOME
-ln -sfv $HOME/.dotfiles/common/git/.gitconfig $HOME
-# alacritty
-ln -sfv $HOME/.dotfiles/common/alacritty/alacritty.yml $HOME/.config/alacritty/
-ln -sfv $HOME/.dotfiles/common/alacritty/bindings.yml $HOME/.config/alacritty/
-ln -sfv $HOME/.dotfiles/common/alacritty/dracula.yml $HOME/.config/alacritty/
-ln -sfv $HOME/.dotfiles/common/alacritty/hints.yml $HOME/.config/alacritty/
-# htop
-ln -sfv $HOME/.dotfiles/common/htop/htoprc $HOME/.config/
 
 # install vim-plugins
 curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
@@ -124,11 +109,9 @@ fish -i
 set -U PYENV_ROOT $HOME/.pyenv
 set -U fish_user_paths /usr/local/bin /sbin $HOME/.poetry/bin $HOME/.local/bin $PYENV_ROOT/bin $PYENV_ROOT/shims (yarn global bin) $fish_user_paths
 
-source $HOME/.dotfiles/common/install_fisher_plugins.fish
+source $HOME/.dotfiles/common/fish/install_fisher_plugins.fish
 
-# for fish we already installed the pyenv plugin,
-# but we have to fix it, since it's a little deprecated
-ln -sfv $HOME/.dotfiles/common/fish/functions/pyenv.fish $HOME/.config/fish/functions/
+source $HOME/.dotfiles/install/ubuntu/symlink_dotfiles.sh
 
 # And virtualfish (virtualenvwrapper for fish), including plugins
 pipx install virtualfish
