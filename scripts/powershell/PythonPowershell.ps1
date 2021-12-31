@@ -34,7 +34,7 @@ function new {
 }
 
 
-function clock { # "Starts a timer"  # needs timer.py in $script_location
+function timer { # "Starts a timer"  # needs timer.py in $script_location
     $timer_script_path = (Join-Path -Path $script_location -ChildPath "\python\timer.py")
     if (-Not (Test-Path -Path $timer_script_path -PathType Leaf)) {
         Write-Host "aborting: clock/timer script $timer_script_path not found"
