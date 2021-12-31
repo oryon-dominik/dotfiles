@@ -51,8 +51,6 @@ $env:WORKON_HOME = "$env:USERPROFILE\Envs"
 . $PSScriptRoot\components\SlimVenvWrapper.ps1
 # Upgrades & Update functionality
 . $PSScriptRoot\components\upgrades\Upgrades.ps1
-# The Tutorial explaining common commands for this CLI
-. $PSScriptRoot\components\CmdTutorial.ps1
 # Win-EventTail (tails Windows Event Logs) (https://gist.github.com/jeffpatton1971/a908cac57489e6ca59a6)
 . $PSScriptRoot\ModulesInVersionControl\Get-WinEventTail.ps1
 # Weather-Script

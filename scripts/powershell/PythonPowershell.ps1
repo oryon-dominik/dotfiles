@@ -60,3 +60,9 @@ function AddPoetryRequirements { foreach($requirement in (Get-Content "$pwd\requ
 function venvName {
     python $env:DOTFILES\scripts\python\get_venv_name.py
 }
+
+
+function CmdTutorial {
+    python $env:DOTFILES\scripts\python\cli_tutorial.py
+}
+Set-Alias -Name tut -Value CmdTutorial -Description "Show a short introductory tutorial for this CLI configuration."
