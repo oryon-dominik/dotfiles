@@ -82,7 +82,6 @@ if (Test-Path "cargo") {
     } else {
         Write-Host "git not found on PATH... skipping exa & dog"
     }
-    
 
 } else {
     Write-Host "cargo not found on PATH... skipping rust modules"

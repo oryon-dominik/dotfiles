@@ -5,7 +5,7 @@ function fish_greeting
     echo $USER ' on ' $hostname | figlet -f smslant | lolcat
     echo ''
     echo 'Commander on deck' | lolcat
-    fortune /etc/nixos/anarchy | lolcat
+    fortune anarchy | lolcat
     echo ''
 end
 
@@ -33,6 +33,16 @@ status is-interactive; and pyenv init - | source
 # register-python-argcomplete --shell fish pipx | source
 
 # set -U EDITOR vi
+
+set -U PYENV_ROOT $HOME/.pyenv
+fish_add_path -g /usr/local/bin /usr/local/sbin
+fish_add_path -g "$HOME/.local/bin"
+fish_add_path -g "$HOME/.cargo/bin"
+fish_add_path -g "$HOME/.poetry/bin"
+fish_add_path -g "$PYENV_ROOT/bin"
+fish_add_path -g "$PYENV_ROOT/shims"
+# fish_add_path -g (yarn global bin)
+
 
 set fish_color_cwd yellow
 

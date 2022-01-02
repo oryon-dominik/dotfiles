@@ -1,3 +1,4 @@
+#!/bin/sh
 # symlink all the configs from common applications
 # fish
 ln -sfv $HOME/.dotfiles/common/fish/config.fish $HOME/.config/fish/config.fish

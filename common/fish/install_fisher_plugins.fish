@@ -1,3 +1,4 @@
+#!/usr/bin/env fish
 
 # add fisher and fish plugins
 curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
