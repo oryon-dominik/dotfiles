@@ -11,4 +11,5 @@ fisher install dracula/fish     # Dracula theme for fish
 rm $HOME/.config/fish/functions/pyenv.fish
 fisher install daenney/pyenv
 # we have to fix it, since it's a little deprecated
+rm $HOME/.config/fish/functions/pyenv.fish
 ln -sfv $HOME/.dotfiles/common/fish/functions/pyenv.fish $HOME/.config/fish/functions/
