@@ -5,7 +5,7 @@ function fish_greeting
     echo $USER ' on ' $hostname | figlet -f smslant | lolcat
     echo ''
     echo 'Commander on deck' | lolcat
-    fortune anarchy | lolcat
+    fortune anarchism | lolcat
     echo ''
 end
 
