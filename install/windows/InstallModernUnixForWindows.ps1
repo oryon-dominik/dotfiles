@@ -2,107 +2,91 @@
 
 Write-Host "Installing modern unix cli-commands to powershell..."
 
-if (Test-Path "cargo") {
-    # Rust modules
-    # (btm) graphical system/process monitor - https://github.com/ClementTsang/bottom
-    cargo install bottom
 
-    # Replacement for ps - https://github.com/dalance/procs
-    cargo install procs
+Write-Host "You should have installed git, cargo, go and npm to sucessfully run this pipeline..."
 
-    # instant overview of which directories are using disk - https://github.com/bootandy/dust
-    cargo install du-dust
+### Rust modules ###
+# (btm) graphical system/process monitor - https://github.com/ClementTsang/bottom
+cargo install bottom
 
-    # CLI benchmarks - https://github.com/sharkdp/hyperfine
-    cargo install hyperfine
+# Replacement for ps - https://github.com/dalance/procs
+cargo install procs
 
-    # send HTTP requests - https://github.com/ducaale/xh
-    cargo install xh
+# instant overview of which directories are using disk - https://github.com/bootandy/dust
+cargo install du-dust
 
-    # grahpical directory trees - https://github.com/Canop/broot
-    cargo install broot
+# CLI benchmarks - https://github.com/sharkdp/hyperfine
+cargo install hyperfine
 
-    # (tldr) Help pages for command-line tools, rust implementation of tldr - https://github.com/dbrgn/tealdeer
-    cargo install tealdeer
+# send HTTP requests - https://github.com/ducaale/xh
+cargo install xh
 
-    # build regexes from CLI-tests https://github.com/pemistahl/grex
-    cargo install grex
+# grahpical directory trees - https://github.com/Canop/broot
+cargo install broot
 
-    # current network utilization - https://github.com/imsnif/bandwhich
-    cargo install bandwhich
+# (tldr) Help pages for command-line tools, rust implementation of tldr - https://github.com/dbrgn/tealdeer
+cargo install tealdeer
 
-    # statistics about your code - https://github.com/XAMPPRocky/tokei
-    cargo install tokei
+# build regexes from CLI-tests https://github.com/pemistahl/grex
+cargo install grex
 
-    # field selection from content - https://github.com/theryangeary/choose
-    cargo install choose
+# current network utilization - https://github.com/imsnif/bandwhich
+cargo install bandwhich
 
-    # simple, fast and user-friendly alternative to 'find' - https://github.com/sharkdp/fd
-    cargo install fd-find
+# statistics about your code - https://github.com/XAMPPRocky/tokei
+cargo install tokei
 
-    # recursively searches directories for a regex pattern - https://github.com/BurntSushi/ripgrep
-    cargo install ripgrep
+# field selection from content - https://github.com/theryangeary/choose
+cargo install choose
 
-    # smarter cd command - https://github.com/ajeetdsouza/zoxide
-    cargo install zoxide
+# simple, fast and user-friendly alternative to 'find' - https://github.com/sharkdp/fd
+cargo install fd-find
 
-    # cat clone with syntax highlighting and Git integration - https://github.com/sharkdp/bat
-    cargo install bat
+# recursively searches directories for a regex pattern - https://github.com/BurntSushi/ripgrep
+cargo install ripgrep
 
-    # highlighting for diff - https://github.com/dandavison/delta
-    cargo install git-delta
+# smarter cd command - https://github.com/ajeetdsouza/zoxide
+cargo install zoxide
 
-    # Ping, but with a graph - https://github.com/orf/gping
-    cargo install gping
+# cat clone with syntax highlighting and Git integration - https://github.com/sharkdp/bat
+cargo install bat
 
-    # find & replace - https://github.com/chmln/sd
-    cargo install sd
+# highlighting for diff - https://github.com/dandavison/delta
+cargo install git-delta
 
-    if (Test-Path "git") {
-        # create the (gitignored) .dotfiles/bin directory if it doesn't exist
-        mkdir $env:DOTFILES/bin -ErrorAction SilentlyContinue
+# Ping, but with a graph - https://github.com/orf/gping
+cargo install gping
 
-        # A modern replacement for ls - https://github.com/ogham/exa
-        # cargo install exa
-        git clone https://github.com/ogham/exa $env:DOTFILES/bin/exa
-        cd $env:DOTFILES/bin/exa
-        # cherry pick the windows fix
-        git fetch origin pull/820/head:chesterliu/dev/win-support
-        git checkout chesterliu/dev/win-support
-        cargo install --path . --force
-        cd -
+# find & replace - https://github.com/chmln/sd
+cargo install sd
 
-        # command-line DNS client - https://github.com/ogham/dog
-        # cargo install dog
-        git clone https://github.com/ogham/dog $env:DOTFILES/bin/dog
-        cd $env:DOTFILES/bin/dog
-        cargo install --path . --force
-        cd -
 
-    } else {
-        Write-Host "git not found on PATH... skipping exa & dog"
-    }
+# create the (gitignored) .dotfiles/bin directory if it doesn't exist
+mkdir $env:DOTFILES/bin -ErrorAction SilentlyContinue
 
-} else {
-    Write-Host "cargo not found on PATH... skipping rust modules"
-}
+# A modern replacement for ls - https://github.com/ogham/exa
+# cargo install exa
+git clone https://github.com/ogham/exa $env:DOTFILES/bin/exa
+cd $env:DOTFILES/bin/exa
+# cherry pick the windows fix
+git fetch origin pull/820/head:chesterliu/dev/win-support
+git checkout chesterliu/dev/win-support
+cargo install --path . --force
+cd -
 
-if (Test-Path "go") {
-    ## cheat
-    go install github.com/cheat/cheat/cmd/cheat@latest
-} else {
-    Write-Host "go not found on PATH... skipping cheat"
-}
+# command-line DNS client - https://github.com/ogham/dog
+# cargo install dog
+git clone https://github.com/ogham/dog $env:DOTFILES/bin/dog
+cd $env:DOTFILES/bin/dog
+cargo install --path . --force
+cd -
 
-if (Test-Path "npm") {
-    # gtop (process/system visualization)
-    npm install gtop -g
-} else {
-    Write-Host "node not found on PATH... skipping gtop"
-}
+go install github.com/cheat/cheat/cmd/cheat@latest
+
+npm install gtop -g
 
 Write-Host "Pick the latest windows executable for these additional packages from github."
-Write-Host "Save them to $(Join-Path -Path $env:USERPROFILE -ChildPath '\.cargo\bin\')."
+Write-Host "Save them to $(Join-Path -Path $env:DOTFILES -ChildPath '\bin\')."
 Write-Host ""
 # Write-Host "dog - dns lookup"
 # Write-Host "https://github.com/ogham/dog/releases"
