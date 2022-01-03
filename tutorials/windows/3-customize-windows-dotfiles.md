@@ -23,7 +23,7 @@ Customize scripts & aliases
 echo "function dev { set-location (Join-Path -Path $settings.cloud -ChildPath '\Development') }" >> $ENV:DOTFILES/common/powershell/Locations.ps1
 
 TODO: create an empty .env
-SKIP_DEVICE_LOCATION=true
+DOTFILES_SKIP_DEVICE_LOCATION=true
 
 
 TODO: Symlink all the other programs. (after installing them)

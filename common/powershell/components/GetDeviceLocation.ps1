@@ -1,4 +1,5 @@
 # Get Device Location from GPS-sensor or settings and asks google maps for the location
+if ($env:DOTFILES_SKIP_DEVICE_LOCATION) { return }
 
 if (("{0}" -f $env:GOOGLE_MAPS_API_KEY) -eq "") {
     Write-Host "No Google Maps API key found. Please set the environment variable GOOGLE_MAPS_API_KEY to your Google Maps API key."
