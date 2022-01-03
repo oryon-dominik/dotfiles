@@ -72,9 +72,10 @@ Invoke-Expression (&starship init powershell)
 # add custom paths
 $env:path += ";$Env:Programfiles\\VideoLAN\VLC\vlc.exe"
 $env:path += ";$Env:Programfiles\NASM"  # netwide-assembler
-# $env:path += ";$(Join-Path -Path $script_location -ChildPath "\python")"
+$env:path += ";$(Join-Path -Path $env:DOTFILES -ChildPath "\bin")"  # local binaries
 $env:path += ";$(Join-Path -Path $script_location -ChildPath "\batch")"
 $env:path += ";$(Join-Path -Path $env:USERPROFILE -ChildPath "\.cargo\bin\")"  # rust commands
+
 
 # vi-edit-mode
 # Set-PSReadlineOption -EditMode vi -BellStyle None
