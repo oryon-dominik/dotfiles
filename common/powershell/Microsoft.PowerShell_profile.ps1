@@ -35,7 +35,6 @@ LoadDotEnv("$env:DOTFILES\.env")
 
 # set powershell variables
 $shortcuts = Join-Path -Path $env:DOTFILES -ChildPath "\shared\shortcuts"
-$powershell_location = Join-Path -Path $env:windir -ChildPath '\System32\WindowsPowerShell\v1.0'
 $script_location = Join-Path -Path $env:DOTFILES -ChildPath '\scripts'
 $file_location = Join-Path -Path $env:DOTFILES -ChildPath '\shared\files'
 $console = Join-Path -Path $file_location -ChildPath '\images\console'
