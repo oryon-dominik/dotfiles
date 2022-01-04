@@ -87,6 +87,7 @@ Set-Alias -Name wetter -Value weather -Description "Wetterbericht"
 
 function GenerateRandomPassword ([int]$pass_length = 50) {
     $Password =  ("!@#$%^&*0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz".tochararray() | sort {Get-Random})[0..$pass_length] -join ''
+    Write-Host $Password
 }
 
 
