@@ -13,7 +13,7 @@ Open an admin-powershell.
 
 ## Setup your dotfiles repository
 
-Set an environment variable (`$env:DOTFILES`) to the location you want to install your config to. 
+Set an environment variable (`$env:DOTFILES`) to the (existing) location you want to install your config to. 
 
 ```powershell
 $env:DOTFILES = Convert-Path "$env:USERPROFILE/.dotfiles"
@@ -36,11 +36,11 @@ Make system links from the cloned powershell profile to the generic powershell-p
 This will delete the old folders (don't forget to backup your old powershell configs).
 
 ```powershell
-Remove-Item -path "$env:USERPROFILE\Documents\WindowsPowerShell" -recurse
+Remove-Item -Path "$env:USERPROFILE\Documents\WindowsPowerShell" -Recurse -Force
 New-Item -Path "$env:USERPROFILE/Documents/WindowsPowerShell" -ItemType Junction -Value "$env:DOTFILES/common/powershell"
 
 # for powershell 7:
-Remove-Item -path "$env:USERPROFILE\Documents\PowerShell" -recurse
+Remove-Item -Path "$env:USERPROFILE\Documents\PowerShell" -Recurse -Force
 New-Item -Path "$env:USERPROFILE/Documents/PowerShell" -ItemType Junction -Value "$env:DOTFILES/common/powershell"
 ```
 
