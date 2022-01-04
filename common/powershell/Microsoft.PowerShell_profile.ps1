@@ -26,6 +26,9 @@ if (-not (Test-Path $env:DOTFILES)) {
     $dotfiles_location = Join-Path -Path $home -ChildPath "\.dotfiles"
     $env:DOTFILES = $dotfiles_location }
 
+# Set SHELL to powershell 7.
+$env:SHELL = "C:\Program Files\PowerShell\7\pwsh.exe"
+
 # load local dotenv
 . $PSScriptRoot\components\LoadDotEnv.ps1
 LoadDotEnv("$env:DOTFILES\.env")
