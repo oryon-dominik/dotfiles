@@ -36,6 +36,7 @@ table.add_column("URL")
 
 table.add_row("Available Commands:", "", "", "")
 table.add_row("", "tldr", "modern man pages - use this on any command to quickly understand it's usage, via 'tealdeer'", "https://github.com/dbrgn/tealdeer")
+table.add_row("", "man", "official man-pages - live scraped from the web", "https://linux.die.net/man/")
 table.add_row()
 table.add_row("", "sudo", "execute a command in a new 'elevated Powershell' on a Windows-Terminal", "")
 table.add_row("", "choco", "Chocolatey - your 'package-manager'.", "https://chocolatey.org/")
