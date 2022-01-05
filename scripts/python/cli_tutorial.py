@@ -23,8 +23,6 @@ console = Console()
 
 console.print(Rule(title="CLI TUTORIAL", characters="="))
 
-grid = Table.grid(expand=True)
-
 table = Table(
     show_header=True,
     highlight=True,

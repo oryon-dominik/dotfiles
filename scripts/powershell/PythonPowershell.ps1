@@ -66,3 +66,10 @@ function CmdTutorial {
     python $env:DOTFILES\scripts\python\cli_tutorial.py
 }
 Set-Alias -Name tut -Value CmdTutorial -Description "Show a short introductory tutorial for this CLI configuration."
+
+
+function OnlineManPage {
+    python $env:DOTFILES\scripts\python\man_page_from_https.py $args
+}
+Remove-Alias -Name man
+Set-Alias -Name man -Value OnlineManPage -Description "Show online manpages for a linux command."
