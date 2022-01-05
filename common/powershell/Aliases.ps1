@@ -32,6 +32,7 @@ Set-Alias -Name clear -Value cls
 function ports {netstat -n}
 Set-Alias -Name grep -Value rg -Description "Ripgrep"
 Set-Alias -Name whereis -Value Get-Command -Description "Shows commands locations"
+Remove-Alias -Name cat
 function cat {bat --style="plain" $args}  # Replace cat with bat plain-mode
 
 function run_fzf {fzf $args}  # needs fzf installed
