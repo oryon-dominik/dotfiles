@@ -32,7 +32,7 @@ Set-Alias -Name clear -Value cls
 function ports {netstat -n}
 Set-Alias -Name grep -Value rg -Description "Ripgrep"
 Set-Alias -Name whereis -Value Get-Command -Description "Shows commands locations"
-Set-Alias -Name cat -Value lolcat -Description "Replace cat with colors :) -> lolcat (installation required)" -Option AllScope
+function cat {bat --style="plain" $args}  # Replace cat with bat plain-mode
 
 function run_fzf {fzf $args}  # needs fzf installed
 Set-PSReadlineKeyHandler -Key Ctrl+r -BriefDescription fzf -LongDescription "Reverse History search with fzf" ` -ScriptBlock {run_fzf}
