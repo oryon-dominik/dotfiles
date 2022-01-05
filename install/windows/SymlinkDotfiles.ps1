@@ -10,6 +10,8 @@ New-Item -Path "$env:USERPROFILE/Documents/PowerShell" -ItemType Junction -Value
 
 # gitconfig
 New-Item -Path $HOME/.gitconfig -ItemType SymbolicLink -Value "$env:DOTFILES/common/git/.gitconfig"
+# vimrc
+New-Item -Path $HOME/.vimrc -ItemType SymbolicLink -Value "$env:DOTFILES/common/vim/.vimrc"
 # alacritty
 New-Item -Path "$env:APPDATA/alacritty" -ItemType Junction -Value "$env:DOTFILES/common/alacritty"
 # starship
