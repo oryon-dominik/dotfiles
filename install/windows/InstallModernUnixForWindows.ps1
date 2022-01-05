@@ -7,58 +7,58 @@ Write-Host "You should have installed git, cargo, go and npm to sucessfully run 
 
 ### Rust modules ###
 # (btm) graphical system/process monitor - https://github.com/ClementTsang/bottom
-cargo install bottom
+cargo install bottom --locked
 
 # Replacement for ps - https://github.com/dalance/procs
-cargo install procs
+cargo install procs --locked
 
 # instant overview of which directories are using disk - https://github.com/bootandy/dust
-cargo install du-dust
+cargo install du-dust --locked
 
 # CLI benchmarks - https://github.com/sharkdp/hyperfine
-cargo install hyperfine
+cargo install hyperfine --locked
 
 # send HTTP requests - https://github.com/ducaale/xh
-cargo install xh
+cargo install xh --locked
 
 # grahpical directory trees - https://github.com/Canop/broot
-cargo install broot
+cargo install broot --locked
 
 # (tldr) Help pages for command-line tools, rust implementation of tldr - https://github.com/dbrgn/tealdeer
-cargo install tealdeer
+cargo install tealdeer --locked
 
 # build regexes from CLI-tests https://github.com/pemistahl/grex
-cargo install grex
+cargo install grex --locked
 
 # current network utilization - https://github.com/imsnif/bandwhich
-cargo install bandwhich
+cargo install bandwhich --locked
 
 # statistics about your code - https://github.com/XAMPPRocky/tokei
-cargo install tokei
+cargo install tokei --locked
 
 # field selection from content - https://github.com/theryangeary/choose
-cargo install choose
+cargo install choose --locked
 
 # simple, fast and user-friendly alternative to 'find' - https://github.com/sharkdp/fd
-cargo install fd-find
+cargo install fd-find --locked
 
 # recursively searches directories for a regex pattern - https://github.com/BurntSushi/ripgrep
-cargo install ripgrep
+cargo install ripgrep --locked
 
 # smarter cd command - https://github.com/ajeetdsouza/zoxide
-cargo install zoxide
+cargo install zoxide --locked
 
 # cat clone with syntax highlighting and Git integration - https://github.com/sharkdp/bat
-cargo install bat
+cargo install bat --locked
 
 # highlighting for diff - https://github.com/dandavison/delta
-cargo install git-delta
+cargo install git-delta --locked
 
 # Ping, but with a graph - https://github.com/orf/gping
-cargo install gping
+cargo install gping --locked
 
 # find & replace - https://github.com/chmln/sd
-cargo install sd
+cargo install sd --locked
 
 
 # create the (gitignored) .dotfiles/bin directory if it doesn't exist
