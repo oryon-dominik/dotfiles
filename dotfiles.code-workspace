@@ -1,0 +1,20 @@
+{
+    "folders": [
+        {
+            "name": "dotfiles",
+            "path": "."
+        },
+        {
+            "name": "shared",
+            "path": "./shared"
+        }
+    ],
+    "settings": {
+        "files.exclude": {
+            "**/.git": true,
+            "**/.vscode": true,
+            "**/__pycache__": true,
+            "shared/": true,
+        }
+    }
+}
