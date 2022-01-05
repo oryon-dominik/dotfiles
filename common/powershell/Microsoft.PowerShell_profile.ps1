@@ -64,6 +64,10 @@ $env:WORKON_HOME = "$env:USERPROFILE\Envs"
 $env:STARSHIP_CONFIG = "$HOME\.dotfiles\common\starship\starship.toml"
 Invoke-Expression (&starship init powershell)
 
+# set BAT_THEME
+$env:BAT_THEME="Dracula"
+$env:BAT_PAGER='""'  # don't page BAT results
+
 # load aliases & system-function-definitions
 . $PSScriptRoot\Aliases.ps1
 
