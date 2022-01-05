@@ -2,6 +2,10 @@
 
 # Installs the symbolic links for the dotfiles on windows.
 
+# Elevated powershell
+$is_elevated = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
+if (!$is_elevated) { Write-Host "Can't install symbolic links as unprivileged user."; return }
+
 # classic powershell and the powershell 7 profile
 Remove-Item -path "$env:USERPROFILE/Documents/WindowsPowerShell" -recurse
 Remove-Item -path "$env:USERPROFILE/Documents/PowerShell" -recurse
