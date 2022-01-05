@@ -9,8 +9,12 @@ New-Item -Path "$env:USERPROFILE/Documents/WindowsPowerShell" -ItemType Junction
 New-Item -Path "$env:USERPROFILE/Documents/PowerShell" -ItemType Junction -Value "$env:DOTFILES/common/powershell"
 
 # gitconfig
-New-Item -Path $HOME/.gitconfig -ItemType SymbolicLink -Value $HOME/.dotfiles/common/git/.gitconfig
+New-Item -Path $HOME/.gitconfig -ItemType SymbolicLink -Value "$env:DOTFILES/common/git/.gitconfig"
 # alacritty
 New-Item -Path "$env:APPDATA/alacritty" -ItemType Junction -Value "$env:DOTFILES/common/alacritty"
 # starship
-New-Item -Path $HOME/.config/starship.toml -ItemType SymbolicLink -Value $HOME/.dotfiles/common/starship/starship.toml
+New-Item -Path $HOME/.config/starship.toml -ItemType SymbolicLink -Value "$env:DOTFILES/common/starship/starship.toml"
+
+# geany
+New-Item -Path "$env:USERPROFILE/AppData/Roaming/geany/geany.conf" -ItemType SymbolicLink -Value "$env:DOTFILES/common/geany/geany.conf"
+New-Item -Path "$env:USERPROFILE/AppData/Roaming/geany/colorschemes" -ItemType Junction -Value "$env:DOTFILES/common/geany/colorschemes"
