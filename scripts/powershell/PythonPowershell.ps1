@@ -73,3 +73,10 @@ function OnlineManPage {
 }
 Remove-Alias -Name man
 Set-Alias -Name man -Value OnlineManPage -Description "Show online manpages for a linux command."
+
+
+function RunSpeedtest { Write-Host "Running python module 'speedtest-cli'.";python -W ignore::DeprecationWarning -m speedtest }
+Set-Alias -Name speedtest -Value RunSpeedtest -Description "Run a speedtest."
+
+
+function ansible { Write-Host "ERROR: Ansible does not support windows (yet?). To use ansible, switch to WSL" }

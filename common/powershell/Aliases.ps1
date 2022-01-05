@@ -65,9 +65,6 @@ function cloud {  # cd into your mounted cloud drive
     }
 }
 
-# python
-function ansible { Write-Host "ERROR: Ansible does not support windows (yet?). To use ansible, switch to WSL" }
-
 # config
 function cfg { 
     set-location $env:DOTFILES  # dir to the config (the dotfiles) folder.
