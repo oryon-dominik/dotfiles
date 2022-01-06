@@ -4,6 +4,7 @@ set number          " show line numbers
 
 set t_Co=256        " force terminal colors
 syntax on           " enable syntax highlighting
+language en         " sets the language of the messages
 
 set tabstop=4       " tab spacing
 
@@ -19,12 +20,47 @@ set hlsearch        " highlight all results
 set ignorecase      " ignore case in search
 set incsearch       " show search results as you type
 
-call plug#begin('~/.vim/plugged')
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'junegunn/vim-plug'
-call plug#end()
+" Install vim-plug if not found"
+if empty(glob('$HOME/.vim/autoload/plug.vim'))
+    silent !curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-colo dracula
+if !has('win32')
+    " Run PlugInstall if there are missing plugins"
+    " autocmd VimEnter *
+    " \  if !empty(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
+    " \|   PlugInstall | q
+    " \| endif
+    echo "POSIX"
+endif
+if has('win32')
+    " Run PlugInstall if there are missing plugins"
+    " autocmd VimEnter *
+    " \  if !empty(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
+    " \|   PlugInstall | q
+    " \| endif
+    echo "Win"
+endif
+
+call plug#begin('~/.vim/plugged')
+call plug#end()
+" call plug#begin('~/.vim/plugged')
+" Plug 'dracula/vim', { 'as': 'dracula' }
+" Plug 'junegunn/vim-plug'
+" 
+
+
+" gvim
+set guifont=Consolas:h14
+set guioptions-=m  "menu bar
+set guioptions-=T  "toolbar
+set guioptions-=r  "scrollbar
+set langmenu=en_US.UTF-8    " sets the language of the menu (gvim)
+
+
+
+" colo dracula
 
 " drop plugins undeR: ~/.vim/pack/pluginfoldername/ start/pluginname
 
