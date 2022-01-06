@@ -94,5 +94,26 @@ function GenerateRandomPassword ([int]$pass_length = 50) {
 # Restart a hung up printer.
 function spool { . $env:DOTFILES\scripts\batch\printer_restart.bat }
 
+function base64 {
+    $usage = 'Usage: base64 --encode|-e|--decode|-d <string>'
+    try {
+        $argList = ($MyInvocation.Line -replace ('^.*' + [regex]::Escape($MyInvocation.InvocationName)) -split '[;|]')[0].Trim()
+        $customArgs = if ($argList) { @(Invoke-Expression "Write-Output -- $argList") } else { @() }
+
+        $mode = $customArgs[0]
+        $string = $customArgs[1]
+        if ($mode -eq '--encode' -Or $mode -eq '-e') {
+            [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($string))
+        } elseif ($mode -eq '--decode' -Or $mode -eq '-d') {
+            [Text.Encoding]::Utf8.GetString([Convert]::FromBase64String($string))
+        } else {
+            Write-Host $usage
+        }
+    }
+    catch {
+        Write-Host $usage
+        Write-Error $_
+    }
+}
 
 # TODO: implement write-to-log(message, logtype) function

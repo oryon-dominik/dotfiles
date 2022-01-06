@@ -51,6 +51,8 @@ function link($target, $source){New-Item -Path $target -ItemType SymbolicLink -V
 
 # media
 Set-Alias -Name play -Value vlc -Description "Plays media with vlc"
+Set-Alias -Name exif -Value exiftool -Description "exif metadata"
+Set-Alias -Name exifdata -Value exiftool -Description "exif metadata"
 
 # office
 Set-Alias -Name np -Value notepad++ -Description "edit file fast"
