@@ -81,6 +81,10 @@ Set-Alias -Name speedtest -Value RunSpeedtest -Description "Run a speedtest."
 
 function ansible { Write-Host "ERROR: Ansible does not support windows (yet?). To use ansible, switch to WSL" }
 
+function RunIPython { python -m IPython }
+Set-Alias -Name ipython -Value RunIPython -Description "Run an ipython shell."
+Set-Alias -Name bpython -Value RunIPython -Description "Run an ipython shell. Because bpython does not run on windows since fcntl is not available."
+
 # Cryptography
 function rot13 {
     $cwd = (Get-Location)
