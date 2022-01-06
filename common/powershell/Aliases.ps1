@@ -30,6 +30,7 @@ Set-Alias -Name touch -Value New-Item -Description "Creates a file"
 function .. {cd ..}
 Set-Alias -Name clear -Value cls
 function ports {netstat -n}
+Set-Alias -Name nc -Value ncat -Description "netcat"
 Set-Alias -Name grep -Value rg -Description "Ripgrep"
 Set-Alias -Name whereis -Value Get-Command -Description "Shows commands locations"
 Remove-Alias -Name cat
