@@ -80,3 +80,11 @@ Set-Alias -Name speedtest -Value RunSpeedtest -Description "Run a speedtest."
 
 
 function ansible { Write-Host "ERROR: Ansible does not support windows (yet?). To use ansible, switch to WSL" }
+
+# Cryptography
+function rot13 {
+    $cwd = (Get-Location)
+    Set-Location (Join-Path -Path $script_location -ChildPath "\python\")
+    python rot13.py "$args"
+    Set-Location $cwd
+}
