@@ -69,7 +69,7 @@ Set-Alias -Name tut -Value CmdTutorial -Description "Show a short introductory t
 
 
 function OnlineManPage {
-    python $env:DOTFILES\scripts\python\man_page_from_https.py $args
+    python $env:DOTFILES\scripts\python\manpage_from_https.py $args
 }
 Remove-Alias -Name man
 Set-Alias -Name man -Value OnlineManPage -Description "Show online manpages for a linux command."
