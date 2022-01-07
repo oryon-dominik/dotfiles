@@ -26,3 +26,6 @@ Install-Module -Name DockerCompletion -Force
 
 # Simplified implementation of lolcat in PowerShell. https://github.com/andot/lolcat
 Install-Module -Name lolcat -Force
+
+# WSL-Commands natively bound to PowerShell https://github.com/mikebattista/PowerShell-WSL-Interop#usage
+Install-Module WslInterop
