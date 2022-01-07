@@ -74,7 +74,7 @@ $env:BAT_PAGER='""'  # don't page BAT results
 
 
 # add custom paths
-$env:path += ";$Env:Programfiles\\VideoLAN\VLC\vlc.exe"
+$env:path += ";$Env:Programfiles\VideoLAN\VLC\vlc.exe"
 $env:path += ";$Env:Programfiles\NASM"  # netwide-assembler
 $env:path += ";$(Join-Path -Path $env:DOTFILES -ChildPath "\bin")"  # local binaries
 $env:path += ";$(Join-Path -Path $script_location -ChildPath "\batch")"

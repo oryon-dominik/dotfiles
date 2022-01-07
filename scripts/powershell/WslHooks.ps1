@@ -1,5 +1,5 @@
 # Hooks for WindowsSubsystemForLinux (WSL) commands
-Import-WslCommand "sed", "awk", "base64", "apt", "sudo"
+Import-WslCommand "sed", "awk", "base64", "apt", "sudo", "whereis"
 
 # mkae sure-bash-completion is installed in WSL
 # $ sudo apt install bash-completion
