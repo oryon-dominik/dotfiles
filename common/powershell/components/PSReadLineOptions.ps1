@@ -7,7 +7,9 @@ $PSReadLineOptions = @{
     EditMode = "Windows"
 }
 Set-PSReadLineOption @PSReadLineOptions
-Set-PSReadLineKeyHandler -Key Ctrl+r -Function SwitchPredictionView
+Set-PSReadLineKeyHandler -Key Ctrl+r -ScriptBlock {
+    [Microsoft.PowerShell.PSConsoleReadLine]::SwitchPredictionView()
+}
 Set-PSReadLineKeyHandler -Key Shift+Tab -ScriptBlock {
     [Microsoft.PowerShell.PSConsoleReadLine]::AcceptSuggestion()
     Set-PSReadLineOption -PredictionViewStyle "InlineView"
