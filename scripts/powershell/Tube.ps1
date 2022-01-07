@@ -11,8 +11,7 @@ Set-Alias -Name tube -Value cliTube -Description "Plays Youtube Search-Results" 
 
 
 function hockey { # Plays Highlights from different hockey leagues.
-# you can create a symbolic link to that script with:  New-Item -Path "$env:DOTFILES/scripts/python/hockey.py" -ItemType SymbolicLink -Value "<location-of-your>/hockey.py"
-    $nhl_path = Join-Path -Path $script_location -ChildPath "\python\hockey.py"
+    $nhl_path = Join-Path -Path $env:PROJECTS -ChildPath '\hockeytube\hockey.py'
     if (!( Test-Path $nhl_path)) {
         Write-Warning "could not find $nhl_path"
         return
