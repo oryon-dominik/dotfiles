@@ -38,9 +38,6 @@ Remove-Alias -Name cat
 function cat_replacement {bat --style="plain" $args}
 Set-Alias -Name cat -Value cat_replacement -Description  "Replace cat with bat plain-mode"
 
-function run_fzf {fzf $args}  # needs fzf installed
-Set-PSReadlineKeyHandler -Key Ctrl+r -BriefDescription fzf -LongDescription "Reverse History search with fzf" ` -ScriptBlock {run_fzf}
-
 # hashes
 function md5($filepath) {Get-FileHash $filepath -Algorithm MD5}
 function sha256($filepath) {Get-FileHash $filepath -Algorithm SHA256}
