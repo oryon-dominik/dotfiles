@@ -12,6 +12,7 @@ Set-PSReadLineKeyHandler -Key Shift+Tab -ScriptBlock {
     [Microsoft.PowerShell.PSConsoleReadLine]::AcceptSuggestion()
     Set-PSReadLineOption -PredictionViewStyle "InlineView"
 }
+Set-PSReadLineKeyHandler -Key End -Function AcceptSuggestion
 Set-PSReadLineKeyHandler -Key RightArrow `
                          -BriefDescription ForwardCharAndAcceptNextSuggestionWord `
                          -LongDescription "Move cursor one character to the right in the current editing line and accept the next word in suggestion when it's at the end of current editing line" `

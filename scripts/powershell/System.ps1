@@ -5,7 +5,7 @@
 function isadmin {[bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")}
 
 
-function sudo () {
+function elevate () {
     if ($args.Length -lt 1) {
         Write-Host "No command specified."
     }
