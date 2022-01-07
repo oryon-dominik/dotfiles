@@ -29,3 +29,7 @@ Install-Module -Name lolcat -Force
 
 # WSL-Commands natively bound to PowerShell https://github.com/mikebattista/PowerShell-WSL-Interop#usage
 Install-Module WslInterop
+
+# PSReadLine provides fish-like auto-suggestions, included in powershell since 7.2, we need a version >= 2.2.0
+# https://docs.microsoft.com/de-de/powershell/module/psreadline/about/about_psreadline?view=powershell-7.2
+Install-Module -Name PSReadLine -AllowPrerelease -Force

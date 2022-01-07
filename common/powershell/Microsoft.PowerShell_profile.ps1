@@ -58,7 +58,8 @@ $env:WORKON_HOME = "$env:USERPROFILE\Envs"
 . $PSScriptRoot\ModulesInVersionControl\Get-FileMetaData.ps1
 # Zoxide Utilities (show with zoxide init powershell)
 . $PSScriptRoot\ModulesInVersionControl\zoxideUtilities.ps1
-
+# PSReadLine provides fish-like auto-suggestions, included in powershell since 7.2
+. $PSScriptRoot\components\PSReadLineOptions.ps1
 
 # set prompt (via starship)
 $env:STARSHIP_CONFIG = "$HOME\.dotfiles\common\starship\starship.toml"
