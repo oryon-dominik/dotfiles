@@ -24,3 +24,6 @@ New-Item -Path $HOME/.config/starship.toml -ItemType SymbolicLink -Value "$env:D
 # geany
 New-Item -Path "$env:USERPROFILE/AppData/Roaming/geany/geany.conf" -ItemType SymbolicLink -Value "$env:DOTFILES/common/geany/geany.conf"
 New-Item -Path "$env:USERPROFILE/AppData/Roaming/geany/colorschemes" -ItemType Junction -Value "$env:DOTFILES/common/geany/colorschemes"
+
+New-Item -Path "$env:USERPROFILE/.config/micro/colorschemes" -ItemType Junction -Value "$env:DOTFILES/common/micro/colorschemes"
+New-Item -Path "$env:USERPROFILE/.config/micro/settings.json" -ItemType SymbolicLink -Value "$env:DOTFILES/common/micro/settings.json"
