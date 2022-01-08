@@ -94,6 +94,12 @@ function GenerateRandomPassword ([int]$pass_length = 50) {
 # Restart a hung up printer.
 function spool { . $env:DOTFILES\scripts\batch\printer_restart.bat }
 
+function zen {
+    # toggles between wallpaper and black zen screen
+    . $env:DOTFILES\common\powershell\components\WallPaperSwitch.ps1
+    ToggleWallpaper
+}
+
 # function base64 {  # implemented via wsl for now
 #     $usage = 'Usage: base64 --encode|-e|--decode|-d <string>'
 #     try {
