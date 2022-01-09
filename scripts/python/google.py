@@ -80,7 +80,7 @@ def search(query: str, sort: str = '', oldest: bool = False, newest: bool = Fals
 
     table.add_column(f"Title", width=25, style="bold yellow")
     table.add_column("Snippet", width=86)
-    table.add_column(f"Link", width=37, style="dark_blue", justify='left', overflow='fold')
+    table.add_column(f"Link", width=72, style="dark_blue", justify='left', overflow='fold')
     for result in results:
         table.add_row(f"{result.title}" , f"{result.snippet}", f"{result.link}")
         table.add_row()
