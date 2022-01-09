@@ -85,6 +85,11 @@ function RunIPython { python -m IPython }
 Set-Alias -Name ipython -Value RunIPython -Description "Run an ipython shell."
 Set-Alias -Name bpython -Value RunIPython -Description "Run an ipython shell. Because bpython does not run on windows since fcntl is not available."
 
+function GoogleCLISearch {
+    python $env:DOTFILES\scripts\python\google.py $args
+}
+Set-Alias -Name search -Value GoogleCLISearch -Description "Run a google search inside CLI."
+
 # Cryptography
 function rot13 {
     $cwd = (Get-Location)
