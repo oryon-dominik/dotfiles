@@ -51,7 +51,7 @@ CUSTOM_DOTENV_PATH = None  # modify this (pathlib-style), if you want to use you
 def get_google_api_key(custom_dotenv_path=None):
     """precedence: 1. os 2. .env"""
     # get the key from os
-    developer_key = os.environ.get('GOOGLE_API_KEY')
+    developer_key = os.environ.get('GOOGLE_YOUTUBE_API_KEY')
     if developer_key is not None:
         return developer_key
 
@@ -64,7 +64,7 @@ def get_google_api_key(custom_dotenv_path=None):
     if custom_dotenv_path is not None:
         envs = Path(custom_dotenv_path)
     else:
-        envs = Path(dotfiles_path) / "local" / ".env"
+        envs = Path(dotfiles_path) / ".env"
     if not envs.exists():
         raise SystemExit('.env not found')
     load_dotenv(envs)
