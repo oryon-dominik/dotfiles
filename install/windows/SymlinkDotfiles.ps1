@@ -15,6 +15,7 @@ New-Item -Path "$env:USERPROFILE/Documents/PowerShell" -ItemType Junction -Value
 # gitconfig
 New-Item -Path $HOME/.gitconfig -ItemType SymbolicLink -Value "$env:DOTFILES/common/git/.gitconfig"
 # vimrc
+Move-Item -Path "$env:SystemDrive/tools/vim/_vimrc" -Destination "$env:SystemDrive/tools/vim/_backup_vimrc"
 New-Item -Path "$env:SystemDrive/tools/vim/.vimrc" -ItemType SymbolicLink -Value "$env:DOTFILES/common/vim/.vimrc"
 New-Item -Path "$env:USERPROFILE/.config/vim" -ItemType Junction -Value "$env:DOTFILES/common/vim/vimfiles"
 New-Item -Path "$env:USERPROFILE/.config/vim" -Name "cache" -ItemType "directory" -Force
