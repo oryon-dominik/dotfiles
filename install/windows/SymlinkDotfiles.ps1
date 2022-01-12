@@ -15,7 +15,9 @@ New-Item -Path "$env:USERPROFILE/Documents/PowerShell" -ItemType Junction -Value
 # gitconfig
 New-Item -Path $HOME/.gitconfig -ItemType SymbolicLink -Value "$env:DOTFILES/common/git/.gitconfig"
 # vimrc
-New-Item -Path $HOME/.vimrc -ItemType SymbolicLink -Value "$env:DOTFILES/common/vim/.vimrc"
+New-Item -Path "$env:USERPROFILE/.config/vim" -ItemType Junction -Value "$env:DOTFILES/common/vim"
+[Environment]::SetEnvironmentVariable("VIM", "$env:USERPROFILE/.config/vim", "User")
+New-Item -Path "$env:USERPROFILE/.config/vim" -Name "cache" -ItemType "directory"
 # alacritty
 New-Item -Path "$env:APPDATA/alacritty" -ItemType Junction -Value "$env:DOTFILES/common/alacritty"
 # starship
