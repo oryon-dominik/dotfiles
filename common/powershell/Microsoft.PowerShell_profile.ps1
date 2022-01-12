@@ -34,11 +34,11 @@ LoadDotEnv("$env:DOTFILES\.env")
 . $PSScriptRoot\components\upgrades\ReadUpdateLog.ps1
 
 # set powershell variables
-$shortcuts = Join-Path -Path $env:DOTFILES -ChildPath "\shared\shortcuts"
-$script_location = Join-Path -Path $env:DOTFILES -ChildPath '\scripts'
-$file_location = Join-Path -Path $env:DOTFILES -ChildPath '\shared\files'
-$console = Join-Path -Path $file_location -ChildPath '\images\console'
-$icons = Join-Path -Path $file_location -ChildPath '\icons'
+$shortcuts = Join-Path -Path "$env:DOTFILES" -ChildPath "\shared\shortcuts"
+$script_location = Join-Path -Path "$env:DOTFILES" -ChildPath '\scripts'
+$file_location = Join-Path -Path "$env:DOTFILES" -ChildPath '\shared\files'
+$console = Join-Path -Path "$file_location" -ChildPath '\images\console'
+$icons = Join-Path -Path "$file_location" -ChildPath '\icons'
 
 # Get device location.
 . $PSScriptRoot\components\GetDeviceLocation.ps1
@@ -76,10 +76,10 @@ $env:BAT_PAGER='""'  # don't page BAT results
 # add custom paths
 $env:path += ";$Env:Programfiles\VideoLAN\VLC\vlc.exe"
 $env:path += ";$Env:Programfiles\NASM"  # netwide-assembler
-$env:path += ";$(Join-Path -Path $env:DOTFILES -ChildPath "\bin")"  # local binaries
-$env:path += ";$(Join-Path -Path $script_location -ChildPath "\batch")"
-$env:path += ";$(Join-Path -Path $env:USERPROFILE -ChildPath "\.cargo\bin\")"  # rust commands
-$env:path += ";$(Join-Path -Path $env:USERPROFILE -ChildPath "\AppData\Roaming\npm\")"  # npm
+$env:path += ";$(Join-Path -Path "$env:DOTFILES" -ChildPath "\bin")"  # local binaries
+$env:path += ";$(Join-Path -Path "$script_location" -ChildPath "\batch")"
+$env:path += ";$(Join-Path -Path "$env:USERPROFILE" -ChildPath "\.cargo\bin\")"  # rust commands
+$env:path += ";$(Join-Path -Path "$env:USERPROFILE" -ChildPath "\AppData\Roaming\npm\")"  # npm
 
 
 

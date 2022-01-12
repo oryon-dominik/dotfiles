@@ -36,11 +36,11 @@ Write-Host "Meanwhile style your taskbar, desktop and color-theme (#861a22). Cus
 choco feature enable -n allowGlobalConfirmation
 
 Write-Host "Installing essentials for CLI and development."
-. $env:DOTFILES/install/windows/InstallAdditionalPowershellModules.ps1
+. "$env:DOTFILES/install/windows/InstallAdditionalPowershellModules.ps1"
 
-choco install $env:DOTFILES/install/windows/choco_development.config
-choco install $env:DOTFILES/install/windows/choco_cli_enhanced.config
-choco install $env:DOTFILES/install/windows/choco_languages.config
+choco install "$env:DOTFILES/install/windows/choco_development.config"
+choco install "$env:DOTFILES/install/windows/choco_cli_enhanced.config"
+choco install "$env:DOTFILES/install/windows/choco_languages.config"
 
 refreshenv
 . $env:DOTFILES/install/windows/InstallModernUnixForWindows.ps1
@@ -83,10 +83,10 @@ function GetKeyPress([string]$regexPattern='[ynq]', [string]$message=$null, [int
 
 $key = GetKeyPress '[y]' "Press y to install additional software packages for essential use cases, web & media editing." 7
 if ($key -ne $null) {
-    choco install $env:DOTFILES/install/windows/choco_web.config
-    choco install $env:DOTFILES/install/windows/choco_essentials.config
-    choco install $env:DOTFILES/install/windows/choco_media.config
-    choco install $env:DOTFILES/install/windows/choco_security.config
+    choco install "$env:DOTFILES/install/windows/choco_web.config"
+    choco install "$env:DOTFILES/install/windows/choco_essentials.config"
+    choco install "$env:DOTFILES/install/windows/choco_media.config"
+    choco install "$env:DOTFILES/install/windows/choco_security.config"
 } else {
     Write-Host "Skipped additional software installation."
 }
