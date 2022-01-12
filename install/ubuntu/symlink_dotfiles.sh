@@ -19,3 +19,6 @@ ln -sfv $HOME/.dotfiles/common/alacritty/hints.yml $HOME/.config/alacritty/
 ln -sfv $HOME/.dotfiles/common/htop/htoprc $HOME/.config/
 # starship
 ln -sfv $HOME/.dotfiles/common/starship/starship.toml $HOME/.config/
+# vim
+ln -sfv $HOME/.dotfiles/common/vim/.vimrc $HOME
+# TODO: full dir except .vimrc -> ln -sfv $HOME/.dotfiles/common/vim $HOME/.config

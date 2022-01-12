@@ -19,7 +19,7 @@ $PSDefaultParameterValues = @{'*:Encoding' = 'utf8'}
 #        ./+sssssoo++/+shdmmmhs/`         
 #            .:/ossyyyyss+/-`             
 
-lolcat $PSScriptRoot\intro  # print the intro-graphic
+lolcat "$PSScriptRoot\intro"  # print the intro-graphic
 
 # Initializing dotfiles environment variable, if not already set properly
 if (-not (Test-Path $env:DOTFILES)) { 
@@ -27,11 +27,11 @@ if (-not (Test-Path $env:DOTFILES)) {
     $env:DOTFILES = $dotfiles_location }
 
 # load local dotenv
-. $PSScriptRoot\components\LoadDotEnv.ps1
+. "$PSScriptRoot\components\LoadDotEnv.ps1"
 LoadDotEnv("$env:DOTFILES\.env")
 
 # calculate last update
-. $PSScriptRoot\components\upgrades\ReadUpdateLog.ps1
+. "$PSScriptRoot\components\upgrades\ReadUpdateLog.ps1"
 
 # set powershell variables
 $shortcuts = Join-Path -Path "$env:DOTFILES" -ChildPath "\shared\shortcuts"
@@ -41,25 +41,25 @@ $console = Join-Path -Path "$file_location" -ChildPath '\images\console'
 $icons = Join-Path -Path "$file_location" -ChildPath '\icons'
 
 # Get device location.
-. $PSScriptRoot\components\GetDeviceLocation.ps1
+. "$PSScriptRoot\components\GetDeviceLocation.ps1"
 
 # Imports all custom-added-modules to the powershell-space
 Import-Module DockerCompletion
 # Virtualenvwrapper bindings
 $env:WORKON_HOME = "$env:USERPROFILE\Envs"
-. $PSScriptRoot\components\SlimVenvWrapper.ps1
+. "$PSScriptRoot\components\SlimVenvWrapper.ps1"
 # Upgrades & Update functionality
-. $PSScriptRoot\components\upgrades\Upgrades.ps1
+. "$PSScriptRoot\components\upgrades\Upgrades.ps1"
 # Win-EventTail (tails Windows Event Logs) (https://gist.github.com/jeffpatton1971/a908cac57489e6ca59a6)
-. $PSScriptRoot\ModulesInVersionControl\Get-WinEventTail.ps1
+. "$PSScriptRoot\ModulesInVersionControl\Get-WinEventTail.ps1"
 # Weather-Script
-. $PSScriptRoot\ModulesInVersionControl\Get-Weather.ps1
+. "$PSScriptRoot\ModulesInVersionControl\Get-Weather.ps1"
 # Metadata for files
-. $PSScriptRoot\ModulesInVersionControl\Get-FileMetaData.ps1
+. "$PSScriptRoot\ModulesInVersionControl\Get-FileMetaData.ps1"
 # Zoxide Utilities (show with zoxide init powershell)
-. $PSScriptRoot\ModulesInVersionControl\zoxideUtilities.ps1
+. "$PSScriptRoot\ModulesInVersionControl\zoxideUtilities.ps1"
 # PSReadLine provides fish-like auto-suggestions, included in powershell since 7.2
-. $PSScriptRoot\components\PSReadLineOptions.ps1
+. "$PSScriptRoot\components\PSReadLineOptions.ps1"
 
 # set prompt (via starship)
 $env:STARSHIP_CONFIG = "$HOME\.dotfiles\common\starship\starship.toml"
@@ -69,8 +69,8 @@ Invoke-Expression (&starship init powershell)
 $env:BAT_THEME="Dracula"
 $env:BAT_PAGER='""'  # don't page BAT results
 
-# load aliases & system-function-definitions
-. $PSScriptRoot\Aliases.ps1
+# vi-edit-mode
+# Set-PSReadlineOption -EditMode vi -BellStyle None
 
 
 # add custom paths
@@ -81,10 +81,10 @@ $env:path += ";$(Join-Path -Path "$script_location" -ChildPath "\batch")"
 $env:path += ";$(Join-Path -Path "$env:USERPROFILE" -ChildPath "\.cargo\bin\")"  # rust commands
 $env:path += ";$(Join-Path -Path "$env:USERPROFILE" -ChildPath "\AppData\Roaming\npm\")"  # npm
 
+# load aliases & system-function-definitions
+. "$PSScriptRoot\Aliases.ps1"
 
 
-# vi-edit-mode
-# Set-PSReadlineOption -EditMode vi -BellStyle None
 
 # ======================================================
 

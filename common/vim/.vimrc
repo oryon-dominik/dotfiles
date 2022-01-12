@@ -1,28 +1,39 @@
-set nocompatible
+set nocompatible                            " be ViMproved
 
-set number          " show line numbers
+set runtimepath=$HOME/.config/vim,$VIMRUNTIME
 
-set t_Co=256        " force terminal colors
-syntax on           " enable syntax highlighting
-language en         " sets the language of the messages
+set number                                  " show line numbers
 
-set tabstop=4       " tab spacing
+set t_Co=256                                " force terminal colors
+syntax on                                   " enable syntax highlighting
+language en                                 " sets the language of the messages
 
-set shiftround      " always indent/outdent to the nearest tabstop
-set expandtab       " use spaces instead of tabs
+set tabstop=4                               " tab spacing
 
-set nobackup        " no backup of files
-set nowritebackup   " no backup while editing
-set noswapfile      " no swap files
-set noundofile      " no undofile
+set shiftround                              " always indent/outdent to the nearest tabstop
+set expandtab                               " use spaces instead of tabs
 
-set hlsearch        " highlight all results
-set ignorecase      " ignore case in search
-set incsearch       " show search results as you type
+set nobackup                                " no backup of files
+set nowritebackup                           " no backup while editing
+set noswapfile                              " no swap files
+" set noundofile                            " no undofile
+set undodir=$HOME/.config/vim/cache//,.
+
+set hlsearch                                " highlight all results
+set ignorecase                              " ignore case in search
+set incsearch                               " show search results as you type
+
+
+set fileformats=unix    " use unix line endings (LF)
+
+" set backupdir=$HOME/.config/vim/cache/
+" set spell spelllang=en_us
+" set spellfile=$HOME/.config/vim/en.utf-8.add
+
 
 " Install vim-plug if not found"
-if empty(glob('$HOME/.vim/autoload/plug.vim'))
-    silent !curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+if empty(glob('$HOME/.config/vim/autoload/plug.vim'))
+    silent !curl -fLo $HOME/.config/vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
@@ -32,7 +43,7 @@ if !has('win32')
     " \  if !empty(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
     " \|   PlugInstall | q
     " \| endif
-    echo "POSIX"
+    " echo "POSIX"
 endif
 if has('win32')
     " Run PlugInstall if there are missing plugins"
@@ -40,15 +51,14 @@ if has('win32')
     " \  if !empty(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
     " \|   PlugInstall | q
     " \| endif
-    echo "Win"
+    " echo "Win"
 endif
 
-call plug#begin('~/.vim/plugged')
-call plug#end()
-" call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/vim/plugged')
 " Plug 'dracula/vim', { 'as': 'dracula' }
 " Plug 'junegunn/vim-plug'
-" 
+call plug#end()
+
 
 
 " gvim
