@@ -11,56 +11,98 @@ Make sure you have installed a [powershell](https://github.com/PowerShell/PowerS
 
 Open an admin-powershell.
 
+
 ## Setup your dotfiles repository
 
-Set an environment variable (`$env:DOTFILES`) to the (existing) location you want to install your config to. 
+Create a directory for the location you want to install your config to. Then set an environment variable (`$env:DOTFILES`) pointing to it.
 
 ```powershell
+New-Item -Path "$env:USERPROFILE/.dotfiles" -ItemType Directory -Force
+```
+```powershell
 $env:DOTFILES = Convert-Path "$env:USERPROFILE/.dotfiles"
+```
+```powershell
 [Environment]::SetEnvironmentVariable("DOTFILES", "$env:DOTFILES", "User")
 ```
 
-Clone | Fork | Create a dotfile repo into `$env:DOTFILES`.
+
+Clone | Fork | Create a fresh dotfile git repository into `$env:DOTFILES`.
 
 ```powershell
-git clone https://github.com/oryon-dominik/dotfiles $env:DOTFILES
+git clone https://github.com/oryon-dominik/dotfiles "$env:DOTFILES"
 ```
 
-Set the execution policy, to make your scripts executable. (You could also
-elaborate on that to a script-by-script policy)
+Set the execution policy, to make your scripts executable (You could also
+elaborate on that to a script-by-script policy).
+
+
 ```powershell
 Set-ExecutionPolicy RemoteSigned
 ```
 
-Make system links from the cloned powershell profile to the generic powershell-profile-folders.
+Make system links from the cloned powershell profile to both of the generic powershell-profile-folders.  
 This will delete the old folders (don't forget to backup your old powershell configs).
 
-```powershell
-Remove-Item -Path "$env:USERPROFILE\Documents\WindowsPowerShell" -Recurse -Force
-New-Item -Path "$env:USERPROFILE/Documents/WindowsPowerShell" -ItemType Junction -Value "$env:DOTFILES/common/powershell"
 
-# for powershell 7:
-Remove-Item -Path "$env:USERPROFILE\Documents\PowerShell" -Recurse -Force
+```powershell
+# Traditional pre-installed powershell
+Remove-Item -Path "$env:USERPROFILE\Documents\WindowsPowerShell" -Recurse -Force;
+New-Item -Path "$env:USERPROFILE/Documents/WindowsPowerShell" -ItemType Junction -Value "$env:DOTFILES/common/powershell"
+```
+```powershell
+# Powershell 7
+Remove-Item -Path "$env:USERPROFILE\Documents\PowerShell" -Recurse -Force;
 New-Item -Path "$env:USERPROFILE/Documents/PowerShell" -ItemType Junction -Value "$env:DOTFILES/common/powershell"
 ```
+
 
 Install the additional powershell-modules. 
 
 ```powershell
-refreshenv
-Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression $env:DOTFILES/install/windows/InstallAdditionalPowershellModules.ps1
-choco install $env:DOTFILES/install/windows/choco_development.config
-choco install $env:DOTFILES/install/windows/choco_cli_enhanced.config
-choco install $env:DOTFILES/install/windows/choco_languages.config
-refreshenv
-Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression $env:DOTFILES/install/windows/InstallModernUnixForWindows.ps1
+refreshenv;
+Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression "$env:DOTFILES/install/windows/InstallAdditionalPowershellModules.ps1"
+```
 
-# optional (If you like add essential software for your everyday work)
-choco install $env:DOTFILES/install/windows/choco_web.config
-choco install $env:DOTFILES/install/windows/choco_essentials.config
-choco install $env:DOTFILES/install/windows/choco_media.config
-choco install $env:DOTFILES/install/windows/choco_security.config
-refreshenv
+Install packages neccessary for full features and commands of these dotfiles.
+
+```powershell
+choco install "$env:DOTFILES/install/windows/choco_cli_enhanced.config"
+```
+
+
+Support for C, Go, Rust Haskell, Java & Dotnet compilers + yarn.
+
+```powershell
+choco install "$env:DOTFILES/install/windows/choco_languages.config"
+```
+
+
+The modern unix tools (via rust).
+
+```powershell
+refreshenv;
+Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression "$env:DOTFILES/install/windows/InstallModernUnixForWindows.ps1"
+```
+
+
+Install optional software (If you like, have a look into my essential software packages for everyday work and add them to your system.).
+
+```powershell
+choco install "$env:DOTFILES/install/windows/choco_development.config";
+choco install "$env:DOTFILES/install/windows/choco_security.config";
+choco install "$env:DOTFILES/install/windows/choco_google_web.config";
+choco install "$env:DOTFILES/install/windows/choco_essential_guis.config";
+choco install "$env:DOTFILES/install/windows/choco_media.config";
+;refreshenv
+```
+
+
+Now symlink your dotfiles to the installed programs configs. You may get some elevation errors, depending on your system-config. Fix them :)
+
+```powershell
+refreshenv;
+Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression "$env:DOTFILES/install/windows/SymlinkDotfiles.ps1"
 ```
 
 
@@ -70,7 +112,8 @@ You can also add your dotfiles location to explorers quick-access.
 (new-object -com shell.application).Namespace("$env:DOTFILES").Self.InvokeVerb("pintohome")
 ```
 
+
 Restart your shell.
 
-From here on you should be good to go and use your config, feel free to [customize your windows dotfiles](3-customize-windows-dotfiles.md)
+From here on you should be good to go and use your config, now feel free to [customize your windows dotfiles](3-customize-windows-dotfiles.md)
 and follow the rest of my tutorial.
