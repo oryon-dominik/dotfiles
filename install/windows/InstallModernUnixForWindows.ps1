@@ -66,8 +66,8 @@ mkdir $env:DOTFILES/bin -ErrorAction SilentlyContinue
 
 # A modern replacement for ls - https://github.com/ogham/exa
 # cargo install exa
-git clone https://github.com/ogham/exa $env:DOTFILES/bin/exa
-cd $env:DOTFILES/bin/exa
+git clone https://github.com/ogham/exa "$env:DOTFILES/bin/exa"
+cd "$env:DOTFILES/bin/exa"
 # cherry pick the windows fix
 git fetch origin pull/820/head:chesterliu/dev/win-support
 git checkout chesterliu/dev/win-support
@@ -76,8 +76,8 @@ cd -
 
 # command-line DNS client - https://github.com/ogham/dog
 # cargo install dog
-git clone https://github.com/ogham/dog $env:DOTFILES/bin/dog
-cd $env:DOTFILES/bin/dog
+git clone https://github.com/ogham/dog "$env:DOTFILES/bin/dog"
+cd "$env:DOTFILES/bin/dog"
 cargo install --path . --force
 cd -
 

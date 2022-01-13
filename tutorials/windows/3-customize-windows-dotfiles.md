@@ -11,10 +11,10 @@ Some hints on usage below.
 
 ## custom dotenv
 
-I hold some secrets (API keys and stuff like that) in my .env - that is of course not version controlled.
-To skip searching for your devices location via the google-api, set `DOTFILES_SKIP_DEVICE_LOCATION=true` inside your `.env`.
+I hold some custom settings and secrets (API keys and stuff like that) in my `.env` - that is of course not version controlled.
+Example: To skip searching for your devices location via the google-api, set `DOTFILES_SKIP_DEVICE_LOCATION=true` inside your `.env`.
 
-For full functionality you need to define.
+For full functionality you need to define:
 
 ```.env
 # shell (for poetry)
