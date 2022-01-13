@@ -46,7 +46,7 @@ echo "function djangoproject { set-location (Join-Path -Path '$env:PROJECTS' -Ch
 
 ## reproducible program shortcuts
 
-Put your program-shortcuts into a seperate folder `"$env:DOTFILESshared/$env:computername/shortcuts"` and add them to your desktop or taskbar. # TODO: write a script to automate that.
+Put your program-shortcuts into a seperate folder `"$env:DOTFILES/shared/$env:computername/shortcuts"` and add them to your desktop or taskbar. # TODO: write a script to automate that.
 
 
 ## custom upgrade
