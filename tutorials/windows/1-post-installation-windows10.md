@@ -2,13 +2,13 @@
 
 Open an admin-powershell.
 
-Install powershell 7, start it and set a new profile
+Install powershell 7, start it and set a new profile.
 
 ```powershell
 Invoke-Expression "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI"
 ```
 
-Then install [chocolatey](https://chocolatey.org/)
+Then install [chocolatey](https://chocolatey.org/).
 
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
@@ -25,11 +25,11 @@ Install git via chocolatey.
 Set up your `ssh-key`.
 
 ```powershell
-    mkdir $env:USERPROFILE/.ssh/
-    ssh-keygen -t rsa -C "A comment of your choice" -f $env:USERPROFILE/.ssh/id_rsa
+    mkdir "$env:USERPROFILE/.ssh/"
+    ssh-keygen -t ecdsa -C "A comment of your choice" -f "$env:USERPROFILE/.ssh/id_ecdsa"
 ```
 
-(Optional) Set a new [hostname](http://seriss.com/people/erco/unixtools/hostnames.html)
+(Optional) Set a new cool [hostname](http://seriss.com/people/erco/unixtools/hostnames.html) 🌒.
 
 ```powershell
 Rename-Computer -ComputerName $env:computername -NewName "enceladus"
