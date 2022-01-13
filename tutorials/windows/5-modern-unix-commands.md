@@ -59,7 +59,7 @@ Pretending you have installed cargo (`choco install rust`). Just install via car
 
 ## Additional packages.
 
-Create the (gitignored) .dotfiles/bin directory if it doesn't exist
+Create the (gitignored) `.dotfiles/bin` directory if it doesn't exist
 
     mkdir "$env:DOTFILES/bin" -ErrorAction SilentlyContinue
 

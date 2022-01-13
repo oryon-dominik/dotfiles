@@ -7,7 +7,7 @@ add_newline = false
 # Wait 30 milliseconds for starship to check files under the current directory.
 scan_timeout = 30
 # Timeout for commands executed by starship (in milliseconds).
-command_timeout = 666
+command_timeout = 1111
 
 format = '''
 [┌\[](bold blue)[$username[@](bold red)$hostname](bold white)[\]](bold blue) [\[](bold blue)$shell[\]](bold blue) [\[](bold blue)$time[\]](bold blue) ([\[](bold blue)$git_branch $git_state$git_status$git_commit[\]](bold blue))( [\[](bold blue)$python$nodejs$docker_context$rust$golang$terraform$memory_usage$nix_shell$env_var$custom$status[\]](bold blue))
