@@ -1,58 +1,60 @@
 # dotfiles customization
 
-#### UNDER HEAVY CONSTRUCTION USE AT YOUR OWN RISK ########
+> This is under UNDER HEAVY CONSTRUCTION USE AT YOUR OWN RISK
 
-## THIS IS BROKEN FOR NOW -  DON'T USE
+Feel free to customize all scripts & aliases. Share your thoughts with me!
 
-Start with customizing your local settings.
+Edit `Aliases.ps1`, or `intro` in `common/powershell/` to your taste. Customize installed modules & scripts.
 
-Create the missing-files  # TODO: create the missing files when checking for them
+Some hints on usage below.
 
-```powershell
-mkdir $env:DOTFILES/scripts/powershell/machines
-New-Item -ItemType file $env:DOTFILES/scripts/powershell/machines/$env:computername.ps1
+
+## custom dotenv
+
+I hold some secrets (API keys and stuff like that) in my .env - that is of course not version controlled.
+To skip searching for your devices location via the google-api, set `DOTFILES_SKIP_DEVICE_LOCATION=true` inside your `.env`.
+
+For full functionality you need to define.
+
+```.env
+# shell (for poetry)
+SHELL=C:\Program Files\PowerShell\7\pwsh.exe
+# disable virtualenv prompt to use my custom prompt
+VIRTUAL_ENV_DISABLE_PROMPT=1
+# openweathermap api key - for the 'weather' command to work
+OPEN_WEATHERMAP_API_KEY=
+# google api key, used for cliTube and my hockey-TV in CLI scripts
+GOOGLE_YOUTUBE_API_KEY=
+# google api key & cx to use the search json api in CLI
+GOOGLE_SEARCH_API_KEY=
+GOOGLE_PROGRAMMABLE_SEARCH_ENGINE_ID=
+# google geocoding api key for the working geo device locator
+GOOGLE_MAPS_API_KEY=
+DOTFILES_SKIP_DEVICE_LOCATION=false
+# cloud storage mount point & project dir for faster access
+CLOUD_MOINT_POINT=K:/
+PROJECTS=C:/dev
 ```
 
-Install Additional packages & powershell Modules, place additional symlinks
 
-Customize scripts & aliases
+## custom locations
 
-# TODO: group aliases logically
-
-# examples
-echo "function dev { set-location (Join-Path -Path $settings.cloud -ChildPath '\Development') }" >> $ENV:DOTFILES/common/powershell/Locations.ps1
-
-TODO: create an empty .env
-DOTFILES_SKIP_DEVICE_LOCATION=true
-
-
-TODO: Symlink all the other programs. (after installing them)
-example:
+Example:
 ```powershell
-Remove-Item -path $env:APPDATA/alacritty -recurse
-mkdir $env:APPDATA/alacritty
-New-Item -Path "$env:APPDATA/alacritty" -ItemType Junction -Value "$env:DOTFILES/common/alacritty"
-# TODO: gitconfig, geany, 
+echo "function djangoproject { set-location (Join-Path -Path '$env:PROJECTS' -ChildPath '\djangoproject'); workon (venvName) }" >> "$env:DOTFILES/common/powershell/Locations.ps1"
 ```
 
+## reproducible program shortcuts
 
-TODO: 12. put your program-links into shared/$env:computername/shortcuts and add them to your desktop or taskbar via script\
-TODO: link to windows-installation tutorial\
-TODO: write install-script following this tutorial
-
-TODO: expand to private settings & how-to-hold-secrets
-
-Create and extend:
-
-.repositories.txt
-locals/git_too_big_to_prompt
+Put your program-shortcuts into a seperate folder `"$env:DOTFILESshared/$env:computername/shortcuts"` and add them to your desktop or taskbar. # TODO: write a script to automate that.
 
 
-7. If you already have a shared-repository: Clone it.
+## custom upgrade
+
+If you have git repositories that should be pulled on an `upgrade`. Put links to the directories into `"$env:DOTFILES/.repositories.txt"`.
 
 
-10. customize
+## shared files
 
-    - edit `Aliases.ps1`, or `intro` in `common/powershell/` to your taste  
-    - customize installed modules & scripts  
-    - share your thoughts with me  
+I'm using another repository for logfiles, private notes and backup stuff, that I mount to the `"$env:DOTFILES/shared"` for easy access.  
+If you already have a shared-repository: Clone it into `"$env:DOTFILES/shared"`.

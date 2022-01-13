@@ -20,7 +20,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 # 3. reopen elevated shell
 choco install git -y
 refreshenv
-git clone https://github.com/oryon-dominik/dotfiles-den $env:DOTFILES
+git clone https://github.com/oryon-dominik/dotfiles-den "$env:DOTFILES"
 
 # Symlink dotfiles to the old powershell profile
 Remove-Item -path "$env:USERPROFILE/Documents/WindowsPowerShell" -recurse
@@ -38,12 +38,11 @@ choco feature enable -n allowGlobalConfirmation
 Write-Host "Installing essentials for CLI and development."
 . "$env:DOTFILES/install/windows/InstallAdditionalPowershellModules.ps1"
 
-choco install "$env:DOTFILES/install/windows/choco_development.config"
 choco install "$env:DOTFILES/install/windows/choco_cli_enhanced.config"
 choco install "$env:DOTFILES/install/windows/choco_languages.config"
 
 refreshenv
-. $env:DOTFILES/install/windows/InstallModernUnixForWindows.ps1
+. "$env:DOTFILES/install/windows/InstallModernUnixForWindows.ps1"
 
 Write-Host "Installing Visual Studio, please wait... you should customize your visualstudio installation to include all neccessary build tools (C/C++)."
 choco install visualstudio2022professional
@@ -83,12 +82,16 @@ function GetKeyPress([string]$regexPattern='[ynq]', [string]$message=$null, [int
 
 $key = GetKeyPress '[y]' "Press y to install additional software packages for essential use cases, web & media editing." 7
 if ($key -ne $null) {
-    choco install "$env:DOTFILES/install/windows/choco_web.config"
-    choco install "$env:DOTFILES/install/windows/choco_essentials.config"
-    choco install "$env:DOTFILES/install/windows/choco_media.config"
     choco install "$env:DOTFILES/install/windows/choco_security.config"
+    choco install "$env:DOTFILES/install/windows/choco_development.config"
+    choco install "$env:DOTFILES/install/windows/choco_google_web.config"
+    choco install "$env:DOTFILES/install/windows/choco_essential_guis.config"
+    choco install "$env:DOTFILES/install/windows/choco_media.config"
 } else {
     Write-Host "Skipped additional software installation."
 }
+
+refreshenv
+. "$env:DOTFILES/install/windows/SymlinkDotfiles.ps1"
 
 Write-Host "Done :)"

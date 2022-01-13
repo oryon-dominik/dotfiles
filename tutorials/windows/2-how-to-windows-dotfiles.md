@@ -27,7 +27,7 @@ $env:DOTFILES = Convert-Path "$env:USERPROFILE/.dotfiles"
 ```
 
 
-Clone | Fork | Create a fresh dotfile git repository into `$env:DOTFILES`.
+Clone | Fork this dotfile git repository to `$env:DOTFILES`.
 
 ```powershell
 git clone https://github.com/oryon-dominik/dotfiles "$env:DOTFILES"
@@ -42,29 +42,29 @@ Set-ExecutionPolicy RemoteSigned
 ```
 
 Make system links from the cloned powershell profile to both of the generic powershell-profile-folders.  
-This will delete the old folders (don't forget to backup your old powershell configs).
+This will delete the old folders (don't forget to backup your old powershell configs).  
 
-
+Traditional pre-installed powershell.
 ```powershell
-# Traditional pre-installed powershell
 Remove-Item -Path "$env:USERPROFILE\Documents\WindowsPowerShell" -Recurse -Force;
 New-Item -Path "$env:USERPROFILE/Documents/WindowsPowerShell" -ItemType Junction -Value "$env:DOTFILES/common/powershell"
 ```
+Powershell 7.
 ```powershell
-# Powershell 7
 Remove-Item -Path "$env:USERPROFILE\Documents\PowerShell" -Recurse -Force;
 New-Item -Path "$env:USERPROFILE/Documents/PowerShell" -ItemType Junction -Value "$env:DOTFILES/common/powershell"
 ```
 
 
-Install the additional powershell-modules. 
+Install the additional powershell-modules.
 
 ```powershell
 refreshenv;
-Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression "$env:DOTFILES/install/windows/InstallAdditionalPowershellModules.ps1"
+Set-ExecutionPolicy Bypass -Scope Process -Force;
+Invoke-Expression "$env:DOTFILES/install/windows/InstallAdditionalPowershellModules.ps1"
 ```
 
-Install packages neccessary for full features and commands of these dotfiles.
+Install packages neccessary for full features and command-availability of these dotfiles.
 
 ```powershell
 choco install "$env:DOTFILES/install/windows/choco_cli_enhanced.config"
@@ -78,7 +78,7 @@ choco install "$env:DOTFILES/install/windows/choco_languages.config"
 ```
 
 
-The modern unix tools (via rust).
+The modern unix tools (via rust's package manager `cargo`).
 
 ```powershell
 refreshenv;
@@ -86,7 +86,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression "$env:DOTFIL
 ```
 
 
-Install optional software (If you like, have a look into my essential software packages for everyday work and add them to your system.).
+Install optional software (If you like, have a look into my essential software packages for everyday work and add them to your system).
 
 ```powershell
 choco install "$env:DOTFILES/install/windows/choco_development.config";
@@ -98,11 +98,24 @@ choco install "$env:DOTFILES/install/windows/choco_media.config";
 ```
 
 
-Now symlink your dotfiles to the installed programs configs. You may get some elevation errors, depending on your system-config. Fix them :)
+Now symlink your dotfiles to the installed programs configs. You may get some
+elevation errors, depending on your system-config.  
+Run the failed lines on an elevated shell again (assuming your user has
+elevation privilege, otherwise you have to fix the paths to match the elevated
+`$env`).
 
 ```powershell
 refreshenv;
-Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression "$env:DOTFILES/install/windows/SymlinkDotfiles.ps1"
+Set-ExecutionPolicy Bypass -Scope Process -Force;
+Invoke-Expression "$env:DOTFILES/install/windows/SymlinkDotfiles.ps1"
+```
+
+Touch a dotenv to store your custom environment variables - valid for powershell sessions only.
+```powershell
+$dotenv_path = (Join-Path -Path "$env:DOTFILES" -ChildPath ".env");
+if (!(Test-Path -Path $dotenv_path -PathType Leaf)) {
+    New-Item -ItemType File -Force -Path $dotenv_path
+}
 ```
 
 
@@ -115,5 +128,6 @@ You can also add your dotfiles location to explorers quick-access.
 
 Restart your shell.
 
-From here on you should be good to go and use your config, now feel free to [customize your windows dotfiles](3-customize-windows-dotfiles.md)
+From here on you should be good to go and use your config, now feel free to
+[customize your windows dotfiles](3-customize-windows-dotfiles.md)
 and follow the rest of my tutorial.
