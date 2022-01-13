@@ -62,7 +62,7 @@ cargo install sd --locked
 
 
 # create the (gitignored) .dotfiles/bin directory if it doesn't exist
-mkdir $env:DOTFILES/bin -ErrorAction SilentlyContinue
+mkdir "$env:DOTFILES/bin" -ErrorAction SilentlyContinue
 
 # A modern replacement for ls - https://github.com/ogham/exa
 # cargo install exa
