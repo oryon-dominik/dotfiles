@@ -23,7 +23,7 @@ set undodir=$HOME/.config/vim/cache//,.
 " search options
 set hlsearch                                " highlight all results
 set ignorecase                              " ignore case in search
-set incsearch                               " show search results as you type
+" set incsearch                               " show search results as you type - already integrated in vim-sensible
 
 set fileformats=unix    " use unix line endings (LF)
 
@@ -50,8 +50,21 @@ else
 endif
 
 call plug#begin('~/.config/vim/plugged')
+    Plug 'junegunn/vim-plug'                " plugin-manager - https://github.com/junegunn/vim-plug/wiki
+    
+    Plug 'tpope/vim-sensible'               " sensible defaults 'everyone can agree on' - https://github.com/tpope/vim-sensible  # TODO: configure
     Plug 'dracula/vim', { 'as': 'dracula' } " Dracula theme
-    Plug 'junegunn/vim-plug'                " plugin-manager vim-plug: https://github.com/junegunn/vim-plug/wiki
+
+    Plug 'vim-airline/vim-airline'          " statusbar - https://github.com/vim-airline/vim-airline  # TODO: configure
+    Plug 'tpope/vim-fugitive'               " git plugin - https://github.com/tpope/vim-fugitive  # TODO: configure
+    Plug 'tpope/vim-surround'               " surround everything with brackets - https://github.com/tpope/vim-surround  # TODO: configure
+    Plug 'tpope/vim-commentary'             " comment in/out lines - https://github.com/tpope/vim-commentary  # TODO: configure
+
+    Plug 'sickill/vim-pasta'                " fix vim-pasting - https://github.com/sickill/vim-pasta  # TODO: configure
+
+    "TODO: configure: Plug 'vim-syntastic/syntastic'          " syntax checker - https://github.com/vim-syntastic/syntastic
+    "TODO: configure: Plug 'ycm-core/YouCompleteMe'           " code completion - https://github.com/ycm-core/YouCompleteMe
+
 call plug#end()
 
 colo dracula
