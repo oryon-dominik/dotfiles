@@ -94,6 +94,9 @@ function GenerateRandomPassword ([int]$pass_length = 50) {
 # Restart a hung up printer.
 function spool { . $env:DOTFILES\scripts\batch\printer_restart.bat }
 
+# Restart the Host Network Service
+function HnsRestart { . $env:DOTFILES\scripts\batch\net_restart.bat }
+
 function zen {
     # toggles between wallpaper and black zen screen
     . $env:DOTFILES\common\powershell\components\WallPaperSwitch.ps1
