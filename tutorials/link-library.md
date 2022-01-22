@@ -57,6 +57,10 @@ https://miro.com/
 Fast file sharing  
 https://www.file.io/  
 
+*wormhole*  
+Share files up to 10GB  
+https://wormhole.app/  
+
 
 ## General
 
@@ -88,6 +92,10 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
 *actix*  
 A FAST webframework written in rust.  
 https://actix.rs/  
+
+*htmx*  
+high power tools for HTML  
+https://htmx.org/  
 
 
 ### Python
@@ -209,8 +217,8 @@ Animated UI components used along with tailwind.css
 https://headlessui.dev/  
 
 *animated tailwind*  
-A configuration to use Animate.css with Tailwind CSS  
-https://ikcb.github.io/animated-tailwindcss/  
+A configuration to use Animate.css with Tailwind CSS   
+https://github.com/ikcb/animated-tailwindcss
 
 *cssgradient*  
 Easy gradient control.  
@@ -219,6 +227,25 @@ https://cssgradient.io/
 *godly websites*  
 collection of design inspirations on the internet  
 https://godly.website/  
+
+
+## Cloud
+
+*traefik*  
+Routes and balancing
+https://doc.traefik.io/traefik/  
+
+*terraform*  
+Infrastructure as a code  
+https://www.terraform.io/  
+
+*kubernetes*  
+Group containers to applications and load balance 'em.  
+https://kubernetes.io/de/  
+
+*flux*  
+Kubernetes cluster management.
+https://fluxcd.io/  
 
 
 ## Security
@@ -233,6 +260,10 @@ https://sudo.pagerduty.com/for_engineers/
 Arizona State University Computer Systems Security course  
 https://pwn.college/  
 
+*picoctf*  
+computer security education from Carnegie Mellon University  
+https://picoctf.org/  
+
 *Types of attacks*  
 XSS, CSRF, MitM, Sessions explained by Mozilla  
 https://developer.mozilla.org/en-US/docs/Web/Security/Types_of_attacks  
@@ -240,6 +271,10 @@ https://developer.mozilla.org/en-US/docs/Web/Security/Types_of_attacks
 *CORS*  
 Cross-Origin Resource Sharing (CORS)  
 https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS  
+
+*port knocking*
+Grant access without permanent open ports  
+https://help.ubuntu.com/community/PortKnocking  
 
 *JWT*  
 Be aware on using them securely with trusted algorithms and correct header setup.  
