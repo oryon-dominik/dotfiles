@@ -126,3 +126,9 @@ function zen {
 # }
 
 # TODO: implement write-to-log(message, logtype) function
+
+function emoji {
+    # print some emoji I use often to the console for faster use ;--D
+    Write-Host "¯\_(ツ)_/¯"
+    Write-Host "™"
+}
