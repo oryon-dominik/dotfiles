@@ -61,6 +61,10 @@ https://www.file.io/
 Share files up to 10GB  
 https://wormhole.app/  
 
+*hedgedoc*  
+Write and share markdown  
+https://hedgedoc.org/  
+
 
 ## General
 
@@ -82,6 +86,10 @@ https://12factor.net/
 *semantic versioning*  
 Versioning MAJOR.MINOR.PATCH, MAJOR for incompatible API changes, MINOR for new compatible features, PATCH for bug fixes.  
 https://semver.org/  
+
+*hacker laws*  
+Laws, Theories, Principles and Patterns that developers will find useful.  
+https://github.com/dwmkerr/hacker-laws  
 
 
 ## Backend
@@ -129,6 +137,10 @@ https://github.com/pyenv-win/pyenv-win
 *poetry*  
 python packaging and dependency management made easy  
 https://python-poetry.org/  
+
+*the algorithms*  
+All algorithms inmplemented in python - even if this implementations might not be the best solutions, they are very complete  
+https://github.com/TheAlgorithms/Python  
 
 
 #### Some of my favourite modules
@@ -282,3 +294,46 @@ https://jwt.io/
 
 *Fuzzy security* tutorial series  
 https://www.fuzzysecurity.com/tutorials.html  
+
+*Magic hashes*  
+PHP hash collisions  
+https://github.com/spaze/hashes  
+
+
+## stars from github 
+
+*workadventure*  
+virtual office space  
+https://github.com/thecodingmachine/workadventure  
+
+*minio*  
+self hosted bucket storage compatible with many S3 implementations  
+https://github.com/minio/minio  
+
+*chezmoi - dotfiles handling*  
+Jochen showed me this alternative for handling my dotfiles.. looks like I have to re-think-and-factor this another time again.  
+https://github.com/twpayne/chezmoi  
+
+*the book of secret knowledge*  
+A collection of inspiring lists, manuals, cheatsheets, blogs, hacks, one-liners, cli/web tools and more.  
+https://github.com/trimstray/the-book-of-secret-knowledge  
+
+*Realworld example apps*  
+Always the same demo app in every framework you can imagine.  
+https://github.com/gothinkster/realworld  
+
+*wargame-nexus*  
+List of wargames  
+https://github.com/zardus/wargame-nexus  
+
+*fisher*  
+my plugin manager for fish  
+https://github.com/jorgebucaran/fisher  
+
+*benchmarks for databases using django*  
+prove that postgres is fast  
+https://github.com/sarathak/django-db-benchmark  
+
+*Python Data Science Handbook*  
+Thanks Jake! This repository contains the entire [Python Data Science Handbook](https://www.oreilly.com/library/view/python-data-science/9781491912126/), in the form of (free!) Jupyter notebooks.  
+https://github.com/jakevdp/PythonDataScienceHandbook  
