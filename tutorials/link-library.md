@@ -3,7 +3,7 @@
 Some introduction to mostly technical topics I find interesting occassionally.  
 Could also be my favourites collection..  
 
-For the pretty advanced stuff see my collection of [interesting blogposts](https://github.com/oryon-dominik/dotfiles/blob/master/tutorials/interesting-blogposts.md)  
+For the pretty advanced stuff see my collection of [interesting blogposts](https://github.com/oryon-dominik/dotfiles/blob/master/tutorials/interesting-blogposts.md).  
 
 
 ## Toolbox
@@ -40,11 +40,11 @@ https://copilot.github.com/
 https://news.ycombinator.com/item?id=28157661  
 
 *hetzner*  
-Hosting and cloud  
+Hosting and cloud.  
 https://www.hetzner.com/unternehmen/ueber-uns  
 
 *gandi*  
-Domain name registrar  
+Domain name registrar.  
 https://www.gandi.net/en  
 
 *miro*  
@@ -54,15 +54,15 @@ Also mirroring the kanban-workflow from github.
 https://miro.com/  
 
 *file.io*  
-Fast file sharing  
+Fast file sharing.  
 https://www.file.io/  
 
 *wormhole*  
-Share files up to 10GB  
+Share files up to 10GB.  
 https://wormhole.app/  
 
 *hedgedoc*  
-Write and share markdown  
+Write and share markdown.  
 https://hedgedoc.org/  
 
 
@@ -102,26 +102,26 @@ A FAST webframework written in rust.
 https://actix.rs/  
 
 *htmx*  
-high power tools for HTML  
+High power tools for HTML.  
 https://htmx.org/  
 
 
 ### Python
 
 *python*  
-parseltongue, my language of choice  
+Parseltongue, my language of choice.  
 https://www.python.org/  
 
 *LPTHW*  
-learn python3 the hard way (Commercial)  
+Learn python3 the hard way (Commercial).  
 https://learnpythonthehardway.org/python3/  
 
 *design patterns in python*  
-Learn design patterns (see: gang of four) in your favourite language  
+Learn design patterns (see: gang of four) in your favourite language.  
 https://refactoring.guru/design-patterns/python  
 
 *python design patterns*  
-Gang of four explained by Brandon Rhodes  
+Gang of four explained by Brandon Rhodes.  
 https://python-patterns.guide/  
 
 *python anti-patterns*  
@@ -129,44 +129,44 @@ Learn on worse practices.
 https://docs.quantifiedcode.com/python-anti-patterns/  
 
 *pyenv*  
-manage all your different versions with pyenv  
+Manage all your different versions with pyenv.  
 https://github.com/pyenv/pyenv  
-or for windows  
+Windows-users use pyenv-win.  
 https://github.com/pyenv-win/pyenv-win  
 
 *poetry*  
-python packaging and dependency management made easy  
+Python packaging and dependency management made easy.  
 https://python-poetry.org/  
 
 *the algorithms*  
-All algorithms inmplemented in python - even if this implementations might not be the best solutions, they are very complete  
+All algorithms inmplemented in python - even if this implementations might not be the best solutions, this collection is very thorough.  
 https://github.com/TheAlgorithms/Python  
 
 
 #### Some of my favourite modules
 
 *httpx*  
-a next-generation HTTP client for python
+A next-generation HTTP client for python.  
 https://www.python-httpx.org/  
 
 *django*  
-django - the web framework for perfectionists with deadlines
+Django - the web framework for perfectionists with deadlines.  
 https://www.djangoproject.com/  
 
 *fastapi*  
-FastAPI framework, high performance, easy to learn, fast to code, ready for production  
+FastAPI framework, high performance, easy to learn, fast to code, ready for production.  
 https://fastapi.tiangolo.com/  
 
 *pandas*  
-data analysis and manipulation  
+Data analysis and manipulation.  
 https://pandas.pydata.org/  
 
 *jupyter*  
-Another developer tool, I use everyday  
+Another developer tool, I use everyday.  
 https://jupyter.org/  
 
 *black*  
-The default code formatter  
+The default code formatter.  
 https://github.com/psf/black  
 
 *rich*  
@@ -174,11 +174,11 @@ Beautiful formatting in the terminal.
 https://github.com/willmcgugan/rich  
 
 *devtools*
-debug print, prettyprint, breakpoints, timer
+Debug print, prettyprint, breakpoints, timer.  
 https://python-devtools.helpmanual.io/
 
 *pendulum*  
-Python datetimes made easy  
+Python datetimes made easy.  
 https://pendulum.eustace.io/  
 
 *humanize*  
@@ -186,50 +186,50 @@ Human readable numbers.
 https://pypi.org/project/humanize/  
 
 *pelican*  
-static site generator, powered by python  
+Static site generator, powered by python.  
 https://blog.getpelican.com/  
 
 
 ## Frontend
 
 *javascript*  
-The modern javascript tutorial  
+The modern javascript tutorial.  
 https://javascript.info/  
 
 *typescript*  
-JavaScript with types  
+JavaScript with types.  
 https://www.typescriptlang.org/  
 
 *vuejs*  
-Re-written in typescript with composition API  
+Re-written in typescript with composition API.  
 https://v3.vuejs.org/  
 
 *vuemastery*  
-Learn vue by Evan You himself (Commercial)  
+Learn vue by Evan You himself (Commercial).  
 https://www.vuemastery.com/  
 
 *vite*  
-blazing fast devserver  
+Blazingly fast TS devserver.  
 https://vitejs.dev/  
 
 *vueuse*  
-Collection of essential Vue Composition Utilities  
+Collection of essential Vue Composition Utilities.  
 https://vueuse.org/  
 
 *tailwind*  
-The rapid css framework  
+The rapid css framework.  
 https://tailwindcss.com/  
 
 *tailwindui*  
-UI-components for tailwind. (Commercial)  
+UI-components for tailwind (Commercial).  
 https://tailwindui.com/  
 
 *headlessui*  
-Animated UI components used along with tailwind.css  
+Animated UI components used along with Tailwind CSS.  
 https://headlessui.dev/  
 
 *animated tailwind*  
-A configuration to use Animate.css with Tailwind CSS   
+A configuration to use Animate.css with Tailwind CSS.  
 https://github.com/ikcb/animated-tailwindcss
 
 *cssgradient*  
@@ -237,18 +237,18 @@ Easy gradient control.
 https://cssgradient.io/  
 
 *godly websites*  
-collection of design inspirations on the internet  
+Collection of design inspirations on the internet.  
 https://godly.website/  
 
 
 ## Cloud
 
 *traefik*  
-Routes and balancing
+Routing, reverse-proxy and load-balancing.  
 https://doc.traefik.io/traefik/  
 
 *terraform*  
-Infrastructure as a code  
+Infrastructure as a code.  
 https://www.terraform.io/  
 
 *kubernetes*  
@@ -256,7 +256,7 @@ Group containers to applications and load balance 'em.
 https://kubernetes.io/de/  
 
 *flux*  
-Kubernetes cluster management.
+Kubernetes cluster management.  
 https://fluxcd.io/  
 
 
@@ -269,23 +269,23 @@ https://sudo.pagerduty.com/for_everyone_part_ii/
 https://sudo.pagerduty.com/for_engineers/  
 
 *pwn.college*  
-Arizona State University Computer Systems Security course  
+Arizona State University Computer Systems Security course.  
 https://pwn.college/  
 
 *picoctf*  
-computer security education from Carnegie Mellon University  
+Computer security education from Carnegie Mellon University.  
 https://picoctf.org/  
 
 *Types of attacks*  
-XSS, CSRF, MitM, Sessions explained by Mozilla  
+XSS, CSRF, MitM, Sessions explained by Mozilla.  
 https://developer.mozilla.org/en-US/docs/Web/Security/Types_of_attacks  
 
 *CORS*  
-Cross-Origin Resource Sharing (CORS)  
+Cross-Origin Resource Sharing (CORS).  
 https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS  
 
 *port knocking*
-Grant access without permanent open ports  
+Grant access without permanent open ports.  
 https://help.ubuntu.com/community/PortKnocking  
 
 *JWT*  
@@ -296,18 +296,18 @@ https://jwt.io/
 https://www.fuzzysecurity.com/tutorials.html  
 
 *Magic hashes*  
-PHP hash collisions  
+PHP hash collisions.  
 https://github.com/spaze/hashes  
 
 
-## stars from github 
+## Stars from GitHub
 
 *workadventure*  
-virtual office space  
+Walk through a virtual office space and video conference your co-workers.  
 https://github.com/thecodingmachine/workadventure  
 
 *minio*  
-self hosted bucket storage compatible with many S3 implementations  
+Self hosted bucket storage compatible with many S3 implementations  
 https://github.com/minio/minio  
 
 *chezmoi - dotfiles handling*  
@@ -323,17 +323,21 @@ Always the same demo app in every framework you can imagine.
 https://github.com/gothinkster/realworld  
 
 *wargame-nexus*  
-List of wargames  
+List of wargames.  
 https://github.com/zardus/wargame-nexus  
 
 *fisher*  
-my plugin manager for fish  
+Ny plugin manager for fish.  
 https://github.com/jorgebucaran/fisher  
 
 *benchmarks for databases using django*  
-prove that postgres is fast  
+Did you need a prove that postgres is fast?  
 https://github.com/sarathak/django-db-benchmark  
 
 *Python Data Science Handbook*  
 Thanks Jake! This repository contains the entire [Python Data Science Handbook](https://www.oreilly.com/library/view/python-data-science/9781491912126/), in the form of (free!) Jupyter notebooks.  
 https://github.com/jakevdp/PythonDataScienceHandbook  
+
+*Healthchecks*  
+Self hosted healthchecks written as django-webapp.  
+https://github.com/healthchecks/healthchecks  
