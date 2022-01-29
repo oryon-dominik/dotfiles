@@ -131,4 +131,5 @@ function emoji {
     # print some emoji I use often to the console for faster use ;--D
     Write-Host "¯\_(ツ)_/¯"
     Write-Host "™"
+    Write-Host "Ω"
 }
