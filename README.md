@@ -40,3 +40,8 @@ To enable the git commit hooks on the machine (Requires installation of [python]
     poetry install
     poetry shell
     pre-commit install
+
+
+### Diagram
+
+![Visualization of the codebase](downloads/dotfiles-visualized-diagram.svg)

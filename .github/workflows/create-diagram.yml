@@ -1,0 +1,25 @@
+name: Create diagram
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - "trunk"
+jobs:
+  get_data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@master
+      - name: Update diagram
+        id: make_diagram
+        uses: githubocto/repo-visualizer@main
+        with:
+          output_file: "visualization.svg"
+          artifact_name: "dotfiles-visualized-diagram"
+          excluded_paths: "ignore,.github"
+          should_push: false
+      - name: Get artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: "dotfiles-visualized-diagram"
+          path: "downloads"
