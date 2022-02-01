@@ -17,7 +17,6 @@ jobs:
           output_file: "visualization.svg"
           artifact_name: "dotfiles-visualized-diagram"
           excluded_paths: "ignore,.github"
-          should_push: false
       - name: Get artifact
         uses: actions/download-artifact@v2
         with:
