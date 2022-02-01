@@ -44,4 +44,4 @@ To enable the git commit hooks on the machine (Requires installation of [python]
 
 ### Diagram
 
-![Visualization of the codebase](dotfiles-visualized-diagram.svg)
+![Visualization of the codebase](./dotfiles-visualized-diagram.svg)
