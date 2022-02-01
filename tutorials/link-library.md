@@ -341,3 +341,22 @@ https://github.com/jakevdp/PythonDataScienceHandbook
 *Healthchecks*  
 Self hosted healthchecks written as django-webapp.  
 https://github.com/healthchecks/healthchecks  
+
+*entr*  
+Run arbitrary commands when files change  
+https://github.com/eradman/entr  
+
+*Repo visualization*  
+Visualize & explore github repos  
+https://next.github.com/projects/repo-visualization#explore-for-yourself  
+
+
+## Business
+
+*static code analysis*  
+Automated code reviews on commits and pull requests  
+https://www.codacy.com/  
+
+*product management*  
+User stories and prioritization  
+https://www.productboard.com/  
