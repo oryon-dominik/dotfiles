@@ -14,11 +14,6 @@ jobs:
         id: make_diagram
         uses: githubocto/repo-visualizer@main
         with:
-          output_file: "visualization.svg"
-          artifact_name: "dotfiles-visualized-diagram"
+          output_file: "downloads/visualization.svg"
+
           excluded_paths: "ignore,.github"
-      - name: Get artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: "dotfiles-visualized-diagram"
-          path: "downloads"
