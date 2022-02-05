@@ -276,6 +276,18 @@ https://pwn.college/
 Computer security education from Carnegie Mellon University.  
 https://picoctf.org/  
 
+*portswigger*  
+Learn web security with challenges from the burpsuite-team.  
+https://portswigger.net/web-security  
+
+*Cyber Chef*  
+Cyber Swiss Army Knife  
+https://gchq.github.io/CyberChef/  
+
+*Securitytxt*  
+Standards to define security policies  
+https://securitytxt.org/  
+
 *Types of attacks*  
 XSS, CSRF, MitM, Sessions explained by Mozilla.  
 https://developer.mozilla.org/en-US/docs/Web/Security/Types_of_attacks  
