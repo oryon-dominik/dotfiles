@@ -14,5 +14,5 @@ jobs:
         id: make_diagram
         uses: githubocto/repo-visualizer@main
         with:
-          output_file: "dotfiles-visualized-diagram.svg"
+          output_file: "downloads/diagram.svg"
           excluded_paths: "ignore,.github"
