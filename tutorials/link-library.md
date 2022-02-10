@@ -251,6 +251,10 @@ https://doc.traefik.io/traefik/
 Infrastructure as a code.  
 https://www.terraform.io/  
 
+*ansible*  
+automate remote machines  
+https://www.ansible.com/  
+
 *kubernetes*  
 Group containers to applications and load balance 'em.  
 https://kubernetes.io/de/  
@@ -353,6 +357,10 @@ https://github.com/jakevdp/PythonDataScienceHandbook
 *Healthchecks*  
 Self hosted healthchecks written as django-webapp.  
 https://github.com/healthchecks/healthchecks  
+
+*Record ansible playbooks*  
+ARA Records Ansible and makes it easier to understand and troubleshoot.  
+https://github.com/ansible-community/ara  
 
 *entr*  
 Run arbitrary commands when files change  
