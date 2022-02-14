@@ -80,6 +80,7 @@ function PythonUpdate {
     Write-Host ""
     LogUpdate -Message "$update_message"
     Write-Host "Updating pip.."
+    python -m ensurepip --upgrade
     python -m pip install --upgrade pip --no-warn-script-location
     Write-Host ""
 
@@ -168,7 +169,8 @@ function WindowsUpdate {
 
 function PythonPackagesUpdate {
     Write-Host "Updating python-packages.."
-    pip install --upgrade ((pip list -o | Select-Object -Skip 2) | Foreach-Object {$_.Split()[0]}) --no-warn-script-location
+    python -m ensurepip --upgrade
+    python -m pip install --upgrade ((pip list -o | Select-Object -Skip 2) | Foreach-Object {$_.Split()[0]}) --no-warn-script-location
     LogUpdate -Message "Python packages Update"
     Write-Host ""
 }
