@@ -61,18 +61,6 @@ $env:WORKON_HOME = "$env:USERPROFILE\Envs"
 # PSReadLine provides fish-like auto-suggestions, included in powershell since 7.2
 . "$PSScriptRoot\components\PSReadLineOptions.ps1"
 
-# set prompt (via starship)
-$env:STARSHIP_CONFIG = "$HOME\.dotfiles\common\starship\starship.toml"
-Invoke-Expression (&starship init powershell)
-
-# set BAT_THEME
-$env:BAT_THEME="Dracula"
-$env:BAT_PAGER='""'  # don't page BAT results
-
-# vi-edit-mode
-# Set-PSReadlineOption -EditMode vi -BellStyle None
-
-
 # add custom paths
 $env:path += ";$Env:Programfiles\VideoLAN\VLC\vlc.exe"
 $env:path += ";$Env:Programfiles\NASM"  # netwide-assembler
@@ -81,9 +69,19 @@ $env:path += ";$(Join-Path -Path "$script_location" -ChildPath "\batch")"
 $env:path += ";$(Join-Path -Path "$env:USERPROFILE" -ChildPath "\.cargo\bin\")"  # rust commands
 $env:path += ";$(Join-Path -Path "$env:USERPROFILE" -ChildPath "\AppData\Roaming\npm\")"  # npm
 
+# set BAT_THEME
+$env:BAT_THEME="Dracula"
+$env:BAT_PAGER='""'  # don't page BAT results
+
+# vi-edit-mode
+# Set-PSReadlineOption -EditMode vi -BellStyle None
+
+# set prompt (via starship)
+$env:STARSHIP_CONFIG = "$HOME\.dotfiles\common\starship\starship.toml"
+Invoke-Expression (&starship init powershell)
+
 # load aliases & system-function-definitions
 . "$PSScriptRoot\Aliases.ps1"
-
 
 
 # ======================================================
