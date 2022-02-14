@@ -6,6 +6,9 @@ Write-Host "Installing modern unix cli-commands to powershell..."
 Write-Host "You should have installed git, cargo, go and npm to sucessfully run this pipeline..."
 
 ### Rust modules ###
+# starship prompt
+cargo install starship --locked
+
 # (btm) graphical system/process monitor - https://github.com/ClementTsang/bottom
 cargo install bottom --locked
 
