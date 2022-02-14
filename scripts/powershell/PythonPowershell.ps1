@@ -1,6 +1,8 @@
 
 # Implementing powershell commands that run python under the hood.
 
+function pip { python -m pip $args }  # always use active's python pip
+
 # Call command shortcuts, used for python projects
 function cc () {
     $commands = ".\commands.py"
