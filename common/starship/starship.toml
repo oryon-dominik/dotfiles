@@ -138,7 +138,7 @@ format = "[$symbol$context ]($style) "
 symbol = " 🐳 "
 
 [rust]
-symbol = " ⚙️ "
+symbol = " 🔺 "
 format = "[$symbol$version ](red bold)"
 
 [golang]
@@ -155,7 +155,7 @@ disabled = true
 disabled = false
 
 [nix_shell]
-symbol = " ❄️ "
+symbol = " 🔹 "
 format = '[$symbol$state( \($name\)) ]($style) '
 
 [env_var]
@@ -166,4 +166,4 @@ format = "[ $symbol$status ]($style)"
 disabled = false
 
 [character]
-success_symbol = "[❯](bold green)"
+success_symbol = "[>](bold green)"
