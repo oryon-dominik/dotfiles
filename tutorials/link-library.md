@@ -263,6 +263,10 @@ https://kubernetes.io/de/
 Kubernetes cluster management.  
 https://fluxcd.io/  
 
+*drone*  
+Running CI / CD for your projects.  
+https://www.drone.io/  
+
 
 ## Security
 
