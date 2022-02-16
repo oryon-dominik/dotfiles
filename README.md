@@ -3,7 +3,7 @@
 > Configure and install your operating system and application settings from anywhere.
 
 *These dotfiles rely on `git` for versioncontrol. Learn git through playing [oh my git](https://ohmygit.org/).*  
-*For an introduction using version control with `vscode` there is a nice post in the [docs](https://code.visualstudio.com/docs/editor/versioncontrol)*  
+*For an introduction using version control with `vscode` there is a nice post in the [docs](https://code.visualstudio.com/docs/editor/versioncontrol).*  
 
 ## Content
 
