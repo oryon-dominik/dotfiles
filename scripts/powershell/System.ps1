@@ -132,4 +132,5 @@ function emoji {
     Write-Host "¯\_(ツ)_/¯"
     Write-Host "™"
     Write-Host "Ω"
+    Write-Host "╭∩╮"
 }
