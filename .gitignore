@@ -31,4 +31,7 @@ scripts/powershell/machines/*.*
 # these two are individual & secret, put your own location-aliases and project-aliases here
 common/powershell/Locations.ps1
 
+# I use obsidian for markdown rendering and editing
+.obsidian
+
 TODO
