@@ -7,8 +7,7 @@
     Because of versioning problems with poetry I am not following the official installation guide
     (~~`(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | python -`~~).
 
-    I'm installing poetry for every major system python with [pipx](tutorials/python/pipx.md).
-
+    I'm installing poetry for every major system python with [pipx](pipx.md).
         pipx install poetry
 
 
