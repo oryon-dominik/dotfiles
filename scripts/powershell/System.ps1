@@ -135,6 +135,7 @@ function zen {
 function emoji {
     # print some emoji I use often to the console for faster use ;--D
     Write-Host "¯\_(ツ)_/¯"
+    Write-Host "\m/(>.<)\m/"
     Write-Host "™"
     Write-Host "Ω"
     Write-Host "╭∩╮"
