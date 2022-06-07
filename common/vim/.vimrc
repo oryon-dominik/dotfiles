@@ -56,11 +56,15 @@ call plug#begin('~/.config/vim/plugged')
     Plug 'dracula/vim', { 'as': 'dracula' } " Dracula theme
 
     Plug 'vim-airline/vim-airline'          " statusbar - https://github.com/vim-airline/vim-airline  # TODO: configure
+    Plug 'vim-airline/vim-airline-themes'   " statusbar themes -
     Plug 'tpope/vim-fugitive'               " git plugin - https://github.com/tpope/vim-fugitive  # TODO: configure
     Plug 'tpope/vim-surround'               " surround everything with brackets - https://github.com/tpope/vim-surround  # TODO: configure
     Plug 'tpope/vim-commentary'             " comment in/out lines - https://github.com/tpope/vim-commentary  # TODO: configure
 
     Plug 'sickill/vim-pasta'                " fix vim-pasting - https://github.com/sickill/vim-pasta  # TODO: configure
+
+
+    " TODO: add Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
     "TODO: configure: Plug 'vim-syntastic/syntastic'          " syntax checker - https://github.com/vim-syntastic/syntastic
     "TODO: configure: Plug 'ycm-core/YouCompleteMe'           " code completion - https://github.com/ycm-core/YouCompleteMe
@@ -68,6 +72,7 @@ call plug#begin('~/.config/vim/plugged')
 call plug#end()
 
 colo dracula
+
 
 " gvim
 set guifont=Consolas:h14
@@ -87,3 +92,11 @@ set langmenu=en_US.UTF-8                    " sets the language of the menu (gvi
 " it's the \ key, which is a bit out of the way on german keys, so I map it to the "#" key,
 
 " let mapleader = "#"
+
+" --extensions--
+
+" vim-airline-statusbar
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'jsformatter'
+let g:airline_theme='violet'
+let g:airline_powerline_fonts = 1
