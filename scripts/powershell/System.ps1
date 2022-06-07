@@ -86,7 +86,12 @@ Set-Alias -Name wetter -Value weather -Description "Wetterbericht"
 
 
 function GenerateRandomPassword ([int]$pass_length = 50) {
-    $Password =  ("!@#$%^&*0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz".tochararray() | sort {Get-Random})[0..$pass_length] -join ''
+    $Password =  ("!@#$%^&*0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz".tochararray() | sort {Get-Random})[1..$pass_length] -join ''
+    Write-Host $Password
+}
+
+function GenerateRandomInvoiceNo ([int]$pass_length = 3) {
+    $Password =  ("0123456789abcdefghijklmnopqrstuvwxyz".tochararray() | sort {Get-Random})[1..$pass_length] -join ''
     Write-Host $Password
 }
 
