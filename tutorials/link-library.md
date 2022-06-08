@@ -236,6 +236,10 @@ https://github.com/ikcb/animated-tailwindcss
 Easy gradient control.  
 https://cssgradient.io/  
 
+*Specifity Calculator*  
+A visual way to understand CSS specificity.  
+https://specificity.keegan.st/  
+
 *godly websites*  
 Collection of design inspirations on the internet.  
 https://godly.website/  
