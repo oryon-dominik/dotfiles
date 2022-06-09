@@ -13,6 +13,7 @@ set tabstop=4                               " tab spacing
 set shiftround                              " always indent/outdent to the nearest tabstop
 set expandtab                               " use spaces instead of tabs
 
+" Some servers have issues with backup files
 set nobackup                                " no backup of files
 set nowritebackup                           " no backup while editing
 " set backupdir=$HOME/.config/vim/cache//,.
@@ -26,6 +27,16 @@ set ignorecase                              " ignore case in search
 " set incsearch                               " show search results as you type - already integrated in vim-sensible
 
 set fileformats=unix    " use unix line endings (LF)
+
+set encoding=utf-8                          " set internal encoding of vim
+
+set hidden                                  " unsaved hidden buffers may exist - TextEdit or syntastic checking might fail if hidden is not set
+
+set cmdheight=2                             " more space for messages
+
+set updatetime=1200                         " update time for file watcher
+
+
 
 " TODO:spellchecking?!
 " set spell spelllang=en_us
@@ -45,34 +56,41 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 if has('win32')
     " echo "WINDOWS"
+    let g:coc_node_path = 'c:\Program Files\nodejs\node.exe'
 else
     " echo "POSIX"
+    " let g:coc_node_path = '/usr/local/opt/node@12/bin/node'
 endif
 
 call plug#begin('~/.config/vim/plugged')
-    Plug 'junegunn/vim-plug'                " plugin-manager - https://github.com/junegunn/vim-plug/wiki
+    Plug 'junegunn/vim-plug'                            " plugin-manager - https://github.com/junegunn/vim-plug/wiki
     
-    Plug 'tpope/vim-sensible'               " sensible defaults 'everyone can agree on' - https://github.com/tpope/vim-sensible  # TODO: configure
-    Plug 'dracula/vim', { 'as': 'dracula' } " Dracula theme
+    Plug 'tpope/vim-sensible'                           " sensible defaults 'everyone can agree on' - https://github.com/tpope/vim-sensible  # TODO: configure
+    Plug 'dracula/vim', { 'as': 'dracula' }             " Dracula theme
 
-    Plug 'vim-airline/vim-airline'          " statusbar - https://github.com/vim-airline/vim-airline  # TODO: configure
-    Plug 'vim-airline/vim-airline-themes'   " statusbar themes -
-    Plug 'tpope/vim-fugitive'               " git plugin - https://github.com/tpope/vim-fugitive  # TODO: configure
-    Plug 'tpope/vim-surround'               " surround everything with brackets - https://github.com/tpope/vim-surround  # TODO: configure
-    Plug 'tpope/vim-commentary'             " comment in/out lines - https://github.com/tpope/vim-commentary  # TODO: configure
+    Plug 'vim-airline/vim-airline'                      " statusbar - https://github.com/vim-airline/vim-airline  # TODO: configure
+    Plug 'vim-airline/vim-airline-themes'               " statusbar themes -
 
-    Plug 'sickill/vim-pasta'                " fix vim-pasting - https://github.com/sickill/vim-pasta  # TODO: configure
+    " node extension host for vim - https://github.com/neoclide/coc.nvim
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+    " Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+    Plug 'yaegassy/coc-ansible', {'do': 'yarn install --frozen-lockfile'}
 
-    " TODO: add Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+    Plug 'tpope/vim-fugitive'                           " git plugin - https://github.com/tpope/vim-fugitive  # TODO: configure
+    Plug 'tpope/vim-surround'                           " surround everything with brackets - https://github.com/tpope/vim-surround  # TODO: configure
+    Plug 'tpope/vim-commentary'                         " comment in/out lines - https://github.com/tpope/vim-commentary  # TODO: configure
 
-    "TODO: configure: Plug 'vim-syntastic/syntastic'          " syntax checker - https://github.com/vim-syntastic/syntastic
-    "TODO: configure: Plug 'ycm-core/YouCompleteMe'           " code completion - https://github.com/ycm-core/YouCompleteMe
+    Plug 'sickill/vim-pasta'                            " fix vim-pasting - https://github.com/sickill/vim-pasta  # TODO: configure
+
+    Plug 'vim-syntastic/syntastic'                      " syntax checker - https://github.com/vim-syntastic/syntastic
 
 call plug#end()
 
+" re-set the runtimepath here
 colo dracula
 
+" TODO: add missing powerline fonts
 
 " gvim
 set guifont=Consolas:h14
@@ -94,6 +112,41 @@ set langmenu=en_US.UTF-8                    " sets the language of the menu (gvi
 " let mapleader = "#"
 
 " --extensions--
+
+" coc
+let g:coc_preferences_extensionUpdateCheck = 'weekly'
+let g:coc_global_extensions = [
+    \'coc-clangd',
+    \'coc-css',
+    \'coc-diagnostic',
+    \'coc-docker',
+    \'coc-emmet',
+    \'coc-eslint',
+    \'coc-explorer',
+    \'coc-fzf-preview',
+    \'coc-git',
+    \'coc-html',
+    \'coc-html-css-support',
+    \'coc-jedi',
+    \'coc-json',
+    \'coc-markdownlint',
+    \'coc-markdown-preview-enhanced',
+    \'coc-powershell',
+    \'coc-prettier',
+    \'coc-pyright',
+    \'coc-rust-analyzer',
+    \'coc-stylelint',
+    \'coc-sql',
+    \'coc-sqlfluff',
+    \'coc-svg',
+    \'coc-tailwindcss',
+    \'coc-toml',
+    \'coc-tsserver',
+    \'coc-vetur',
+    \'coc-webview',
+    \'coc-yaml',
+    \'coc-yank',
+\]
 
 " vim-airline-statusbar
 let g:airline#extensions#tabline#enabled = 1
