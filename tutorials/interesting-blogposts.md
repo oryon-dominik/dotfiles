@@ -218,6 +218,11 @@ Christine Dodrill
 2020-05-19  
 https://christine.website/blog/how-http-requests-work-2020-05-19  
 
+How web browsers work  
+Arika O  
+2022-22-04  
+https://dev.to/arikaturika/series/17842  
+
 Shared Libraries: Understanding Dynamic Loading [in linux systems..]  
 Amir Rachum  
 2016-09-17  
