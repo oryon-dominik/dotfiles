@@ -13,6 +13,11 @@ $update_log_path = (Join-Path -Path $env:DOTFILES -ChildPath "shared\logs\$env:c
 if (!(Test-Path -Path $update_log_path -PathType Leaf)) {
     New-Item -ItemType File -Force -Path $update_log_path
 }
+If ((Get-Content -Path $update_log_path) -eq $Null) {
+    Write-Host "No updates have been logged yet."
+    Write-Host "Type 'upgrade' to start."
+    return
+}
 $log_last_entry = Get-Content -Path $update_log_path -Tail 1
 $log_string = $log_last_entry -replace ".$"
 $log = $log_string | ConvertFrom-Json

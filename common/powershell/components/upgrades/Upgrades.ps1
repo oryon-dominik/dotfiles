@@ -105,8 +105,19 @@ function PythonUpdate {
     }
 
     Write-Host "Updating pipx.."
-    # TODO: automate clean up: e.g: in .local\pipx
-    # New-Item -Path "$env:USERPROFILE\.local\bin\python" -ItemType SymbolicLink -Value "$env:USERPROFILE\.pyenv\pyenv-win\shims\python.bat"
+
+    # clearing the cache
+    $pipx_cache_dir = "$env:USERPROFILE\.local\pipx\.cache"
+    Remove-Item $pipx_cache_dir -Force -Confirm:$false
+
+    # check the symbolic link
+    $pipx_python_path = "$env:USERPROFILE\.local\bin\python"
+    $pipx_python = Get-Item $pipx_python_path -Force -ea SilentlyContinue
+    if (![bool]($pipx_python.Attributes -band [IO.FileAttributes]::ReparsePoint)) {
+        # python in .local\bin is not linked as symbolic link
+        Remove-Item $pipx_python_path -Force -Confirm:$false
+        New-Item -Path $pipx_python_path -ItemType SymbolicLink -Value "$env:PYENV_HOME\shims\python.bat"
+    }
     python -m pip install --quiet --user -U pipx
 
     if (![bool](Get-Command -Name 'poetry' -ErrorAction SilentlyContinue)) {
@@ -114,13 +125,15 @@ function PythonUpdate {
     }
     else {
         Write-Host "Updating poetry.."
+        # clear cache
+        Write-Host "Delete poetry cache.."
+        echo yes | poetry cache clear . --all
         # poetry self update
-        pipx upgrade poetry
+        python -m pipx upgrade poetry
         Write-Host ""
     }
 
     Write-Host ""
-    # python -m pipx ensurepath
     Write-Host "=== === === PYTHON Update Finished === === ==="
 }
 

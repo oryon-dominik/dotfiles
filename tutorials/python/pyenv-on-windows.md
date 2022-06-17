@@ -39,8 +39,8 @@
 
     ```powershell
         pyenv install --list  # lists all installable versions
-        pyenv install 3.10.1  # latest: 2021-12-25
-        pyenv global 3.10.1  # to set this as your "standard-python" outside of venvs
+        pyenv install 3.10.5  # latest: 2022-06-17
+        pyenv global 3.10.5  # to set this as your "standard-python" outside of venvs
     ```
 
 7. `pyenv rehash`

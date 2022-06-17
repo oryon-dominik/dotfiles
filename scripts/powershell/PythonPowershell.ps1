@@ -3,6 +3,8 @@
 
 function pip { python -m pip $args }  # always use active's python pip
 
+function pipx { python -m pipx $args }  # always use active's python pipx
+
 # Call command shortcuts, used for python projects
 function cc () {
     $commands = ".\commands.py"

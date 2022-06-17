@@ -7,8 +7,9 @@
     Because of versioning problems with poetry I am not following the official installation guide
     (~~`(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | python -`~~).
 
-    I'm installing poetry for every major system python with [pipx](pipx.md).
-        pipx install poetry
+    I'm installing poetry for every major system python with [pipx](pipx.md). (~~`pipx install poetry`~~)
+        # for the latest version of poetry you can install the wheels directly from github
+        pipx install https://github.com/python-poetry/poetry/releases/download/1.2.0b2/poetry-1.2.0b2-py3-none-any.whl
 
 
 2. For a fit to my dotfiles-settings, change the virtualenvs-directory setting

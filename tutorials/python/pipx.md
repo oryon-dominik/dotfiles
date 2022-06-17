@@ -5,20 +5,20 @@ If you need a certain python binary, almost always [pipx](https://github.com/pyp
 Install 
 
     python -m pip install --user pipx
-    pipx ensurepath
+    # ! I'm not ensuring path here, because I manage the path manually with the powershell configs.
 
 List installed binaries.
 
-    pipx list
+    python -m pipx list
 
 Only run a binary once, without installing it on your system. No traces!
 
-    pipx run <package>
+    python -m pipx run <package>
 
 
 Upgrade.
 
-    pipx upgrade-all
+    pytohn -m pipx upgrade-all
 
 
 Example packages.
