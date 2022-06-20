@@ -65,6 +65,9 @@ function venvName {
     python $env:DOTFILES\scripts\python\get_venv_name.py
 }
 
+function venvNameLegacy {
+    python $env:DOTFILES\scripts\python\get_venv_name.py --legacy
+}
 
 function CmdTutorial {
     python $env:DOTFILES\scripts\python\cli_tutorial.py
