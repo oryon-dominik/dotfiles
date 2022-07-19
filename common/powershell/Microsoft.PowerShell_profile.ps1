@@ -68,7 +68,7 @@ $env:path += ";$(Join-Path -Path "$env:DOTFILES" -ChildPath "\bin")"  # local bi
 $env:path += ";$(Join-Path -Path "$script_location" -ChildPath "\batch")"
 $env:path += ";$(Join-Path -Path "$env:USERPROFILE" -ChildPath "\.cargo\bin\")"  # rust commands
 $env:path += ";$(Join-Path -Path "$env:USERPROFILE" -ChildPath "\AppData\Roaming\npm\")"  # npm
-$env:path += ";$(yarn global bin)"
+# $env:path += ";$(yarn global bin)"  # TODO: check if yarn shall be installed
 
 # set BAT_THEME
 $env:BAT_THEME="Dracula"
