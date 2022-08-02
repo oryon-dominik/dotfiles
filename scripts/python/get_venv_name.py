@@ -58,12 +58,13 @@ def read_pyproject(file):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        '--legacy',
-        action=argparse.BooleanOptionalAction,
-        help="Use the legacy venv name calcultion method",
-        default=False,
-    )
+    
+    legacy_help = "Use the legacy venv name calculation method"
+    if sys.version_info >= (3, 9):
+        parser.add_argument('--legacy', action=argparse.BooleanOptionalAction, help=legacy_help, default=False)
+    else:
+        parser.add_argument('--legacy', default=False, action='store_true', help=legacy_help)
+        parser.add_argument('--no-legacy', dest='legacy', action='store_false', help=legacy_help)
 
     args = parser.parse_args()
 
