@@ -26,7 +26,7 @@ function workon ($venvName, $legacy = $false ) {
     } 
     $venvDir = "$env:WORKON_HOME/$venvName"
     if (Test-Path -Path $venvDir) {
-        . Join-Path -Path "$venvDir" -ChildPath "Scripts/activate.ps1"
+        . (Join-Path -Path "$venvDir" -ChildPath "Scripts/activate.ps1")
     } else {
         Write-Host "Could not find venv: $venvName."
     }
