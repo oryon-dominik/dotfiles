@@ -60,6 +60,8 @@ $env:WORKON_HOME = "$env:USERPROFILE\Envs"
 . "$PSScriptRoot\ModulesInVersionControl\zoxideUtilities.ps1"
 # PSReadLine provides fish-like auto-suggestions, included in powershell since 7.2
 . "$PSScriptRoot\components\PSReadLineOptions.ps1"
+# Thefuck is a command line tool for automatically correcting commands
+. "$PSScriptRoot\components\TheFuck.ps1"
 
 # add custom paths
 $env:path += ";$Env:Programfiles\VideoLAN\VLC\vlc.exe"
