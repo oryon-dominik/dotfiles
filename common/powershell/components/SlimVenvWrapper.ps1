@@ -16,13 +16,17 @@ function mkvirtualenv ([parameter(mandatory=$true)] [string] $venvName) {
 
 # activate a venv
 # venvName is a powershell-function running a python script and should have been loaded previously
-function workon ($venvName) {
+function workon ($venvName, $legacy = $false ) {
     if ($venvName -eq $null) {
-        $venvName = (venvName)
+        if ($legacy) {
+            $venvName = (venvNameLegacy)
+        } else {
+            $venvName = (venvName)
+        }
     } 
     $venvDir = "$env:WORKON_HOME/$venvName"
     if (Test-Path -Path $venvDir) {
-        . "$venvDir/Scripts/activate.ps1"
+        . (Join-Path -Path "$venvDir" -ChildPath "Scripts/activate.ps1")
     } else {
         Write-Host "Could not find venv: $venvName."
     }

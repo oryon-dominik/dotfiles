@@ -3,6 +3,7 @@ import hashlib
 import base64
 import sys
 import os
+import argparse
 from pathlib import Path
 
 "Shows the venvname poetry will give your projects."
@@ -23,9 +24,11 @@ def encode(string, encodings=None):
     return string.encode(encodings[0], errors="ignore")
 
 
-def generate_env_name(name: str, cwd: str) -> str:    
+def generate_env_name(name: str, cwd: str, legacy: bool = False) -> str:
     name = name.lower()
     sanitized = re.sub(r'[ $`!*@"\\\r\n\t]', "_", name)[:42]
+    if not legacy:  # normalize
+        cwd = os.path.normcase(cwd)
     hsh = hashlib.sha256(encode(cwd)).digest()
     hsh = base64.urlsafe_b64encode(hsh).decode()[:8]
     return f"{sanitized}-{hsh}"
@@ -51,20 +54,23 @@ def read_pyproject(file):
             if re.match(r"\Aname.?=.?['\"](.*?)['\"]", line):
                 return str(re.findall(r"['\"](.*?)['\"]", line)[0])
 
-# parser = argparse.ArgumentParser()
-# parser.add_argument('name', help="the env-name")
-# args = parser.parse_args()
 
-# if not args.name:
-#     print(f'>>> DEBUG: Name is required')
-# else:
-#     cwd = str(os.getcwd())
-#     name = generate_env_name(args.name, cwd)
-#     print(name)
 
-name, wd = get_env()
-if name:
-    env_name = generate_env_name(name, wd)
-    print(f'{env_name}-py{sys.version_info.major}.{sys.version_info.minor}')
-else:
-    print(f'No project found')
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    
+    legacy_help = "Use the legacy venv name calculation method"
+    if sys.version_info >= (3, 9):
+        parser.add_argument('--legacy', action=argparse.BooleanOptionalAction, help=legacy_help, default=False)
+    else:
+        parser.add_argument('--legacy', default=False, action='store_true', help=legacy_help)
+        parser.add_argument('--no-legacy', dest='legacy', action='store_false', help=legacy_help)
+
+    args = parser.parse_args()
+
+    name, wd = get_env()
+    if name:
+        env_name = generate_env_name(name, wd, legacy=args.legacy)
+        print(f'{env_name}-py{sys.version_info.major}.{sys.version_info.minor}')
+    else:
+        print(f'No project found')
