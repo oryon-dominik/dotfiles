@@ -23,4 +23,6 @@ cargo install \
  xh          \  # send HTTP requests - https://github.com/ducaale/xh
  bandwhich   \  # current network utilization - https://github.com/imsnif/bandwhich
  tealdeer    \  # (tldr) Help pages for command-line tools, rust implementation of tldr - https://github.com/dbrgn/tealdeer
- alacritty      # Terminal emulator. - https://github.com/alacritty/alacritty
+ alacritty   \  # Terminal emulator. - https://github.com/alacritty/alacritty
+ jless          # Fast json parser - https://github.com/PaulJuliusMartinez/jless
+ 
