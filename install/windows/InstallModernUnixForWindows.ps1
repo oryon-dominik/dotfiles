@@ -63,6 +63,8 @@ cargo install gping --locked
 # find & replace - https://github.com/chmln/sd
 cargo install sd --locked
 
+# Fast json parser - https://github.com/PaulJuliusMartinez/jless
+cargo install jless --locked
 
 # create the (gitignored) .dotfiles/bin directory if it doesn't exist
 mkdir "$env:DOTFILES/bin" -ErrorAction SilentlyContinue

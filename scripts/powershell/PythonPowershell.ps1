@@ -61,6 +61,10 @@ Set-Alias -Name showssh -Value ShowConfigSSH -Description "Show a brief ssh-conf
 function AddPoetryRequirements { foreach($requirement in (Get-Content "$pwd\requirements.txt")) {Invoke-Expression "poetry add $requirement"} }
 
 
+function keepAlive {
+    python $env:DOTFILES\scripts\python\keepalive.py
+}
+
 function venvName {
     python $env:DOTFILES\scripts\python\get_venv_name.py
 }

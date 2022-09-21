@@ -19,6 +19,7 @@ function upgrade {
         Write-Host "    python              Update pyenv, poetry and pip"
         Write-Host "    python-packages     Updates all python packages of the active repositories"
         Write-Host "    powershell          Update powershell"
+        Write-Host "    rust                Update rust via rustup"
         Write-Host "    log                 Just Update the log"
         Write-Host ""
         return
@@ -30,6 +31,7 @@ function upgrade {
     if ($argument -eq "powershell") { PowershellUpdate; return }
     if ($argument -eq "python-packages") { PythonPackagesUpdate; return }
     if ($argument -eq "choco") { UpgradeChocolatey; return }
+    if ($argument -eq "rust") { RustUpgrade; return }
     if ($argument -eq "log") { JustUpgradeLogMessage; return }
     Write-Host "(upgrade) invalid argument: 'upgrade $argument' not found"
 }
@@ -39,6 +41,7 @@ function UpgradeAll {
     Write-Host "Starting $update_message..."
 
     PythonUpdate
+    RustUpgrade
     UpdateRepositories
     UpgradeChocolatey
     WindowsUpdate
@@ -47,6 +50,13 @@ function UpgradeAll {
 
     Write-Host ""
     Write-Host "Updates finished"
+}
+
+function RustUpgrade {
+    Write-Host "Updating rust.."
+    iex "rustup update"
+    LogUpdate -Message "Rust Update"
+    Write-Host ""
 }
 
 function UpgradeChocolatey {
