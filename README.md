@@ -14,8 +14,8 @@
 
 ## How to create a dotfiles repository on windows
 
-After a fresh windows installation start with the [post-installation preparation](tutorials/windows/1-post-installation-windows10.md),
- or directly proceed to [setup your own windows dotfiles](tutorials/windows/2-how-to-windows-dotfiles.md).
+After a fresh windows installation start with the [post-installation preparation](https://github.com/oryon-dominik/journal/blob/trunk/tutorials/windows/1-post-installation-windows10.md),
+ or directly proceed to [setup your own windows dotfiles](https://github.com/oryon-dominik/journal/blob/trunk/tutorials/windows/2-how-to-windows-dotfiles.md).
 
 ## How to create a dotfiles repository on ubuntu
 
