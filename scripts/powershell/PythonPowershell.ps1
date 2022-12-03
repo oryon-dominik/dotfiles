@@ -65,6 +65,11 @@ function keepAlive {
     python $env:DOTFILES\scripts\python\keepalive.py
 }
 
+function markdown {
+    python -m rich.markdown $args
+}
+
+
 function venvName {
     python $env:DOTFILES\scripts\python\get_venv_name.py
 }
