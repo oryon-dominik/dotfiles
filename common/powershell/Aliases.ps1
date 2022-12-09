@@ -80,3 +80,6 @@ if(!(test-path $PSScriptRoot\Locations.ps1)) {
     New-Item -ItemType File -Force -Path $PSScriptRoot\Locations.ps1
 }
 . $PSScriptRoot\Locations.ps1
+
+# c# compiler
+function csc {C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe $args}
