@@ -129,6 +129,7 @@ function PythonUpdate {
         New-Item -Path $pipx_python_path -ItemType SymbolicLink -Value "$env:PYENV_HOME\shims\python.bat"
     }
     python -m pip install --quiet --user -U pipx
+    python -m pipx reinstall-all
 
     if (![bool](Get-Command -Name 'poetry' -ErrorAction SilentlyContinue)) {
         Write-Host "Could not find poetry on path, skipping.."
