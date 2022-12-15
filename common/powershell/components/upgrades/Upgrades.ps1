@@ -70,7 +70,7 @@ function UpgradeChocolatey {
     Write-Host "Adding installed chocolatey packages to local list"
     $installed_packages_path = (Join-Path -Path $env:DOTFILES -ChildPath shared\installedPackages\$env:computername\)
     if(!(test-path $installed_packages_path)) {
-      New-Item -ItemType Directory -Force -Path $installed_packages_path
+        New-Item -ItemType Directory -Force -Path $installed_packages_path
     }
     $choco_packages_log_path = (Join-Path -Path $env:DOTFILES -ChildPath "shared\installedPackages\$env:computername\choco_installed_packages.txt")
     if (Test-Path -Path $choco_packages_log_path -PathType Leaf) {

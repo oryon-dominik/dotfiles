@@ -37,6 +37,7 @@ newest_version: 25.12.2021
 
 To enable the git commit hooks on the machine (Requires installation of [python](tutorials/python/pyenv-on-windows.md) + [poetry](tutorials/python/poetry-on-windows.md))
 
+    poetry env use python
     poetry install
     poetry shell
     pre-commit install
