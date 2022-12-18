@@ -94,4 +94,7 @@ if ($key -ne $null) {
 refreshenv
 . "$env:DOTFILES/install/windows/SymlinkDotfiles.ps1"
 
+
+Write-Host "make sure to delete mingws python from C:\ProgramData\chocolatey\bin"  # FIXME: automate this
+
 Write-Host "Done :)"
