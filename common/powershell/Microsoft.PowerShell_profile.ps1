@@ -62,6 +62,8 @@ $env:WORKON_HOME = "$env:USERPROFILE\Envs"
 . "$PSScriptRoot\components\PSReadLineOptions.ps1"
 # Thefuck is a command line tool for automatically correcting commands
 . "$PSScriptRoot\components\TheFuck.ps1"
+# Converting line endings from Windows to Unix
+. "$PSScriptRoot\components\ConvertLineEndings.ps1"
 
 # add custom paths
 $env:path += ";$Env:Programfiles\VideoLAN\VLC\vlc.exe"
