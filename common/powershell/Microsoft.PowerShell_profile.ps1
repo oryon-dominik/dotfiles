@@ -23,8 +23,9 @@ lolcat "$PSScriptRoot\intro"  # print the intro-graphic
 
 # Initializing dotfiles environment variable, if not already set properly
 if (-not (Test-Path $env:DOTFILES)) { 
-    $dotfiles_location = Join-Path -Path $home -ChildPath "\.dotfiles"
-    $env:DOTFILES = $dotfiles_location }
+  $dotfiles_location = Join-Path -Path $home -ChildPath "\.dotfiles"
+  $env:DOTFILES = $dotfiles_location
+}
 
 # load local dotenv
 . "$PSScriptRoot\components\LoadDotEnv.ps1"
