@@ -17,6 +17,11 @@ function mkvirtualenv ([parameter(mandatory=$true)] [string] $venvName) {
 # activate a venv
 # venvName is a powershell-function running a python script and should have been loaded previously
 function workon ($venvName, $legacy = $false ) {
+    $venv_is_active = python -c "import sys;print(sys.base_prefix != sys.prefix)"
+    if ($venv_is_active -eq "True") {
+        # Write-Host "Deactivating current virtualenv..."
+        deactivate
+    }
     if ($venvName -eq $null) {
         if ($legacy) {
             $venvName = (venvNameLegacy)
