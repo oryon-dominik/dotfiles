@@ -8,7 +8,7 @@
     pager = delta
     ignorecase = false
 [init]
-  defaultBranch = trunk
+    defaultBranch = trunk
 [merge]
     tool = vscode
 [mergetool "vscode"]
@@ -20,7 +20,8 @@
 [mergetool "vscode"]
     cmd = code --wait $MERGED
 [alias]
-    logs = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    logs = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    who = log --diff-filter=A --
     fame = !python -m gitfame
 [pager]
     diff = delta
@@ -40,7 +41,6 @@
     release = release/
     hotfix = hotfix/
     support = support/
-
 
 [delta]
     features = woolly-mammoth
