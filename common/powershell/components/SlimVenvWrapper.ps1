@@ -43,7 +43,7 @@ function workon ($venvName, $legacy = $false ) {
 function lsvirtualenv {
     $venvsDir = $env:WORKON_HOME
     if (Test-Path -Path $venvsDir) {
-        $venvDirs = Get-ChildItem -Path $venvsDir
+        $venvDirs = Get-ChildItem -Path $venvsDir -Directory
         $venvs = foreach ($venv in $venvDirs) {
             $venvName = $venv.Name
             $pythonVersion = ((Get-Content -Path "$env:WORKON_HOME/$venvName/pyvenv.cfg" -TotalCount 1) -split '\\')[-1]
