@@ -65,6 +65,8 @@ $env:WORKON_HOME = "$env:USERPROFILE\Envs"
 . "$PSScriptRoot\components\TheFuck.ps1"
 # Converting line endings from Windows to Unix
 . "$PSScriptRoot\components\ConvertLineEndings.ps1"
+# Pull the obisdian journal on demand to avoid merge conflicts every single day..
+. "$PSScriptRoot\components\PullJournal.ps1"
 
 # add custom paths
 $env:path += ";$Env:Programfiles\VideoLAN\VLC\vlc.exe"
