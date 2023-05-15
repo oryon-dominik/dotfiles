@@ -1,7 +1,11 @@
 function pulljournal {
     $journalDir = $env:JOURNAL_HOME
-    Write-Host "Pulling journal from $journalDir"
-    if ((($journalDir -ne $null) -or ($journalDir -ne "")) -And (Test-Path -Path $journalDir)) {
+    if (($journalDir -eq $null) -or ($journalDir -eq "")) {
+        Write-Host "env:JOURNAL_HOME is not defined."
+        return
+    }
+    if (Test-Path -Path $journalDir) {
+        Write-Host "Pulling journal from $journalDir"
         cd $journalDir
         git pull
         cd -
