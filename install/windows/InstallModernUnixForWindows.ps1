@@ -3,7 +3,7 @@
 Write-Host "Installing modern unix cli-commands to powershell..."
 
 
-Write-Host "You should have installed git, cargo, go and npm to sucessfully run this pipeline..."
+Write-Host "You should have installed git, cargo, go and to sucessfully run this pipeline..."
 
 ### Rust modules ###
 # starship prompt

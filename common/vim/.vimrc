@@ -59,7 +59,7 @@ if has('win32')
     let g:coc_node_path = 'c:\Program Files\nodejs\node.exe'
 else
     " echo "POSIX"
-    " let g:coc_node_path = '/usr/local/opt/node@12/bin/node'
+    " let g:coc_node_path = '/usr/local/opt/node@18/bin/node'
 endif
 
 call plug#begin('~/.config/vim/plugged')

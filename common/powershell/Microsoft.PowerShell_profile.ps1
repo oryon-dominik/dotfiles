@@ -69,11 +69,12 @@ $env:WORKON_HOME = "$env:USERPROFILE\Envs"
 # add custom paths
 $env:path += ";$Env:Programfiles\VideoLAN\VLC\vlc.exe"
 $env:path += ";$Env:Programfiles\NASM"  # netwide-assembler
+$env:path += ";$Env:Programfiles\GTK3-Runtime Win64\bin"  # gtk3 (used for weasyprint)
 $env:path += ";$(Join-Path -Path "$env:DOTFILES" -ChildPath "\bin")"  # local binaries
 $env:path += ";$(Join-Path -Path "$script_location" -ChildPath "\batch")"
 $env:path += ";$(Join-Path -Path "$env:USERPROFILE" -ChildPath "\.cargo\bin\")"  # rust commands
 $env:path += ";$(Join-Path -Path "$env:USERPROFILE" -ChildPath "\go\bin\")"  # go commands
-$env:path += ";$(Join-Path -Path "$env:USERPROFILE" -ChildPath "\AppData\Roaming\npm\")"  # npm
+# $env:path += ";$(Join-Path -Path "$env:USERPROFILE" -ChildPath "\AppData\Roaming\npm\")"  # npm
 if ($env:DOTFILES_SKIP_YARN -eq $false) {
   $env:path += ";$(yarn global bin)"
 }
