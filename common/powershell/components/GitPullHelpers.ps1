@@ -45,12 +45,12 @@ function GitPullOnceADay {
     $today = Get-Date -Format "yyyy-MM-dd"
     $message = "Last git pull date on $env:COMPUTERNAME: $today"
     $lastExecutionDate = Get-Content -Path $eventslog -ErrorAction SilentlyContinue | Select-Object -Last 1
-    if ($today -ne $lastExecutionDate) {
+    if ($message -ne $lastExecutionDate) {
         # Pulling the "daily" repositories
         pulldotfiles
         pulljournal
         # Store the current date as the last execution date, silently
-        $null = Add-Content -Path $eventslog -Value $today
+        $null = Add-Content -Path $eventslog -Value $message
     } else {
         # "Already pulled today"
     }
