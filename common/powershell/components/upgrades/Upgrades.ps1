@@ -157,7 +157,7 @@ function PowershellUpdate {
 
 function JustUpgradeLogMessage {
     Write-Host "Updating the logfile.."
-    LogUpdate -Message "Updated this logfile to surpress the notification"
+    LogUpdate -Message "Updated the logfile to surpress the notification"
 }
 
 function WindowsUpdate {

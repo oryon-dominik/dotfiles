@@ -44,14 +44,14 @@ function GitPullOnceADay {
         New-Item -Path $eventslog -ItemType File
     }
     $today = Get-Date -Format "yyyy-MM-dd"
-    $message = "Last git pull date on $computerName $today"
+    $message = "Latest 'once-a-day' git pull on $computerName was $today."
     $lastExecutionDate = Get-Content -Path $eventslog -ErrorAction SilentlyContinue | Select-Object -Last 1
     if ($message -ne $lastExecutionDate) {
         # Pulling the "daily" repositories
         pulldotfiles
         pulljournal
         # Store the current date as the last execution date, silently
-        $null = Add-Content -Path $eventslog -Value $message
+        Add-Content -Path $eventslog -Value $message | Out-Null
     } else {
         # "Already pulled today"
     }
