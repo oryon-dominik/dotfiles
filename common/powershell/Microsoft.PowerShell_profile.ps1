@@ -96,7 +96,8 @@ Invoke-Expression (&starship init powershell)
 # load aliases & system-function-definitions
 . "$PSScriptRoot\Aliases.ps1"
 
-GitPullOnceADay
+# will pull every time another machine has pulled (and maybe pushed before)
+GitPullOnceADayAndWorkingMachine
 
 # ======================================================
 

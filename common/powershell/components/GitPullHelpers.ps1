@@ -33,7 +33,7 @@ function GitPullfromDirectory {
     }
 }
 
-function GitPullOnceADay {
+function GitPullOnceADayAndWorkingMachine {
     if (-not (Test-Path $env:DOTFILES)) {
         Write-Host "env:DOTFILES is not defined."
         return
