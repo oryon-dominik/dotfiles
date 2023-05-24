@@ -241,7 +241,7 @@ function UpdateRepositories {
     }
     Set-Location -Path $current_path
     LogUpdate -Message "Upgrade Repositories"
-    LogUpdate -Message "Upgrade Repositories on $env:computername" -childpath "shared\logs\" -logfilename "auto-gitevents.log"
+    LogUpdate -Message "Upgrade Repositories on $env:computername" -childpath "shared\logs\global" -logfilename "auto-gitevents.log"
 }
 
 
