@@ -38,12 +38,13 @@ function GitPullOnceADay {
         Write-Host "env:DOTFILES is not defined."
         return
     }
-    $eventslog = "$env:DOTFILES/shared/logs/$env:COMPUTERNAME/events.log"
+    $computerName = [System.Environment]::MachineName
+    $eventslog = "$env:DOTFILES/shared/logs/$computerName/events.log"
     if (-not (Test-Path $eventslog)) {
         New-Item -Path $eventslog -ItemType File
     }
     $today = Get-Date -Format "yyyy-MM-dd"
-    $message = "Last git pull date on $env:COMPUTERNAME: $today"
+    $message = "Last git pull date on $computerName $today"
     $lastExecutionDate = Get-Content -Path $eventslog -ErrorAction SilentlyContinue | Select-Object -Last 1
     if ($message -ne $lastExecutionDate) {
         # Pulling the "daily" repositories
@@ -55,5 +56,3 @@ function GitPullOnceADay {
         # "Already pulled today"
     }
 }
-
-GitPullOnceADay

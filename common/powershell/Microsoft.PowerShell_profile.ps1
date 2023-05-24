@@ -67,6 +67,7 @@ $env:WORKON_HOME = "$env:USERPROFILE\Envs"
 . "$PSScriptRoot\components\ConvertLineEndings.ps1"
 # Pull the repositories to avoid merge conflicts every single day..
 . "$PSScriptRoot\components\GitPullHelpers.ps1"
+GitPullOnceADay
 
 # add custom paths
 $env:path += ";$Env:Programfiles\VideoLAN\VLC\vlc.exe"
