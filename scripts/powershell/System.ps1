@@ -1,8 +1,11 @@
 
 # Implementing various additional system commands to make life easier.
 
-# are you admin [BOOL] ?
-function isadmin {[bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")}
+function SelfHasAdminRights {
+    $currentUser = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
+    $isAdmin = $currentUser.IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
+    return [bool]$isAdmin
+}
 
 
 function elevate () {

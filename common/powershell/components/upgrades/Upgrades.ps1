@@ -102,8 +102,8 @@ function PythonUpdate {
         if (Test-Path env:PYENV) {
             $current_path = $pwd
             Set-Location -Path (Split-Path -Path $env:PYENV -Parent)
-            Invoke-Expression "git pull"
             Invoke-Expression "git checkout -- pyenv-win/.versions_cache.xml"
+            Invoke-Expression "git pull"
             Set-Location -Path $current_path
             }
         else {
@@ -118,16 +118,22 @@ function PythonUpdate {
 
     # clearing the cache
     $pipx_cache_dir = "$env:USERPROFILE\.local\pipx\.cache"
-    Remove-Item $pipx_cache_dir -Force -Confirm:$false
+    Remove-Item $pipx_cache_dir -Force -Recurse -Confirm:$false
 
     # check the symbolic link
     $pipx_python_path = "$env:USERPROFILE\.local\bin\python"
     $pipx_python = Get-Item $pipx_python_path -Force -ea SilentlyContinue
-    if (![bool]($pipx_python.Attributes -band [IO.FileAttributes]::ReparsePoint)) {
-        # python in .local\bin is not linked as symbolic link
-        Remove-Item $pipx_python_path -Force -Confirm:$false
-        New-Item -Path $pipx_python_path -ItemType SymbolicLink -Value "$env:PYENV_HOME\shims\python.bat"
+    if (SelfHasAdminRights) {
+        if (![bool]($pipx_python.Attributes -band [IO.FileAttributes]::ReparsePoint)) {
+                # python in .local\bin is not linked as symbolic link
+                Remove-Item $pipx_python_path -Force -Confirm:$false
+                New-Item -Path $pipx_python_path -ItemType SymbolicLink -Value "$env:PYENV_HOME\shims\python.bat"
+            }
+    } else {
+        Write-Host "Skipping pipx python symbolic link check, privilege elevation required."
+        Write-Host "Type: New-Item -Path $pipx_python_path -ItemType SymbolicLink -Value '$env:PYENV_HOME\shims\python.bat'"
     }
+
     python -m pip install --quiet --user -U pipx
     python -m pipx reinstall-all
 
