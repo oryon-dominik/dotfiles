@@ -65,8 +65,8 @@ $env:WORKON_HOME = "$env:USERPROFILE\Envs"
 . "$PSScriptRoot\components\TheFuck.ps1"
 # Converting line endings from Windows to Unix
 . "$PSScriptRoot\components\ConvertLineEndings.ps1"
-# Pull the obisdian journal on demand to avoid merge conflicts every single day..
-. "$PSScriptRoot\components\PullJournal.ps1"
+# Pull the repositories to avoid merge conflicts every single day..
+. "$PSScriptRoot\components\GitPullHelpers.ps1"
 
 # add custom paths
 $env:path += ";$Env:Programfiles\VideoLAN\VLC\vlc.exe"
@@ -90,7 +90,7 @@ $env:BAT_PAGER='""'  # don't page BAT results
 # Set-PSReadlineOption -EditMode vi -BellStyle None
 
 # set prompt (via starship)
-$env:STARSHIP_CONFIG = "$HOME\.dotfiles\common\starship\starship.toml"
+$env:STARSHIP_CONFIG = "$env:DOTFILES\common\starship\starship.toml"
 Invoke-Expression (&starship init powershell)
 
 # load aliases & system-function-definitions
