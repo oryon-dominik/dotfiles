@@ -207,7 +207,7 @@ function PythonPackagesUpdate {
 
 
 function UpdateRepositories {
-    Write-Host "Updating local repositories.."
+    Write-Host "Updating local git repositories.. (see: '$env:DOTFILES/.repositories.txt')"
     # is git installed?
     if (![bool](Get-Command -Name 'git' -ErrorAction SilentlyContinue)) {
         Write-Host "aborting: could not find git"
@@ -239,9 +239,7 @@ function UpdateRepositories {
             Write-Host "Skipping" $repo
         }
     }
-    Write-Host "Switching back to your directory.."
     Set-Location -Path $current_path
-    Write-Host "Repository update finished :-)"
     LogUpdate -Message "Upgrade Repositories"
     LogUpdate -Message "Upgrade Repositories on $env:computername" -childpath "shared\logs\" -logfilename "auto-gitevents.log"
 }
