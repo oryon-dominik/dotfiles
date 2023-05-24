@@ -242,20 +242,27 @@ function UpdateRepositories {
     Write-Host "Switching back to your directory.."
     Set-Location -Path $current_path
     Write-Host "Repository update finished :-)"
-    Write-Host ""
-    LogUpdate -Message "Repository Update"
+    LogUpdate -Message "Upgrade Repositories"
+    LogUpdate -Message "Upgrade Repositories on $env:computername" -childpath "shared\logs\" -logfilename "auto-gitevents.log"
 }
 
 
 function LogUpdate {
-    param([Parameter(Mandatory=$True)][string]$message = $(throw "Parameter -Message is required."))
-    $update_machine_path = (Join-Path -Path $env:DOTFILES -ChildPath "shared\logs\$env:computername\")
+
+    param(
+        [Parameter(Mandatory=$True)][string]$message = $(throw "Parameter -Message is required."),
+        [string]$childpath = "shared\logs\$env:computername\",
+        [string]$logfilename = "updates.log"
+    )
+
+    $update_machine_path = (Join-Path -Path $env:DOTFILES -ChildPath $childpath)
     if(!(test-path $update_machine_path)) {
         New-Item -ItemType Directory -Force -Path $update_machine_path
     }
-    $update_log_path = (Join-Path -Path $env:DOTFILES -ChildPath "shared\logs\$env:computername\updates.log")
+    $update_log_path = (Join-Path -Path $env:DOTFILES -ChildPath "$childpath\$logfilename")
     if (!(Test-Path -Path $update_log_path -PathType Leaf)) {
         New-Item -ItemType File -Force -Path $update_log_path
     }
-    Write-Output (-join('{"message": "', $($message), '", "timestamp": "', $(Get-TimeStamp), '"},')) | Out-file $update_log_path -append
+    Write-Output (-join($(Get-TimeStamp), " ", $($message))) | Out-file $update_log_path -append
+
 }

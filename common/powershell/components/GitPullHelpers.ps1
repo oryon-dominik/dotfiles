@@ -39,7 +39,7 @@ function GitPullOnceADay {
         return
     }
     $computerName = [System.Environment]::MachineName
-    $eventslog = "$env:DOTFILES/shared/logs/$computerName/events.log"
+    $eventslog = "$env:DOTFILES/shared/logs/auto-gitevents.log"
     if (-not (Test-Path $eventslog)) {
         New-Item -Path $eventslog -ItemType File
     }

@@ -67,7 +67,6 @@ $env:WORKON_HOME = "$env:USERPROFILE\Envs"
 . "$PSScriptRoot\components\ConvertLineEndings.ps1"
 # Pull the repositories to avoid merge conflicts every single day..
 . "$PSScriptRoot\components\GitPullHelpers.ps1"
-GitPullOnceADay
 
 # add custom paths
 $env:path += ";$Env:Programfiles\VideoLAN\VLC\vlc.exe"
@@ -97,6 +96,7 @@ Invoke-Expression (&starship init powershell)
 # load aliases & system-function-definitions
 . "$PSScriptRoot\Aliases.ps1"
 
+GitPullOnceADay
 
 # ======================================================
 
