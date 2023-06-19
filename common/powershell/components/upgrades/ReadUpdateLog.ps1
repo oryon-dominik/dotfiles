@@ -19,13 +19,11 @@ If ((Get-Content -Path $update_log_path) -eq $Null) {
     return
 }
 $log_last_entry = Get-Content -Path $update_log_path -Tail 1
-$log_string = $log_last_entry -replace ".$"
-# $log = ($log_string | ConvertFrom-Json).timestamp  # deprecated old format
-$log_entry_date, $log_entry_time, $_ = $log_string -split " "
+$log_entry_date, $log_entry_time, $log_entry_message = $log_last_entry -split " "
 $log = "$log_entry_date $log_entry_time"
 $now = "{0:yyyy-MM-dd} {0:HH:mm:ss}" -f (Get-Date)
 $update_span = New-TimeSpan -Start ($log | Get-Date) -End ($now | Get-Date)
 #$not_updated_since = [int]($update_span.days)
 if ($update_span.days -gt 14) {
-    Write-Host $log.message $log.timestamp ", please 'upgrade' now."
+    Write-Host $log_entry_message ", please 'upgrade' now."
 }
