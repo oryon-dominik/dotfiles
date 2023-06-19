@@ -15,6 +15,8 @@ function pullDotfiles {
         return
     }
     GitPullfromDirectory -directory $dotfilesDir
+    # TODO: attention this is hardocred: maybe we need a env here as well?!
+    GitPullfromDirectory -directory $dotfilesDir\shared
 }
 
 function GitPullfromDirectory {
