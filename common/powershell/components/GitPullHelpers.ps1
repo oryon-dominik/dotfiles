@@ -1,5 +1,5 @@
 # Pull the obisdian journal on demand to avoid merge conflicts every single day..
-function pulljournal {
+function pullJournal {
     $journalDir = $env:JOURNAL_HOME
     if (-not (Test-Path $journalDir)) {
         Write-Host "env:JOURNAL_HOME is not defined."
@@ -8,7 +8,7 @@ function pulljournal {
     GitPullfromDirectory -directory $journalDir
 }
 
-function pulldotfiles {
+function pullDotfiles {
     $dotfilesDir = $env:DOTFILES
     if (-not (Test-Path $dotfilesDir)) {
         Write-Host "env:DOTFILES is not defined."
@@ -48,8 +48,8 @@ function GitPullOnceADayAndWorkingMachine {
     $lastExecutionDate = Get-Content -Path $eventslog -ErrorAction SilentlyContinue | Select-Object -Last 1
     if ($message -ne $lastExecutionDate) {
         # Pulling the "daily" repositories
-        pulldotfiles
-        pulljournal
+        pullDotfiles
+        pullJournal
         # Store the current date as the last execution date, silently
         Add-Content -Path $eventslog -Value $message | Out-Null
     } else {
