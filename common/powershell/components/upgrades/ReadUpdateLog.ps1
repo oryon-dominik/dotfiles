@@ -25,5 +25,5 @@ $now = "{0:yyyy-MM-dd} {0:HH:mm:ss}" -f (Get-Date)
 $update_span = New-TimeSpan -Start ($log | Get-Date) -End ($now | Get-Date)
 #$not_updated_since = [int]($update_span.days)
 if ($update_span.days -gt 14) {
-    Write-Host $log_entry_message ", please 'upgrade' now."
+    Write-Host "$log_entry_message, please 'upgrade' now."
 }
