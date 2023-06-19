@@ -19,7 +19,7 @@ If ((Get-Content -Path $update_log_path) -eq $Null) {
     return
 }
 $log_last_entry = Get-Content -Path $update_log_path -Tail 1
-$log_entry_date, $log_entry_time, $log_entry_message = $log_last_entry -split " "
+$log_entry_date, $log_entry_time, $log_level, $log_entry_message = $log_last_entry -split " "
 $log = "$log_entry_date $log_entry_time"
 $now = "{0:yyyy-MM-dd} {0:HH:mm:ss}" -f (Get-Date)
 $update_span = New-TimeSpan -Start ($log | Get-Date) -End ($now | Get-Date)

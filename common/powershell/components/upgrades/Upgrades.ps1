@@ -2,6 +2,7 @@ function update {
     Write-Host "'update' not implemented, try 'upgrade'"
 }
 
+# TODO: add a log level object, which supports the correct types
 
 function upgrade {
     param(
@@ -46,7 +47,7 @@ function UpgradeAll {
     UpgradeChocolatey
     WindowsUpdate
 
-    LogUpdate -Message "$update_message"
+    LogUpdate -Message "$update_message" -Level "INFO"  # TODO: calculate level from all upgrade result errorcodes
 
     Write-Host ""
     Write-Host "Updates finished"
@@ -55,8 +56,9 @@ function UpgradeAll {
 function RustUpgrade {
     Write-Host "Updating rust.."
     iex "rustup update"
-    LogUpdate -Message "Rust Update"
+    LogUpdate -Message "Rust Update" -Level "INFO"  # TODO: calculate level from rust update errorcodes
     Write-Host ""
+    # TODO: return errorcode or success
 }
 
 function UpgradeChocolatey {
@@ -79,8 +81,9 @@ function UpgradeChocolatey {
     else {
         Write-Host "ERROR: $choco_packages_log_path not found"
     }
-    LogUpdate -Message "Chocolatey packages upgrade"
+    LogUpdate -Message "Chocolatey packages upgrade" -Level "INFO"  # TODO: calculate level from result errorcodes
     Write-Host ""
+    # TODO: return errorcode or success
 }
 
 function PythonUpdate {
@@ -88,7 +91,9 @@ function PythonUpdate {
     $update_message = "Updating PYTHON (pip, pyenv, poetry, pipx).."
     Write-Host $update_message
     Write-Host ""
-    LogUpdate -Message "$update_message"
+    # TODO: calculate level from result errorcodes, so update the log, when
+    # finished or breaking here..
+    LogUpdate -Message "$update_message" -Level "INFO"
     Write-Host "Updating pip.."
     python -m ensurepip --upgrade
     python -m pip install --upgrade pip --no-warn-script-location
@@ -157,13 +162,14 @@ function PythonUpdate {
 function PowershellUpdate {
     Write-Host "Updating powershell.."
     iex "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI"
-    LogUpdate -Message "Powershell Update"
+    LogUpdate -Message "Powershell Update" -Level "INFO"  # TODO: calculate level from result errorcodes
     Write-Host ""
+    # TODO: return errorcode or success
 }
 
 function JustUpgradeLogMessage {
     Write-Host "Updating the logfile.."
-    LogUpdate -Message "Updated the logfile to surpress the notification"
+    LogUpdate -Message "Updated the logfile to surpress the notification" -Level "WARNING"
 }
 
 function WindowsUpdate {
@@ -187,13 +193,14 @@ function WindowsUpdate {
     $updates = Get-WUInstall
     if($updates.count -gt 0) {
         Write-Host "Updating .."
-        LogUpdate -Message "Windows Update"
+        LogUpdate -Message "Windows Update" -Level "INFO"  # TODO: calculate level from result errorcodes
         Get-WindowsUpdate -Install -AcceptAll
         Write-Host "Windows Updates finished."
     }
     else {
         Write-Host "No new Windows Updates found."
     }
+    # TODO: return errorcode or success
 }
 
 
@@ -201,8 +208,9 @@ function PythonPackagesUpdate {
     Write-Host "Updating python-packages.."
     python -m ensurepip --upgrade
     python -m pip install --upgrade ((pip list -o | Select-Object -Skip 2) | Foreach-Object {$_.Split()[0]}) --no-warn-script-location
-    LogUpdate -Message "Python packages Update"
+    LogUpdate -Message "Python packages Update" -Level "INFO"  # TODO: calculate level from result errorcodes
     Write-Host ""
+    # TODO: return errorcode or success
 }
 
 
@@ -240,8 +248,9 @@ function UpdateRepositories {
         }
     }
     Set-Location -Path $current_path
-    LogUpdate -Message "Upgrade Repositories"
-    LogUpdate -Message "Upgrade Repositories on $env:computername" -childpath "shared\logs\global" -logfilename "auto-gitevents.log"
+    LogUpdate -Message "Upgrade Repositories" -Level "INFO"  # TODO: calculate level from result errorcodes
+    LogUpdate -Message "Upgrade Repositories on $env:computername" -childpath "shared\logs\global" -logfilename "auto-gitevents.log" -Level "INFO"  # TODO: calculate level from result errorcodes
+    # TODO: return errorcode or success
 }
 
 
@@ -249,6 +258,7 @@ function LogUpdate {
 
     param(
         [Parameter(Mandatory=$True)][string]$message = $(throw "Parameter -Message is required."),
+        [Parameter(Mandatory=$True)][string]$level = $(throw "Parameter -Level is required."),
         [string]$childpath = "shared\logs\$env:computername\",
         [string]$logfilename = "updates.log"
     )
