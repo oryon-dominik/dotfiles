@@ -22,6 +22,7 @@
 [alias]
     logs = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     who = log --diff-filter=A --
+    find = log --color -p -S --
     fame = !python -m gitfame
 [pager]
     diff = delta
