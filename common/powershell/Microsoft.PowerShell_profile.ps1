@@ -47,7 +47,7 @@ $icons = Join-Path -Path "$file_location" -ChildPath '\icons'
 # Imports all custom-added-modules to the powershell-space
 Import-Module DockerCompletion
 # Virtualenvwrapper bindings
-$env:WORKON_HOME = "$env:USERPROFILE\Envs"
+$env:WORKON_HOME = "$env:USERPROFILE\venvs"
 . "$PSScriptRoot\components\SlimVenvWrapper.ps1"
 # Upgrades & Update functionality
 . "$PSScriptRoot\components\upgrades\Upgrades.ps1"

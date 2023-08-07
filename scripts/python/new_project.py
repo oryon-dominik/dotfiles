@@ -166,7 +166,7 @@ CMD = "newproject"
 #                 ],
 #                 "settings": {{
 #                     "files.autoSave": "onFocusChange",
-#                     "python.venvPath": "~/Envs",
+#                     "python.venvPath": "~/venvs",
 #                     "python.envFile": "${{workspaceFolder}}/.env",
 #                     "python.terminal.activateEnvironment": true,
 #                     "python.pythonPath": "C:\\\\Users\\\\{getpass.getuser()}\\\\envs\\\\{NEW}\\\\Scripts\\\\python.exe",}}
