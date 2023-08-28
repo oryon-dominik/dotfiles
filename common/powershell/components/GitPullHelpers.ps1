@@ -52,7 +52,7 @@ function GitPullOnceADayAndWorkingMachine {
         # Pulling the "daily" repositories
         pullDotfiles
         pullJournal
-        # Sort the log entries by date.
+        # Sort the log entries by date. (by regexing the first 19 characters of a line, (the dateformat's length))
         $logEntries = Get-Content -Path $eventslog | Sort-Object {$_ -replace '^(.{19}).*', '$1'}
         $logEntries | Set-Content -Path $eventslog
         # Store the current date as the last execution date, silently
