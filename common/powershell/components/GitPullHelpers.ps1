@@ -45,10 +45,14 @@ function GitPullOnceADayAndWorkingMachine {
     if (-not (Test-Path $eventslog)) {
         New-Item -Path $eventslog -ItemType File
     }
+
     $today = Get-Date -Format "yyyy-MM-dd hh:mm:ss"
     $message = "$today 'once-a-day' git pull on $computerName"
-    $lastExecutionDate = Get-Content -Path $eventslog -ErrorAction SilentlyContinue | Select-Object -Last 1
-    if ($message -ne $lastExecutionDate) {
+    $lastExecutionMessage = Get-Content -Path $eventslog -ErrorAction SilentlyContinue | Select-Object -Last 1
+    $lastExecutionDate = $lastExecutionMessage -split " " | Select-Object -Index 0
+    $lastExecutionMachine = $lastExecutionMessage -split " " | Select-Object -Index 6
+
+    if ($message -notlike "$lastExecutionDate* $lastExecutionMachine") {
         # Pulling the "daily" repositories
         pullDotfiles
         pullJournal
