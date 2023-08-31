@@ -41,7 +41,8 @@ function GitPullOnceADayAndWorkingMachine {
         return
     }
     $computerName = [System.Environment]::MachineName
-    $eventslog = "$env:DOTFILES/shared/logs/global/auto-gitevents.log"
+    $eventslogdir = "$env:DOTFILES/shared/logs/global"
+    $eventslog = "$eventslogdir/auto-gitevents.log"
     if (-not (Test-Path $eventslog)) {
         New-Item -Path $eventslog -ItemType File
     }
@@ -61,6 +62,10 @@ function GitPullOnceADayAndWorkingMachine {
         $logEntries | Set-Content -Path $eventslog
         # Store the current date as the last execution date, silently
         Add-Content -Path $eventslog -Value $message | Out-Null
+        cd $eventslogdir
+        git add auto-gitevents.log
+        git commit -m "auto-commit: $message"
+        cd -
     } else {
         # "Already pulled today"
     }
