@@ -26,6 +26,7 @@ PyAutoGUI = "^0.9.53"
 scipy = "^1.9.3"
 git-fame = "^1.15.2"
 ruff = "^0.0.260"
+shell-ai = "^0.3.11"
 
 [tool.poetry.dev-dependencies]
 
