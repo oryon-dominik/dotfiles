@@ -119,3 +119,7 @@ $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
+
+# Scoop package manager
+$env:SCOOP="$env:USERPROFILE\scoop\"
+$env:path += ";$env:SCOOP\apps\scoop\current\bin\"
