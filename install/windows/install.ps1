@@ -12,11 +12,15 @@ Invoke-Expression "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI"
 $dotfiles_location = Join-Path -Path $home -ChildPath "\.dotfiles"
 [Environment]::SetEnvironmentVariable("DOTFILES", "$dotfiles_location", "User")
 
+# Install package manager 'scoop'
+irm get.scoop.sh | iex
+
 # Install package manager 'chocolatey'
 Set-ExecutionPolicy AllSigned
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 # deprecated: Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
+# TODO: replace all these chocolatey installs with scoop installs
 # 3. reopen elevated shell
 choco install git -y
 refreshenv
@@ -33,11 +37,13 @@ New-Item -Path "$env:USERPROFILE/Documents/PowerShell" -ItemType Junction -Value
 Write-Host "Installing Software.. this may take a while."
 Write-Host "Meanwhile style your taskbar, desktop and color-theme (#861a22). Customize sounds."
 
+# TODO: replace all these chocolatey installs with scoop installs
 choco feature enable -n allowGlobalConfirmation
 
 Write-Host "Installing essentials for CLI and development."
 . "$env:DOTFILES/install/windows/InstallAdditionalPowershellModules.ps1"
 
+# TODO: replace all these chocolatey installs with scoop installs
 choco install "$env:DOTFILES/install/windows/choco_cli_enhanced.config"
 choco install "$env:DOTFILES/install/windows/choco_languages.config"
 
@@ -45,6 +51,7 @@ refreshenv
 . "$env:DOTFILES/install/windows/InstallModernUnixForWindows.ps1"
 
 Write-Host "Installing Visual Studio, please wait... you should customize your visualstudio installation to include all neccessary build tools (C/C++)."
+# TODO: replace all these chocolatey installs with scoop installs
 choco install visualstudio2022professional
 refreshenv
 
@@ -82,6 +89,7 @@ function GetKeyPress([string]$regexPattern='[ynq]', [string]$message=$null, [int
 
 $key = GetKeyPress '[y]' "Press y to install additional software packages for essential use cases, web & media editing." 7
 if ($key -ne $null) {
+    # TODO: replace all these chocolatey installs with scoop installs
     choco install "$env:DOTFILES/install/windows/choco_security.config"
     choco install "$env:DOTFILES/install/windows/choco_development.config"
     choco install "$env:DOTFILES/install/windows/choco_google_web.config"
