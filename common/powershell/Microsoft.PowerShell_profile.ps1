@@ -122,4 +122,4 @@ if (Test-Path($ChocolateyProfile)) {
 
 # Scoop package manager
 $env:SCOOP="$env:USERPROFILE\scoop\"
-$env:path += ";$env:SCOOP\apps\scoop\current\bin\"
+$env:path += ";$env:SCOOP\apps\scoop\current\bin\;$env:SCOOP\shims\"
