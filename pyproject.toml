@@ -27,6 +27,11 @@ scipy = "^1.9.3"
 git-fame = "^1.15.2"
 ruff = "^0.0.260"
 shell-ai = "^0.3.11"
+google-api-python-client = "^2.99.0"
+django = "^4.2.5"
+mypy = "^1.5.1"
+python-dotenv = "^1.0.0"
+
 
 [tool.poetry.dev-dependencies]
 
