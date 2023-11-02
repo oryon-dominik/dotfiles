@@ -32,6 +32,7 @@ function upgrade {
     if ($argument -eq "powershell") { PowershellUpdate; return }
     if ($argument -eq "python-packages") { PythonPackagesUpdate; return }
     if ($argument -eq "choco") { UpgradeChocolatey; return }
+    if ($argument -eq "scoop") { UpgradeScoop; return }
     if ($argument -eq "rust") { RustUpgrade; return }
     if ($argument -eq "log") { JustUpgradeLogMessage; return }
     Write-Host "(upgrade) invalid argument: 'upgrade $argument' not found"
@@ -44,6 +45,7 @@ function UpgradeAll {
     PythonUpdate
     RustUpgrade
     UpdateRepositories
+    UpgradeScoop
     UpgradeChocolatey
     WindowsUpdate
 
@@ -59,6 +61,18 @@ function RustUpgrade {
     LogUpdate -Message "Rust Update" -Level "INFO"  # TODO: calculate level from rust update errorcodes
     Write-Host ""
     # TODO: return errorcode or success
+}
+
+
+function UpgradeScoop {
+    Write-Host "Updating installed Scoop Software Packages.."
+    if (![bool](Get-Command -Name 'scoop' -ErrorAction SilentlyContinue)) {
+        Write-Host "aborting: could not find scoop on path"
+        return
+    }
+    scoop update *
+    LogUpdate -Message "Scoop packages upgrade" -Level "INFO"  # TODO: calculate level from result errorcodes
+    Write-Host ""
 }
 
 function UpgradeChocolatey {
