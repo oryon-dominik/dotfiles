@@ -23,3 +23,6 @@ scoop install main/dotnet-sdk
 
 # https://github.com/coreybutler/nvm-windows
 scoop install main/nvm
+
+# https://www.nasm.us/
+scoop install main/nasm

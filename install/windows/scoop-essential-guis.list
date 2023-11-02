@@ -30,4 +30,3 @@ scoop install extras/geany
 
 # https://hluk.github.io/CopyQ/
 scoop install extras/copyq
-
