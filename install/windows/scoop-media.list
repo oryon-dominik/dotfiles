@@ -1,0 +1,28 @@
+scoop bucket add main
+scoop bucket add extras
+
+# https://www.audacityteam.org/
+scoop install extras/audacity
+
+# TODO: add ffmpeg + lame plugins for audacity
+
+# https://www.blender.org/
+scoop install extras/blender
+
+# https://www.gimp.org/
+scoop install extras/gimp
+
+# https://ffmpeg.org/
+scoop install main/ffmpeg
+
+# https://www.irfanview.com/
+scoop install extras/irfanview
+
+# https://flameshot.org/
+scoop install extras/flameshot
+
+# https://www.shotcut.org/
+scoop install extras/shotcut
+
+# https://www.videolan.org/
+scoop install extras/vlc

@@ -1,0 +1,45 @@
+scoop bucket add main
+scoop bucket add extras
+scoop bucket add nonportable
+
+# https://github.com/junegunn/fzf
+scoop install main/fzf
+
+# https://github.com/kelleyma49/PSFzf
+scoop install extras/psfzf
+
+# https://github.com/namazso/OpenHashTab
+scoop install nonportable/openhashtab-np
+
+# https://restic.net/
+scoop install main/restic
+
+# https://github.com/muesli/duf
+scoop install main/duf
+
+# https://curlie.io/
+scoop install main/curlie
+
+# https://github.com/JFLarvoire/the_silver_searcher
+scoop install main/ag
+
+# https://github.com/alacritty/alacritty
+scoop install extras/alacritty
+
+# https://github.com/microsoft/terminal
+scoop install extras/windows-terminal
+
+# https://micro-editor.github.io/
+scoop install main/micro
+
+# https://github.com/ryanoasis/nerd-fonts
+scoop bucket add nerd-fonts
+scoop install nerd-fonts/3270-NF-Mono
+scoop install nerd-fonts/CascadiaCode-NF-Mono
+scoop install nerd-fonts/FiraCode-NF-Mono
+scoop install nerd-fonts/FiraMono-NF-Mono
+scoop install nerd-fonts/DroidSansMono-NF-Mono
+
+
+
+

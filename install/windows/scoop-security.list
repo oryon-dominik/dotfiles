@@ -1,0 +1,6 @@
+scoop bucket add extras
+scoop install extras/cutter
+
+scoop bucket add nonportable
+scoop install nonportable/burp-suite-community-np
+# scoop install nonportable/burp-suite-pro-np

@@ -1,0 +1,10 @@
+scoop bucket add main
+scoop bucket add extras
+
+# https://www.google.com/chrome/
+scoop install extras/googlechrome
+
+# https://github.com/prasmussen/gdrive
+scoop install main/gdrive
+
+# TODO: add google-drive-filestream
