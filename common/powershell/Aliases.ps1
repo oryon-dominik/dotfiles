@@ -21,7 +21,7 @@ Set-Alias -Name aus -Value Stop-Computer -Description "shutdown"
 
 # ls -> exa
 Remove-Alias -Name ls
-function ls {exa --group-directories-first --git-ignore $args}
+function ls {exa --group-directories-first --git $args}
 function ll {exa --color-scale --long --header --group-directories-first $args}
 function la {exa --all --color-scale --long --header --group-directories-first $args}
 function lt {exa --tree --color-scale --group-directories-first $args}

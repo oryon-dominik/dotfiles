@@ -7,7 +7,7 @@ alias cd..='cd ..'
 
 alias cls='clear'
 
-alias ls='exa --group-directories-first --git-ignore'
+alias ls='exa --group-directories-first --git'
 alias ll='exa --color-scale --long --header --group-directories-first'
 alias la='exa --all --color-scale --long --header --group-directories-first'
 alias lt='exa --tree --color-scale --group-directories-first'
