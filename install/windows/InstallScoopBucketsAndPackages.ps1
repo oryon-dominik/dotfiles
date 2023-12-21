@@ -1,39 +1,51 @@
 #!/usr/bin/env pwsh
 
-# TODO: make a function out of this that takes categories and path as args, return installed and skipped packages
+function InstallScoops {
+    param (
+        [string]$path = $(Join-Path -Path $env:DOTFILES -ChildPath "install\scoops\scoop-packages.json"),
+        [bool]$essentials = $false,
+        [string[]]$categories = @(
+            "cli", "development", "fonts", "guis", "languages", "media", "security", "web", "deployment"
+        )  # ! shall be all categories by default
+    )
 
-$categories = @("cli", "development", "fonts", "guis", "languages", "media", "security", "web", "deplyoment")
+    $json = Get-Content -Path $path | ConvertFrom-Json
+    $scoops = $json.scoops
 
-$scoopsPath = Join-Path $env:DOTFILES "install\scoops\scoop-packages.json"
-$scoopsJsonContent = Get-Content -Path $scoopsPath | ConvertFrom-Json
-$scoops = $scoopsJsonContent.scoops
+    $bucketsVisited = @()
+    $skipped = @()
+    $installed = @()
 
-$bucketsVisited = @()
-$scoopsInstalled = @()
-$scoopsSkipped = @()
+    foreach ($scoop in $scoops) {
+        $package = $scoop.package
+        $bucket = $scoop.bucket
+        $category = $scoop.category
+        $essential = $scoop.essential
 
-foreach ($scoop in $scoops) {
-    $package = $scoop.package
-    $bucket = $scoop.bucket
-    $category = $scoop.category
+        if ($essentials -eq $true -and $essential -eq $false) {
+            continue  # Silently skip
+        }
 
-    if ($bucket -notin $bucketsVisited) {
-        Write-Host "Adding bucket $bucket."
-        # scoop bucket add $bucket
-        $bucketsVisited += $bucket
+        if ($bucket -notin $bucketsVisited) {
+            Write-Host "Adding bucket $bucket."
+            # scoop bucket add $bucket
+            $bucketsVisited += $bucket
+        }
+
+        if ($scoop.category -ne $null -and $categories -contains $category) {
+            Write-Host "Installing $package."
+            scoop install $package
+            $installed += $package
+        } else {
+            # "Skipping installation of $package. Category is not in list of categories to install."
+            $skipped += $package
+        }
     }
-    if ($scoop.category -ne $null -and $categories -contains $category) {
-        Write-Host "Installing $package."
-        # scoop install $package
-        $scoopsInstalled += $package
-    } else {
-        # Write-Host "Skipping installation of $package. Category is not in list of categories to install."
-        $scoopsSkipped += $package
+    if ($skipped -ne $null -and $skipped.Count -gt 0) {
+        Write-Debug "Skipped packages: $skipped"
     }
-}
-if ($scoopsSkipped -ne $null -and $scoopsSkipped.Count -gt 0) {
-    Write-Host "Skipped packages: $scoopsSkipped"
-}
-if ($scoopsInstalled -ne $null -and $scoopsInstalled.Count -gt 0) {
-    Write-Host "Installed packages: $scoopsInstalled"
+    if ($installed -ne $null -and $installed.Count -gt 0) {
+        Write-Debug "Installed packages: $installed"
+    }
+    return $installed
 }

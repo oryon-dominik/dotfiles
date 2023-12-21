@@ -46,13 +46,16 @@ New-Item -Path "$env:USERPROFILE/Documents/PowerShell" -ItemType Junction -Value
 # Install ALL programms
 Write-Host "Installing ALL Software packages.. this may take a while."
 Write-Host "Meanwhile style your taskbar, desktop and color-theme (#861a22). Customize sounds. Get some coffee, go for a walk.."
-Invoke-Expression "$env:DOTFILES/install/windows/InstallAllSoftware.ps1"
+. "$env:DOTFILES/install/windows/InstallAllSoftware.ps1"
+# TODO: call with mandatory parameter  # ask what software to install here as args
+# Only install essentials (modern unix and scoops, without current python)
+InstallSoftware -essentials $true -python $false
 
 # TODO: symlink all configs for installed software (maybe return a list of it from InstallAllSoftware.ps1 ??)
-Invoke-Expression "$env:DOTFILES/install/windows/SymlinkDotfiles.ps1"
+. "$env:DOTFILES/install/windows/SymlinkDotfiles.ps1"
 
 # TODO:
-create initial .env and other directories neccessary for a vital and runnable installation
+# create initial .env and other directories neccessary for a vital and runnable installation
 #
 
 Write-Host "Done :)"
