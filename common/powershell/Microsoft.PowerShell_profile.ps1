@@ -29,10 +29,14 @@ if (-not (Test-Path $env:DOTFILES)) {
   $env:DOTFILES = $dotfiles_location
 }
 
+# Set BAT_THEME
+$env:BAT_THEME="Dracula"
+$env:BAT_PAGER='""'  # don't page BAT results
+
 try {
-  lolcat "$PSScriptRoot\intro"  # Print the intro-graphic via lolcat
+  bat --plain $(Join-Path -Path "$env:DOTFILES" -ChildPath "common/powershell/intro") | meow  # Print the intro-graphic via meow
 } catch {
-  Write-Host "Command not found. Dotfiles setup probably not complete. Consult the docs. Exiting."
+  Write-Host "Command not found. Dotfiles setup and essential software installation probably not complete. Consult the docs. Exiting."
   Exit 1
 }
 
@@ -85,11 +89,7 @@ Import-Module "$PSScriptRoot\components\ConvertLineEndings.ps1"
 # Pull the repositories to avoid merge conflicts every single day..
 Import-Module "$PSScriptRoot\components\GitPullHelpers.ps1"
 # McFly - reverse fuzzy search
-. "$PSScriptRoot\components\Mcfly.ps1"
-
-# Set BAT_THEME
-$env:BAT_THEME="Dracula"
-$env:BAT_PAGER='""'  # don't page BAT results
+# . "$PSScriptRoot\components\Mcfly.ps1"
 
 # vi-edit-mode
 # Set-PSReadlineOption -EditMode vi -BellStyle None

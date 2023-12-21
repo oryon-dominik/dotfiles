@@ -9,6 +9,14 @@
       "category": "cli"
     },
     {
+      "package": "meow",
+      "bucket": "extras",
+      "url": "https://github.com/kiedtl/meow",
+      "description": "A lolcat clone for Windows 10 that actually works.",
+      "essential": true,
+      "category": "cli"
+    },
+    {
       "package": "fzf",
       "bucket": "main",
       "url": "https://github.com/junegunn/fzf",

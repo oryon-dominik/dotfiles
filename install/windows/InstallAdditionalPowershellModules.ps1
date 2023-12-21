@@ -6,6 +6,10 @@
 
 Write-Host "Installing additional powershell modules..."
 
+# TBD: also install via scoop?
+# scoop install main/nuget
+# scoop install extras/dockercompletion
+
 # Install prerequisite NuGet
 Install-PackageProvider -Name NuGet -Force
 
@@ -24,8 +28,6 @@ Install-Module -Name PowerBash -Force
 # Docker command completion for PowerShell. https://github.com/matt9ucci/DockerCompletion
 Install-Module -Name DockerCompletion -Force
 
-# Simplified implementation of lolcat in PowerShell. https://github.com/andot/lolcat
-Install-Module -Name lolcat -Force
 
 # WSL-Commands natively bound to PowerShell https://github.com/mikebattista/PowerShell-WSL-Interop#usage
 Install-Module WslInterop
