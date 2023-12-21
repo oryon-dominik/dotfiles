@@ -5,17 +5,18 @@ Write-Host "Installing Rust Toolchain... (rustup, cargo, cargo-edit, cargo-expan
 # other installations have to rustup.rs and install 
 # curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-# Install using scoop:
+# Install using scoop.
 scoop install main/rustup
 scoop update rustup
 
-# ensure latest rust/cargo
+# Ensure latest rust/cargo.
 rustup update
 
-# additional cargo tools and commands
+# --- Additional cargo tools and commands. ---
 
+# [cargo-edit - A utility for managing cargo dependencies from CLI.](https://github.com/killercup/cargo-edit)
 cargo install cargo-edit
 # or use the vendored version to provide openssl out of the box
 # cargo install cargo-edit --features vendored-openssl
-
+# [cargo-expand - Subcommand to show result of macro expansion.](https://github.com/dtolnay/cargo-expand)
 cargo install cargo-expand
