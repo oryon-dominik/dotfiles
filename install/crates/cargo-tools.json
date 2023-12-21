@@ -192,6 +192,13 @@
             "url": "https://github.com/ogham/dog",
             "interface": "cli",
             "os": false
+        },
+        {
+            "crate": "ifwifi",
+            "description": "Easier connect to WIFI from the command line.",
+            "url": "https://github.com/araujobsd/ifwifi/",
+            "interface": "cli",
+            "os": "posix"
         }
     ]
 }
