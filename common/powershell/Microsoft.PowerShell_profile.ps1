@@ -41,6 +41,10 @@ $file_location = Join-Path -Path "$env:DOTFILES" -ChildPath '\shared\files'
 $console = Join-Path -Path "$file_location" -ChildPath '\images\console'
 $icons = Join-Path -Path "$file_location" -ChildPath '\icons'
 
+# Scoop package manager - order matters!
+$env:SCOOP="$env:USERPROFILE\scoop\"
+$env:path += ";$env:SCOOP\apps\scoop\current\bin\;$env:SCOOP\shims\"
+
 # Get device location.
 . "$PSScriptRoot\components\GetDeviceLocation.ps1"
 
@@ -67,9 +71,11 @@ $env:WORKON_HOME = "$env:USERPROFILE\$env:GLOBAL_PYTHON_VENVS"
 . "$PSScriptRoot\components\ConvertLineEndings.ps1"
 # Pull the repositories to avoid merge conflicts every single day..
 . "$PSScriptRoot\components\GitPullHelpers.ps1"
+# McFly - reverse fuzzy search
+. "$PSScriptRoot\components\Mcfly.ps1"
 
 # add custom paths
-# TODO: read paths from a different path file at a different location and add it here successively
+# TODO: read paths from a different path file at a different location "paths" and add it here successively
 $env:path += ";$Env:Programfiles\VideoLAN\VLC\vlc.exe"
 $env:path += ";$Env:Programfiles\NASM"  # netwide-assembler
 $env:path += ";$Env:Programfiles\GTK3-Runtime Win64\bin"  # gtk3 (used for weasyprint)
@@ -83,7 +89,6 @@ $env:path += ";$(Join-Path -Path "$env:POETRY_HOME" -ChildPath "\bin")"  # pytho
 if ($env:DOTFILES_SKIP_YARN -eq $false) {
   $env:path += ";$(yarn global bin)"
 }
-
 
 # set BAT_THEME
 $env:BAT_THEME="Dracula"
@@ -121,7 +126,3 @@ $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
-
-# Scoop package manager
-$env:SCOOP="$env:USERPROFILE\scoop\"
-$env:path += ";$env:SCOOP\apps\scoop\current\bin\;$env:SCOOP\shims\"
