@@ -1,0 +1,197 @@
+{
+    "description": [
+        "Rust modules for the CLI & GUI provided by cargo",
+        "TODO: sync with https://github.com/oryon-dominik/ansible-ubuntu-desktop/blob/trunk/roles/rust/vars/main/crates.yml"
+    ],
+    "crates": [
+        {
+            "crate": "starship",
+            "description": "The minimal, blazing-fast, and infinitely customizable prompt for any shell!",
+            "url": "https://github.com/starship/starship",
+            "interface": "cli",
+            "os": "posix"
+        },
+        {
+            "crate": "eza",
+            "description": "A modern replacement for ls - exa fork",
+            "url": "https://github.com/eza-community/eza",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "bat",
+            "description": "A cat(1) clone with wings.",
+            "url": "https://github.com/sharkdp/bat",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "zoxide",
+            "description": "A faster way to navigate your filesystem",
+            "url": "https://github.com/ajeetdsouza/zoxide",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "ripgrep",
+            "description": "(rg) grep on steroids - ripgrep recursively searches directories for a regex pattern",
+            "url": "https://github.com/BurntSushi/ripgrep",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "fd-find",
+            "description": "A simple, fast and user-friendly alternative to 'find'",
+            "url": "https://github.com/sharkdp/fd",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "hexyl",
+            "description": "A command-line hex viewer",
+            "url": "https://github.com/sharkdp/hexyl",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "du-dust",
+            "description": "A more intuitive version of du in rust - instant overview of which directories are using disk",
+            "url": "https://github.com/bootandy/dust",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "tealdeer",
+            "description": "(tldr) Help pages for command-line tools, rust implementation of tldr",
+            "url": "https://github.com/dbrgn/tealdeer",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "tokei",
+            "description": "A program that displays statistics about your code",
+            "url": "https://github.com/XAMPPRocky/tokei",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "procs",
+            "description": "Replacement for ps",
+            "url": "https://github.com/dalance/procs",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "bottom",
+            "description": "(btm) Yet another cross-platform graphical process/system monitor.",
+            "url": "https://github.com/ClementTsang/bottom",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "hyperfine",
+            "description": "A command-line benchmarking tool",
+            "url": "https://github.com/sharkdp/hyperfine",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "xh",
+            "description": "Friendly and fast tool for sending HTTP requests",
+            "url": "https://github.com/ducaale/xh",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "broot",
+            "description": "A new way to see and navigate directory trees",
+            "url": "https://github.com/Canop/broot",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "grex",
+            "description": "Builds regular expressions from user provided test cases",
+            "url": "https://github.com/pemistahl/grex",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "bandwhich",
+            "description": "Terminal bandwidth utilization tool",
+            "url": "https://github.com/imsnif/bandwhich",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "choose",
+            "description": "A human-friendly and fast alternative to cut and (sometimes) awk: field selection from content",
+            "url": "https://github.com/theryangeary/choose",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "git-delta",
+            "description": "A viewer for git and diff output",
+            "url": "https://github.com/dandavison/delta",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "gitui",
+            "description": "Blazing fast terminal-ui for git written in rust",
+            "url": "https://github.com/extrawurst/gitui",
+            "interface": "cli",
+            "os": "posix"
+        },
+        {
+            "crate": "git-journal",
+            "description": "The Git Commit Message and Changelog Generation Framework",
+            "url": "https://github.com/saschagrunert/git-journal",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "gping",
+            "description": "Ping, but with a graph",
+            "url": "https://github.com/orf/gping",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "sd",
+            "description": "Intuitive find & replace CLI (sed alternative)",
+            "url": "https://github.com/chmln/sd",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "jless",
+            "description": "Fast command-line JSON viewer.",
+            "url": "https://github.com/PaulJuliusMartinez/jless",
+            "interface": "cli",
+            "os": "posix"
+        },
+        {
+            "crate": "alacritty",
+            "description": "A cross-platform, OpenGL terminal emulator.",
+            "url": "https://github.com/alacritty/alacritty",
+            "interface": "gui",
+            "os": null
+        },
+        {
+            "crate": "mcfly",
+            "description": "Fly through your shell history",
+            "url": "https://github.com/cantino/mcfly",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "dog",
+            "description": "A command-line DNS client. It's a library, so download the binary from the releases page.",
+            "url": "https://github.com/ogham/dog",
+            "interface": "cli",
+            "os": false
+        }
+    ]
+}
