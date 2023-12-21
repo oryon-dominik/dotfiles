@@ -2,7 +2,7 @@
 
 # Windows 10 Powershell dotfiles Installation.
 
-Write-Host "Deprecation Notice: This script is deprecated and needs a heavy rebuild."
+Write-Host "Deprecation Notice: This script is deprecated and needs a heavy rebuild. Exiting."
 Exit 1
 
 
