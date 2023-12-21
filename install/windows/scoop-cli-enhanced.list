@@ -35,7 +35,11 @@ scoop install main/micro
 # https://github.com/ryanoasis/nerd-fonts
 scoop bucket add nerd-fonts
 scoop install nerd-fonts/3270-NF-Mono
+scoop install nerd-fonts/CascadiaCode-NF
 scoop install nerd-fonts/CascadiaCode-NF-Mono
+scoop install nerd-fonts/CascadiaCode-NF-Propo
+scoop install nerd-fonts/FiraCode
+scoop install nerd-fonts/FiraCode-NF
 scoop install nerd-fonts/FiraCode-NF-Mono
-scoop install nerd-fonts/FiraMono-NF-Mono
-scoop install nerd-fonts/DroidSansMono-NF-Mono
+scoop install nerd-fonts/FiraCode-NF-Propo
+scoop install Hack-NF
