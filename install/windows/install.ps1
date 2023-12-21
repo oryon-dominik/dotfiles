@@ -2,6 +2,10 @@
 
 # Windows 10 Powershell dotfiles Installation.
 
+Write-Host "Deprecation Notice: This script is deprecated and needs a heavy rebuild."
+Exit 1
+
+
 # Elevated powershell
 $is_elevated = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
 if (!$is_elevated) { Write-Host "Can't install powershell dotfiles as unprivileged user."; return }
