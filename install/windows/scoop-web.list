@@ -8,3 +8,4 @@ scoop install extras/googlechrome
 scoop install main/gdrive
 
 # TODO: add google-drive-filestream
+# https://dl.google.com/drive-file-stream/GoogleDriveSetup.exe
