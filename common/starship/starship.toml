@@ -1,6 +1,9 @@
 # ~/.config/starship.toml
 
-# TODO: reintegrate the old admin-colors -> if ($is_elevated -eq "True") {$brackets = "magenta"} else { $brackets = "blue" }
+# TODO: shell on fire if admin / $brackets="magenta" else $brackets="blue"
+
+# prompt rendered for incomplete statements. Available on bash/zsh/powershell
+continuation_prompt = '[▶▶](bold yellow) '
 
 # Inserts a blank line between shell prompts
 add_newline = false
@@ -14,6 +17,11 @@ format = '''
 [└\[](bold blue)[$directory](bold yellow)[\]](bold blue)$character'''
 
 right_format = """$all"""
+
+[env_var]
+disabled = true
+[character]
+success_symbol = "[❯](bold green)"
 
 [username]
 style_user = "white bold"
@@ -158,12 +166,6 @@ disabled = false
 symbol = " ❄️ "
 format = '[$symbol$state( \($name\)) ]($style) '
 
-[env_var]
-disabled = true
-
 [status]
 format = "[ $symbol$status ]($style)"
 disabled = false
-
-[character]
-success_symbol = "[❯](bold green)"
