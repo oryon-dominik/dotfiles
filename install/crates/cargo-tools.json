@@ -37,6 +37,13 @@
             "os": null
         },
         {
+            "crate": "lolcat",
+            "description": "Lolcat implementation written in Rust",
+            "url": "https://github.com/BlueTufa/lolcat",
+            "interface": "cli",
+            "os": null
+        },
+        {
             "crate": "fd-find",
             "description": "A simple, fast and user-friendly alternative to 'find'",
             "url": "https://github.com/sharkdp/fd",

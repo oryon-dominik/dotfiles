@@ -34,7 +34,7 @@ $env:BAT_THEME="Dracula"
 $env:BAT_PAGER='""'  # don't page BAT results
 
 try {
-  bat --plain $(Join-Path -Path "$env:DOTFILES" -ChildPath "common/powershell/intro") | meow  # Print the intro-graphic via meow
+  lolcat "$PSScriptRoot/intro" # Print the intro-graphic via rust-lolcat
 } catch {
   Write-Host "Command not found. Dotfiles setup and essential software installation probably not complete. Consult the docs. Exiting."
   Exit 1
