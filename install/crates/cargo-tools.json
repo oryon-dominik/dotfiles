@@ -1,8 +1,5 @@
 {
-    "description": [
-        "Rust modules for the CLI & GUI provided by cargo",
-        "TODO: sync with https://github.com/oryon-dominik/ansible-ubuntu-desktop/blob/trunk/roles/rust/vars/main/crates.yml"
-    ],
+    "description": "Rust modules for the CLI & GUI provided by cargo",
     "crates": [
         {
             "crate": "starship",
