@@ -65,6 +65,8 @@ $env:WORKON_HOME = "$env:USERPROFILE\$env:GLOBAL_PYTHON_VENVS"
 . "$PSScriptRoot\ModulesInVersionControl\zoxideUtilities.ps1"
 # PSReadLine provides fish-like auto-suggestions, included in powershell since 7.2
 . "$PSScriptRoot\components\PSReadLineOptions.ps1"
+# PSFzfOptions provides an fzf interface for better path completion
+. "$PSScriptRoot\components\PSFzFOptions.ps1"
 # Thefuck is a command line tool for automatically correcting commands
 . "$PSScriptRoot\components\TheFuck.ps1"
 # Converting line endings from Windows to Unix
@@ -107,20 +109,14 @@ Invoke-Expression (&starship init powershell)
 # will pull every time another machine has pulled (and maybe pushed before)
 GitPullOnceADayAndWorkingMachine
 
-# ======================================================
-
-# TODO add script for connecting to wifi-network
-
-# TODO: add-pomodore-timer (https://andrewpla.github.io/A-Toasty-Pomodoro-Timer/)
+# ====================================================
 
 # TODO: config wsl-linux distributions
-
-# TODO: haxx : highlight every ip-location for every connection on world-map
-
-# TODO: add powershell-history (https://software.intel.com/en-us/blogs/2014/06/17/giving-powershell-a-persistent-history-of-commands)
+# TODO: haxx : highlight every ip-location for every connection on world-map (via pihole!)
 
 # ======================================================
 
+# ! DeprecationWarning
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
