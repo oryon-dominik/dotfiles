@@ -5,6 +5,7 @@
       "bucket": "main",
       "url": "https://gitforwindows.org/",
       "description": "Git sourcecontrol.",
+      "essential": true,
       "category": "cli"
     },
     {
@@ -12,6 +13,7 @@
       "bucket": "main",
       "url": "https://github.com/junegunn/fzf",
       "description": "Fuzzy finder for your shell. It provides interactive, incremental search and supports various shell integrations.",
+      "essential": false,
       "category": "cli"
     },
     {
@@ -19,6 +21,7 @@
       "bucket": "extras",
       "url": "https://github.com/kelleyma49/PSFzf",
       "description": "PowerShell wrapper for fzf, enhancing file selection and navigation in the command line.",
+      "essential": false,
       "category": "cli"
     },
     {
@@ -26,6 +29,7 @@
       "bucket": "nonportable",
       "url": "https://github.com/namazso/OpenHashTab",
       "description": "Non-portable version of OpenHashTab, a shell extension for file hashing and checksums.",
+      "essential": false,
       "category": "cli"
     },
     {
@@ -33,6 +37,7 @@
       "bucket": "main",
       "url": "https://restic.net/",
       "description": "Fast, secure, and efficient backup program with deduplication, encryption, and data integrity verification features.",
+      "essential": false,
       "category": "cli"
     },
     {
@@ -40,6 +45,7 @@
       "bucket": "main",
       "url": "https://github.com/muesli/duf",
       "description": "Disk Usage/Free utility with colorful output and advanced features, helping you visualize disk space usage.",
+      "essential": false,
       "category": "cli"
     },
     {
@@ -47,6 +53,7 @@
       "bucket": "main",
       "url": "https://curlie.io/",
       "description": "A command-line tool that provides a feature-rich alternative to curl with support for syntax highlighting and more.",
+      "essential": false,
       "category": "cli"
     },
     {
@@ -54,6 +61,7 @@
       "bucket": "main",
       "url": "https://github.com/JFLarvoire/the_silver_searcher",
       "description": "The Silver Searcher (ag) is a fast code searching tool similar to Ack, with a focus on speed and usability.",
+      "essential": false,
       "category": "cli"
     },
     {
@@ -61,6 +69,7 @@
       "bucket": "extras",
       "url": "https://github.com/alacritty/alacritty",
       "description": "A cross-platform, GPU-accelerated terminal emulator with a focus on simplicity and performance.",
+      "essential": false,
       "category": "cli"
     },
     {
@@ -68,6 +77,7 @@
       "bucket": "extras",
       "url": "https://github.com/microsoft/terminal",
       "description": "The official terminal application for Windows, providing multiple tabs, customization, and integration with PowerShell, Command Prompt, and Linux.",
+      "essential": true,
       "category": "cli"
     },
     {
@@ -75,6 +85,7 @@
       "bucket": "main",
       "url": "https://micro-editor.github.io/",
       "description": "A modern and intuitive terminal-based text editor with syntax highlighting and numerous plugins for enhanced functionality.",
+      "essential": false,
       "category": "cli"
     },
     {
@@ -82,6 +93,7 @@
       "bucket": "nerd-fonts",
       "url": "https://github.com/rbanffy/3270font",
       "description": "Nerd Font with glyphs from the 3270 font family, enhancing terminal and code editor visibility.",
+      "essential": false,
       "category": "fonts"
     },
     {
@@ -89,6 +101,7 @@
       "bucket": "nerd-fonts",
       "url": "https://github.com/microsoft/cascadia-code/releases",
       "description": "Nerd Font variant of Microsoft's Cascadia Code font, providing additional icons and symbols.",
+      "essential": false,
       "category": "fonts"
     },
     {
@@ -96,6 +109,7 @@
       "bucket": "nerd-fonts",
       "url": "https://github.com/microsoft/cascadia-code/releases",
       "description": "Nerd Font variant of Microsoft's Cascadia Code font, providing additional icons and symbols.",
+      "essential": false,
       "category": "fonts"
     },
     {
@@ -103,6 +117,7 @@
       "bucket": "nerd-fonts",
       "url": "https://github.com/microsoft/cascadia-code/releases",
       "description": "Nerd Font variant of Microsoft's Cascadia Code font with mono-spaced characters.",
+      "essential": false,
       "category": "fonts"
     },
     {
@@ -110,6 +125,7 @@
       "bucket": "nerd-fonts",
       "url": "https://github.com/microsoft/cascadia-code/releases",
       "description": "Nerd Font variant of Microsoft's Cascadia Code font with proportional spacing.",
+      "essential": false,
       "category": "fonts"
     },
     {
@@ -117,6 +133,7 @@
       "bucket": "nerd-fonts",
       "url": "https://github.com/tonsky/FiraCode",
       "description": "Nerd Font based on Fira Code font, including programming ligatures.",
+      "essential": false,
       "category": "fonts"
     },
     {
@@ -124,6 +141,7 @@
       "bucket": "nerd-fonts",
       "url": "https://github.com/tonsky/FiraCode",
       "description": "Nerd Font based on Fira Code font with additional icons and symbols.",
+      "essential": false,
       "category": "fonts"
     },
     {
@@ -131,6 +149,7 @@
       "bucket": "nerd-fonts",
       "url": "https://github.com/tonsky/FiraCode",
       "description": "Nerd Font based on Fira Code font with mono-spaced characters.",
+      "essential": false,
       "category": "fonts"
     },
     {
@@ -138,6 +157,7 @@
       "bucket": "nerd-fonts",
       "url": "https://github.com/tonsky/FiraCode",
       "description": "Nerd Font based on Fira Code font with proportional spacing.",
+      "essential": false,
       "category": "fonts"
     },
     {
@@ -145,6 +165,7 @@
       "bucket": "nerd-fonts",
       "url": "https://sourcefoundry.org/hack/",
       "description": "Nerd Font based on the Hack font, providing enhanced programming symbols and icons.",
+      "essential": false,
       "category": "fonts"
     },
     {
@@ -152,6 +173,7 @@
       "bucket": "extras",
       "url": "https://code.visualstudio.com/",
       "description": "Visual Studio Code is a popular, free, and open-source code editor with support for various programming languages and extensions.",
+      "essential": true,
       "category": "development"
     },
     {
@@ -159,6 +181,7 @@
       "bucket": "main",
       "url": "https://www.vim.org/",
       "description": "Vim is a highly configurable, efficient, and extensible text editor, known for its modal editing and scripting capabilities.",
+      "essential": false,
       "category": "development"
     },
     {
@@ -166,6 +189,7 @@
       "bucket": "main",
       "url": "https://neovim.io/",
       "description": "Neovim is a modern text editor that extends the capabilities of Vim, providing improved extensibility and performance.",
+      "essential": false,
       "category": "development"
     },
     {
@@ -173,6 +197,7 @@
       "bucket": "main",
       "url": "https://www.7-zip.org/",
       "description": "7-Zip is a popular open-source file archiver with high compression ratio. It supports various archive formats, including its own 7z format.",
+      "essential": true,
       "category": "guis"
     },
     {
@@ -180,6 +205,7 @@
       "bucket": "extras",
       "url": "https://filezilla-project.org/",
       "description": "FileZilla is a cross-platform FTP, FTPS, and SFTP client with a user-friendly interface and powerful features.",
+      "essential": false,
       "category": "guis"
     },
     {
@@ -187,6 +213,7 @@
       "bucket": "extras",
       "url": "https://www.sumatrapdfreader.org/free-pdf-reader",
       "description": "SumatraPDF is a lightweight and fast PDF reader with minimalistic design and support for various document formats.",
+      "essential": false,
       "category": "guis"
     },
     {
@@ -194,6 +221,7 @@
       "bucket": "extras",
       "url": "https://github.com/torakiki/pdfsam",
       "description": "PDFsam (PDF Split and Merge) is a tool for splitting, merging, and rearranging PDF documents with a simple and intuitive interface.",
+      "essential": false,
       "category": "guis"
     },
     {
@@ -201,6 +229,7 @@
       "bucket": "extras",
       "url": "https://simplenote.com/",
       "description": "Simplenote is a note-taking application with a clean and easy-to-use interface, supporting synchronization across devices.",
+      "essential": false,
       "category": "guis"
     },
     {
@@ -208,6 +237,7 @@
       "bucket": "extras",
       "url": "https://obsidian.md/",
       "description": "Obsidian is a powerful note-taking and knowledge management application with a focus on plain text markdown files and interlinked notes.",
+      "essential": true,
       "category": "guis"
     },
     {
@@ -215,6 +245,7 @@
       "bucket": "extras",
       "url": "https://telegram.org/",
       "description": "Telegram is a cloud-based instant messaging app with a focus on speed, security, and privacy. It supports group chats, voice calls, and more.",
+      "essential": false,
       "category": "guis"
     },
     {
@@ -222,6 +253,7 @@
       "bucket": "extras",
       "url": "https://discord.com/",
       "description": "Discord is a communication platform for creating communities, supporting voice, video, and text chats.",
+      "essential": false,
       "category": "guis"
     },
     {
@@ -229,6 +261,7 @@
       "bucket": "extras",
       "url": "https://www.geany.org/",
       "description": "Geany is a lightweight and fast IDE with basic features for various programming languages, suitable for smaller projects.",
+      "essential": false,
       "category": "guis"
     },
     {
@@ -236,6 +269,7 @@
       "bucket": "extras",
       "url": "https://hluk.github.io/CopyQ/",
       "description": "CopyQ is a clipboard manager with advanced features, allowing you to monitor, manipulate, and paste clipboard items.",
+      "essential": false,
       "category": "guis"
     },
     {
@@ -243,6 +277,7 @@
       "bucket": "main",
       "url": "https://www.mingw-w64.org/",
       "description": "MinGW-w64 is a development environment for Windows that provides a collection of tools for building native Windows applications with GCC.",
+      "essential": false,
       "category": "languages"
     },
     {
@@ -250,6 +285,7 @@
       "bucket": "main",
       "url": "https://www.haskell.org/",
       "description": "Haskell is a functional programming language known for its strong type system and expressive syntax, enabling concise and robust code.",
+      "essential": false,
       "category": "languages"
     },
     {
@@ -257,6 +293,7 @@
       "bucket": "main",
       "url": "https://www.haskell.org/cabal/",
       "description": "Cabal is a build tool and package manager for Haskell, simplifying the management and distribution of Haskell packages.",
+      "essential": false,
       "category": "languages"
     },
     {
@@ -264,6 +301,7 @@
       "bucket": "main",
       "url": "https://rustup.rs/",
       "description": "Rustup is the recommended toolchain manager for the Rust programming language, providing easy installation and updates.",
+      "essential": true,
       "category": "languages"
     },
     {
@@ -271,6 +309,7 @@
       "bucket": "main",
       "url": "https://golang.org/",
       "description": "Go (Golang) is a statically typed, compiled programming language known for its simplicity, efficiency, and strong support for concurrency.",
+      "essential": false,
       "category": "languages"
     },
     {
@@ -278,6 +317,7 @@
       "bucket": "java",
       "url": "https://jdk.java.net/",
       "description": "OpenJDK is an open-source implementation of the Java Platform, providing the Java Development Kit (JDK) for Java development.",
+      "essential": false,
       "category": "languages"
     },
     {
@@ -285,6 +325,7 @@
       "bucket": "main",
       "url": "https://www.microsoft.com/net/",
       "description": ".NET SDK is a cross-platform framework for building modern, cloud-based, and mobile applications using the C# programming language.",
+      "essential": false,
       "category": "languages"
     },
     {
@@ -292,6 +333,7 @@
       "bucket": "main",
       "url": "https://github.com/coreybutler/nvm-windows",
       "description": "Node Version Manager (NVM) for Windows is a tool that allows you to easily manage multiple Node.js versions on your system.",
+      "essential": true,
       "category": "languages"
     },
     {
@@ -299,6 +341,7 @@
       "bucket": "main",
       "url": "https://www.nasm.us/",
       "description": "NASM (Netwide Assembler) is an assembler and disassembler for the x86 architecture, widely used for low-level programming.",
+      "essential": false,
       "category": "languages"
     },
     {
@@ -306,6 +349,7 @@
       "bucket": "main",
       "url": "https://www.audacityteam.org/",
       "description": "FFmpeg is a powerful multimedia processing tool that can convert, record, and stream audio and video files in various formats.",
+      "essential": false,
       "category": "media"
     },
     {
@@ -313,6 +357,7 @@
       "bucket": "main",
       "url": "https://lame.sourceforge.io/",
       "description": "LAME is an open-source audio encoder for compressing audio files into the MP3 format with high-quality and configurable settings.",
+      "essential": false,
       "category": "media"
     },
     {
@@ -320,6 +365,7 @@
       "bucket": "extras",
       "url": "https://www.audacityteam.org/",
       "description": "Audacity is a free and open-source audio editing software with features for recording, editing, and mixing audio tracks.",
+      "essential": false,
       "category": "media"
     },
     {
@@ -327,6 +373,7 @@
       "bucket": "extras",
       "url": "https://www.blender.org/",
       "description": "Blender is a powerful open-source 3D content creation suite, offering modeling, animation, rendering, and more.",
+      "essential": false,
       "category": "media"
     },
     {
@@ -334,6 +381,7 @@
       "bucket": "extras",
       "url": "https://www.gimp.org/",
       "description": "GNU Image Manipulation Program (GIMP) is a free and open-source raster graphics editor used for tasks such as photo retouching, image editing, and image composition.",
+      "essential": false,
       "category": "media"
     },
     {
@@ -341,6 +389,7 @@
       "bucket": "extras",
       "url": "https://www.irfanview.com/",
       "description": "IrfanView is a fast and compact image viewer and converter that supports a wide array of graphics file formats.",
+      "essential": false,
       "category": "media"
     },
     {
@@ -348,6 +397,7 @@
       "bucket": "extras",
       "url": "https://flameshot.org/",
       "description": "Flameshot is a screenshot tool with annotation features, allowing users to capture and annotate screenshots easily.",
+      "essential": true,
       "category": "media"
     },
     {
@@ -355,6 +405,7 @@
       "bucket": "extras",
       "url": "https://www.shotcut.org/",
       "description": "Shotcut is a free, open-source, cross-platform video editing software with a sleek and intuitive interface.",
+      "essential": false,
       "category": "media"
     },
     {
@@ -362,6 +413,7 @@
       "bucket": "extras",
       "url": "https://www.videolan.org/",
       "description": "VLC media player is a highly portable multimedia player that supports various audio and video formats, as well as streaming protocols.",
+      "essential": false,
       "category": "media"
     },
     {
@@ -369,6 +421,7 @@
       "bucket": "extras",
       "url": "https://cutter.re/",
       "description": "Cutter is an open-source reverse engineering platform with a focus on malware analysis and binary disassembly.",
+      "essential": false,
       "category": "security"
     },
     {
@@ -376,6 +429,7 @@
       "bucket": "nonportable",
       "url": "https://portswigger.net/burp/communitydownload",
       "description": "Burp Suite Community Edition is a leading web application security testing tool, designed for security professionals. Also available: nonportable/burp-suite-pro-np",
+      "essential": false,
       "category": "security"
     },
     {
@@ -383,6 +437,7 @@
       "bucket": "extras",
       "url": "https://www.google.com/chrome/",
       "description": "Google Chrome is a popular web browser known for its speed, security features, and wide range of extensions.",
+      "essential": true,
       "category": "web"
     },
     {
@@ -390,6 +445,7 @@
       "bucket": "main",
       "url": "https://github.com/prasmussen/gdrive",
       "description": "GDrive is a command-line utility for interacting with Google Drive, allowing file uploads, downloads, and management from the terminal.",
+      "essential": false,
       "category": "web"
     },
     {
@@ -397,6 +453,7 @@
       "bucket": "doppler https://github.com/DopplerHQ/scoop-doppler.git",
       "url": "https://github.com/DopplerHQ/",
       "description": "Doppler is a tool for securely managing and sharing environment variables across development, CI/CD, and production environments.",
+      "essential": false,
       "category": "deplyoment"
     }
   ]
