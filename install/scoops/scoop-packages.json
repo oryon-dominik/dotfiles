@@ -1,6 +1,13 @@
 {
   "scoops": [
     {
+      "package": "git",
+      "bucket": "main",
+      "url": "https://gitforwindows.org/",
+      "description": "Git sourcecontrol.",
+      "category": "cli"
+    },
+    {
       "package": "fzf",
       "bucket": "main",
       "url": "https://github.com/junegunn/fzf",
@@ -236,7 +243,7 @@
       "bucket": "main",
       "url": "https://www.mingw-w64.org/",
       "description": "MinGW-w64 is a development environment for Windows that provides a collection of tools for building native Windows applications with GCC.",
-      "category": "langauges"
+      "category": "languages"
     },
     {
       "package": "haskell",
