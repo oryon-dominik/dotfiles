@@ -79,7 +79,7 @@ Import-Module "$PSScriptRoot\ModulesInVersionControl\Get-FileMetaData.ps1"
 # Zoxide Utilities (show with zoxide init powershell)
 . "$PSScriptRoot\ModulesInVersionControl\zoxideUtilities.ps1"
 # PSReadLine provides fish-like auto-suggestions, included in powershell since 7.2
-. "$PSScriptRoot\components\PSReadLineOptions.ps1"
+. "$PSScriptRoot\components\PSReadLineOptions.ps1"w
 # PSFzfOptions provides an fzf interface for better path completion
 . "$PSScriptRoot\components\PSFzFOptions.ps1"
 # Thefuck is a command line tool for automatically correcting commands
@@ -89,7 +89,8 @@ Import-Module "$PSScriptRoot\components\ConvertLineEndings.ps1"
 # Pull the repositories to avoid merge conflicts every single day..
 Import-Module "$PSScriptRoot\components\GitPullHelpers.ps1"
 # McFly - reverse fuzzy search
-. "$PSScriptRoot\components\Mcfly.ps1"
+# TODO: fix mcfly overwriting Auto-suggestions
+#. "$PSScriptRoot\components\Mcfly.ps1"
 
 # vi-edit-mode
 # Set-PSReadlineOption -EditMode vi -BellStyle None
