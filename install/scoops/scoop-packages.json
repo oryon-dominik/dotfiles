@@ -1,0 +1,383 @@
+{
+    "scoops": [
+      {
+        "package": "fzf",
+        "bucket": "main",
+        "url": "https://github.com/junegunn/fzf",
+        "description": null,
+        "category": "cli-enhanced"
+      },
+      {
+        "package": "psfzf",
+        "bucket": "extras",
+        "url": "https://github.com/kelleyma49/PSFzf",
+        "description": null,
+        "category": "cli-enhanced"
+      },
+      {
+        "package": "openhashtab-np",
+        "bucket": "nonportable",
+        "url": "https://github.com/namazso/OpenHashTab",
+        "description": null,
+        "category": "cli-enhanced"
+      },
+      {
+        "package": "restic",
+        "bucket": "main",
+        "url": "https://restic.net/",
+        "description": null,
+        "category": "cli-enhanced"
+      },
+      {
+        "package": "duf",
+        "bucket": "main",
+        "url": "https://github.com/muesli/duf",
+        "description": null,
+        "category": "cli-enhanced"
+      },
+      {
+        "package": "curlie",
+        "bucket": "main",
+        "url": "https://curlie.io/",
+        "description": null,
+        "category": "cli-enhanced"
+      },
+      {
+        "package": "ag",
+        "bucket": "main",
+        "url": "https://github.com/JFLarvoire/the_silver_searcher",
+        "description": null,
+        "category": "cli-enhanced"
+      },
+      {
+        "package": "alacritty",
+        "bucket": "extras",
+        "url": "https://github.com/alacritty/alacritty",
+        "description": null,
+        "category": "cli-enhanced"
+      },
+      {
+        "package": "windows-terminal",
+        "bucket": "extras",
+        "url": "https://github.com/microsoft/terminal",
+        "description": null,
+        "category": "cli-enhanced"
+      },
+      {
+        "package": "micro",
+        "bucket": "main",
+        "url": "https://micro-editor.github.io/",
+        "description": null,
+        "category": "cli-enhanced"
+      },
+      {
+        "package": "3270-NF-Mono",
+        "bucket": "nerd-fonts",
+        "url": null,
+        "description": null,
+        "category": "cli-enhanced"
+      },
+      {
+        "package": "CascadiaCode-NF",
+        "bucket": "nerd-fonts",
+        "url": null,
+        "description": null,
+        "category": "cli-enhanced"
+      },
+      {
+        "package": "CascadiaCode-NF-Mono",
+        "bucket": "nerd-fonts",
+        "url": null,
+        "description": null,
+        "category": "cli-enhanced"
+      },
+      {
+        "package": "CascadiaCode-NF-Propo",
+        "bucket": "nerd-fonts",
+        "url": null,
+        "description": null,
+        "category": "cli-enhanced"
+      },
+      {
+        "package": "FiraCode",
+        "bucket": "nerd-fonts",
+        "url": null,
+        "description": null,
+        "category": "cli-enhanced"
+      },
+      {
+        "package": "FiraCode-NF",
+        "bucket": "nerd-fonts",
+        "url": null,
+        "description": null,
+        "category": "cli-enhanced"
+      },
+      {
+        "package": "FiraCode-NF-Mono",
+        "bucket": "nerd-fonts",
+        "url": null,
+        "description": null,
+        "category": "cli-enhanced"
+      },
+      {
+        "package": "FiraCode-NF-Propo",
+        "bucket": "nerd-fonts",
+        "url": null,
+        "description": null,
+        "category": "cli-enhanced"
+      },
+      {
+        "package": "Hack-NF",
+        "bucket": "nerd-fonts",
+        "url": null,
+        "description": null,
+        "category": "cli-enhanced"
+      },
+      {
+        "package": "vscode",
+        "bucket": "extras",
+        "url": "https://code.visualstudio.com/",
+        "description": null,
+        "category": "development"
+      },
+      {
+        "package": "vim",
+        "bucket": "main",
+        "url": "https://www.vim.org/",
+        "description": null,
+        "category": "development"
+      },
+      {
+        "package": "neovim",
+        "bucket": "main",
+        "url": "https://neovim.io/",
+        "description": null,
+        "category": "development"
+      },
+      {
+        "package": "7zip",
+        "bucket": "main",
+        "url": "https://www.7-zip.org/",
+        "description": null,
+        "category": "essential-guis"
+      },
+      {
+        "package": "filezilla",
+        "bucket": "extras",
+        "url": "https://filezilla-project.org/",
+        "description": null,
+        "category": "essential-guis"
+      },
+      {
+        "package": "sumatrapdf",
+        "bucket": "extras",
+        "url": "https://www.sumatrapdfreader.org/free-pdf-reader",
+        "description": null,
+        "category": "essential-guis"
+      },
+      {
+        "package": "pdfsam",
+        "bucket": "extras",
+        "url": "https://github.com/torakiki/pdfsam",
+        "description": null,
+        "category": "essential-guis"
+      },
+      {
+        "package": "simplenote",
+        "bucket": "extras",
+        "url": "https://simplenote.com/",
+        "description": null,
+        "category": "essential-guis"
+      },
+      {
+        "package": "obsidian",
+        "bucket": "extras",
+        "url": "https://obsidian.md/",
+        "description": null,
+        "category": "essential-guis"
+      },
+      {
+        "package": "telegram",
+        "bucket": "extras",
+        "url": "https://telegram.org/",
+        "description": null,
+        "category": "essential-guis"
+      },
+      {
+        "package": "discord",
+        "bucket": "extras",
+        "url": "https://discord.com/",
+        "description": null,
+        "category": "essential-guis"
+      },
+      {
+        "package": "geany",
+        "bucket": "extras",
+        "url": "https://www.geany.org/",
+        "description": null,
+        "category": "essential-guis"
+      },
+      {
+        "package": "copyq",
+        "bucket": "extras",
+        "url": "https://hluk.github.io/CopyQ/",
+        "description": null,
+        "category": "essential-guis"
+      },
+      {
+        "package": "mingw",
+        "bucket": "main",
+        "url": "https://www.mingw-w64.org/",
+        "description": null,
+        "category": "languages"
+      },
+      {
+        "package": "haskell",
+        "bucket": "main",
+        "url": "https://www.haskell.org/",
+        "description": null,
+        "category": "languages"
+      },
+      {
+        "package": "haskell-cabal",
+        "bucket": "main",
+        "url": "https://www.haskell.org/cabal/",
+        "description": null,
+        "category": "languages"
+      },
+      {
+        "package": "rustup",
+        "bucket": "main",
+        "url": "https://rustup.rs/",
+        "description": null,
+        "category": "languages"
+      },
+      {
+        "package": "go",
+        "bucket": "main",
+        "url": "https://golang.org/",
+        "description": null,
+        "category": "languages"
+      },
+      {
+        "package": "openjdk",
+        "bucket": "java",
+        "url": "https://jdk.java.net/",
+        "description": null,
+        "category": "languages"
+      },
+      {
+        "package": "dotnet-sdk",
+        "bucket": "main",
+        "url": "https://www.microsoft.com/net/",
+        "description": null,
+        "category": "languages"
+      },
+      {
+        "package": "nvm",
+        "bucket": "main",
+        "url": "https://github.com/coreybutler/nvm-windows",
+        "description": null,
+        "category": "languages"
+      },
+      {
+        "package": "nasm",
+        "bucket": "main",
+        "url": "https://www.nasm.us/",
+        "description": null,
+        "category": "languages"
+      },
+      {
+        "package": "ffmpeg",
+        "bucket": "main",
+        "url": "https://www.audacityteam.org/",
+        "description": null,
+        "category": "media"
+      },
+      {
+        "package": "lame",
+        "bucket": "main",
+        "url": null,
+        "description": null,
+        "category": "media"
+      },
+      {
+        "package": "audacity",
+        "bucket": "extras",
+        "url": "https://www.audacityteam.org/",
+        "description": null,
+        "category": "media"
+      },
+      {
+        "package": "blender",
+        "bucket": "extras",
+        "url": "https://www.blender.org/",
+        "description": null,
+        "category": "media"
+      },
+      {
+        "package": "gimp",
+        "bucket": "extras",
+        "url": "https://www.gimp.org/",
+        "description": null,
+        "category": "media"
+      },
+      {
+        "package": "irfanview",
+        "bucket": "extras",
+        "url": "https://www.irfanview.com/",
+        "description": null,
+        "category": "media"
+      },
+      {
+        "package": "flameshot",
+        "bucket": "extras",
+        "url": "https://flameshot.org/",
+        "description": null,
+        "category": "media"
+      },
+      {
+        "package": "shotcut",
+        "bucket": "extras",
+        "url": "https://www.shotcut.org/",
+        "description": null,
+        "category": "media"
+      },
+      {
+        "package": "vlc",
+        "bucket": "extras",
+        "url": "https://www.videolan.org/",
+        "description": null,
+        "category": "media"
+      },
+      {
+        "package": "cutter",
+        "bucket": "extras",
+        "url": null,
+        "description": null,
+        "category": "security"
+      },
+      {
+        "package": "burp-suite-community-np",
+        "bucket": "nonportable",
+        "url": null,
+        "description": null,
+        "category": "security"
+      },
+      {
+        "package": "googlechrome",
+        "bucket": "extras",
+        "url": "https://www.google.com/chrome/",
+        "description": null,
+        "category": "web"
+      },
+      {
+        "package": "gdrive",
+        "bucket": "main",
+        "url": "https://github.com/prasmussen/gdrive",
+        "description": null,
+        "category": "web"
+      }
+    ]
+  }
+  
