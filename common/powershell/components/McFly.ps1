@@ -3,6 +3,7 @@
 $MCFLY_SCOOP_EXE = Join-Path -Path $env:SCOOP -ChildPath "apps\rustup\current\.cargo\bin\mcfly.exe"
 # generated from mcfly init powershell. Replaced absolute path with $MCFLY_SCOOP_EXE
 
+
 $null = New-Module mcfly {
     # We need PSReadLine for a number of capabilities
     if ($null -eq (Get-Module -Name PSReadLine)) {
@@ -13,6 +14,8 @@ $null = New-Module mcfly {
     # Get history file and make a dummy file for psreadline (hopefully after it has loaded the real history file to its in memory history)
     $env:HISTFILE = $null -eq $env:HISTFILE -or "" -eq $env:HISTFILE ? (Get-PSReadLineOption).HistorySavePath : $env:HISTFILE;
     $psreadline_dummy = New-TemporaryFile
+    # Append history to dummy file for compatibility
+    # Get-Content -Path $Env:HISTFILE | Out-File -FilePath $psreadline_dummy -Force
     Set-PSReadLineOption -HistorySavePath $psreadline_dummy.FullName
 
 

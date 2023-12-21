@@ -89,7 +89,7 @@ Import-Module "$PSScriptRoot\components\ConvertLineEndings.ps1"
 # Pull the repositories to avoid merge conflicts every single day..
 Import-Module "$PSScriptRoot\components\GitPullHelpers.ps1"
 # McFly - reverse fuzzy search
-# . "$PSScriptRoot\components\Mcfly.ps1"
+. "$PSScriptRoot\components\Mcfly.ps1"
 
 # vi-edit-mode
 # Set-PSReadlineOption -EditMode vi -BellStyle None
