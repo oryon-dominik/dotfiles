@@ -79,7 +79,7 @@ Import-Module "$PSScriptRoot\ModulesInVersionControl\Get-FileMetaData.ps1"
 # Zoxide Utilities (show with zoxide init powershell)
 . "$PSScriptRoot\ModulesInVersionControl\zoxideUtilities.ps1"
 # PSReadLine provides fish-like auto-suggestions, included in powershell since 7.2
-. "$PSScriptRoot\components\PSReadLineOptions.ps1"w
+. "$PSScriptRoot\components\PSReadLineOptions.ps1"
 # PSFzfOptions provides an fzf interface for better path completion
 . "$PSScriptRoot\components\PSFzFOptions.ps1"
 # Thefuck is a command line tool for automatically correcting commands
