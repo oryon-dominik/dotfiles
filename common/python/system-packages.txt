@@ -15,6 +15,9 @@ isort
 black
 flake8
 
+# tests should just work
+pytest
+
 # interactive & data
 jupyter
 ipython
