@@ -1,37 +1,45 @@
 #!/usr/bin/env pwsh
 
-# Elevated powershell
-# $is_elevated = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
-# if (!$is_elevated) { Write-Host "Can't install additional powershell modules as unprivileged user."; return }
 
-Write-Host "Installing additional powershell modules..."
+function InstallAdditionalPowershellModules {
 
-# TBD: also install via scoop?
-# scoop install main/nuget
-# scoop install extras/dockercompletion
+    $installed = @()
+    # TODO: add check for elevated powershell
+    # TODO: add installed to list
+    # Elevated powershell
+    # $is_elevated = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
+    # if (!$is_elevated) { Write-Host "Can't install additional powershell modules as unprivileged user."; return }
 
-# Install prerequisite NuGet
-Install-PackageProvider -Name NuGet -Force
+    Write-Host "Installing additional powershell modules..."
 
-# Enforce TLS 1.2
-[Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
+    # TBD: also install via scoop?
+    # scoop install main/nuget
+    # scoop install extras/dockercompletion
 
-# PowerShellGet is the package manager for PowerShell. https://github.com/PowerShell/PowerShellGet
-Install-Module -Name PowerShellGet -Force
+    # Install prerequisite NuGet
+    Install-PackageProvider -Name NuGet -Force
 
-# Windows Updatges via Powershell. https://www.powershellgallery.com/packages/PSWindowsUpdate
-Install-Module -Name PSWindowsUpdate -Force
+    # Enforce TLS 1.2
+    [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
 
-# Run Linux programs directly from PowerShell. https://github.com/jimmehc/PowerBash
-Install-Module -Name PowerBash -Force
+    # PowerShellGet is the package manager for PowerShell. https://github.com/PowerShell/PowerShellGet
+    Install-Module -Name PowerShellGet -Force
 
-# Docker command completion for PowerShell. https://github.com/matt9ucci/DockerCompletion
-Install-Module -Name DockerCompletion -Force
+    # Windows Updatges via Powershell. https://www.powershellgallery.com/packages/PSWindowsUpdate
+    Install-Module -Name PSWindowsUpdate -Force
 
+    # Run Linux programs directly from PowerShell. https://github.com/jimmehc/PowerBash
+    Install-Module -Name PowerBash -Force
 
-# WSL-Commands natively bound to PowerShell https://github.com/mikebattista/PowerShell-WSL-Interop#usage
-Install-Module WslInterop
+    # Docker command completion for PowerShell. https://github.com/matt9ucci/DockerCompletion
+    Install-Module -Name DockerCompletion -Force
 
-# PSReadLine provides fish-like auto-suggestions, included in powershell since 7.2, we need a version >= 2.2.0
-# https://docs.microsoft.com/de-de/powershell/module/psreadline/about/about_psreadline?view=powershell-7.2
-Install-Module -Name PSReadLine -AllowPrerelease -Force
+    # WSL-Commands natively bound to PowerShell https://github.com/mikebattista/PowerShell-WSL-Interop#usage
+    Install-Module WslInterop
+
+    # PSReadLine provides fish-like auto-suggestions, included in powershell since 7.2, we need a version >= 2.2.0
+    # https://docs.microsoft.com/de-de/powershell/module/psreadline/about/about_psreadline?view=powershell-7.2
+    Install-Module -Name PSReadLine -AllowPrerelease -Force
+
+    return $installed
+}

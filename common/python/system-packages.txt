@@ -1,0 +1,49 @@
+# Favorite Python Packages
+# Installed on every dev machine I fly
+
+# system
+pip-tools
+rich
+PyAutoGUI
+environs
+
+# dev lint
+pre-commit
+ruff
+mypy
+isort
+black
+flake8
+
+# interactive & data
+jupyter
+ipython
+numpy
+pandas
+seaborn
+
+# security
+passlib
+cryptography
+pwntools
+sshconf
+
+# web
+httpx
+
+# cli
+typer
+
+# convenience
+pendulum
+humanize
+
+# git
+git-fame
+
+# external apis used more or less daily
+openai
+google-api-python-client
+
+# for the possibility to execute django admin startproject directly from sys-cli only
+django
