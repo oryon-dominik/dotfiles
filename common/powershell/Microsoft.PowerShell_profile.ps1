@@ -36,12 +36,8 @@ if (-not (Test-Path $env:HISTFILE)) {
     New-Item -ItemType File -Path $env:HISTFILE -Force
 }
 
-try {
-  lolcat "$PSScriptRoot/intro" # Print the intro-graphic via rust-lolcat
-} catch {
-  Write-Host "Command not found. Dotfiles setup and essential software installation probably not complete. Consult the docs. Exiting."
-  Exit 1
-}
+. "$PSScriptRoot\components\EntryPanel.ps1"
+Greet
 
 # Set BAT_THEME
 $env:BAT_THEME="Dracula"
