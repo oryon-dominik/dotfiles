@@ -12,6 +12,9 @@ bin/
 # all logs
 *.log
 
+# the current shell's history
+.history
+
 # vscode/settings
 .vscode
 

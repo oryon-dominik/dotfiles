@@ -10,9 +10,11 @@ function InstallSoftware {
         [bool]$modernunix = $true,
         [bool]$python = $true,
         [bool]$golang = $false,
+        [bool]$javascript = $false,
         [bool]$buildtools = $false,
         [bool]$google_filestream = $false,
-        [bool]$pwsh_modules = $false
+        [bool]$pwsh_modules = $false,
+
         [string]$dotfilespath = $($env:DOTFILES),
     )
 
@@ -49,6 +51,11 @@ function InstallSoftware {
     if ($golang -eq $true) {
         . $(Join-Path -Path "$env:DOTFILES" -ChildPath "install/windows/InstallGolang.ps1")
         $installed += InstallGolangToolchain
+    }
+
+    if ($javascript -eq $true) {
+        . $(Join-Path -Path "$env:DOTFILES" -ChildPath "install/windows/InstallJavaScript.ps1")
+        $installed += InstallJavaScriptToolchain
     }
 
     if ($google_filestream -eq $true) {

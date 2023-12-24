@@ -1,13 +1,15 @@
 # PSReadLine provides fish-like auto-suggestions, included in powershell since 7.2
 Import-Module PSReadLine
 $PSReadLineOptions = @{
-    PredictionSource = "History"
+    PredictionSource = "HistoryAndPlugin"
     # PredictionViewStyle = "ListView"
+    # HistorySaveStyle = "SaveIncrementally"
     HistoryNoDuplicates = $true
     EditMode = "Windows"
 }
 Set-PSReadLineOption @PSReadLineOptions
-Set-PSReadLineKeyHandler -Key Ctrl+r -ScriptBlock {  # ! we are using mcFly instead
+
+Set-PSReadLineKeyHandler -Key Ctrl+e -ScriptBlock {  # ! we are using mcFly instead
     [Microsoft.PowerShell.PSConsoleReadLine]::SwitchPredictionView()
 }
 Set-PSReadLineKeyHandler -Key Shift+Tab -ScriptBlock {

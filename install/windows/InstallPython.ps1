@@ -13,6 +13,8 @@ function ManagePythonToolchain {
         [bool]$favourites = $false,
         [bool]$clean = $true,
         [string]$workon_home = $($env:WORKON_HOME),
+        [string]$pyenv_home = $($env:PYENV_HOME),
+        [string]$poetry_home = $($env:POETRY_HOME),
         [string]$global_python_venvs = $($env:GLOBAL_PYTHON_VENVS),
     )
 
@@ -31,14 +33,20 @@ function ManagePythonToolchain {
         [Environment]::SetEnvironmentVariable("WORKON_HOME", "$env:USERPROFILE\venvs", [System.EnvironmentVariableTarget]::Session)
     }
 
-    # TODO: write $env:WORKON_HOME and $env:GLOBAL_PYTHON_VENVS to the dotfiles .env file if any is not present.
+    AddToDotenv -path "$env:DOTFILES\.env" -key "WORKON_HOME" -value "$env:WORKON_HOME" -overwrite $false -warn $false
+    AddToDotenv -path "$env:DOTFILES\.env" -key "GLOBAL_PYTHON_VENVS" -value "$global_python_venvs" -overwrite $false -warn $false
 
     # TODO: clean up every PATH, or other remaining clutter.
 
     if ($pyenv -eq $true) {
         # Install pyenv-win.
+        if ($pyenv_home -eq $null) {
+            Write-Host "No 'env:PYENV_HOME' set. Using default: 'env:USERPROFILE\.pyenv\pyenv-win\'."
+            $pyenv_home = "$env:USERPROFILE\.pyenv\pyenv-win\"
+        }
+        AddToDotenv -path "$env:DOTFILES\.env" -key "PYENV_HOME" -value "$pyenv_home" -overwrite $false -warn $false
+
         # TBD: git clone, because the scoop package is kinda outdated fast..
-        # TODO: PYENV_HOME should be cloned (and the env set to) $env:USERPROFILE\.pyenv\pyenv-win\ by default and set to .env file. if not found.
 
         # Install using scoop.
         scoop install pyenv-win
@@ -64,14 +72,13 @@ function ManagePythonToolchain {
         pyenv install $latest
         if ($global -eq $true) {
             pyenv global $latest
-            # TODO: also set GLOBAL_PYTHON_VERSION in .env file.
+            AddToDotenv -path "$env:DOTFILES\.env" -key "GLOBAL_PYTHON_VERSION" -value "$latest" -overwrite $true -warn $false
             pyenv rehash  # TBD: is this necessary?
         }
         $installed += "python $latest"
     }
 
     python -m pip install --upgrade pip
-    
 
     if ($favourites -eq $true) {
         # Install favourite system packages.
@@ -81,7 +88,11 @@ function ManagePythonToolchain {
 
     if ($poetry -eq $true) {
         # Install poetry.
-        # TODO: POETRY_HOME should be set to $env:USERPROFILE\.poetry by default and set to .env file. if not found.
+        if ($poetry_home -eq $null) {
+            Write-Host "No 'env:POETRY_HOME' set. Using default: 'env:USERPROFILE\.poetry'."
+            $poetry_home = "$env:USERPROFILE\.poetry"
+        }
+        AddToDotenv -path "$env:DOTFILES\.env" -key "POETRY_HOME" -value "$poetry_home" -overwrite $false -warn $false
         # Install to the active python interpreter via their offical script.
         (Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | python -
         $installed += "poetry"

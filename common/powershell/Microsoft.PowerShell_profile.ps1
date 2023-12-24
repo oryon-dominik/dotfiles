@@ -29,9 +29,12 @@ if (-not (Test-Path $env:DOTFILES)) {
   $env:DOTFILES = $dotfiles_location
 }
 
-# Set BAT_THEME
-$env:BAT_THEME="Dracula"
-$env:BAT_PAGER='""'  # don't page BAT results
+# HISTFILE, used by PSReadLine and McFly
+$env:HISTFILE = "$env:DOTFILES\.history"
+if (-not (Test-Path $env:HISTFILE)) {
+    # History doesn't exist, so create it
+    New-Item -ItemType File -Path $env:HISTFILE -Force
+}
 
 try {
   lolcat "$PSScriptRoot/intro" # Print the intro-graphic via rust-lolcat
@@ -40,8 +43,12 @@ try {
   Exit 1
 }
 
+# Set BAT_THEME
+$env:BAT_THEME="Dracula"
+$env:BAT_PAGER='""'  # don't page BAT results
+
 # Load local dotenv.
-Import-Module "$PSScriptRoot\components\LoadDotEnv.ps1"
+Import-Module "$PSScriptRoot\components\DotEnvs.ps1"
 LoadDotEnv("$env:DOTFILES\.env")
 
 # Scoop package manager.
@@ -76,21 +83,21 @@ Import-Module "$PSScriptRoot\ModulesInVersionControl\Get-WinEventTail.ps1"
 Import-Module "$PSScriptRoot\ModulesInVersionControl\Get-Weather.ps1"
 # Metadata for files
 Import-Module "$PSScriptRoot\ModulesInVersionControl\Get-FileMetaData.ps1"
-# Zoxide Utilities (show with zoxide init powershell)
-. "$PSScriptRoot\ModulesInVersionControl\zoxideUtilities.ps1"
-# PSReadLine provides fish-like auto-suggestions, included in powershell since 7.2
-. "$PSScriptRoot\components\PSReadLineOptions.ps1"
-# PSFzfOptions provides an fzf interface for better path completion
-. "$PSScriptRoot\components\PSFzFOptions.ps1"
 # Thefuck is a command line tool for automatically correcting commands
 Import-Module "$PSScriptRoot\components\TheFuck.ps1"
 # Converting line endings from Windows to Unix
 Import-Module "$PSScriptRoot\components\ConvertLineEndings.ps1"
 # Pull the repositories to avoid merge conflicts every single day..
 Import-Module "$PSScriptRoot\components\GitPullHelpers.ps1"
+# PSReadLine provides fish-like auto-suggestions, included in powershell since 7.2
+. "$PSScriptRoot\components\PSReadLineOptions.ps1"
+# PSFzfOptions provides an fzf interface for better path completion
+. "$PSScriptRoot\components\PSFzFOptions.ps1"
+Import-Module -Name CompletionPredictor
 # McFly - reverse fuzzy search
-# TODO: fix mcfly overwriting Auto-suggestions
-#. "$PSScriptRoot\components\Mcfly.ps1"
+. "$PSScriptRoot\components\Mcfly.ps1"
+# Zoxide Utilities (show with zoxide init powershell)
+. "$PSScriptRoot\ModulesInVersionControl\zoxideUtilities.ps1"
 
 # vi-edit-mode
 # Set-PSReadlineOption -EditMode vi -BellStyle None
@@ -101,6 +108,8 @@ Invoke-Expression (&starship init powershell)
 
 # load aliases & system-function-definitions
 . "$PSScriptRoot\Aliases.ps1"
+. "$PSScriptRoot\components\FixYarnBehaviourWithoutArgs.ps1"
+
 
 # Will pull every time another machine has pulled (and maybe pushed before).
 GitPullOnceADayAndWorkingMachine

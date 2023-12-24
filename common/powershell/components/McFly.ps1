@@ -2,6 +2,7 @@
 
 $MCFLY_SCOOP_EXE = Join-Path -Path $env:SCOOP -ChildPath "apps\rustup\current\.cargo\bin\mcfly.exe"
 # generated from mcfly init powershell. Replaced absolute path with $MCFLY_SCOOP_EXE
+$env:MCFLY_FUZZY = 4
 
 
 $null = New-Module mcfly {
@@ -15,9 +16,8 @@ $null = New-Module mcfly {
     $env:HISTFILE = $null -eq $env:HISTFILE -or "" -eq $env:HISTFILE ? (Get-PSReadLineOption).HistorySavePath : $env:HISTFILE;
     $psreadline_dummy = New-TemporaryFile
     # Append history to dummy file for compatibility
-    # Get-Content -Path $Env:HISTFILE | Out-File -FilePath $psreadline_dummy -Force
+    Get-Content -Path $Env:HISTFILE | Out-File -FilePath $psreadline_dummy -Force
     Set-PSReadLineOption -HistorySavePath $psreadline_dummy.FullName
-
 
     $fileExists = Test-Path -path $env:HISTFILE
     if (-not $fileExists) {
@@ -113,6 +113,8 @@ $null = New-Module mcfly {
         "#mcfly: $line" | Out-File -FilePath $env:MCFLY_HISTORY -Append
         Invoke-McFly -CommandToComplete $line
     }
+
+    Set-PSReadLineOption -PredictionViewStyle "InlineView"
 
     Export-ModuleMember -Function @(
         "Invoke-McFly"
