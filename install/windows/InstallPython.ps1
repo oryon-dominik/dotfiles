@@ -9,6 +9,7 @@ function ManagePythonToolchain {
         [bool]$pyenv = $false,
         [string]$pyenv_url = "https://github.com/pyenv-win/pyenv-win",
         [bool]$poetry = $false,
+        [bool]$pipx = $false,
         [bool]$global = $false,
         [bool]$favourites = $false,
         [bool]$clean = $true,
@@ -46,18 +47,22 @@ function ManagePythonToolchain {
         }
         AddToDotenv -path "$env:DOTFILES\.env" -key "PYENV_HOME" -value "$pyenv_home" -overwrite $false -warn $false
 
-        # TBD: git clone, because the scoop package is kinda outdated fast..
-
         # Install using scoop.
-        scoop install pyenv-win
-        $installed += "pyenv-win"
-        scoop update pyenv-win
+        # scoop install pyenv-win
+        # scoop update pyenv-win
 
-        # git clone $pyenv_url $env:PYENV_HOME
-        # TODO: git cleanup / reset / pull and update
+        # Git clone instead, because the scoop package is kinda outdated fast..
+        Invoke-Expression "git clone $pyenv_url $env:PYENV_HOME"
+        $current_path = $pwd
+        Set-Location -Path (Split-Path -Path $env:PYENV_HOME -Parent)
+        Invoke-Expression "git checkout -- pyenv-win/.versions_cache.xml"
+        Invoke-Expression "git pull"
+        Set-Location -Path $current_path
+
+        $installed += "pyenv-win"
+
         pyenv update
         $updated_pyenv = $true
-        # TODO: delete pyenv cache
     }
 
     # Install target python version or latest.
@@ -78,7 +83,8 @@ function ManagePythonToolchain {
         $installed += "python $latest"
     }
 
-    python -m pip install --upgrade pip
+    python -m ensurepip --upgrade
+    python -m pip install --upgrade pip --no-warn-script-location
 
     if ($favourites -eq $true) {
         # Install favourite system packages.
@@ -93,17 +99,27 @@ function ManagePythonToolchain {
             $poetry_home = "$env:USERPROFILE\.poetry"
         }
         AddToDotenv -path "$env:DOTFILES\.env" -key "POETRY_HOME" -value "$poetry_home" -overwrite $false -warn $false
-        # Install to the active python interpreter via their offical script.
-        (Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | python -
+        if (![bool](Get-Command -Name 'poetry' -ErrorAction SilentlyContinue)) {
+            # Install to the active python interpreter via their offical script.
+            (Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | python -
+        }
         $installed += "poetry"
+        poetry self update
+    }
+
+    if ($pipx -eq $true) {
+        # Install pipx.
+        python -m pip install --quiet --user -U pipx
+        python -m pipx reinstall-all
+        $installed += "pipx"
     }
 
     if ($clean -eq $true) {
         # Clean up.
         python -m pip cache purge
-        # TODO: delete pyenv cache
-        # TODO: delete unused pyenv versions
-        # TODO: delete poetry cache
+        echo yes | poetry cache clear . --all
+        # Pipx cache
+        Remove-Item "$env:USERPROFILE\.local\pipx\.cache" -Force -Recurse -Confirm:$false
     }
 
     return $installed

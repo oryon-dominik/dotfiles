@@ -16,8 +16,12 @@ import os
 import socket
 import subprocess
 from pathlib import Path
+from warnings import warn
 
+
+warn("DEPRECATION WARNING: THIS SCRIPT IS OUTDATED. CHOCO will be fully replaced by scoop soon.")
 # getting the result from choco
+
 result = subprocess.run(["choco", "list", "--local-only"], stdout=subprocess.PIPE)
 
 # transforming the result

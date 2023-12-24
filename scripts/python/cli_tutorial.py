@@ -35,11 +35,12 @@ table.add_column("Description")
 table.add_column("URL")
 
 table.add_row("Available Commands:", "", "", "")
+table.add_row(" DEPRECATION WARNING: SOME OF THESE HINTS ARE OUTDATED", "", "", "")
 table.add_row("", "tldr", "modern man pages - use this on any command to quickly understand it's usage, via 'tealdeer'", "https://github.com/dbrgn/tealdeer")
 table.add_row("", "man", "official man-pages - live scraped from the web", "https://linux.die.net/man/")
 table.add_row()
 table.add_row("", "sudo", "now runs sudo from inside WSL", "")  # previously: execute a command in a new 'elevated Powershell' on a Windows-Terminal
-table.add_row("", "choco", "Chocolatey - your 'package-manager'.", "https://chocolatey.org/")
+table.add_row("", "scoop", "Scoop - your 'package-manager'.", "https://scoop.sh/")
 table.add_row("", "git", "version control", "https://git-scm.com/")
 table.add_row("", "cc", "call command - manage your projects", "")
 table.add_row("", "cfg", "move to the dotfiles location and deactivate any python venv", "")
