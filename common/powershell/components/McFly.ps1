@@ -3,7 +3,10 @@
 $MCFLY_SCOOP_EXE = Join-Path -Path $env:SCOOP -ChildPath "apps\rustup\current\.cargo\bin\mcfly.exe"
 # generated from mcfly init powershell. Replaced absolute path with $MCFLY_SCOOP_EXE
 $env:MCFLY_FUZZY = 4
+$env:MCFLY_PROMPT = ">"
+$env:MCFLY_HISTORY_LIMIT = 250000  # only search the last 250000 commands, if it's getting slow.
 
+# Find macflys database in %AppData%\Roaming\McFly\data\history.db
 
 $null = New-Module mcfly {
     # We need PSReadLine for a number of capabilities
