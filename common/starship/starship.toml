@@ -21,7 +21,9 @@ right_format = """$all"""
 [env_var]
 disabled = true
 [character]
+format = "$symbol "
 success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
 
 [username]
 style_user = "white bold"
@@ -42,8 +44,9 @@ truncation_length = 0
 # Whether or not to truncate to the root of the git repo that you're currently in.
 truncate_to_repo = false
 # The style for the root of the git repo when truncate_to_repo option is set to false.
-repo_root_style = ""
+repo_root_style = "dimmed purple"
 format = """[$path]($style)[$read_only]($read_only_style)"""
+repo_root_format = "[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style)"
 style = "bold yellow"
 read_only = " 🔒"  # The symbol indicating current directory is read only.
 read_only_style = "red"
@@ -55,7 +58,6 @@ home_symbol = "~"
 [directory.substitutions]
 "X:/Meine Ablage" = "🌈"  # gcloud on windows
 "/mnt/x/'Meine Ablage'" = "🌈"
-
 
 [time]
 disabled = false
