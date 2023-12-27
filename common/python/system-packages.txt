@@ -51,6 +51,7 @@ git-fame
 # external apis used more or less daily
 openai
 google-api-python-client
+shell-ai
 
 # for the possibility to execute django admin startproject directly from sys-cli only
 django
