@@ -92,7 +92,7 @@ def man(command: str):
         commands = parameters.css(f"dt")
         descriptions = parameters.css(f"dd")
         for command, description in zip(commands, descriptions):
-            table.add_row("", command.text(), description.text())
+            table.add_row("", command.text(), description.text())  # type: ignore
 
         console.print(table)
     except Exception:

@@ -57,9 +57,9 @@ if __name__ == "__main__":
         minutes, seconds = divmod(time_left, 60)
         print(f"Time left: - {minutes:02d}:{seconds:02d}", end="\n")
 
-    if os.getenv("DOTFILES") and filename:
-        cfg_root = Path(os.getenv("DOTFILES"))
-        soundfile = cfg_root / "shared" / "files" / "systemsounds" / filename
+    if dotfiles_location := os.getenv("DOTFILES", default="~/.dotfiles") and filename:
+        cfg_root: Path = Path(dotfiles_location)
+        soundfile = cfg_root / "shared" / "files" / "systemsounds" / filename  # type: ignore
     elif filename:
         cwd = Path(".")
         soundfile = cwd / filename

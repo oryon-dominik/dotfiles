@@ -30,8 +30,9 @@ def generate_env_name(name: str, cwd: str, legacy: bool = False) -> str:
     if not legacy:  # normalize
         cwd = os.path.normcase(cwd)
     hsh = hashlib.sha256(encode(cwd)).digest()
-    hsh = base64.urlsafe_b64encode(hsh).decode()[:8]
-    return f"{sanitized}-{hsh}"
+    hshs = base64.urlsafe_b64encode(hsh).decode()[:8]
+    return f"{sanitized}-{hshs}"
+
 
 def get_env():
     cwd = str(os.getcwd())
@@ -46,6 +47,7 @@ def get_env():
             return read_pyproject(project_file), wd
     return None, None
 
+
 def read_pyproject(file):
     """ read the projectname from pyproject.toml """
     with open(file, "r") as pyproject_file:
@@ -55,10 +57,9 @@ def read_pyproject(file):
                 return str(re.findall(r"['\"](.*?)['\"]", line)[0])
 
 
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    
+
     legacy_help = "Use the legacy venv name calculation method"
     if sys.version_info >= (3, 9):
         parser.add_argument('--legacy', action=argparse.BooleanOptionalAction, help=legacy_help, default=False)

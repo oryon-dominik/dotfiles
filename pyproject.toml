@@ -12,12 +12,7 @@ dependencies = []
 # System packages are located in common/python/system-packages.txt now.
 # https://peps.python.org/pep-0621/
 
-license = {
-    text = """
-    Proprietary. All rights reserved.
-    Just ask (!) me if you want to use something.
-    """
-}
+license = { text = "Proprietary. All rights reserved.  Just ask (!) me if you want to use something." }
 keywords = ["dotfiles", "powershell", "bash"]
 
 classifiers = [
