@@ -97,6 +97,7 @@ function ManagePythonToolchain {
         if ($poetry_home -eq $null) {
             Write-Host "No 'env:POETRY_HOME' set. Using default: 'env:USERPROFILE\.poetry'."
             $poetry_home = "$env:USERPROFILE\.poetry"
+            mkdir $poetry_home -ErrorAction SilentlyContinue
         }
         AddToDotenv -path "$env:DOTFILES\.env" -key "POETRY_HOME" -value "$poetry_home" -overwrite $false -warn $false
         if (![bool](Get-Command -Name 'poetry' -ErrorAction SilentlyContinue)) {
@@ -105,6 +106,9 @@ function ManagePythonToolchain {
         }
         $installed += "poetry"
         poetry self update
+        poetry config cache-dir "$poetry_home\cache"
+        poetry config virtualenvs.options.always-copy "true"
+        poetry config virtualenvs.path "$env:WORKON_HOME"
     }
 
     if ($pipx -eq $true) {
