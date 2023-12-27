@@ -6,7 +6,7 @@ function InstallModernUnixToolchain {
     $installed = @()
 
     Write-Host "Installing modern unix cli-commands to powershell..."
-    Write-Host "You should have installed scoop, git, the rust toolchain and Golang to sucessfully run this pipeline..."
+    Write-Host "You should have installed scoop, git, the rust toolchain, the JavaScript toolchain and Golang to sucessfully run this pipeline..."
     Write-Host ""
 
     # Manually install the packages via scoop, that don't compile easily with cargo.
@@ -21,13 +21,29 @@ function InstallModernUnixToolchain {
     $DOTFILES_BIN = Join-Path -Path $env:DOTFILES -ChildPath 'bin'
     mkdir $DOTFILES_BIN -ErrorAction SilentlyContinue
 
-    . $(Join-Path -Path "$env:DOTFILES" -ChildPath "install/windows/InstallCargoCrates.ps1")
+
+    $CargoCratesInstallScript = $(Join-Path -Path "$env:DOTFILES" -ChildPath "install/windows/InstallCargoCrates.ps1")
+    if (Test-Path $CargoCratesInstallScript) {
+        . $CargoCratesInstallScript
+    } else {
+        Write-Host "Downloading InstallCargoCrates.ps1 to $CargoCratesInstallScript"
+        $CargoCratesInstallScript = Invoke-WebRequest https://raw.githubusercontent.com/oryon-dominik/dotfiles/trunk/install/windows/InstallCargoCrates.ps1
+        Invoke-Expression $($CargoCratesInstallScript.Content)
+    }
+
     $installed += InstallCargoCrates
 
-    # TODO: integrate go packages and npm global packages into this pipeline?
-    # go install github.com/cheat/cheat/cmd/cheat@latest
-    # npm install gtop -g
-    # npm install slidev -g ??
+    # [*nix*-style inspired cli cheatsheets](https://github.com/cheat/cheat)
+    go install github.com/cheat/cheat/cmd/cheat@latest
+    $installed += "cheat"
+    
+    # [gtop - graphical system monitoring dashboard](https://github.com/aksakalli/gtop)
+    yarn global add gtop
+    $installed += "gtop"
+
+    # [slidev - Presentation Slides for Developers](https://github.com/slidevjs/slidev)
+    yarn global add slidev
+    $installed += "slidev"
 
     Write-Host ""
     Write-Host "Pick the latest windows executable for these additional packages from github."

@@ -35,6 +35,16 @@ function InstallSoftware {
         $installed += InstallRustToolchain
     }
 
+    if ($golang -eq $true) {
+        . $(Join-Path -Path "$env:DOTFILES" -ChildPath "install/windows/InstallGolang.ps1")
+        $installed += InstallGolangToolchain
+    }
+
+    if ($javascript -eq $true) {
+        . $(Join-Path -Path "$env:DOTFILES" -ChildPath "install/windows/InstallJavaScript.ps1")
+        $installed += InstallJavaScriptToolchain
+    }
+
     if ($modernunix -eq $true) {
         . $(Join-Path -Path "$env:DOTFILES" -ChildPath "install/windows/InstallModernUnixForWindows.ps1")
         $installed += InstallModernUnixToolchain
@@ -48,15 +58,7 @@ function InstallSoftware {
         $installed += ManagePythonToolchain -python $true -pyenv $true -poetry $true -global $true -favourites $true -clean $true
     }
 
-    if ($golang -eq $true) {
-        . $(Join-Path -Path "$env:DOTFILES" -ChildPath "install/windows/InstallGolang.ps1")
-        $installed += InstallGolangToolchain
-    }
 
-    if ($javascript -eq $true) {
-        . $(Join-Path -Path "$env:DOTFILES" -ChildPath "install/windows/InstallJavaScript.ps1")
-        $installed += InstallJavaScriptToolchain
-    }
 
     if ($google_filestream -eq $true) {
         . $(Join-Path -Path "$env:DOTFILES" -ChildPath "install/windows/InstallGoogleDriveFileStream.ps1")
