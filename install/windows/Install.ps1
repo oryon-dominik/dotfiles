@@ -40,7 +40,7 @@ scoop install git
 # clone the dotfiles
 git clone https://github.com/oryon-dominik/dotfiles-den "$env:DOTFILES"
 AddToDotenv -path "$env:DOTFILES\.env" -key "GIT_CONFIG_SYSTEM" -value "$env:USERPROFILE\.gitconfig" -overwrite $false -warn $false
-# TODO: symlink the gitconfig from the dotfiles
+# TODO: symlink the gitconfig from the dotfiles. Also edit the name from the local user as default here.. (maybe use a function for this)
 
 # Symlink dotfiles to the old powershell profile
 # TODO: use and create a (or two, one for pwsh and one for custom scripts..) symlink script from dotfiles
