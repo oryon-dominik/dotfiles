@@ -6,6 +6,15 @@ $env:MCFLY_FUZZY = 4
 $env:MCFLY_PROMPT = ">"
 $env:MCFLY_HISTORY_LIMIT = 250000  # only search the last 250000 commands, if it's getting slow.
 
+# ensure mcfly_home is on path, to store the DB
+$mcfly_home = $($env:MCFLY_HOME)
+if ($mcfly_home -eq $null) {
+    $mcfly_home = "$(Join-Path -Path $env:USERPROFILE -ChildPath '.mcfly')"
+    Write-Host "No 'env:MCFLY_HOME' path given. Using default: '$mcfly_home'."
+    AddToDotenv -path "$env:DOTFILES\.env" -key "MCFLY_HOME" -value "$mcfly_home" -overwrite $false -warn $false
+}
+mkdir $mcfly_home -ErrorAction SilentlyContinue
+
 # Find macflys database in %AppData%\Roaming\McFly\data\history.db
 
 $null = New-Module mcfly {
