@@ -181,7 +181,7 @@
             "description": "A cross-platform, OpenGL terminal emulator.",
             "url": "https://github.com/alacritty/alacritty",
             "interface": "gui",
-            "os": null
+            "os": "posix"
         },
         {
             "crate": "mcfly",
