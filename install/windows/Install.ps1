@@ -11,30 +11,37 @@ $is_elevated = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()
 # TODO: make it runnable as an unprivileged user, skip software that needs privileges
 if (!$is_elevated) { Write-Host "Can't install powershell dotfiles as unprivileged user."; return }
 
-# Install powershell 7
+# 1. Install latest powershell
 Invoke-Expression "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI"
 
 $dotfiles_location = Join-Path -Path $home -ChildPath "\.dotfiles"
 [Environment]::SetEnvironmentVariable("DOTFILES", "$dotfiles_location", "User")
 
+# 2. reopen a new shell
+function Reset-Session {
+    # store this shell's parent PID for later use
+    $parentPID = $PID
+    # get the the path of this shell's executable
+    $thisExePath = (Get-Process -Id $PID).Path
+    # start a new shell, same window
+    Start-Process $thisExePath -NoNewWindow
+    # stop this shell if it's still alive
+    Stop-Process -Id $parentPID -Force
+}
+Reset-Session
 
-# Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-# Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
-# Install package manager 'scoop'
-irm get.scoop.sh | iex
+# 3. Install package manager 'scoop'
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+
+# git
 scoop install git
 
-
-# TODO: replace all chocolatey installs with scoop installs
-# 3. reopen elevated shell
-
-refreshenv
-
+# clone the dotfiles
 git clone https://github.com/oryon-dominik/dotfiles-den "$env:DOTFILES"
 
 # Symlink dotfiles to the old powershell profile
 # TODO: use and create a (or two, one for pwsh and one for custom scripts..) symlink script from dotfiles
-
 Remove-Item -path "$env:USERPROFILE/Documents/WindowsPowerShell" -recurse
 New-Item -Path "$env:USERPROFILE/Documents/WindowsPowerShell" -ItemType Junction -Value "$env:DOTFILES/common/powershell"
 # and the powershell 7 profile

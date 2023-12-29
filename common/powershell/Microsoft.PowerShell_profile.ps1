@@ -83,6 +83,8 @@ Import-Module "$PSScriptRoot\ModulesInVersionControl\Get-FileMetaData.ps1"
 Import-Module "$PSScriptRoot\components\TheFuck.ps1"
 # Converting line endings from Windows to Unix
 Import-Module "$PSScriptRoot\components\ConvertLineEndings.ps1"
+# Be able to reset your powershell session.
+Import-Module "$PSScriptRoot\components\ResetSession.ps1"
 # Pull the repositories to avoid merge conflicts every single day..
 Import-Module "$PSScriptRoot\components\GitPullHelpers.ps1"
 # PSReadLine provides fish-like auto-suggestions, included in powershell since 7.2
