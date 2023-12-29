@@ -11,7 +11,7 @@ function InstallJavaScriptToolchain {
     scoop install main/nvm
     scoop update nvm
 
-    $env:NVM_HOME = "$(Join-Path -Path $env:SCOOP -ChildPath 'persist\nvm')"
+    $env:NVM_HOME = "$(Join-Path -Path $env:SCOOP -ChildPath 'apps\nvm\current')"
     AddToDotenv -path "$env:DOTFILES\.env" -key "NVM_HOME" -value "$env:NVM_HOME" -overwrite $false -warn $false
 
     nvm list available
