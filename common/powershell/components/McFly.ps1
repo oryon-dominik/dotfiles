@@ -1,20 +1,12 @@
 #!/usr/bin/env pwsh
 
-$MCFLY_EXE_PATH = Join-Path -Path $env:CARGO_HOME -ChildPath "bin\mcfly.exe"
+$MCFLY_EXE_PATH = "$(Join-Path -Path $env:CARGO_HOME -ChildPath 'bin\mcfly.exe')"
 # generated from mcfly init powershell. Replaced absolute path with $MCFLY_EXE_PATH
 $env:MCFLY_FUZZY = 4
 $env:MCFLY_PROMPT = ">"
 $env:MCFLY_HISTORY_LIMIT = 250000  # only search the last 250000 commands, if it's getting slow.
 
-$mcfly_home = $($env:MCFLY_HOME)
-if ($mcfly_home -eq $null) {
-    $mcfly_home = "$(Join-Path -Path $env:USERPROFILE -ChildPath '.mcfly')"
-    Write-Host "No 'env:MCFLY_HOME' path given. Using default: '$mcfly_home'."
-    AddToDotenv -path "$env:DOTFILES\.env" -key "MCFLY_HOME" -value "$mcfly_home" -overwrite $false -warn $false
-}
-mkdir $mcfly_home -ErrorAction SilentlyContinue
-
-# Find macflys database in %AppData%\Roaming\McFly\data\history.db
+# Find mcflys database in "$env:MCFLY_HOME\history.db"
 
 $null = New-Module mcfly {
     # We need PSReadLine for a number of capabilities
