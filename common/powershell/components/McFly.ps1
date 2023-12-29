@@ -6,7 +6,6 @@ $env:MCFLY_FUZZY = 4
 $env:MCFLY_PROMPT = ">"
 $env:MCFLY_HISTORY_LIMIT = 250000  # only search the last 250000 commands, if it's getting slow.
 
-# ensure mcfly_home is on path, to store the DB
 $mcfly_home = $($env:MCFLY_HOME)
 if ($mcfly_home -eq $null) {
     $mcfly_home = "$(Join-Path -Path $env:USERPROFILE -ChildPath '.mcfly')"

@@ -33,6 +33,15 @@ function InstallModernUnixToolchain {
 
     $installed += InstallCargoCrates
 
+    # Explicitly add mcfly directory to path for a consistent history across shells.
+    $mcfly_home = $($env:MCFLY_HOME)
+    if ($mcfly_home -eq $null) {
+        $mcfly_home = "$(Join-Path -Path $env:USERPROFILE -ChildPath '.mcfly')"
+        Write-Host "No 'env:MCFLY_HOME' path given. Using default: '$mcfly_home'."
+        AddToDotenv -path "$env:DOTFILES\.env" -key "MCFLY_HOME" -value "$mcfly_home" -overwrite $false -warn $false
+    }
+    mkdir $mcfly_home -ErrorAction SilentlyContinue
+
     # [*nix*-style inspired cli cheatsheets](https://github.com/cheat/cheat)
     go install github.com/cheat/cheat/cmd/cheat@latest
     $installed += "cheat"
