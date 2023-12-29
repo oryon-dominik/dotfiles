@@ -1,7 +1,7 @@
 #!/usr/bin/env pwsh
 
-$MCFLY_SCOOP_EXE = Join-Path -Path $env:SCOOP -ChildPath "apps\rustup\current\.cargo\bin\mcfly.exe"
-# generated from mcfly init powershell. Replaced absolute path with $MCFLY_SCOOP_EXE
+$MCFLY_EXE_PATH = Join-Path -Path $env:SCOOP -ChildPath "apps\rustup\current\.cargo\bin\mcfly.exe"
+# generated from mcfly init powershell. Replaced absolute path with $MCFLY_EXE_PATH
 $env:MCFLY_FUZZY = 4
 $env:MCFLY_PROMPT = ">"
 $env:MCFLY_HISTORY_LIMIT = 250000  # only search the last 250000 commands, if it's getting slow.
@@ -49,7 +49,7 @@ $null = New-Module mcfly {
         Param([string]$CommandToComplete)
         $lastExitTmp = $LASTEXITCODE
         $tempFile = New-TemporaryFile
-        Start-Process -FilePath $MCFLY_SCOOP_EXE -ArgumentList "search", "$CommandToComplete", -o, "$tempFile" -NoNewWindow -Wait
+        Start-Process -FilePath $MCFLY_EXE_PATH -ArgumentList "search", "$CommandToComplete", -o, "$tempFile" -NoNewWindow -Wait
         foreach($line in Get-Content $tempFile) {
             $key, $value = $line -split ' ', 2
             if ("mode" -eq $key) {
@@ -90,7 +90,7 @@ $null = New-Module mcfly {
         )
         $ExitCode = $ExitCode ?? 0;
         $Command | Out-File -FilePath $env:MCFLY_HISTORY -Append
-        Start-Process -FilePath $MCFLY_SCOOP_EXE -ArgumentList add, --exit, $ExitCode, --append-to-histfile, $env:HISTFILE -NoNewWindow | Write-Host
+        Start-Process -FilePath $MCFLY_EXE_PATH -ArgumentList add, --exit, $ExitCode, --append-to-histfile, $env:HISTFILE -NoNewWindow | Write-Host
     }
 
     # We need to make sure we call out AddToHistoryHandler right after each command is called
