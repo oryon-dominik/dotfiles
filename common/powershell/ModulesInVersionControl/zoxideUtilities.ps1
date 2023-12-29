@@ -98,4 +98,4 @@ Set-Alias -Name zi -Value __zoxide_zi -Option AllScope
 # To initialize zoxide, add this to your configuration (find it by running
 # `echo $profile` in PowerShell):
 #
-Invoke-Expression "$env:CARGO_HOME\zoxide.exe init powershell --hook 'pwd'" | out-null
+Invoke-Expression "$env:CARGO_HOME\bin\zoxide.exe init powershell --hook 'pwd'" | out-null
