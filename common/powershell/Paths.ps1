@@ -13,4 +13,5 @@ $env:path += ";$env:USERPROFILE\go\bin\"  # go commands
 $env:path += ";$env:POETRY_HOME\bin"  # python poetry
 $env:path += ";$env:SCOOP\apps\scoop\current\bin\;$env:SCOOP\shims\"
 $env:path += ";$env:NVM_HOME\nodejs\"
+$env:path += ";$env:NVM_HOME\nodejs\nodejs\"
 $env:path += ";$env:YARN_GLOBAL_HOME\bin"
