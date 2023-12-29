@@ -1,6 +1,6 @@
 #!/usr/bin/env pwsh
 
-$MCFLY_EXE_PATH = Join-Path -Path $env:SCOOP -ChildPath "apps\rustup\current\.cargo\bin\mcfly.exe"
+$MCFLY_EXE_PATH = Join-Path -Path $env:SCOOP -ChildPath "$env:CARGO_HOME\bin\mcfly.exe"
 # generated from mcfly init powershell. Replaced absolute path with $MCFLY_EXE_PATH
 $env:MCFLY_FUZZY = 4
 $env:MCFLY_PROMPT = ">"

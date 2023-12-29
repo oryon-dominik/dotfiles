@@ -6,13 +6,31 @@
 # curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 function InstallRustToolchain {
+
+    param (
+        [string]$cargo_home = $($env:CARGO_HOME),
+        [string]$rustup_home = $($env:RUSTUP_HOME)
+    )
+
     $installed = @()
     Write-Host "Installing Rust Toolchain... (rustup, cargo, cargo-edit, cargo-expand.) https://www.rust-lang.org/"
+
+    if ($cargo_home -eq $null) {
+        $cargo_home = "$(Join-Path -Path $env:SCOOP -ChildPath 'apps\rustup\current\.cargo')"
+        Write-Host "No 'env:CARGO_HOME' path given. Using default: '$cargo_home'."
+    }
+    if ($rustup_home -eq $null) {
+        $rustup_home = "$(Join-Path -Path $env:SCOOP -ChildPath 'apps\rustup\current\.rustup')"
+        Write-Host "No 'env:CARGO_HOME' path given. Using default: '$rustup_home'."
+    }
 
     # Install using scoop.
     scoop install main/rustup
     $installed += "rustup"
     scoop update rustup
+
+    AddToDotenv -path "$env:DOTFILES\.env" -key "CARGO_HOME" -value "$cargo_home" -overwrite $false -warn $false
+    AddToDotenv -path "$env:DOTFILES\.env" -key "RUSTUP_HOME" -value "$rustup_home" -overwrite $false -warn $false
 
     # Ensure latest rust/cargo.
     rustup update
