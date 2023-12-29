@@ -42,7 +42,7 @@ function InstallModernUnixToolchain {
     $installed += "gtop"
 
     # [slidev - Presentation Slides for Developers](https://github.com/slidevjs/slidev)
-    yarn global add slidev/cli
+    yarn global add @slidev/cli
     $installed += "slidev"
 
     Write-Host ""
