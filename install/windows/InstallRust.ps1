@@ -16,11 +16,11 @@ function InstallRustToolchain {
     Write-Host "Installing Rust Toolchain... (rustup, cargo, cargo-edit, cargo-expand.) https://www.rust-lang.org/"
 
     if ($cargo_home -eq $null) {
-        $cargo_home = "$(Join-Path -Path $env:SCOOP -ChildPath 'apps\rustup\current\.cargo')"
+        $cargo_home = "$(Join-Path -Path $env:SCOOP -ChildPath 'apps\rustup\current\.cargo\')"
         Write-Host "No 'env:CARGO_HOME' path given. Using default: '$cargo_home'."
     }
     if ($rustup_home -eq $null) {
-        $rustup_home = "$(Join-Path -Path $env:SCOOP -ChildPath 'apps\rustup\current\.rustup')"
+        $rustup_home = "$(Join-Path -Path $env:SCOOP -ChildPath 'apps\rustup\current\.rustup\')"
         Write-Host "No 'env:CARGO_HOME' path given. Using default: '$rustup_home'."
     }
 
