@@ -88,7 +88,7 @@ function ManagePythonToolchain {
 
     if ($favourites -eq $true) {
         # Install favourite system packages.
-        python -m pip install -r "$env_DOTFILES.\common\python\system-packages.txt"
+        python -m pip install -r "$env:DOTFILES.\common\python\system-packages.txt"
         $installed += "python-system-packages"
     }
 
