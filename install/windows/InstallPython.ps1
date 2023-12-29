@@ -16,7 +16,7 @@ function ManagePythonToolchain {
         [string]$workon_home = $($env:WORKON_HOME),
         [string]$pyenv_home = $($env:PYENV_HOME),
         [string]$poetry_home = $($env:POETRY_HOME),
-        [string]$global_python_venvs = $($env:GLOBAL_PYTHON_VENVS),
+        [string]$global_python_venvs = $($env:GLOBAL_PYTHON_VENVS)
     )
 
     Write-Host "Installing Python Toolchain... https://python.org/"
