@@ -46,5 +46,10 @@ function InstallRustToolchain {
     cargo install cargo-expand
     $installed += "cargo-expand"
 
+    # [cargo-cache - manage $CARGO_HOME, print and remove selectively](https://github.com/matthiaskrgr/cargo-cache)
+    cargo install cargo-cache
+    $installed += "cargo-cache"
+    cargo-cache --remove-dir all
+
     return $installed
 }
