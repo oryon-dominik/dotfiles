@@ -4,7 +4,7 @@
 function InstallCargoCrates {
 
     param (
-        [string]$path = $(Join-Path -Path $env:DOTFILES -ChildPath "install\crates\cargo-tools.json"),
+        [string]$path = $(Join-Path -Path $env:DOTFILES -ChildPath "install\crates\cargo-tools.json")
     )
 
     $installed = @()
