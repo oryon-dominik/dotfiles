@@ -2,11 +2,16 @@
     email = oryon@cyberise.de
     name = oryon-dominik
 [core]
-    sshCommand = ssh -i ~/.ssh/id_ed25519_GITHUB
+    # ssh shall be managed by the ssh config or the repos themselves
     autocrlf = input
     editor = code --wait
     pager = delta
     ignorecase = false
+# [url "git@github.com"]
+#     # https://lists.kernelnewbies.org/pipermail/kernelnewbies/2017-November/018413.html
+#     insteadOf = https://github.com
+#     insteadOf = http://github.com
+#     insteadOf = git://github.com
 [init]
     defaultBranch = trunk
 [merge]
@@ -86,3 +91,8 @@
     directory = */oryon/.pyenv
     directory = */dev/lieutenant
     directory = */dev/hockey
+[credential]
+    # 60 * 60 * 8 hour credentials cache
+    helper = cache --timeout=28000
+    # For https connections use git-credential-manager-core:
+    # helper = ~/scoop/apps/git-credential-manager/current/git-credential-manager.exe

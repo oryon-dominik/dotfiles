@@ -64,20 +64,39 @@ Exit 0
 # Post-install
 # Prerequisite: scoop and dotfiles installed correctly
 # Also remove the legacy openssh and replace it with an actual version
-sudo Remove-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
-sudo Remove-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
 
-scoop install openssh
-# install sshd service and daemon
-sudo $env:SCOOP\apps\openssh\current\install-sshd.ps1
-Write-host "To uninstall the ssh agent: 'sudo $env:SCOOP\apps\openssh\current\uninstall-sshd.ps1'"
+# # ! You have to manually start an elevated powershell, sudo doesn't work here.
+(New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH*'
+Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
+Get-Service -Name ssh-agent | Set-Service -StartupType Manual
+Start-Service ssh-agent
 
-# ! You have to manually start the ssh-agent service in an elevated powershell, sudo doesn't work here.
-Get-Service -Name ssh-agent | Set-Service -StartupType Automatic
-sudo Start-Service ssh-agent
 
-# now cd into ~./ssh and generate a new ssh keypair
+# Back to your normal shell.
+AddToDotenv -path "$env:DOTFILES\.env" -key "GIT_SSH" -value "C:\Windows\System32\OpenSSH\ssh.exe" -overwrite $false -warn $false
+# generate a new ssh keypair
+z $env:USERPROFILE/.ssh
 ssh-keygen -t ed25519 -C "$env:USERPROFILE@$(hostname)" -f "$env:USERPROFILE\.ssh\id_ed25519"
-ssh-add "$env:USERPROFILE\.ssh\id_ed25519"
+
+# Alternative: use git-credential-manager-core and https
+# scoop install extras/git-credential-manager
+# git-credential-manager configure
+# ! Handling & configuring ssh-agents on windows is a pain.. will continue here later some day..
+# sudo Remove-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
+# sudo Remove-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
+# scoop install openssh
+
+# install sshd service and daemon
+# # ! You have to manually start the ssh-agent service in an elevated powershell, sudo doesn't work here.
+# if (isadmin -eq $true) { 
+#     $env:SCOOP\apps\openssh\current\install-sshd.ps1
+#     Write-host "To uninstall the ssh agent: 'sudo $env:SCOOP\apps\openssh\current\uninstall-sshd.ps1'"
+#     Get-Service -Name ssh-agent | Set-Service -StartupType Automatic
+#     Start-Service ssh-agent
+#     ssh-add "$env:USERPROFILE\.ssh\id_ed25519"
+#     AddToDotenv -path "$env:DOTFILES\.env" -key "GIT_SSH" -value "$(Join-Path -Path $env:SCOOP -ChildPath "apps\openssh\current\ssh.exe")" -overwrite $false -warn $false
+# }
+
 
 Write-Host "Done :)"
