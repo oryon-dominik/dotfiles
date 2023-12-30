@@ -1,0 +1,445 @@
+{
+    "shell-commands": [
+        {
+            "command": "tldr",
+            "description": "Modern man pages - use this on any command to quickly understand it's usage, via rust implementation 'tealdeer'.",
+            "link": "https://github.com/dbrgn/tealdeer",
+            "category": "reference",
+            "os": null
+        },
+        {
+            "command": "cheat",
+            "description": "Interactive cheatsheets.",
+            "link": "https://github.com/cheat/cheat",
+            "category": "reference",
+            "os": null
+        },
+        {
+            "command": "man",
+            "description": "OnlineManPage - Official linux command man-pages - live scraped from the web via python script.",
+            "link": "https://linux.die.net/man/",
+            "category": "reference",
+            "os": null
+        },
+        {
+            "command": "scoop",
+            "description": "Scoop - your Windows 'package-manager'.",
+            "link": "https://scoop.sh/",
+            "category": "packages",
+            "os": "windows"
+        },
+        {
+            "command": "git",
+            "description": "Version control.",
+            "link": "https://git-scm.com/",
+            "category": "dev",
+            "os": null
+        },
+        {
+            "command": "cc",
+            "description": "Call command - manage your projects interface.",
+            "link": null,
+            "category": "dev",
+            "os": null
+        },
+        {
+            "command": "cfg",
+            "description": "Move to the dotfiles location and deactivate any python venv.",
+            "link": null,
+            "category": "reference",
+            "os": null
+        },
+        {
+            "command": "aliases",
+            "description": "Edit Locations.ps1 for the local aliases in the texteditor.",
+            "link": null,
+            "category": "reference",
+            "os": null
+        },
+        {
+            "command": "<CTRL + R>",
+            "description": "Shared between: Fzf, a general-purpose command-line fuzzy finder | mcfly shell history.",
+            "link": "https://github.com/junegunn/fzf | https://github.com/cantino/mcfly",
+            "category": "shell",
+            "os": null
+        },
+        {
+            "command": "<F2>",
+            "description": "Change the intellisense autocompletion mode.",
+            "link": "https://github.com/PowerShell/CompletionPredictor",
+            "category": "shell",
+            "os": null
+        },
+        {
+            "command": "eza",
+            "description": "Display directories. Modern ls replacement.",
+            "link": "https://github.com/eza-community/eza",
+            "category": "tree",
+            "os": null
+        },
+        {
+            "command": "bat",
+            "description": "Like cat. Seek or concatenate files, with colors.",
+            "link": "https://github.com/sharkdp/bat",
+            "category": "files",
+            "os": null
+        },
+        {
+            "command": "delta",
+            "description": "Diff files.",
+            "link": "https://github.com/dandavison/delta",
+            "category": "files",
+            "os": null
+        },
+        {
+            "command": "z",
+            "description": "zoxide is a smarter cd command",
+            "link": "https://github.com/ajeetdsouza/zoxide",
+            "category": "tree",
+            "os": null
+        },
+        {
+            "command": "procs",
+            "description": "Procs is a replacement for ps.",
+            "link": "https://github.com/dalance/procs",
+            "category": "monitoring",
+            "os": null
+        },
+        {
+            "command": "btm",
+            "description": "Bottom: process/system visualization.",
+            "link": "https://github.com/ClementTsang/bottom",
+            "category": "monitoring",
+            "os": null
+        },
+        {
+            "command": "br",
+            "description": "Broot - A new way to see and navigate directory trees.",
+            "link": "https://github.com/Canop/broot",
+            "category": "tree",
+            "os": null
+        },
+        {
+            "command": "gtop",
+            "description": "Gtop: process/system visualization.",
+            "link": "https://github.com/aksakalli/gtop",
+            "category": "monitoring",
+            "os": null
+        },
+        {
+            "command": "dust",
+            "description": "A more intuitive version of du.",
+            "link": "https://github.com/bootandy/dust",
+            "category": "info",
+            "os": null
+        },
+        {
+            "command": "duf",
+            "description": "Disk usage.",
+            "link": "https://github.com/muesli/duf",
+            "category": "info",
+            "os": null
+        },
+        {
+            "command": "rg",
+            "description": "'Ripgrep' recursively searches the current directory for a regex pattern.",
+            "link": "https://github.com/BurntSushi/ripgrep",
+            "category": "data-processing",
+            "os": null
+        },
+        {
+            "command": "fd",
+            "description": "Find entries in the filesystem.",
+            "link": "https://github.com/sharkdp/fd",
+            "category": "files",
+            "os": null
+        },
+        {
+            "command": "hyperfine",
+            "description": "A command-line benchmarking tool.",
+            "link": "https://github.com/sharkdp/hyperfine",
+            "category": "monitoring",
+            "os": null
+        },
+        {
+            "command": "sd",
+            "description": "'s'earch & 'd'isplace.",
+            "link": "https://github.com/chmln/sd",
+            "category": "data-processing",
+            "os": null
+        },
+        {
+            "command": "ag",
+            "description": "The silver searcher. A code searching tool similar to ack, with a focus on speed.",
+            "link": "https://github.com/ggreer/the_silver_searcher",
+            "category": "files",
+            "os": null
+        },
+        {
+            "command": "choose",
+            "description": "Fast alternative to cut and (sometimes) awk.",
+            "link": "https://github.com/theryangeary/choose",
+            "category": "data-processing",
+            "os": null
+        },
+        {
+            "command": "jq",
+            "description": "Command-line JSON processor.",
+            "link": "https://github.com/stedolan/jq/releases",
+            "category": "data-processing",
+            "os": null
+        },
+        {
+            "command": "grex",
+            "description": "Generating regular expressions from user-provided test cases.",
+            "link": "https://github.com/pemistahl/grex",
+            "category": "dev",
+            "os": null
+        },
+        {
+            "command": "tokei",
+            "description": "Count your code, quickly.",
+            "link": "https://github.com/XAMPPRocky/tokei",
+            "category": "dev",
+            "os": null
+        },
+        {
+            "command": "dog",
+            "description": "Command-line DNS client.",
+            "link": "https://github.com/ogham/dog",
+            "category": "web",
+            "os": null
+        },
+        {
+            "command": "xh",
+            "description": "Friendly and fast tool for sending HTTP requests.",
+            "link": "https://github.com/ducaale/xh",
+            "category": "web",
+            "os": null
+        },
+        {
+            "command": "bandwhich",
+            "description": "Graphical terminal bandwidth utilization tool.",
+            "link": "https://github.com/imsnif/bandwhich",
+            "category": "monitoring",
+            "os": null
+        },
+        {
+            "command": "httpie",
+            "description": "Web requests in API-age.",
+            "link": "https://github.com/httpie/httpie",
+            "category": "web",
+            "os": null
+        },
+        {
+            "command": "gping",
+            "description": "Ping, but with a graph.",
+            "link": "https://github.com/orf/gping",
+            "category": "monitoring",
+            "os": null
+        },
+        {
+            "command": "pyenv",
+            "description": "Manage your different python versions.",
+            "link": "https://github.com/pyenv/pyenv",
+            "category": "python",
+            "os": null
+        },
+        {
+            "command": "poetry",
+            "description": "Manage your projects dependencies and package.",
+            "link": "https://python-poetry.org/",
+            "category": "python",
+            "os": null
+        },
+        {
+            "command": "pipx",
+            "description": "Manage external binaries.",
+            "link": "https://pypa.github.io/pipx/",
+            "category": "python",
+            "os": null
+        },
+        {
+            "command": "workon",
+            "description": "Activate current directory's venv - if available.",
+            "link": null,
+            "category": "python",
+            "os": null
+        },
+        {
+            "command": "deacticvate",
+            "description": "Deactivate the currently active venv.",
+            "link": null,
+            "category": "python",
+            "os": null
+        },
+        {
+            "command": "mkvirtualenv",
+            "description": "Create a new venv in $env:USERPROFILE/$env:GLOBAL_PYTHON_VENVS.",
+            "link": null,
+            "category": "python",
+            "os": null
+        },
+        {
+            "command": "lsvirtualenv",
+            "description": "Lists all venvs in $env:USERPROFILE/$env:GLOBAL_PYTHON_VENVS.",
+            "link": null,
+            "category": "python",
+            "os": null
+        },
+        {
+            "command": "rmvirtualenv",
+            "description": "Delete a venv.",
+            "link": null,
+            "category": "python",
+            "os": null
+        },
+        {
+            "command": "ip",
+            "description": "Current external ip address.",
+            "link": null,
+            "category": "info",
+            "os": null
+        },
+        {
+            "command": "sysinfo",
+            "description": "Infos on your installed hardware.",
+            "link": null,
+            "category": "info",
+            "os": "windows"
+        },
+        {
+            "command": "ver",
+            "description": "Current Windows version build.",
+            "link": null,
+            "category": "info",
+            "os": "windows"
+        },
+        {
+            "command": "printenv",
+            "description": "Show all environment variables and their values.",
+            "link": null,
+            "category": "info",
+            "os": null
+        },
+        {
+            "command": "envs",
+            "description": "Show all environment variables and their values.",
+            "link": null,
+            "category": "info",
+            "os": null
+        },
+        {
+            "command": "off",
+            "description": "Power off.",
+            "link": null,
+            "category": "control",
+            "os": null
+        },
+        {
+            "command": "hib",
+            "description": "Hibernate.",
+            "link": null,
+            "category": "control",
+            "os": null
+        },
+        {
+            "command": "reb",
+            "description": "Reboot.",
+            "link": null,
+            "category": "control",
+            "os": null
+        },
+        {
+            "command": "lock",
+            "description": "Lock the screen.",
+            "link": null,
+            "category": "control",
+            "os": null
+        },
+        {
+            "command": "spool",
+            "description": "Restart a hangup printer service.",
+            "link": null,
+            "category": "control",
+            "os": "windows"
+        },
+        {
+            "command": "HnsRestart",
+            "description": "Restart the host network service.",
+            "link": null,
+            "category": "control",
+            "os": "windows"
+        },
+        {
+            "command": "speedtest",
+            "description": "Test your internet connection speed.",
+            "link": null,
+            "category": "info",
+            "os": null
+        },
+        {
+            "command": "showssh",
+            "description": "Fast overview on your ssh-config.",
+            "link": null,
+            "category": "info",
+            "os": null
+        },
+        {
+            "command": "HashFromPassword",
+            "description": "A tool to generate a sha-512 hash from a password. Requires python[passlib]",
+            "link": null,
+            "category": "crypto",
+            "os": null
+        },
+        {
+            "command": "GenerateRandomPassword",
+            "description": "Generate a random password.",
+            "link": null,
+            "category": "crypto",
+            "os": "windows"
+        },
+        {
+            "command": "GenerateRandomInvoiceNo",
+            "description": "Generate a random Number. Used for invoices.",
+            "link": null,
+            "category": "work",
+            "os": "windows"
+        },
+        {
+            "command": "weather",
+            "description": "Get weather information for current position or a -City in a -Country.",
+            "link": "originally MIT forked from https://github.com/obs0lete/Get-Weather",
+            "category": "api",
+            "os": "windows"
+        },
+        {
+            "command": "time",
+            "description": "Aliases Get-TimeStamp - get the current date + time",
+            "link": null,
+            "category": "info",
+            "os": "windows"
+        },
+        {
+            "command": "timer",
+            "description": "little timer in the CLI",
+            "link": null,
+            "category": "work",
+            "os": null
+        },
+        {
+            "command": "keepalive",
+            "description": "Keep the auto locks awake.",
+            "link": null,
+            "category": "work",
+            "os": null
+        },
+        {
+            "command": "tube",
+            "description": "play <keywords> with VLC from YouTube",
+            "link": "https://github.com/oryon-dominik/cliTube",
+            "category": "api",
+            "os": null
+        }
+    ]
+}
