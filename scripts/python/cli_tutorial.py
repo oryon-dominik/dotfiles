@@ -11,7 +11,11 @@ REQUIREMENTS = "rich"
 
 __doc__ = """
 Pretty print available cli programs.
-docs/commands.json Has to be updated manually for changes and is obviously always deprecated..
+Considers commands from
+    - install/scoops/scoop-packages.json
+    - install/crates/cargo-tools.json
+    - install/commands/cli.json
+These have to be updated manually for any changes and are obviously always deprecated..
 Still.. a nice first overview.
 """
 

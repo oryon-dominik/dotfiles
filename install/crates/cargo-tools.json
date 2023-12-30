@@ -5,34 +5,44 @@
             "crate": "starship",
             "description": "The minimal, blazing-fast, and infinitely customizable prompt for any shell!",
             "url": "https://github.com/starship/starship",
+            "command": null,
+            "tags": null,
             "interface": "cli",
             "os": "posix"
         },
         {
             "crate": "eza",
-            "description": "A modern replacement for ls - exa fork",
+            "description": "Display directories. A modern replacement for ls - exa fork",
             "url": "https://github.com/eza-community/eza",
+            "command": "eza",
+            "tags": "tree",
             "interface": "cli",
             "os": null
         },
         {
             "crate": "bat",
-            "description": "A cat(1) clone with wings.",
+            "description": "A cat(1) clone with wings. Seek or concatenate files, with colors.",
             "url": "https://github.com/sharkdp/bat",
+            "command": "bat",
+            "tags": "files",
             "interface": "cli",
             "os": null
         },
         {
             "crate": "zoxide",
-            "description": "A faster way to navigate your filesystem",
+            "description": "Zoxide is a faster and smarter way to navigate your filesystem",
             "url": "https://github.com/ajeetdsouza/zoxide",
+            "command": "z",
+            "tags": "tree",
             "interface": "cli",
             "os": null
         },
         {
             "crate": "ripgrep",
-            "description": "(rg) grep on steroids - ripgrep recursively searches directories for a regex pattern",
+            "description": "Grep on steroids - 'ripgrep' recursively searches directories for a regex pattern",
             "url": "https://github.com/BurntSushi/ripgrep",
+            "command": "rg",
+            "tags": "data-processing",
             "interface": "cli",
             "os": null
         },
@@ -40,13 +50,17 @@
             "crate": "lolcat",
             "description": "Lolcat implementation written in Rust",
             "url": "https://github.com/BlueTufa/lolcat",
+            "command": "lolcat",
+            "tags": "files",
             "interface": "cli",
             "os": null
         },
         {
             "crate": "fd-find",
-            "description": "A simple, fast and user-friendly alternative to 'find'",
+            "description": "Find entries in the filesystem. User-friendly alternative to 'find'",
             "url": "https://github.com/sharkdp/fd",
+            "command": "fd",
+            "tags": "files",
             "interface": "cli",
             "os": null
         },
@@ -54,6 +68,8 @@
             "crate": "hexyl",
             "description": "A command-line hex viewer",
             "url": "https://github.com/sharkdp/hexyl",
+            "command": "hexyl",
+            "tags": "files",
             "interface": "cli",
             "os": null
         },
@@ -61,20 +77,26 @@
             "crate": "du-dust",
             "description": "A more intuitive version of du in rust - instant overview of which directories are using disk",
             "url": "https://github.com/bootandy/dust",
+            "command": "dust",
+            "tags": "info",
             "interface": "cli",
             "os": null
         },
         {
             "crate": "tealdeer",
-            "description": "(tldr) Help pages for command-line tools, rust implementation of tldr",
+            "description": "Help pages for command-line tools, use this on any command to quickly understand it's usage. Rust implementation of tldr",
             "url": "https://github.com/dbrgn/tealdeer",
+            "command": "tldr",
+            "tags": "reference",
             "interface": "cli",
             "os": null
         },
         {
             "crate": "tokei",
-            "description": "A program that displays statistics about your code",
+            "description": "A program that displays statistics about your code.",
             "url": "https://github.com/XAMPPRocky/tokei",
+            "command": "tokei",
+            "tags": "dev",
             "interface": "cli",
             "os": null
         },
@@ -82,13 +104,17 @@
             "crate": "procs",
             "description": "Replacement for ps",
             "url": "https://github.com/dalance/procs",
+            "command": "procs",
+            "tags": "monitoring",
             "interface": "cli",
             "os": null
         },
         {
             "crate": "bottom",
-            "description": "(btm) Yet another cross-platform graphical process/system monitor.",
+            "description": "Yet another cross-platform graphical process/system monitor.",
             "url": "https://github.com/ClementTsang/bottom",
+            "command": "btm",
+            "tags": "monitoring",
             "interface": "cli",
             "os": null
         },
@@ -96,6 +122,8 @@
             "crate": "hyperfine",
             "description": "A command-line benchmarking tool",
             "url": "https://github.com/sharkdp/hyperfine",
+            "command": "hyperfine",
+            "tags": "monitoring",
             "interface": "cli",
             "os": null
         },
@@ -103,6 +131,8 @@
             "crate": "xh",
             "description": "Friendly and fast tool for sending HTTP requests",
             "url": "https://github.com/ducaale/xh",
+            "command": "xh",
+            "tags": "web",
             "interface": "cli",
             "os": null
         },
@@ -110,20 +140,26 @@
             "crate": "broot",
             "description": "A new way to see and navigate directory trees",
             "url": "https://github.com/Canop/broot",
+            "command": "br",
+            "tags": "tree",
             "interface": "cli",
             "os": null
         },
         {
             "crate": "grex",
-            "description": "Builds regular expressions from user provided test cases",
+            "description": "Generating regular expressions from user provided test cases",
             "url": "https://github.com/pemistahl/grex",
+            "command": "grex",
+            "tags": "dev",
             "interface": "cli",
             "os": null
         },
         {
             "crate": "bandwhich",
-            "description": "Terminal bandwidth utilization tool",
+            "description": "Graphical terminal bandwidth utilization tool",
             "url": "https://github.com/imsnif/bandwhich",
+            "command": "bandwhich",
+            "tags": "monitoring",
             "interface": "cli",
             "os": null
         },
@@ -131,6 +167,8 @@
             "crate": "choose",
             "description": "A human-friendly and fast alternative to cut and (sometimes) awk: field selection from content",
             "url": "https://github.com/theryangeary/choose",
+            "command": "choose",
+            "tags": "data-processing",
             "interface": "cli",
             "os": null
         },
@@ -138,6 +176,8 @@
             "crate": "git-delta",
             "description": "A viewer for git and diff output",
             "url": "https://github.com/dandavison/delta",
+            "command": "delta",
+            "tags": "files",
             "interface": "cli",
             "os": null
         },
@@ -145,6 +185,8 @@
             "crate": "gitui",
             "description": "Blazing fast terminal-ui for git written in rust",
             "url": "https://github.com/extrawurst/gitui",
+            "command": "gitui",
+            "tags": "dev",
             "interface": "cli",
             "os": "posix"
         },
@@ -152,6 +194,8 @@
             "crate": "git-journal",
             "description": "The Git Commit Message and Changelog Generation Framework",
             "url": "https://github.com/saschagrunert/git-journal",
+            "command": "git-journal",
+            "tags": "dev",
             "interface": "cli",
             "os": null
         },
@@ -159,13 +203,17 @@
             "crate": "gping",
             "description": "Ping, but with a graph",
             "url": "https://github.com/orf/gping",
+            "command": "gping",
+            "tags": "monitoring",
             "interface": "cli",
             "os": null
         },
         {
             "crate": "sd",
-            "description": "Intuitive find & replace CLI (sed alternative)",
+            "description": "Intuitive find & replace CLI (sed alternative) 's'earch & 'd'isplace.",
             "url": "https://github.com/chmln/sd",
+            "command": "sd",
+            "tags": "data-processing",
             "interface": "cli",
             "os": null
         },
@@ -173,6 +221,8 @@
             "crate": "jless",
             "description": "Fast command-line JSON viewer.",
             "url": "https://github.com/PaulJuliusMartinez/jless",
+            "command": "jless",
+            "tags": "files",
             "interface": "cli",
             "os": "posix"
         },
@@ -180,13 +230,17 @@
             "crate": "alacritty",
             "description": "A cross-platform, OpenGL terminal emulator.",
             "url": "https://github.com/alacritty/alacritty",
+            "command": null,
+            "tags": null,
             "interface": "gui",
             "os": "posix"
         },
         {
             "crate": "mcfly",
-            "description": "Fly through your shell history",
+            "description": "McFly through your shell history",
             "url": "https://github.com/cantino/mcfly",
+            "command": "<CTRL+R>",
+            "tags": "shell",
             "interface": "cli",
             "os": null
         },
@@ -194,6 +248,8 @@
             "crate": "dog",
             "description": "A command-line DNS client. It's a library, so download the binary from the releases page.",
             "url": "https://github.com/ogham/dog",
+            "command": "dog",
+            "tags": "web",
             "interface": "cli",
             "os": false
         },
@@ -201,13 +257,17 @@
             "crate": "ifwifi",
             "description": "Easier connect to WIFI from the command line.",
             "url": "https://github.com/araujobsd/ifwifi/",
+            "command": "ifwifi",
+            "tags": "dev",
             "interface": "cli",
             "os": "posix"
         },
         {
             "crate": "rustscan",
-            "description": "Portscanning via nmap in rust.",
+            "description": "Fast portscanning with nmap in rust.",
             "url": "https://github.com/RustScan/RustScan",
+            "command": "rustscan",
+            "tags": "security",
             "interface": "cli",
             "os": null
         }
