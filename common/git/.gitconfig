@@ -2,7 +2,7 @@
     email = oryon@cyberise.de
     name = oryon-dominik
 [core]
-    sshCommand = ssh -i ~/.ssh/id_rsa_GITHUB
+    sshCommand = ssh -i ~/.ssh/id_ed25519_GITHUB
     autocrlf = input
     editor = code --wait
     pager = delta
@@ -80,3 +80,9 @@
     syntax-theme = Vibrant Sunburst
     whitespace-error-style = "#280050" reverse
     zero-style = syntax
+
+[safe]
+    directory = */oryon/.dotfiles
+    directory = */oryon/.pyenv
+    directory = */dev/lieutenant
+    directory = */dev/hockey
