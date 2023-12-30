@@ -129,7 +129,7 @@
             "os": null
         },
         {
-            "command": "deacticvate",
+            "command": "deactivate",
             "description": "Deactivate the currently active venv.",
             "link": null,
             "category": "python",

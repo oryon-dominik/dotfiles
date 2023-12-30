@@ -48,8 +48,8 @@
     {
       "package": "gsudo",
       "bucket": "main",
-      "urls": ["https://github.com/lukesampson/psutils"],
-      "description": "An approximation of the Unix sudo command. Shows a UAC popup window unfortunately.",
+      "urls": ["https://github.com/gerardog/gsudo"],
+      "description": "Sudo for Windows. Shows a UAC popup once window unfortunately.",
       "essential": true,
       "command": "sudo",
       "os": null,
