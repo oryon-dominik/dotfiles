@@ -68,7 +68,7 @@ def generate_commands() -> list[ShellCommand]:
     if os == "unknown":
         raise SystemExit(f"Unknown OS: {system}. Cannot generate commands.")
     elif os == "posix":
-        # commands += generate_posix_commands()
+        # commands += apt-packages or flatpaks or snaps.. ()
         ...
     elif os == "windows":
         # Default cli-packages
@@ -104,7 +104,10 @@ def generate_commands() -> list[ShellCommand]:
         if cmd["command"] is not None and (cmd["os"] is None or cmd["os"] == os)
     ]
 
-    return sorted(commands, key=lambda c: c.category)
+    # TODO: what about the go packages and the npm global packages?
+    # TODO: what about the python packages, can we also make some neat jsons for these?
+
+    return sorted(commands, key=lambda c: (c.category, c.command))
 
 
 # Generate Table and CLI
