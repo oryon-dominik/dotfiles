@@ -98,7 +98,8 @@ Import-Module -Name CompletionPredictor
 . "$PSScriptRoot\ModulesInVersionControl\zoxideUtilities.ps1"
 # Broot directory tree navigation https://github.com/Canop/broot/
 . "$env:APPDATA\dystroy\broot\config\launcher\powershell\br.ps1"
-
+# Gsudo to implement a sudo command in ps.
+Import-Module gsudoModule
 
 # vi-edit-mode
 # Set-PSReadlineOption -EditMode vi -BellStyle None
