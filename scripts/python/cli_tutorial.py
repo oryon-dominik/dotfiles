@@ -74,7 +74,11 @@ def generate_commands() -> list[ShellCommand]:
         # Default cli-packages
         cli = json.loads((Path(__file__).parent.parent.parent / "install" / "commands" / "windows-cli.json").read_text())
         commands += [
-            ShellCommand(**cmd) for cmd in cli.get("shell-commands", []) if cmd["os"] is None or cmd["os"] == os
+            ShellCommand(
+                **cmd
+            )
+            for cmd in cli.get("shell-commands", [])
+            if cmd["os"] is None or cmd["os"] == os
         ]
 
         scoops = json.loads(
@@ -88,7 +92,8 @@ def generate_commands() -> list[ShellCommand]:
                 os=cmd["os"],
                 link=" | ".join(cmd["urls"]),
             )
-            for cmd in scoops.get("scoops", []) if cmd["command"] is not None
+            for cmd in scoops.get("scoops", [])
+            if cmd["command"] is not None
         ]
 
     crates = json.loads((Path(__file__).parent.parent.parent / "install" / "crates" / "cargo-tools.json").read_text())
