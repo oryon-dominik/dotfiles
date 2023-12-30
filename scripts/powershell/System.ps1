@@ -6,15 +6,21 @@ function SelfHasAdminRights {
     $isAdmin = $currentUser.IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
     return [bool]$isAdmin
 }
-
+Set-Alias isadmin SelfHasAdminRights
 
 function elevate () {
-    if ($args.Length -lt 1) {
-        Write-Host "No command specified."
-    }
-    if ($args.Length -ge 1) {  # Opens a new elevated Powershell in Windows-Terminal.
-        Start-Process wt.exe -ArgumentList "pwsh.exe", "-NoExit", "-Command", "$args" -verb "runAs"
-    }
+    # TODO: fix admin elevation
+    Write-Host "Elevating to Administrator not possible as I prefer ATM.."
+    # $thisSessionsPath = (Get-Process -Id $PID).Path
+    # if ($args.Length -lt 1) {
+    #     # Write-Host "No command specified."
+    #     Start-Process -FilePath $thisSessionsPath -NoNewWindow
+    #     # -verb "runAs"
+    # }
+    # if ($args.Length -ge 1) {  # Opens a new elevated Powershell in Windows-Terminal.
+    #     Start-Process -FilePath $thisSessionsPath -NoNewWindow -verb "runAs"
+    #     #-NoNewWindow -ArgumentList "-Command", "$args"
+    # }
 }
 
 

@@ -57,6 +57,20 @@
             "os": null
         },
         {
+            "command": "isadmin",
+            "description": "Do you currently have elevated privileges.",
+            "link": null,
+            "category": "info",
+            "os": "windows"
+        },
+        {
+            "command": "zen",
+            "description": "Toggle between wallpapers and blackscreen.",
+            "link": null,
+            "category": "control",
+            "os": "windows"
+        },
+        {
             "command": "<CTRL + R>",
             "description": "Shared between: Fzf, a general-purpose command-line fuzzy finder | mcfly shell history.",
             "link": "https://github.com/junegunn/fzf | https://github.com/cantino/mcfly",
@@ -432,6 +446,41 @@
             "description": "Keep the auto locks awake.",
             "link": null,
             "category": "work",
+            "os": null
+        },
+        {
+            "command": "markdown",
+            "description": "Pretty show any markdown file in CLI. Using python[rich].",
+            "link": null,
+            "category": "files",
+            "os": null
+        },
+        {
+            "command": "search",
+            "description": "Google search in CLI.",
+            "link": null,
+            "category": "api",
+            "os": null
+        },
+        {
+            "command": "shai",
+            "description": "Ask GPT for a list of possible commands of what you want to do.",
+            "link": null,
+            "category": "api",
+            "os": null
+        },
+        {
+            "command": "emoji",
+            "description": "Show some frequently used emojis.",
+            "link": null,
+            "category": "work",
+            "os": null
+        },
+        {
+            "command": "rot13",
+            "description": "Rot13 encrypt a string.",
+            "link": null,
+            "category": "crypto",
             "os": null
         },
         {
