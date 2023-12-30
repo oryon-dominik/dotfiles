@@ -46,7 +46,7 @@
       "category": "cli"
     },
     {
-      "package": "sudo",
+      "package": "gsudo",
       "bucket": "main",
       "urls": ["https://github.com/lukesampson/psutils"],
       "description": "An approximation of the Unix sudo command. Shows a UAC popup window unfortunately.",
