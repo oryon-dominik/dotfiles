@@ -72,15 +72,15 @@ function ManagePythonToolchain {
             if ($updated_pyenv -eq $false) {
                 pyenv update
             }
-            $python = pyenv install --list | Sort-Object {[System.Version]$_} -ErrorAction SilentlyContinue -Descending | Select-Object -First 1
+            $version = pyenv install --list | Sort-Object {[System.Version]$_} -ErrorAction SilentlyContinue -Descending | Select-Object -First 1
         }
-        pyenv install $latest
+        pyenv install $version
         if ($global -eq $true) {
-            pyenv global $latest
-            AddToDotenv -path "$env:DOTFILES\.env" -key "GLOBAL_PYTHON_VERSION" -value "$latest" -overwrite $true -warn $false
+            pyenv global $version
+            AddToDotenv -path "$env:DOTFILES\.env" -key "GLOBAL_PYTHON_VERSION" -value "$version" -overwrite $true -warn $false
             pyenv rehash  # TBD: is this necessary?
         }
-        $installed += "python $latest"
+        $installed += "python $version"
     }
 
     python -m ensurepip --upgrade
