@@ -36,6 +36,55 @@
             "os": null
         },
         {
+            "command": "git-fame",
+            "description": "Show the distribution of commits.",
+            "link": "https://github.com/casperdcl/git-fame",
+            "category": "dev",
+            "os": null
+        },
+        {
+            "command": "git-journal",
+            "description": "Show the git journal.",
+            "link": "https://github.com/casperdcl/git-fame",
+            "category": "dev",
+            "os": null
+        },
+        {
+            "command": "git-delta",
+            "description": "A viewer for git and diff output.",
+            "link": "https://github.com/dandavison/delta",
+            "category": "dev",
+            "os": null
+        },
+        {
+            "command": "gitui",
+            "description": "Blazing fast terminal-ui for git written in rust.",
+            "link": "https://github.com/extrawurst/gitui",
+            "category": "dev",
+            "os": "posix"
+        },
+        {
+            "command": "jless",
+            "description": "Fast command-line JSON viewer.",
+            "link": "https://github.com/PaulJuliusMartinez/jless",
+            "category": "dev",
+            "os": "posix"
+        },
+        {
+            "command": "ifwifi",
+            "description": "Easier connect to WIFI from the command line.",
+            "link": "https://github.com/araujobsd/ifwifi",
+            "category": "dev",
+            "os": "posix"
+        },
+        {
+            "command": "hexyl",
+            "description": "View a files hex.",
+            "link": "https://github.com/sharkdp/hexyl",
+            "category": "files",
+            "os": null
+        },
+        {
             "command": "cc",
             "description": "Call command - manage your projects interface.",
             "link": null,

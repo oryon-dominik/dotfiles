@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # coding: utf-8
 import json
+import platform
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -47,21 +48,35 @@ def generate_table() -> Table:
     return table
 
 
+# Geenrate Table and CLI
 commands = json.loads((Path(__file__).parent.parent.parent / "docs" / "commands.json").read_text())
 console = Console()
 console.print(Rule(title="CLI TUTORIAL", characters="="))
 table = generate_table()
 
+# Get current OS
+system = platform.system()
+os = {
+    "Darwin": "posix",
+    "Linux": "posix",
+    "Windows": "windows",
+}.get(system, "unknown")
+
+# Build table from categories.
 categories = []
 for reference in sorted(commands.get("shell-commands"), key=lambda c: c.get("category")):
     cmd = ShellCommand(**reference)
-    if cmd.category not in categories:
-        table.add_row("", "", "", "")
-        table.add_row(cmd.category, "", "", "")
-    table.add_row("", cmd.command, cmd.description, cmd.link)
-    categories.append(cmd.category)
+    if cmd.os is None or cmd.os == os:
+        if cmd.category not in categories:
+            table.add_row("", "", "", "")
+            table.add_row(cmd.category, "", "", "")
+        table.add_row("", cmd.command, cmd.description, cmd.link)
+        categories.append(cmd.category)
+
 
 # TODO: add restic-backups
-# TODO: add functions defined in scripts/powershell/System.ps1
+# TODO: generate commands.py entries from cargo crates. And enhances their
+# datatype with "command" and some more things I need here frequently, to only
+# have one truth.
 
 console.print(table)
