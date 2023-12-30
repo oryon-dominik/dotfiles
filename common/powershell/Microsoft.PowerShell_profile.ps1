@@ -96,6 +96,9 @@ Import-Module -Name CompletionPredictor
 . "$PSScriptRoot\components\Mcfly.ps1"
 # Zoxide Utilities (show with zoxide init powershell)
 . "$PSScriptRoot\ModulesInVersionControl\zoxideUtilities.ps1"
+# Broot directory tree navigation https://github.com/Canop/broot/
+. "$env:APPDATA\dystroy\broot\config\launcher\powershell\br.ps1"
+
 
 # vi-edit-mode
 # Set-PSReadlineOption -EditMode vi -BellStyle None

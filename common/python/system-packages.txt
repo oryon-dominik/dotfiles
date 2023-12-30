@@ -5,6 +5,7 @@
 pip-tools
 rich
 PyAutoGUI
+speedtest-cli
 environs
 
 # dev lint

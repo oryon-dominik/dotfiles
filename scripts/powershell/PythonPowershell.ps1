@@ -43,6 +43,12 @@ function timer { # "Starts a timer"  # needs timer.py in $script_location
     python $timer_script_path $args
 }
 
+function InstallPythonSystemPackages {
+    if ($env:VIRTUAL_ENV_PROMPT -ne "" -and $env:VIRTUAL_ENV_PROMPT -ne $null) {
+        deactivate
+    }
+    python -m pip install -r $env:DOTFILES\common\python\system-packages.txt
+}
 
 function ShowConfigSSH {
     $cwd = (Get-Location)
