@@ -3,7 +3,6 @@
 # load system functions
 . $env:DOTFILES\scripts\powershell\System.ps1
 . $env:DOTFILES\scripts\powershell\WslHooks.ps1
-. $env:DOTFILES\scripts\powershell\Networking.ps1
 . $env:DOTFILES\scripts\powershell\PythonPowershell.ps1
 . $env:DOTFILES\scripts\powershell\Tube.ps1
 

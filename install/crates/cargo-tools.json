@@ -203,6 +203,13 @@
             "url": "https://github.com/araujobsd/ifwifi/",
             "interface": "cli",
             "os": "posix"
+        },
+        {
+            "crate": "rustscan",
+            "description": "Portscanning via nmap in rust.",
+            "url": "https://github.com/RustScan/RustScan",
+            "interface": "cli",
+            "os": null
         }
     ]
 }

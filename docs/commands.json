@@ -485,9 +485,16 @@
         },
         {
             "command": "tube",
-            "description": "play <keywords> with VLC from YouTube",
+            "description": "Play <keywords> with VLC from YouTube.",
             "link": "https://github.com/oryon-dominik/cliTube",
             "category": "api",
+            "os": null
+        },
+        {
+            "command": "rustscan",
+            "description": "Fast modern Portscanner wraps namp in rust.",
+            "link": "https://github.com/RustScan/RustScan",
+            "category": "security",
             "os": null
         }
     ]
