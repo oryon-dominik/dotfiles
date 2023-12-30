@@ -118,6 +118,15 @@ GitPullOnceADayAndWorkingMachine
 
 # ====================================================
 
+# BUG: tilde does not expand in pwsh > 7.4
+# https://github.com/PowerShell/PowerShell/issues/20750
+# Workaround by injecting a patched TabExpansion2 function
+# from this gist https://gist.github.com/jhoneill/322a77199350c76a5785f5406ea97bac
+# by jhoneill [James O'Neill](https://twitter.com/jamesoneill)
+. "$PSScriptRoot\Bugfixes.ps1"
+
+# ====================================================
+
 # TODO: config wsl-linux distributions
 # TODO: haxx : highlight every ip-location for every connection on world-map (via pihole!)
 
