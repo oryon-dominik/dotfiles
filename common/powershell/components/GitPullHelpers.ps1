@@ -28,7 +28,11 @@ function GitPullfromDirectory {
     if (Test-Path -Path $directory) {
         Write-Host "Pulling from '$directory'."
         cd $directory
-        git pull
+        try {
+            git pull
+        } catch {
+            Write-Host "Failed to pull from '$directory'."
+        }
         cd -
     } else {
         Write-Host "No repository found in '$directory'."
