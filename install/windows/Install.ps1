@@ -31,26 +31,29 @@ scoop install git
 
 # clone the dotfiles
 git clone https://github.com/oryon-dominik/dotfiles-den "$env:DOTFILES"
-AddToDotenv -path "$env:DOTFILES\.env" -key "GIT_CONFIG_SYSTEM" -value "$env:USERPROFILE\.gitconfig" -overwrite $false -warn $false
 
-# delete old powershell profiles and symlink the one from the dotfiles
+
+# Setup git, removes old gitconfig, replaces with symlink from dotfiles and
+# adds a local (non-version-controlled) gitconfig for your user
+. "$env:DOTFILES\install\windows\SetupGit.ps1"
+SetupGit -email $null -name $null
+
+
+# Delete old powershell profiles and symlink the one from the dotfiles.
 . "$env:DOTFILES\install\windows\SymlinkPowershell.ps1"
 SymlinkPowershell
 
+
 Exit 1
 
-# TODO: symlink the gitconfig from the dotfiles. Also edit the name from the local user as default here.. (maybe use a function for this)
 # TODO: input possible for minimal installation (without rust, golang, python, visualstudio, google drive file stream, etc..)
 
 # Install ALL programms
 Write-Host "Installing ALL Software packages.. this may take a while."
 Write-Host "Meanwhile style your taskbar, desktop and color-theme (#861a22). Customize sounds. Get some coffee, go for a walk.."
 . "$env:DOTFILES/install/windows/InstallAllSoftware.ps1"
+EasyInstall  # -use_defaults $true
 
-# TODO: call with mandatory parameter  # ask what software to install here as args
-# Only install essentials (modern unix and scoops, without current python)
-
-InstallSoftware -essentials $true -python $false
 
 # TODO: symlink all configs for installed software (maybe return a list of it from InstallAllSoftware.ps1 ??)
 . "$env:DOTFILES/install/windows/SymlinkDotfiles.ps1"

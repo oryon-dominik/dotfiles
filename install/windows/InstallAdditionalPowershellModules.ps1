@@ -4,11 +4,14 @@
 function InstallAdditionalPowershellModules {
 
     $installed = @()
-    # TODO: add check for elevated powershell
+
+    $admin = isadmin
+    if (!$admin ) {
+        # TODO: check if elevated powershell is required at all.
+        Write-Host "Can't install powershell modules as unprivileged user? I don't know yet. Check it out."
+        # return $installed
+    }
     # TODO: add installed to list
-    # Elevated powershell
-    # $is_elevated = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
-    # if (!$is_elevated) { Write-Host "Can't install additional powershell modules as unprivileged user."; return }
 
     Write-Host "Installing additional powershell modules..."
 
