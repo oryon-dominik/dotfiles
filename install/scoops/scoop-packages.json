@@ -24,6 +24,17 @@
       "category": "cli"
     },
     {
+      "package": "git-lfs",
+      "bucket": "main",
+      "urls": ["https://git-lfs.com/"],
+      "description": "Open source git extension for managing large files.",
+      "essential": true,
+      "command": "git lfs install (once)",
+      "os": null,
+      "tags": "dev",
+      "category": "cli"
+    },
+    {
       "package": "fzf",
       "bucket": "main",
       "urls": ["https://github.com/junegunn/fzf"],
