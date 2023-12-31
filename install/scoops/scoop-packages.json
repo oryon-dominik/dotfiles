@@ -13,6 +13,17 @@
       "category": "cli"
     },
     {
+      "package": "git-credential-manager",
+      "bucket": "extras",
+      "urls": ["https://github.com/git-ecosystem/git-credential-manager"],
+      "description": "Version control credential storage with authentication to GitHub and others.",
+      "essential": true,
+      "command": "git-credential-manager",
+      "os": null,
+      "tags": "dev",
+      "category": "cli"
+    },
+    {
       "package": "fzf",
       "bucket": "main",
       "urls": ["https://github.com/junegunn/fzf"],

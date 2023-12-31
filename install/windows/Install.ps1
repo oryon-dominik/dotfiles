@@ -70,25 +70,29 @@ Exit 0
 Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH*'
 Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
 Get-Service -Name ssh-agent | Set-Service -StartupType Automatic
-# Get-Service -Name ssh-agent | Set-Service -StartupType Manual
 Start-Service ssh-agent
 
+# TBD: restart the system here?
 
 # Back to your normal shell.
 AddToDotenv -path "$env:DOTFILES\.env" -key "GIT_SSH" -value "C:\Windows\System32\OpenSSH\ssh.exe" -overwrite $false -warn $false
 # generate a new ssh keypair
 z $env:USERPROFILE/.ssh
 ssh-keygen -t ed25519 -C "$env:USERPROFILE@$(hostname)" -f "$env:USERPROFILE\.ssh\id_ed25519"
+# Also install git-credential-manager-core for https authentication.
+scoop install extras/git-credential-manager
 
-# Alternative: use git-credential-manager-core and https
-# scoop install extras/git-credential-manager
-# git-credential-manager configure
+ssh-add "$env:USERPROFILE\.ssh\id_ed25519"
+# check if the key is added correctly
+ssh-add -L
+
 # ! Handling & configuring ssh-agents on windows is a pain.. will continue here later some day..
+# We remove the Windows-Builtin openssh and install the scoop version.
 # sudo Remove-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
 # sudo Remove-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
 # scoop install openssh
 
-# install sshd service and daemon
+# Manually install the sshd service and daemon
 # # ! You have to manually start the ssh-agent service in an elevated powershell, sudo doesn't work here.
 # if (isadmin -eq $true) { 
 #     $env:SCOOP\apps\openssh\current\install-sshd.ps1
