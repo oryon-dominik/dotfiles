@@ -1,42 +1,60 @@
-[user]
-    email = oryon@cyberise.de
-    name = oryon-dominik
+# [user]
+#     email = oryon@cyberise.de
+#     name = oryon-dominik
+
+[include]
+    # local settings ([user]) for the gitconfig
+    path = ~/.gitconfig.local
+
 [core]
     # ssh shall be managed by the ssh config or the repos themselves
+    # sshCommand = ssh -i ~/.ssh/id_ed25519_GITHUB
+
+    # Cross platform line endings, you have to enforce LF in your editor to use this correctly.
     autocrlf = input
-    editor = code --wait
-    pager = delta
+
+    # case shall matter
     ignorecase = false
+
+    # filemode should usally be honored, this might lead to problems with non-executable files
+    # https://stackoverflow.com/questions/1580596/how-do-i-make-git-ignore-file-mode-chmod-changes
+    filemode = true
+
+    # If false, symbolic links are checked out as small plain files that contain the link text. 
+    # Useful on filesystems like FAT that do not support symbolic links.
+    # git-clone/git-init will probe and set core.symlinks false if appropriate
+    # when the repository is created.
+    symlinks = true
+
+    # git repos usally have a working directory, atleast globally
+    bare = false
+    # Enable the reflog. This value is true by default in a repository that has a working
+    # directory associated with it, and false by default in a bare repository.
+    logallrefupdates = true
+
+    # repository format version shall support git extensions when 1
+    # repositoryformatversion = 0
+
+    # vscode shall be used as the editor
+    editor = code --wait
+
+    # use the rust crate delta as pager
+    pager = delta
+
 # [url "git@github.com"]
 #     # https://lists.kernelnewbies.org/pipermail/kernelnewbies/2017-November/018413.html
 #     insteadOf = https://github.com
 #     insteadOf = http://github.com
 #     insteadOf = git://github.com
+
+# [socks]
+#     proxy = socks5://socks.proxy.DOMAIN.com:1080
+
+[pull]
+    rebase = false
+
 [init]
     defaultBranch = trunk
-[merge]
-    tool = vscode
-[mergetool "vscode"]
-    cmd = code --wait $MERGED
-[diff]
-    tool = vscode
-[difftool "vscode"]
-    cmd = code --wait --diff $LOCAL $REMOTE
-[mergetool "vscode"]
-    cmd = code --wait $MERGED
-[alias]
-    logs = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-    who = log --diff-filter=A --
-    find = log --color -p -S 
-    fame = !python -m gitfame
-[pager]
-    diff = delta
-    log = delta
-    reflog = delta
-    show = delta
-
-[interactive]
-    diffFilter = delta --color-only --features=interactive
 
 [gitflow "branch"]
     master = production
@@ -48,13 +66,60 @@
     hotfix = hotfix/
     support = support/
 
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+
+[merge]
+    tool = vscode
+[diff]
+    tool = vscode
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
+
+[alias]
+    logs = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    # usage: git who .\filename --summary
+    who = log --diff-filter=A --
+    find = log --color -p -S 
+    fame = !python -m gitfame
+
+[pager]
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta
+
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+
 [delta]
-    features = woolly-mammoth
+    features = woolly-mammoth line-numbers decorations
+    # features = side-by-side line-numbers decorations
     syntax-theme = Dracula
     side-by-side = true
+    plus-style = syntax "#003800"
+    minus-style = syntax "#3f0001"
+    navigate = true
 
 [delta "interactive"]
     keep-plus-minus-markers = false
+
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+    hunk-header-decoration-style = cyan box ul
+
+[delta "line-numbers"]
+    line-numbers-left-style = cyan
+    line-numbers-right-style = cyan
+    line-numbers-minus-style = 124
+    line-numbers-plus-style = 28
 
 [delta "woolly-mammoth"]
     # author: https://github.com/Kr1ss-XD
@@ -91,11 +156,11 @@
     directory = */oryon/.pyenv
     directory = */dev/lieutenant
     directory = */dev/hockey
+
 [credential]
     # 60 * 60 * 8 hour credentials cache
     # helper = "cache --timeout=28000"
     # For https connections use git-credential-manager-core:
     # ~/scoop/apps/git-credential-manager/current/git-credential-manager.exe
     helper = manager
-[pull]
-    rebase = false
+
