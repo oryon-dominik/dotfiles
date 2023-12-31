@@ -103,7 +103,7 @@
             "command": "slidev",
             "description": "Presentation slides for developers.",
             "link": "https://sli.dev/",
-            "category": "dev",
+            "category": "javascript",
             "os": null
         },
         {
