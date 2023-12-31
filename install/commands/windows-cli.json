@@ -92,12 +92,18 @@
             "category": "data-processing",
             "os": null
         },
-
         {
             "command": "httpie",
             "description": "Web requests in API-age.",
             "link": "https://github.com/httpie/httpie",
             "category": "web",
+            "os": null
+        },
+        {
+            "command": "slidev",
+            "description": "Presentation slides for developers.",
+            "link": "https://sli.dev/",
+            "category": "dev",
             "os": null
         },
         {

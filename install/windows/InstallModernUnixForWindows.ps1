@@ -45,7 +45,7 @@ function InstallModernUnixToolchain {
     # [*nix*-style inspired cli cheatsheets](https://github.com/cheat/cheat)
     go install github.com/cheat/cheat/cmd/cheat@latest
     $installed += "cheat"
-    
+
     # [gtop - graphical system monitoring dashboard](https://github.com/aksakalli/gtop)
     yarn global add gtop
     $installed += "gtop"
