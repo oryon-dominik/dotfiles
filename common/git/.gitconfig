@@ -1,7 +1,3 @@
-# [user]
-#     email = oryon@cyberise.de
-#     name = oryon-dominik
-
 [include]
     # local settings ([user]) for the gitconfig
     path = ~/.gitconfig.local
