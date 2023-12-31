@@ -95,6 +95,7 @@
     # 60 * 60 * 8 hour credentials cache
     # helper = cache --timeout=28000
     # For https connections use git-credential-manager-core:
-    helper = ~/scoop/apps/git-credential-manager/current/git-credential-manager.exe
+    # ~/scoop/apps/git-credential-manager/current/git-credential-manager.exe
+    helper = manager
 [pull]
     rebase = false
