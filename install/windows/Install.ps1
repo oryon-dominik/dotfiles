@@ -6,105 +6,47 @@ Write-Host "Deprecation Notice: This script is deprecated and needs a heavy rebu
 Exit 1
 
 
-# Elevated powershell
-$is_elevated = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
-# TODO: make it runnable as an unprivileged user, skip software that needs privileges
-if (!$is_elevated) { Write-Host "Can't install powershell dotfiles as unprivileged user."; return }
-
 # Pre-install
-# 1. Install latest powershell
+# 1. Install latest powershell (as admin)
 Invoke-Expression "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI"
 
-# 2. Add the dotfiles environment variable pointing to your personalized dotfiles location.
-$dotfiles_location = Join-Path -Path $home -ChildPath "\.dotfiles"
-[Environment]::SetEnvironmentVariable("DOTFILES", "$dotfiles_location", "User")
-
-# 3. reopen a new shell
+# 2. reopen a new (user) shell
 Exit 0
 
-# 1. Install package manager 'scoop'
+# Install package manager 'scoop'
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 
 # git
 scoop install git
 
-# clone the dotfiles
-git clone https://github.com/oryon-dominik/dotfiles-den "$env:DOTFILES"
+# Add the dotfiles environment variable pointing to your personalized dotfiles location.
+$dotfiles_location = Join-Path -Path $home -ChildPath "\.dotfiles"
+[Environment]::SetEnvironmentVariable("DOTFILES", "$dotfiles_location", "User")
 
+# Clone the dotfiles
+git clone https://github.com/oryon-dominik/dotfiles "$env:DOTFILES"
 
 # Setup git, removes old gitconfig, replaces with symlink from dotfiles and
 # adds a local (non-version-controlled) gitconfig for your user
 . "$env:DOTFILES\install\windows\SetupGit.ps1"
 SetupGit -email $null -name $null
 
-
 # Delete old powershell profiles and symlink the one from the dotfiles.
 . "$env:DOTFILES\install\windows\SymlinkPowershell.ps1"
 SymlinkPowershell
 
-
-Exit 1
-
-# TODO: input possible for minimal installation (without rust, golang, python, visualstudio, google drive file stream, etc..)
-
-# Install ALL programms
-Write-Host "Installing ALL Software packages.. this may take a while."
-Write-Host "Meanwhile style your taskbar, desktop and color-theme (#861a22). Customize sounds. Get some coffee, go for a walk.."
+# Install programms
 . "$env:DOTFILES/install/windows/InstallAllSoftware.ps1"
-EasyInstall  # -use_defaults $true
+EasyInstall -use_defaults $true
 
-
-# TODO: symlink all configs for installed software (maybe return a list of it from InstallAllSoftware.ps1 ??)
 . "$env:DOTFILES/install/windows/SymlinkDotfiles.ps1"
+SymlinkDotfiles
 
-# TODO:
-# create initial .env and other directories neccessary for a vital and runnable installation
-#
+# Setup ssh
+. "$env:DOTFILES/install/windows/SetupOpenSSH.ps1"
+SetupSSH
 
-Exit 0
-
-# Post-install
-# Prerequisite: scoop and dotfiles installed correctly
-# Also remove the legacy openssh and replace it with an actual version
-
-# # ! You have to manually start an elevated powershell, sudo doesn't work here.
-(New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
-Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH*'
-Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
-Get-Service -Name ssh-agent | Set-Service -StartupType Automatic
-Start-Service ssh-agent
-
-# TBD: restart the system here?
-
-# Back to your normal shell.
-AddToDotenv -path "$env:DOTFILES\.env" -key "GIT_SSH" -value "C:\Windows\System32\OpenSSH\ssh.exe" -overwrite $false -warn $false
-# generate a new ssh keypair
-z $env:USERPROFILE/.ssh
-ssh-keygen -t ed25519 -C "$env:USERPROFILE@$(hostname)" -f "$env:USERPROFILE\.ssh\id_ed25519"
-# Also install git-credential-manager-core for https authentication.
-scoop install extras/git-credential-manager
-
-ssh-add "$env:USERPROFILE\.ssh\id_ed25519"
-# check if the key is added correctly
-ssh-add -L
-
-# ! Handling & configuring ssh-agents on windows is a pain.. will continue here later some day..
-# We remove the Windows-Builtin openssh and install the scoop version.
-# sudo Remove-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
-# sudo Remove-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
-# scoop install openssh
-
-# Manually install the sshd service and daemon
-# # ! You have to manually start the ssh-agent service in an elevated powershell, sudo doesn't work here.
-# if (isadmin -eq $true) { 
-#     $env:SCOOP\apps\openssh\current\install-sshd.ps1
-#     Write-host "To uninstall the ssh agent: 'sudo $env:SCOOP\apps\openssh\current\uninstall-sshd.ps1'"
-#     Get-Service -Name ssh-agent | Set-Service -StartupType Automatic
-#     Start-Service ssh-agent
-#     ssh-add "$env:USERPROFILE\.ssh\id_ed25519"
-#     AddToDotenv -path "$env:DOTFILES\.env" -key "GIT_SSH" -value "$(Join-Path -Path $env:SCOOP -ChildPath "apps\openssh\current\ssh.exe")" -overwrite $false -warn $false
-# }
-
+# TODO: create initial .env and other directories (shared logs et cetera..) neccessary for a vital and runnable installation
 
 Write-Host "Done :)"
