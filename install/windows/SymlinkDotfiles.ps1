@@ -14,6 +14,7 @@ function SymlinkDotfiles {
     if ($powershell -eq $true) {
         # Classic powershell and the powershell 7 profile
         # ! This should have been already linked via the tutorial / install script, so no need for duplication here.
+        # TBD: does this require elevation?
         . "$env:DOTFILES\install\windows\SymlinkPowershell.ps1"
         SymlinkPowershell
     }

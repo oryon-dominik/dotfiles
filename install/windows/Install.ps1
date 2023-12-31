@@ -2,16 +2,9 @@
 
 # Windows 10 Powershell dotfiles Installation.
 
-Write-Host "Deprecation Notice: This script is deprecated and needs a heavy rebuild. Exiting."
-Exit 1
-
-
 # Pre-install
 # 1. Install latest powershell (as admin)
-Invoke-Expression "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI"
-
-# 2. reopen a new (user) shell
-Exit 0
+sudo Invoke-Expression "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI"
 
 # Install package manager 'scoop'
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
@@ -48,5 +41,11 @@ SymlinkDotfiles
 SetupSSH
 
 # TODO: create initial .env and other directories (shared logs et cetera..) neccessary for a vital and runnable installation
+# Touch a dotenv to store your custom environment variables - valid for powershell sessions only.
+$dotenv_path = (Join-Path -Path "$env:DOTFILES" -ChildPath ".env");
+if (!(Test-Path -Path $dotenv_path -PathType Leaf)) {
+    New-Item -ItemType File -Force -Path $dotenv_path
+}
+
 
 Write-Host "Done :)"
