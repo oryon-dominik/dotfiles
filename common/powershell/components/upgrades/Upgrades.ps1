@@ -307,6 +307,6 @@ function LogUpdate {
     if (!(Test-Path -Path $update_log_path -PathType Leaf)) {
         New-Item -ItemType File -Force -Path $update_log_path
     }
-    Write-Output (-join($(Get-TimeStamp), " ", $($message))) | Out-file $update_log_path -append
+    Write-Output (-join($(Get-TimeStamp), " ", $($level), " ", $($message))) | Out-file $update_log_path -append
 
 }
