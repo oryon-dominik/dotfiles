@@ -93,11 +93,11 @@ Import-Module "$PSScriptRoot\components\GitPullHelpers.ps1"
 . "$PSScriptRoot\components\PSFzFOptions.ps1"
 Import-Module -Name CompletionPredictor
 # McFly - reverse fuzzy search
-. "$PSScriptRoot\components\Mcfly.ps1"
+# . "$PSScriptRoot\components\Mcfly.ps1"
 # Zoxide Utilities (show with zoxide init powershell)
 . "$PSScriptRoot\ModulesInVersionControl\zoxideUtilities.ps1"
 # Broot directory tree navigation https://github.com/Canop/broot/
-. "$env:APPDATA\dystroy\broot\config\launcher\powershell\br.ps1"
+. "$PSScriptRoot\components\BrootWrapper.ps1"
 # Gsudo to implement a sudo command in ps.
 Import-Module gsudoModule
 
