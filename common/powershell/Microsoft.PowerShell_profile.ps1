@@ -93,7 +93,9 @@ Import-Module "$PSScriptRoot\components\GitPullHelpers.ps1"
 . "$PSScriptRoot\components\PSFzFOptions.ps1"
 Import-Module -Name CompletionPredictor
 # McFly - reverse fuzzy search
-# . "$PSScriptRoot\components\Mcfly.ps1"
+if ($env:MCFLY_ISACTIVE -eq $true) {
+  . "$PSScriptRoot\components\Mcfly.ps1"
+}
 # Zoxide Utilities (show with zoxide init powershell)
 . "$PSScriptRoot\ModulesInVersionControl\zoxideUtilities.ps1"
 # Broot directory tree navigation https://github.com/Canop/broot/
