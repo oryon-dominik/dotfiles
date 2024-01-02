@@ -41,6 +41,8 @@ function InstallModernUnixToolchain {
         AddToDotenv -path "$env:DOTFILES\.env" -key "MCFLY_HOME" -value "$mcfly_home" -overwrite $false -warn $false
     }
     mkdir $mcfly_home -ErrorAction SilentlyContinue
+    # Deactivate mcfly by default, because it's not working properly with powershell on all systems.
+    AddToDotenv -path "$env:DOTFILES\.env" -key "MCFLY_ISACTIVE" -value "false" -overwrite $false -warn $false
 
     # [*nix*-style inspired cli cheatsheets](https://github.com/cheat/cheat)
     go install github.com/cheat/cheat/cmd/cheat@latest
@@ -66,6 +68,8 @@ function InstallModernUnixToolchain {
     Write-Host ""
     Write-Host "curlie - The power of curl, the ease of use of httpie."
     Write-Host "https://github.com/rs/curlie/releases"
+
+    
 
     return $installed
 }
