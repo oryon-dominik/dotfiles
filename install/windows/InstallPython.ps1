@@ -123,7 +123,7 @@ function ManagePythonToolchain {
         python -m pip cache purge
         echo yes | poetry cache clear . --all
         # Pipx cache
-        Remove-Item "$env:USERPROFILE\.local\pipx\.cache" -Force -Recurse -Confirm:$false
+        Remove-Item "$env:USERPROFILE\.local\pipx\.cache" -Force -Recurse -Confirm:$false -ErrorAction SilentlyContinue
     }
 
     return $installed
