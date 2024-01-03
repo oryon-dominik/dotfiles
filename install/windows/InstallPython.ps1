@@ -62,6 +62,7 @@ function ManagePythonToolchain {
         $installed += "pyenv-win"
 
         pyenv update
+
         $updated_pyenv = $true
     }
 
@@ -79,6 +80,11 @@ function ManagePythonToolchain {
             pyenv global $version
             AddToDotenv -path "$env:DOTFILES\.env" -key "GLOBAL_PYTHON_VERSION" -value "$version" -overwrite $true -warn $false
             pyenv rehash  # TBD: is this necessary?
+
+            $current_path = $pwd
+            Set-Location -Path $env:DOTFILES
+            pyenv local $version
+            Set-Location -Path $current_path
         }
         $installed += "python $version"
     }
