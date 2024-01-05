@@ -23,6 +23,12 @@ function cc () {
     }
 }
 
+function llm {
+    # Wrapping [llm](https://llm.datasette.io/en/stable/) to always use the global python interpreter.
+    $callwith = $args
+    Invoke-Expression "$env:PYENV_HOME\versions\$env:GLOBAL_PYTHON_VERSION\python.exe -m llm $callwith"
+}
+
 function shai {
     # Wrapping [shell-ai](https://github.com/ricklamers/shell-ai) to the global python interpreter.
     $callwith = $args

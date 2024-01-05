@@ -324,6 +324,13 @@
             "os": null
         },
         {
+            "command": "llm",
+            "description": "Interacting with Large Language Models.",
+            "link": "https://llm.datasette.io/en/stable/index.html",
+            "category": "api",
+            "os": null
+        },
+        {
             "command": "emoji",
             "description": "Show some frequently used emojis.",
             "link": null,
