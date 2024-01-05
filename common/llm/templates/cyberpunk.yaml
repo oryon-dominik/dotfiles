@@ -1,0 +1,7 @@
+prompt: >
+    Summarize the following text.
+
+    Insert frequent satirical cyberpunk-themed illustrative anecdotes.
+    Really go wild with that.
+
+    Text to summarize: $input
