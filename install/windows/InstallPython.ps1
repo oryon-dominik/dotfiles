@@ -110,6 +110,8 @@ function ManagePythonToolchain {
         # llm plugins
         llm install llm-gpt4all
         $env:LLM_USER_PATH = $llm_home
+        # Create if not exists.
+        mkdir $llm_home -ErrorAction SilentlyContinue
         AddToDotenv -path "$env:DOTFILES\.env" -key "LLM_USER_PATH" -value $env:LLM_USER_PATH -overwrite $true -warn $false
         $installed += "llm"
     }
