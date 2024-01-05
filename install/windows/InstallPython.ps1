@@ -109,10 +109,22 @@ function ManagePythonToolchain {
         }
         # llm plugins
         llm install llm-gpt4all
+        llm install llm-mistral
         $env:LLM_USER_PATH = $llm_home
+        
+        
         # Create if not exists.
         mkdir $llm_home -ErrorAction SilentlyContinue
         AddToDotenv -path "$env:DOTFILES\.env" -key "LLM_USER_PATH" -value $env:LLM_USER_PATH -overwrite $true -warn $false
+
+        # TBD: does this belong here? Probably not.
+        $editor = $($env:EDITOR)
+        if ($editor -eq $null) {
+            Write-Host "No 'env:EDITOR' set. Using default: 'code -w'."
+            $editor = "code -w"
+        }
+        AddToDotenv -path "$env:DOTFILES\.env" -key "EDITOR" -value $editor -overwrite $true -warn $false
+
         $installed += "llm"
     }
 
