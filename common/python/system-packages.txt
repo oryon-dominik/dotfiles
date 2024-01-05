@@ -51,6 +51,7 @@ git-fame
 
 # external apis used more or less daily
 openai
+llm
 google-api-python-client
 shell-ai
 

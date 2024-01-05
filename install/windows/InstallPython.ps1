@@ -13,6 +13,7 @@ function ManagePythonToolchain {
         [bool]$global = $false,
         [bool]$favourites = $false,
         [bool]$clean = $true,
+        [bool]$llm = $false,
         [string]$workon_home = $($env:WORKON_HOME),
         [string]$pyenv_home = $($env:PYENV_HOME),
         [string]$poetry_home = $($env:POETRY_HOME),
@@ -96,6 +97,21 @@ function ManagePythonToolchain {
         # Install favourite system packages.
         python -m pip install -r "$env:DOTFILES.\common\python\system-packages.txt"
         $installed += "python-system-packages"
+    }
+
+    if ($llm -eq $true) {
+        # Install llm.
+        python -m pip install llm
+        $llm_home = $($env:LLM_USER_PATH)
+        if ($llm_home -eq $null) {
+            Write-Host "No 'env:LLM_USER_PATH' set. Using default: 'env:DOTFILES\common\llm'."
+            $llm_home = "$env:DOTFILES\common\llm"
+        }
+        # llm plugins
+        llm install llm-gpt4all
+        $env:LLM_USER_PATH = $llm_home
+        AddToDotenv -path "$env:DOTFILES\.env" -key "LLM_USER_PATH" -value $env:LLM_USER_PATH -overwrite $true -warn $false
+        $installed += "llm"
     }
 
     if ($poetry -eq $true) {
