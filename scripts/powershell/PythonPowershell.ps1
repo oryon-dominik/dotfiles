@@ -23,18 +23,6 @@ function cc () {
     }
 }
 
-function llm {
-    # Wrapping [llm](https://llm.datasette.io/en/stable/) to always use the global python interpreter.
-    $callwith = $args
-    Invoke-Expression "$env:PYENV_HOME\versions\$env:GLOBAL_PYTHON_VERSION\python.exe -m llm $callwith"
-}
-
-function shai {
-    # Wrapping [shell-ai](https://github.com/ricklamers/shell-ai) to the global python interpreter.
-    $callwith = $args
-    Invoke-Expression "$env:PYENV_HOME\versions\$env:GLOBAL_PYTHON_VERSION\python.exe -m shell_ai.main $callwith"
-}
-
 
 function HashFromPassword {
     python -c "from passlib.hash import sha512_crypt; import getpass; print(sha512_crypt.using(rounds=656_000).hash(getpass.getpass()))"
