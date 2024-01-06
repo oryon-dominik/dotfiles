@@ -57,7 +57,38 @@ function keepAlive {
 }
 
 function markdown {
-    python -m rich.markdown $args
+    # Parse markdown file or pipe content and display it in the terminal.
+    [cmdletbinding()]
+    param(
+        [parameter(Mandatory=$true, ValueFromPipeline=$true)]
+        $line
+    )
+    Begin {
+        $file = New-TemporaryFile
+        $content = $args
+        $text = @()
+        $arg_is_file = $false
+        if (-Not ($line -eq $null)) {
+            if (Test-Path $line -PathType Leaf) {
+                $arg_is_file = $true
+            }
+        }
+    }
+    Process {
+        if (-Not ($arg_is_file)) {
+            $text += $line.Trim()
+        }
+    }
+    End {
+        if ($arg_is_file) {
+            python -m rich.markdown $line
+        }
+        else {
+            $text | Out-File -FilePath $file.FullName -Encoding utf8
+            python -m rich.markdown $file
+        }
+        Remove-Item -Path $file -Force
+    }
 }
 
 function venvName {
