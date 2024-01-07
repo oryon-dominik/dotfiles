@@ -37,6 +37,7 @@ common/powershell/Locations.ps1
 # Ignore llm logs and keys
 common/llm/keys.json
 common/llm/logs.db
+common/llm/templates/master.yaml
 
 # I use obsidian for markdown rendering and editing
 .obsidian
