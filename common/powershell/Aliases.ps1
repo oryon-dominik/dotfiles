@@ -26,7 +26,7 @@ function la {eza --all --color-scale --long --header --group-directories-first $
 function lt {eza --tree --color-scale --group-directories-first $args}
 function l {eza --all --color-scale --long --header --git --group-directories-first $args}
 
-function chat {llm --template master $args}
+function chat {llm chat --template master $args}
 
 # linux-like
 Set-Alias -Name touch -Value New-Item -Description "Creates a file"
