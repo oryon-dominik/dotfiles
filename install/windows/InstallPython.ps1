@@ -111,13 +111,16 @@ function ManagePythonToolchain {
         llm install llm-gpt4all
         llm install llm-mistral
         $env:LLM_USER_PATH = $llm_home
-        
-        
+
+        # Monkeypatch llm cli.py to use default template.
+        $llm_cli_path = "$env:PYENV_HOME\versions\$env:GLOBAL_PYTHON_VERSION\Lib\site-packages\llm\cli.py"
+        (Get-Content -Path $llm_cli_path) -replace '@click.option\("-t", "--template", help="Template to use"\)', '@click.option("-t", "--template", help="Template to use", default="default")' | Set-Content -Path $llm_cli_path
+
         # Create if not exists.
         mkdir $llm_home -ErrorAction SilentlyContinue
         AddToDotenv -path "$env:DOTFILES\.env" -key "LLM_USER_PATH" -value $env:LLM_USER_PATH -overwrite $true -warn $false
 
-        # TBD: does this belong here? Probably not.
+        # TBD: do the editor settings belong here? Probably not.
         $editor = $($env:EDITOR)
         if ($editor -eq $null) {
             Write-Host "No 'env:EDITOR' set. Using default: 'code -w'."
