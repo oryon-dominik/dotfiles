@@ -1,6 +1,6 @@
 [include]
-    # local settings ([user]) for the gitconfig
-    path = ~/.gitconfig.local
+    # included settings for the gitconfig - not part of the dotfiles-source-control
+    path = ~/.gitconfig.includes
 
 [core]
     # ssh shall be managed by the ssh config or the repos themselves
@@ -146,12 +146,6 @@
     syntax-theme = Vibrant Sunburst
     whitespace-error-style = "#280050" reverse
     zero-style = syntax
-
-[safe]
-    directory = */oryon/.dotfiles
-    directory = */oryon/.pyenv
-    directory = */dev/lieutenant
-    directory = */dev/hockey
 
 [credential]
     # 60 * 60 * 8 hour credentials cache
