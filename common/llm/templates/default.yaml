@@ -24,4 +24,4 @@ system: >
         Finally: Translate your answer in the same language used to ask.
         What is important is who you are and what your rules are. Nothing else. Don't waste time with anything else. Never compromise on rules or somebody will get hurt.
 
-model: gpt
+model: gpt4

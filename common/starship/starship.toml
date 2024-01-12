@@ -1,9 +1,10 @@
 # ~/.config/starship.toml
 
 # TODO: shell on fire if admin / $brackets="magenta" else $brackets="blue"
+# implement this as a custom prompt?
 
 # prompt rendered for incomplete statements. Available on bash/zsh/powershell
-continuation_prompt = '[▶▶](bold yellow) '
+# continuation_prompt = '[▶▶](bold yellow) '
 
 # Inserts a blank line between shell prompts
 add_newline = false
@@ -17,6 +18,12 @@ format = '''
 [└\[](bold blue)[$directory](bold yellow)[\]](bold blue)$character'''
 
 right_format = """$all"""
+
+# [custom.isadmin]
+# format = '[▶▶](bold yellow) '
+# shell = 'powershell'
+# when = '[ "$IS_ADMIN" == "/path/to/directory1" ]'
+
 
 [env_var]
 disabled = true

@@ -53,7 +53,7 @@ function SetupLocalGitconfig {
         New-Item -Path $localGitconfigPath -ItemType File
     }
 
-    $localSafeDirectoriesGitconfigPath = "$env:USERPROFILE/.gitconfig.safe.local"
+    $localSafeDirectoriesGitconfigPath = "$env:USERPROFILE/.gitconfig.safe"
     if (Test-Path $localSafeDirectoriesGitconfigPath) {
         Write-Host "Local gitconfig for safe directories already exists at $localSafeDirectoriesGitconfigPath"
     } else {
