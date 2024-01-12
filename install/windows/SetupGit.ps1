@@ -14,6 +14,18 @@ function SymlinkGitConfigFromDotfiles {
     rm $gitconfigPath
     New-Item -Path $gitconfigPath -ItemType SymbolicLink -Value "$env:DOTFILES/common/git/.gitconfig"
 
+    $gitconfigIncludesPath = "$env:USERPROFILE/.gitconfig.includes"
+    if (Test-Path $gitconfigIncludesPath) {
+        # backup old gitconfig
+        Write-Host "Backing up old gitconfig.includes to $gitconfigIncludesPath.bak"
+        Copy-Item -Path $gitconfigIncludesPath -Destination "$gitconfigIncludesPath.bak"
+    } 
+
+    # Delete the old gitconfig and symlink the dotfiles one.
+    rm $gitconfigIncludesPath
+    New-Item -Path $gitconfigIncludesPath -ItemType SymbolicLink -Value "$env:DOTFILES/common/git/.gitconfig.includes"
+
+
     . "$env:DOTFILES\common\powershell\components\DotEnvs.ps1"
     AddToDotenv -path "$env:DOTFILES\.env" -key "GIT_CONFIG_SYSTEM" -value "$env:USERPROFILE\.gitconfig" -overwrite $false -warn $false
 
@@ -33,13 +45,22 @@ function SetupLocalGitconfig {
     if ($name -eq $null) {
         $name = Read-Host "GIT: Enter your name:"
     }
-    $localGitconfigPath = "$env:USERPROFILE/.gitconfig.local"
+    $localGitconfigPath = "$env:USERPROFILE/.gitconfig.user"
     if (Test-Path $localGitconfigPath) {
         Write-Host "Local gitconfig already exists at $localGitconfigPath"
     } else {
         Write-Host "Creating local gitconfig at $localGitconfigPath"
         New-Item -Path $localGitconfigPath -ItemType File
     }
+
+    $localSafeDirectoriesGitconfigPath = "$env:USERPROFILE/.gitconfig.safe.local"
+    if (Test-Path $localSafeDirectoriesGitconfigPath) {
+        Write-Host "Local gitconfig for safe directories already exists at $localSafeDirectoriesGitconfigPath"
+    } else {
+        Write-Host "Creating local gitconfig for safe directories at $localSafeDirectoriesGitconfigPath"
+        New-Item -Path $localSafeDirectoriesGitconfigPath -ItemType File
+    }
+
 
     $localGitconfig = Get-Content $localGitconfigPath
     $localGitconfig += @"[user]

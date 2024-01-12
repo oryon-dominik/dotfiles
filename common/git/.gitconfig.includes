@@ -1,0 +1,4 @@
+[include]
+    # local settings ([user,s afe-directories]) for the gitconfig
+    path = ~/.gitconfig.user
+    path = ~/.gitconfig.safe
