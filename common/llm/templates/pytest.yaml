@@ -1,1 +1,1 @@
-system: write pytest tests for this code
+system: write pytest tests for this code, don't use class based tests, always just use fixtures and module based pytest tests
