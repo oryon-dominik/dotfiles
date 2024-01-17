@@ -61,11 +61,9 @@ $icons = Join-Path -Path "$file_location" -ChildPath '\icons'
 . "$PSScriptRoot\Paths.ps1"
 
 # Calculate last update.
-&$PSScriptRoot\components\upgrades\ReadUpdateLog.ps1
-
+Import-Module "$PSScriptRoot\components\upgrades\ReadUpdateLog.ps1"
 # Get device location.
 . "$PSScriptRoot\components\GetDeviceLocation.ps1"
-
 # Imports all custom-added-modules to the powershell-space.
 Import-Module DockerCompletion
 # Virtualenvwrapper bindings
@@ -114,7 +112,8 @@ Invoke-Expression (&starship init powershell)
 . "$PSScriptRoot\Aliases.ps1"
 . "$PSScriptRoot\components\FixYarnBehaviourWithoutArgs.ps1"
 
-
+# Read the update log and inform if necessary.
+ReadUpdateLog
 # Will pull every time another machine has pulled (and maybe pushed before).
 GitPullOnceADayAndWorkingMachine
 

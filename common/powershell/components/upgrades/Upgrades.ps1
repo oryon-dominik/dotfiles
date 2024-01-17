@@ -9,16 +9,16 @@ function upgrade {
         [string] $argument
     )
     # check admin-rights
-    $is_elevated = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
-    if (!$is_elevated) { Write-Host "Running upgrades without admin-rights is not recommended" }
+    # $is_elevated = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
+    # if (!$is_elevated) { Write-Host "Running upgrades without admin-rights is not recommended" }
     if ( -not $argument ) {
         Write-Host "please provide an argument:"
         Write-Host "    all                 Full System-Upgrade"
         Write-Host "    windows             Windows Update"
-        Write-Host "    choco               Chocolatey Upgrade"
+        # Write-Host "    choco               Chocolatey Upgrade"
         Write-Host "    repos               Update the repositores that are set in $env:DOTFILES\.repositories.txt"
         Write-Host "    python              Update pyenv, poetry and pip"
-        Write-Host "    python-packages     Updates all python packages of the active repositories"
+        # Write-Host "    python-packages     Updates all python packages of the active repositories"
         Write-Host "    powershell          Update powershell"
         Write-Host "    rust                Update rust via rustup"
         Write-Host "    log                 Just Update the log"
@@ -30,8 +30,8 @@ function upgrade {
     if ($argument -eq "repos") { UpdateRepositories; return }
     if ($argument -eq "python") { PythonUpdate; return }
     if ($argument -eq "powershell") { PowershellUpdate; return }
-    if ($argument -eq "python-packages") { PythonPackagesUpdate; return }
-    if ($argument -eq "choco") { UpgradeChocolatey; return }
+    # if ($argument -eq "python-packages") { PythonPackagesUpdate; return }
+    # if ($argument -eq "choco") { UpgradeChocolatey; return }
     if ($argument -eq "scoop") { UpgradeScoop; return }
     if ($argument -eq "rust") { RustUpgrade; return }
     if ($argument -eq "log") { JustUpgradeLogMessage; return }
@@ -46,7 +46,7 @@ function UpgradeAll {
     RustUpgrade
     UpdateRepositories
     UpgradeScoop
-    UpgradeChocolatey
+    # UpgradeChocolatey
     WindowsUpdate
 
     LogUpdate -Message "$update_message" -Level "INFO"  # TODO: calculate level from all upgrade result errorcodes
