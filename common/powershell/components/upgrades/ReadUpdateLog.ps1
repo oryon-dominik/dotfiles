@@ -33,16 +33,12 @@ function ReadUpdateLog {
     # Read the last entry of the updates.log file.
     $log_last_entry = Get-Content -Path $update_log_path -Tail 1
     $log_entry_date, $log_entry_time, $log_level, $log_entry_message = $log_last_entry -split " "
-
-    Write-Host "Date: $log_entry_date"
-    Write-Host "Time: $log_entry_time"
-    Write-Host "Level: $log_level"
-    Write-Host "Message: $log_entry_message"
     $log = "$log_entry_date $log_entry_time"
     $now = "{0:yyyy-MM-dd} {0:HH:mm:ss}" -f (Get-Date)
     $update_span = New-TimeSpan -Start ($log | Get-Date) -End ($now | Get-Date)
     #$not_updated_since = [int]($update_span.days)
     if ($update_span.days -gt $span) {
-        Write-Host "$log_entry_message, please 'upgrade' now."
+        # Write-Host "Last update (was: $log_entry_message) is more than $span days ago. Please 'upgrade' now."
+        Write-Host "Recent updates have exceeded $span days. Please 'upgrade' now."
     }
 }
