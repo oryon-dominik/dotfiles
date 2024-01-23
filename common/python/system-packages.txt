@@ -8,6 +8,9 @@ PyAutoGUI
 speedtest-cli
 environs
 
+# speech to text
+pyttsx3
+
 # dev lint
 pre-commit
 ruff
