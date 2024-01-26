@@ -651,6 +651,28 @@
       "category": "web"
     },
     {
+      "package": "podman",
+      "bucket": "main",
+      "urls": ["https://podman.io/", "https://github.com/containers/"],
+      "description": "Podman: A tool for managing OCI containers and pods.",
+      "essential": false,
+      "command": null,
+      "os": null,
+      "tags": "dev",
+      "category": "cli"
+    },
+    {
+      "package": "podman-desktop",
+      "bucket": "extras",
+      "urls": ["https://podman.io/", "https://github.com/containers/"],
+      "description": "Podman Desktop - A graphical tool for developing on containers and Kubernetes.",
+      "essential": false,
+      "command": null,
+      "os": null,
+      "tags": "dev",
+      "category": "cli"
+    },
+    {
       "package": "doppler",
       "bucket": "doppler https://github.com/DopplerHQ/scoop-doppler.git",
       "urls": ["https://github.com/DopplerHQ/"],
