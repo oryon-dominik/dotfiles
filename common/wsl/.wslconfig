@@ -4,7 +4,7 @@
 [wsl2]
 
 # Limits VM memory to use no more than 4 GB, this can be set as whole numbers using GB or MB
-memory=8GB 
+memory=8GB
 
 # Sets the VM to use two virtual processors
 processors=4
@@ -31,7 +31,8 @@ localhostforwarding=true
 nestedVirtualization=false
 
 # Turns on output console showing contents of dmesg when opening a WSL 2 distro for debugging
-debugConsole=true
+#debugConsole=true
+debugConsole=false
 
 # -- networkingMode --
 # Wenn der Wert ist mirrored, ist der gespiegelte Netzwerkmodus aktiviert. Standardmäßige oder nicht erkannte
