@@ -106,8 +106,6 @@ appendWindowsPath=true
 # [user]
 # should proably be in /etc/wsl.conf for every distro
 # default=user
-[network]
-generateResolvConf=false
 
 # To redirect to the next node:
 # /etc/resolv.conf ->
