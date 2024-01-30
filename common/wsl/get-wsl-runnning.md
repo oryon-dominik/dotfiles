@@ -40,6 +40,13 @@ wsl -d wsl-vpnkit --cd /app wsl-vpnkit
 # ...
 ```
 
+DNS might bring some issues if you're in a heavily configured environment (corporate).
+
+```/etc/resolv.conf
+# To redirect to the next node (usally your 'host' DNS):
+# /etc/resolv.conf ->
+# nameserver 1.1.1.1
+```
 
 4. Symlink this config to USERPROFILE
 
