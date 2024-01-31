@@ -48,6 +48,17 @@ DNS might bring some issues if you're in a heavily configured environment (corpo
 # nameserver 1.1.1.1
 ```
 
+Maybe resolv.conf gets messed up (it shouldn't, but the `.wslconfig` only seems
+to function after a restart using a `wsl --shutdown` and re-starting podman
+`podman machine stop;podman machine start` again.. WTF)..
+I don't know why this happens (yet) exactly, but this fixes it.
+```bash
+# wsl -d podman-machine-default
+sudo unlink /etc/resolv.conf
+echo "nameserver 1.1.1.1" | sudo tee /etc/resolv.conf
+sudo dnf install slirp4netns
+```
+
 4. Symlink this config to USERPROFILE
 
 ```powershell
