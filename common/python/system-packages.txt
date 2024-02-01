@@ -56,7 +56,6 @@ git-fame
 openai
 llm
 google-api-python-client
-shell-ai
 
 # for the possibility to execute django admin startproject directly from sys-cli only
 django
