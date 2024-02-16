@@ -65,3 +65,4 @@ sudo dnf install slirp4netns
 New-Item -Path "$env:USERPROFILE/.wslconfig" -ItemType SymbolicLink -Value "$env:DOTFILES\common/wsl/.wslconfig"
 ```
 
+Now you might want to [setup something like podman](https://github.com/oryon-dominik/journal/blob/trunk/tutorials/windows/podman.md)
