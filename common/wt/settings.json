@@ -60,6 +60,8 @@
                 },
                 "cursorColor": "#FFFFFF",
                 "cursorShape": "bar",
+                // "tabTitle": "Can be set through $Host.UI.RawUI.WindowTitle = ",
+                // "suppressApplicationTitle" : false,
                 // this is so cool for videos :-)
                 "experimental.retroTerminalEffect": false
             },
@@ -155,7 +157,7 @@
     // Add custom keybindings to this array.
     // To unbind a key combination from your defaults.json, set the command to "unbound".
     // To learn more about keybindings, visit https://aka.ms/terminal-keybindings
-    "keybindings":
+    "actions":
     [
         // Copy and paste are bound to Ctrl+Shift+C and Ctrl+Shift+V in your defaults.json.
         // These two lines additionally bind them to Ctrl+C and Ctrl+V.
@@ -176,8 +178,6 @@
 
         // close tab
         { "command" : "closeTab", "keys" : "ctrl+w" },
-
-
 
         // Press Alt+Shift+D to open a new pane.
         // - "split": "auto" makes this pane open in the direction that provides the most surface area.
