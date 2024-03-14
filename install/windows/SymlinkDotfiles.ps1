@@ -8,7 +8,7 @@ function SymlinkDotfiles {
         [bool]$starship = $true,
         [bool]$vim = $false,
         [bool]$alacritty = $false,
-        [bool]$micro = $false,
+        [bool]$micro = $false
     )
     # Installs the symbolic links for the programs that come with these dotfiles on windows.
     if ($powershell -eq $true) {
