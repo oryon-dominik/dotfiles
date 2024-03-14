@@ -13,7 +13,7 @@ function SymlinkGitConfigFromDotfiles {
     # Delete the old gitconfig and symlink the dotfiles one.
     try {
         rm $gitconfigPath
-    } catch [System.Management.Automation.ItemNotFoundException] {
+    } catch {
         Write-Output "Failed to remove old gitconfig. Maybe it doesn't exist yet. Continuing.."
     }
 
@@ -30,7 +30,7 @@ function SymlinkGitConfigFromDotfiles {
     # Delete the old gitconfig and symlink the dotfiles one.
     try {
         rm $gitconfigIncludesPath
-    } catch [System.Management.Automation.ItemNotFoundException] {
+    } catch {
         Write-Output "Failed to remove old gitconfig.inlcudes. Maybe it doesn't exist yet. Continuing.."
     }
 

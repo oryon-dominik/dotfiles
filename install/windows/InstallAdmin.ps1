@@ -1,8 +1,9 @@
 #!/usr/bin/env pwsh
 
-$isadmin = [bool]$currentUser.IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
+$currentUser = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
+$isAdmin = [bool]$currentUser.IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
 
-if ($isadmin -eq $false) {
+if ($isAdmin -eq $false) {
     Write-Host "This script requires administrative rights to run. Please run it as an administrator."
     return
 }
