@@ -19,7 +19,7 @@ if (!(Test-Path -Path $dotenv_path -PathType Leaf)) {
 
 Write-Host "Done :)"
 
-
+# TODO: hint for what to run now as admin..
 # # Install programms as user
 # . "$env:DOTFILES/install/windows/InstallAllSoftware.ps1"
 # EasyInstall -use_defaults $true
