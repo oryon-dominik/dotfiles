@@ -63,7 +63,8 @@ function SetupLocalGitconfig {
 
 
     $localGitconfig = Get-Content $localGitconfigPath
-    $localGitconfig += @"[user]
+    $localGitconfig += @"
+[user]
     email = $email
     name = $name
 "@
