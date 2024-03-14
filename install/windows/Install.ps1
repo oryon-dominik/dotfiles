@@ -17,8 +17,8 @@ EasyInstall -use_defaults $true
 SymlinkDotfiles
 
 # Setup ssh
-. "$env:DOTFILES/install/windows/SetupOpenSSH.ps1"
-SetupSSH
+# . "$env:DOTFILES/install/windows/SetupOpenSSH.ps1"
+# SetupSSH
 
 # TODO: create initial .env and other directories (shared logs et cetera..) neccessary for a vital and runnable installation
 # Touch a dotenv to store your custom environment variables - valid for powershell sessions only.
