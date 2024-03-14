@@ -1,29 +1,12 @@
 #!/usr/bin/env pwsh
 
-# Windows 10 Powershell dotfiles Installation.
-
-# Pre-install
-# 1. Install latest powershell (as admin)
-sudo Invoke-Expression "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI"
-
-# Install package manager 'scoop'
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
-
-# git
-scoop install git
-
-# Add the dotfiles environment variable pointing to your personalized dotfiles location.
-$dotfiles_location = Join-Path -Path $home -ChildPath "\.dotfiles"
-[Environment]::SetEnvironmentVariable("DOTFILES", "$dotfiles_location", "User")
-
-# Clone the dotfiles
-git clone https://github.com/oryon-dominik/dotfiles "$env:DOTFILES"
+$git_email = Read-Host "Please enter your git email address: "
+$git_name = Read-Host "Please enter your git username: "
 
 # Setup git, removes old gitconfig, replaces with symlink from dotfiles and
 # adds a local (non-version-controlled) gitconfig for your user
 . "$env:DOTFILES\install\windows\SetupGit.ps1"
-SetupGit -email $null -name $null
+SetupGit -email $git_email -name $git_name
 
 # Delete old powershell profiles and symlink the one from the dotfiles.
 . "$env:DOTFILES\install\windows\SymlinkPowershell.ps1"
