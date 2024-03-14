@@ -1,5 +1,12 @@
 #!/usr/bin/env pwsh
 
+$isadmin = [bool]$currentUser.IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
+
+if ($isadmin -eq $false) {
+    Write-Host "This script requires administrative rights to run. Please run it as an administrator."
+    return
+}
+
 # Setup git, removes old gitconfig, replaces with symlink from dotfiles and
 # adds a local (non-version-controlled) gitconfig for your user
 . "$env:DOTFILES\install\windows\SetupGit.ps1"
@@ -8,10 +15,6 @@ SetupGit -email $null -name $null
 # Delete old powershell profiles and symlink the one from the dotfiles.
 . "$env:DOTFILES\install\windows\SymlinkPowershell.ps1"
 SymlinkPowershell
-
-# Install programms
-. "$env:DOTFILES/install/windows/InstallAllSoftware.ps1"
-EasyInstall -use_defaults $true
 
 . "$env:DOTFILES/install/windows/SymlinkDotfiles.ps1"
 SymlinkDotfiles
@@ -29,3 +32,9 @@ if (!(Test-Path -Path $dotenv_path -PathType Leaf)) {
 
 
 Write-Host "Done :)"
+
+
+
+# # Install programms as user
+# . "$env:DOTFILES/install/windows/InstallAllSoftware.ps1"
+# EasyInstall -use_defaults $true
