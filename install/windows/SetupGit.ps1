@@ -11,7 +11,12 @@ function SymlinkGitConfigFromDotfiles {
     } 
 
     # Delete the old gitconfig and symlink the dotfiles one.
-    rm $gitconfigPath
+    try {
+        rm $gitconfigPath
+    } catch [System.Management.Automation.ItemNotFoundException] {
+        Write-Output "Failed to remove old gitconfig. Maybe it doesn't exist yet. Continuing.."
+    }
+
     New-Item -Path $gitconfigPath -ItemType SymbolicLink -Value "$env:DOTFILES/common/git/.gitconfig"
 
     $gitconfigIncludesPath = "$env:USERPROFILE/.gitconfig.includes"
@@ -22,7 +27,13 @@ function SymlinkGitConfigFromDotfiles {
     } 
 
     # Delete the old gitconfig and symlink the dotfiles one.
-    rm $gitconfigIncludesPath
+    # Delete the old gitconfig and symlink the dotfiles one.
+    try {
+        rm $gitconfigIncludesPath
+    } catch [System.Management.Automation.ItemNotFoundException] {
+        Write-Output "Failed to remove old gitconfig.inlcudes. Maybe it doesn't exist yet. Continuing.."
+    }
+
     New-Item -Path $gitconfigIncludesPath -ItemType SymbolicLink -Value "$env:DOTFILES/common/git/.gitconfig.includes"
 
 

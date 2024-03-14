@@ -1,12 +1,9 @@
 #!/usr/bin/env pwsh
 
-$git_email = Read-Host "Please enter your git email address: "
-$git_name = Read-Host "Please enter your git username: "
-
 # Setup git, removes old gitconfig, replaces with symlink from dotfiles and
 # adds a local (non-version-controlled) gitconfig for your user
 . "$env:DOTFILES\install\windows\SetupGit.ps1"
-SetupGit -email $git_email -name $git_name
+SetupGit -email $null -name $null
 
 # Delete old powershell profiles and symlink the one from the dotfiles.
 . "$env:DOTFILES\install\windows\SymlinkPowershell.ps1"
