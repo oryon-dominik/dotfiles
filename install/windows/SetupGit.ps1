@@ -26,8 +26,6 @@ function SymlinkGitConfigFromDotfiles {
         Copy-Item -Path $gitconfigIncludesPath -Destination "$gitconfigIncludesPath.bak"
     } 
 
-    # Delete the old gitconfig and symlink the dotfiles one.
-    # Delete the old gitconfig and symlink the dotfiles one.
     try {
         rm $gitconfigIncludesPath
     } catch {
