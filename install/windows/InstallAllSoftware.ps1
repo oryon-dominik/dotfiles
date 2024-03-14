@@ -4,17 +4,17 @@
 function EasyInstall {
 
     param (
-        [bool]$scoops = $null,
-        [bool]$essentials = $null,
-        [bool]$rust = $null,
-        [bool]$modernunix = $null,
-        [bool]$python = $null,
-        [bool]$golang = $null,
-        [bool]$javascript = $null,
-        [bool]$buildtools = $null,
-        [bool]$google_filestream = $null,
-        [bool]$pwsh_modules = $null,
-        [bool]$use_defaults = $false
+        [ValidateSet($null, $true, $false)]$scoops = $null,
+        [ValidateSet($null, $true, $false)]$essentials = $null,
+        [ValidateSet($null, $true, $false)]$rust = $null,
+        [ValidateSet($null, $true, $false)]$modernunix = $null,
+        [ValidateSet($null, $true, $false)]$python = $null,
+        [ValidateSet($null, $true, $false)]$golang = $null,
+        [ValidateSet($null, $true, $false)]$javascript = $null,
+        [ValidateSet($null, $true, $false)]$buildtools = $null,
+        [ValidateSet($null, $true, $false)]$google_filestream = $null,
+        [ValidateSet($null, $true, $false)]$pwsh_modules = $null,
+        [ValidateSet($null, $true, $false)]$use_defaults = $false
     )
 
     if ($use_defaults -eq $true) {
