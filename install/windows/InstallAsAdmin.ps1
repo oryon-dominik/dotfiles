@@ -8,9 +8,12 @@ if ($isAdmin -eq $false) {
     return
 }
 
+# TODO: this is non-admin, it just requires privileges to create the symlink,
+# so Ihave to ask (or assume) the correct username here.!
+
 # Setup git, removes old gitconfig, replaces with symlink from dotfiles and
 # adds a local (non-version-controlled) gitconfig for your user
-# TODO: this is non-admin, it just requires privileges to create the symlink
+
 . "$env:DOTFILES/install/windows/SetupGit.ps1"
 SetupGit -email $null -name $null
 
