@@ -23,3 +23,5 @@ Write-Host "Done :)"
 # # Install programms as user
 # . "$env:DOTFILES/install/windows/InstallAllSoftware.ps1"
 # EasyInstall -use_defaults $true
+
+
