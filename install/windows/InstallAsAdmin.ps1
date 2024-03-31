@@ -8,26 +8,33 @@ if ($isAdmin -eq $false) {
     return
 }
 
-# TODO: this is non-admin, it just requires privileges to create the symlink,
-# so Ihave to ask (or assume) the correct username here.!
+# This is non-admin user specific, it just requires privileges to create the symlink for the users user.
+# So I have to ask (or assume) the correct username here!
+$UserPath = Read-Host "Enter the user path (Press Enter for default: $env:USERPROFILE)"
+if (-not $UserPath) {
+    $UserPath = $env:USERPROFILE
+}
 
 # Setup git, removes old gitconfig, replaces with symlink from dotfiles and
 # adds a local (non-version-controlled) gitconfig for your user
-
 . "$env:DOTFILES/install/windows/SetupGit.ps1"
-SetupGit -email $null -name $null
+SetupGit -email $null -name $null -UserPath "$UserPath"
+Write-Host
 
 # Delete old powershell profiles and symlink the one from the dotfiles.
 . "$env:DOTFILES/install/windows/SymlinkPowershell.ps1"
-SymlinkPowershell
+SymlinkPowershell -UserPath "$UserPath"
+Write-Host
 
+# Symlink program configs from your dotfiles.
 . "$env:DOTFILES/install/windows/SymlinkDotfiles.ps1"
-SymlinkDotfiles
+SymlinkDotfiles -UserPath "$UserPath"
+Write-Host
 
-# Setup ssh
+Write-Host "SSH setup is deactivated for now. Fix manually."
 # . "$env:DOTFILES/install/windows/SetupOpenSSH.ps1"
 # SetupSSH
-
+Write-Host
 
 Write-Host "Done :)"
 Write-Host ""

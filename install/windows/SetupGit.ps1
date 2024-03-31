@@ -5,8 +5,11 @@
 
 
 function SymlinkGitConfigFromDotfiles {
+    param(
+        [string]$UserPath = $env:USERPROFILE
+    )
 
-    $gitconfigPath = "$env:USERPROFILE/.gitconfig"
+    $gitconfigPath = "$UserPath/.gitconfig"
     if (Test-Path $gitconfigPath) {
         # backup old gitconfig
         Write-Host "Backing up old gitconfig to $gitconfigPath.bak"
@@ -22,7 +25,7 @@ function SymlinkGitConfigFromDotfiles {
 
     New-Item -Path $gitconfigPath -ItemType SymbolicLink -Value "$env:DOTFILES/common/git/.gitconfig"
 
-    $gitconfigIncludesPath = "$env:USERPROFILE/.gitconfig.includes"
+    $gitconfigIncludesPath = "$UserPath/.gitconfig.includes"
     if (Test-Path $gitconfigIncludesPath) {
         # backup old gitconfig
         Write-Host "Backing up old gitconfig.includes to $gitconfigIncludesPath.bak"
@@ -39,7 +42,7 @@ function SymlinkGitConfigFromDotfiles {
 
 
     . "$env:DOTFILES\common\powershell\components\DotEnvs.ps1"
-    AddToDotenv -path "$env:DOTFILES\.env" -key "GIT_CONFIG_SYSTEM" -value "$env:USERPROFILE\.gitconfig" -overwrite $false -warn $false
+    AddToDotenv -path "$env:DOTFILES\.env" -key "GIT_CONFIG_SYSTEM" -value "$UserPath\.gitconfig" -overwrite $false -warn $false
 
 }
 
@@ -48,7 +51,8 @@ function SetupLocalGitconfig {
 
     param (
         [string]$email = $null,
-        [string]$name = $null
+        [string]$name = $null,
+        [string]$UserPath = $env:USERPROFILE
     )
 
     if ($email -eq $null) {
@@ -57,7 +61,7 @@ function SetupLocalGitconfig {
     if ($name -eq $null) {
         $name = Read-Host "GIT: Enter your name:"
     }
-    $localGitconfigPath = "$env:USERPROFILE/.gitconfig.user"
+    $localGitconfigPath = "$UserPath/.gitconfig.user"
     if (Test-Path $localGitconfigPath) {
         Write-Host "Local gitconfig already exists at $localGitconfigPath"
     } else {
@@ -65,7 +69,7 @@ function SetupLocalGitconfig {
         New-Item -Path $localGitconfigPath -ItemType File
     }
 
-    $localSafeDirectoriesGitconfigPath = "$env:USERPROFILE/.gitconfig.safe"
+    $localSafeDirectoriesGitconfigPath = "$UserPath/.gitconfig.safe"
     if (Test-Path $localSafeDirectoriesGitconfigPath) {
         Write-Host "Local gitconfig for safe directories already exists at $localSafeDirectoriesGitconfigPath"
     } else {
@@ -84,15 +88,15 @@ function SetupLocalGitconfig {
 
 
 function SetupGit {
-
     param (
         [string]$email = $null,
-        [string]$name = $null
+        [string]$name = $null,
+        [string]$UserPath = $env:USERPROFILE
     )
 
-    SymlinkGitConfigFromDotfiles
+    SymlinkGitConfigFromDotfiles -UserPath $UserPath
 
     # Also setup the local gitconfig
-    SetupLocalGitconfig -email $email -name $name
+    SetupLocalGitconfig -email $email -name $name -UserPath $UserPath
 
 }

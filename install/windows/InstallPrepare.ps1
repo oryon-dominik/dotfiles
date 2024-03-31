@@ -23,7 +23,7 @@ Write-Host
 Write-Host "--- DO IT NOW! ---"
 Write-Host
 
-Write-Host "If you want to active MCFLY by default, you can set the env MCFLY_ISACTIVE to true"
+Write-Host "If you want to activate MCFLY by default, you can set the env MCFLY_ISACTIVE to true"
 Write-Host 'AddToDotenv -path "$env:DOTFILES\.env" -key "MCFLY_ISACTIVE" -value "true" -overwrite $true -warn $false'
 Write-Host
 
@@ -94,7 +94,7 @@ Write-Host "Done :)"
 Write-Host "Re-open a shell as admin and run the admin-installation script."
 Write-Host '(as admin) iex "$env:DOTFILES/install/windows/InstallAsAdmin.ps1"'
 Write-Host
-Write-Host "Then you can run the user-installation scripts for adding all software.."
+Write-Host "When that finished you can run the user-installation scripts for adding all software.."
 Write-Host '. "$env:DOTFILES/install/windows/InstallAllSoftware.ps1"'
 Write-Host 'EasyInstall -use_defaults $true'
 Write-Host
