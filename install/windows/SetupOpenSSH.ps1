@@ -4,6 +4,9 @@
 # ! Handling & configuring ssh-agents on windows is a pain.. will continue here later some day..
 
 
+Import-Module "$PSScriptRoot\components\DotEnvs.ps1"
+
+
 function SetupSSH {
     param (
         [bool]$official = $true

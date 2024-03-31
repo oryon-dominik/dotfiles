@@ -1,5 +1,7 @@
 #!/usr/bin/env pwsh
 
+Import-Module "$PSScriptRoot\components\DotEnvs.ps1"
+
 
 function InstallJavaScriptToolchain {
 

@@ -5,6 +5,9 @@
 # other installations have to rustup.rs and install 
 # curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
+Import-Module "$PSScriptRoot\components\DotEnvs.ps1"
+
+
 function InstallRustToolchain {
 
     param (
