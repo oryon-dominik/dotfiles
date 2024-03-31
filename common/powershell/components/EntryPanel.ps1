@@ -6,7 +6,7 @@ function Greet() {
     try {
         lolcat "$env:DOTFILES/common/powershell/intro" # Print the intro-graphic via rust-lolcat
     } catch {
-        Write-Host "Command not found. Dotfiles setup and essential software installation probably not complete. Consult the docs. Exiting."
+        Write-Host "Greeting failed. Dotfiles setup and essential software installation probably not complete. Consult the docs. Exiting."
         Exit 1
     }
     # Fortune Cookie
