@@ -65,6 +65,8 @@ function cloud {  # cd into your mounted cloud drive
         cd $env:CLOUD_MOINT_POINT
     } else {
         Write-Host "env:CLOUD_MOINT_POINT not set. Skipping."
+        Write-Host "Example:"
+        Write-Host 'AddToDotenv -path "$env:DOTFILES\.env" -key "CLOUD_MOINT_POINT" -value "X:/Meine Ablage/" -overwrite $true -warn $false'
     }
 }
 

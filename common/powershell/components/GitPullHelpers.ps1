@@ -2,7 +2,9 @@
 function pullJournal {
     $journalDir = $env:JOURNAL_HOME
     if (-not (Test-Path $journalDir)) {
-        Write-Host "env:JOURNAL_HOME is not defined."
+        Write-Host "env:JOURNAL_HOME is not defined. Can't sync the journal."
+        Write-Host "You can define it in your .env file."
+        Write-Host 'AddToDotenv -path "$env:DOTFILES\.env" -key "JOURNAL_HOME" -value "C:\dev\journal" -overwrite $false -warn $false'
         return
     }
     GitPullfromDirectory -directory $journalDir
