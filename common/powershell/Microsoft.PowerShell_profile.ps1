@@ -36,6 +36,9 @@ if (-not (Test-Path $env:HISTFILE)) {
     New-Item -ItemType File -Path $env:HISTFILE -Force
 }
 
+# Scoop package manager.
+$env:SCOOP="$env:USERPROFILE\scoop\"
+
 . "$PSScriptRoot\components\EntryPanel.ps1"
 Greet
 
@@ -47,8 +50,6 @@ $env:BAT_PAGER='""'  # don't page BAT results
 Import-Module "$PSScriptRoot\components\DotEnvs.ps1"
 LoadDotEnv("$env:DOTFILES\.env")
 
-# Scoop package manager.
-$env:SCOOP="$env:USERPROFILE\scoop\"
 
 # Set powershell variables.
 $shortcuts = Join-Path -Path "$env:DOTFILES" -ChildPath "\shared\shortcuts"
