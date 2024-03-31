@@ -34,7 +34,7 @@ function InstallScoops {
 
         if ($scoop.category -ne $null -and $categories -contains $category) {
             Write-Host "Installing $package."
-            scoop install $package
+            scoop install "$bucket/$package"
             $installed += $package
         } else {
             # "Skipping installation of $package. Category is not in list of categories to install."
