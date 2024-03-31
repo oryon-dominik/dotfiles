@@ -27,7 +27,7 @@ function AddToDotenv {
     Param(
         [parameter(Mandatory=$true)] [String[]] $path,
         [parameter(Mandatory=$true)] [String[]] $key,
-        [parameter(Mandatory=$true)] [String[]] $value,
+        [parameter(Mandatory=$false)] [String[]] $value = "",
         [parameter(Mandatory=$false)] [bool] $overwrite = $false,
         [parameter(Mandatory=$false)] [bool] $warn = $true
     )
