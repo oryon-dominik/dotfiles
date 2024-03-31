@@ -28,7 +28,7 @@ function InstallScoops {
 
         if ($bucket -notin $bucketsVisited) {
             Write-Host "Adding bucket $bucket."
-            # scoop bucket add $bucket
+            scoop bucket add $bucket
             $bucketsVisited += $bucket
         }
 
