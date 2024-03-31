@@ -1,7 +1,7 @@
 # Pull the obisdian journal on demand to avoid merge conflicts every single day..
 function pullJournal {
     $journalDir = $env:JOURNAL_HOME
-    if (-not (Test-Path $journalDir)) {
+    if (($journalDir -eq $null) -or (-not (Test-Path $journalDir))) {
         Write-Host "env:JOURNAL_HOME is not defined. Can't sync the journal."
         Write-Host "You can define it in your .env file."
         Write-Host 'AddToDotenv -path "$env:DOTFILES\.env" -key "JOURNAL_HOME" -value "C:\dev\journal" -overwrite $false -warn $false'
@@ -17,7 +17,7 @@ function pullDotfiles {
         return
     }
     GitPullfromDirectory -directory $dotfilesDir
-    # TODO: attention this is hardocred: maybe we need a env here as well?!
+    # TODO: attention 'shared' is hardcoded: maybe we need an env here as well?!
     GitPullfromDirectory -directory $dotfilesDir\shared
 }
 
