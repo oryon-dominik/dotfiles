@@ -59,7 +59,7 @@ function AddToDotenv {
     }
 
     if (!$found) {
-        $dotenvs += "$key=$value"
+        $dotenvs += "$key=$value`n"
     }
 
     $dotenvs | Set-Content $path
