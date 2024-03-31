@@ -59,15 +59,15 @@ AddToDotenv -path "$env:DOTFILES\.env" -key "PROJECTS" -value "C:/dev" -overwrit
 Write-Host "$env:PROJECTS will be created now if it does not exist. Delete it now, if you want to change the location."
 
 # Create projects directory.
-if (!(Test-Path $env:PROJECTS -PathType Container)) {
+if (($env:PROJECTS -ne $null) -and !(Test-Path $env:PROJECTS -PathType Container)) {
     New-Item -ItemType Directory -Force -Path $env:PROJECTS
 }
 # Create shared directory.
-if (!(Test-Path "$env:DOTFILES\shared" -PathType Container)) {
+if (($env:DOTFILES -ne $null) -and !(Test-Path "$env:DOTFILES\shared" -PathType Container)) {
     New-Item -ItemType Directory -Force -Path "$env:DOTFILES\shared"
 }
 # Create logs directory.
-if (!(Test-Path "$env:DOTFILES\logs" -PathType Container)) {
+if (($env:DOTFILES -ne $null) -and !(Test-Path "$env:DOTFILES\logs" -PathType Container)) {
     New-Item -ItemType Directory -Force -Path "$env:DOTFILES\logs"
 }
 
