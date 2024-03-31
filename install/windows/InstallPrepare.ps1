@@ -15,7 +15,7 @@ if (!(Test-Path -Path $dotenv_path -PathType Leaf)) {
 }
 
 Write-Host "Hopefully you've setup your build-tools (manual download) already."
-Write-Host "Selected & installed `C++-Clang-Compiler ...`, `MSVC latest C++ buildtools for your architecture (x64/x86)`, `C++-CMake Tools ...`."
+Write-Host "Selected & installed the C++ toolchain for your architecture (x64/x86)."
 Write-Host "If not, you can run the following commands to download and install the build tools."
 Write-Host "Invoke-WebRequest https://aka.ms/vs/17/release/vs_BuildTools.exe -OutFile ~\Downloads\vs_BuildTools.exe"
 Write-Host "Start-Process ~\Downloads\vs_BuildTools.exe -Verb RunAs"
@@ -78,13 +78,10 @@ if (($env:PROJECTS -ne $null) -and !(Test-Path $env:PROJECTS -PathType Container
 }
 Write-Host
 
-# Create shared directory.
-if (($env:DOTFILES -ne $null) -and !(Test-Path "$env:DOTFILES\shared" -PathType Container)) {
-    New-Item -ItemType Directory -Force -Path "$env:DOTFILES\shared"
-}
-# Create logs directory.
-if (($env:DOTFILES -ne $null) -and !(Test-Path "$env:DOTFILES\logs" -PathType Container)) {
-    New-Item -ItemType Directory -Force -Path "$env:DOTFILES\logs"
+# Create shared global logs directory and the file the global log will be written to.
+if (($env:DOTFILES -ne $null) -and !(Test-Path "$env:DOTFILES\shared\logs\global" -PathType Container)) {
+    New-Item -ItemType Directory -Force -Path "$env:DOTFILES\shared\logs\global"
+    New-Item -ItemType File -Force -Path "$env:DOTFILES\shared\logs\global\auto-gitevents.log"
 }
 
 # TODO: create other directories neccessary for a vital and runnable installation

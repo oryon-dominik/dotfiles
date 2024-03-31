@@ -65,8 +65,9 @@ $icons = Join-Path -Path "$file_location" -ChildPath '\icons'
 Import-Module "$PSScriptRoot\components\upgrades\ReadUpdateLog.ps1"
 # Get device location.
 . "$PSScriptRoot\components\GetDeviceLocation.ps1"
+
 # Imports all custom-added-modules to the powershell-space.
-Import-Module DockerCompletion
+Import-Module DockerCompletion -ErrorAction SilentlyContinue
 # Virtualenvwrapper bindings
 $env:WORKON_HOME = "$env:USERPROFILE\$env:GLOBAL_PYTHON_VENVS"
 Import-Module "$PSScriptRoot\components\SlimVenvWrapper.ps1"
@@ -90,7 +91,7 @@ Import-Module "$PSScriptRoot\components\GitPullHelpers.ps1"
 . "$PSScriptRoot\components\PSReadLineOptions.ps1"
 # PSFzfOptions provides an fzf interface for better path completion
 . "$PSScriptRoot\components\PSFzFOptions.ps1"
-Import-Module -Name CompletionPredictor
+Import-Module -Name CompletionPredictor -ErrorAction SilentlyContinue
 # McFly - reverse fuzzy search
 if ($env:MCFLY_ISACTIVE -eq $true) {
   . "$PSScriptRoot\components\Mcfly.ps1"
