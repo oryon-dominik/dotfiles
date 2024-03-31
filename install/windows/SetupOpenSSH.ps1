@@ -4,7 +4,7 @@
 # ! Handling & configuring ssh-agents on windows is a pain.. will continue here later some day..
 
 
-Import-Module "$env:DOTFILES\common\powershell\components\DotEnvs.ps1"
+. "$env:DOTFILES\common\powershell\components\DotEnvs.ps1"
 
 
 function SetupSSH {

@@ -2,7 +2,7 @@
 
 
 # Fill initial .env
-# Import-Module "$env:DOTFILES\common\powershell\components\DotEnvs.ps1"
+# . "$env:DOTFILES\common\powershell\components\DotEnvs.ps1"
 
 # openweathermap api key - for the 'weather' command to work
 # AddToDotenv -path "$env:DOTFILES\.env" -key "OPEN_WEATHERMAP_API_KEY" -value "secret..." -overwrite $false -warn $false

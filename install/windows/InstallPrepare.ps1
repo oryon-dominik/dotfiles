@@ -21,7 +21,7 @@ Write-Host "If you want to active MCFLY by default, you can set the env MCFLY_IS
 Write-Host 'AddToDotenv -path "$env:DOTFILES\.env" -key "MCFLY_ISACTIVE" -value "true" -overwrite $true -warn $false'
 
 # Fill initial .env
-Import-Module "$env:DOTFILES\common\powershell\components\DotEnvs.ps1"
+. "$env:DOTFILES\common\powershell\components\DotEnvs.ps1"
 # Set the SHELL to pwsh.
 Write-Host "Setting shell to pwsh."
 AddToDotenv -path "$env:DOTFILES\.env" -key "SHELL" -value "C:\Program Files\PowerShell\7\pwsh.exe" -overwrite $false -warn $false

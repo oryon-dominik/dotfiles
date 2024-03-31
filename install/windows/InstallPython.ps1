@@ -1,7 +1,7 @@
 #!/usr/bin/env pwsh
 
 
-Import-Module "$env:DOTFILES\common\powershell\components\DotEnvs.ps1"
+. "$env:DOTFILES\common\powershell\components\DotEnvs.ps1"
 
 
 function ManagePythonToolchain {
