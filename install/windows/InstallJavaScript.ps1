@@ -25,16 +25,17 @@ function InstallJavaScriptToolchain {
     iex "nvm use latest"
 
     # install yarn
-    iex "npm install --global yarn"
-    $installed += "yarn"
-
     if (($env:YARN_GLOBAL_HOME -eq $null) -or ($env:YARN_GLOBAL_HOME -eq "")) {
         $env:YARN_GLOBAL_HOME = "$env:USERPROFILE\.yarn"
         AddToDotenv -path "$env:DOTFILES\.env" -key "YARN_GLOBAL_HOME" -value "$env:YARN_GLOBAL_HOME"
     }
 
+    Write-Host "Now install yarn manually:"
+    Write-Host "iex npm install --global yarn"
     # re-set yarn's global modules path
-    iex "yarn config set prefix $env:YARN_GLOBAL_HOME"
+    Write-Host "iex 'yarn config set prefix $env:YARN_GLOBAL_HOME'"
+    # $installed += "yarn"
+    Write-Host
 
     return $installed
 }
