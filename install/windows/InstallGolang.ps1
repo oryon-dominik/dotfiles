@@ -7,10 +7,10 @@
 function InstallGolangToolchain {
 
     param (
-        [string]$gopath = $($env:GOPATH)
+        [string]$gopath = "$($env:GOPATH)"
     )
 
-    if ($gopath -eq $null) {
+    if (($gopath -eq $null) -or ($gopath -eq "")) {
         $gopath = "$(Join-Path -Path $env:SCOOP -ChildPath 'apps\go\current\')"
         Write-Host "No 'env:GOPATH' path given. Using default: '$gopath'."
     }
