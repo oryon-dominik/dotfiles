@@ -47,7 +47,14 @@ function ManagePythonToolchain {
     AddToDotenv -path "$env:DOTFILES\.env" -key "WORKON_HOME" -value "$env:WORKON_HOME" -overwrite $false -warn $false
     AddToDotenv -path "$env:DOTFILES\.env" -key "GLOBAL_PYTHON_VENVS" -value "$global_python_venvs" -overwrite $false -warn $false
 
-    # TODO: clean up every PATH, or other remaining clutter.
+    # Clean up PATH.
+    # Remove WindowsApps from PATH. It will overshadow pyenv otherwise.
+    $winAppsPath = "$env:USERPROFILE\AppData\Local\Microsoft\WindowsApps"
+    $path = [System.Environment]::GetEnvironmentVariable('PATH', 'User')
+    # Clean unwanted elements
+    $path = ($path.Split(';') | Where-Object { $_ -ne "$winAppsPath" }) -join ';'
+    # Set modified PATH.
+    [System.Environment]::SetEnvironmentVariable('PATH', $path, 'User')
 
     if ($pyenv -eq $true) {
         # Install pyenv-win.
