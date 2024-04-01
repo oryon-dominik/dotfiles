@@ -12,6 +12,7 @@ function InstallJavaScriptToolchain {
     # Install nvm - node version manager
     # Newer versions of nvm introduced some bad bugs for automation. Seems it
     # will get deprecated in favor of a tool called 'runtime' soon.
+    # https://github.com/coreybutler/nvm-windows/issues/1068
     scoop install main/nvm@1.1.11
     # scoop update nvm
 
@@ -30,12 +31,14 @@ function InstallJavaScriptToolchain {
         AddToDotenv -path "$env:DOTFILES\.env" -key "YARN_GLOBAL_HOME" -value "$env:YARN_GLOBAL_HOME"
     }
 
-    Write-Host "Now install yarn manually:"
-    Write-Host "iex npm install --global yarn"
+    # Write-Host "Now install yarn manually:"
+    # Write-Host "iex npm install --global yarn"
+    iex "npm install --global yarn"
     # re-set yarn's global modules path
-    Write-Host "iex 'yarn config set prefix $env:YARN_GLOBAL_HOME'"
-    # $installed += "yarn"
-    Write-Host
+    iex "yarn config set prefix $env:YARN_GLOBAL_HOME"
+    # Write-Host "iex 'yarn config set prefix $env:YARN_GLOBAL_HOME'"
+    $installed += "yarn"
+    # Write-Host
 
     return $installed
 }
