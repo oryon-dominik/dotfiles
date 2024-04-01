@@ -85,6 +85,14 @@ Write-Host "Yarn should be installed."
 AddToDotenv -path "$env:DOTFILES\.env" -key "DOTFILES_SKIP_YARN" -value "false" -overwrite $false -warn $false
 Write-Host
 
+# Set the editor to 'code -w' by default.
+Write-Host "Setting the editor to 'code -w' by default."
+if (($env:EDITOR -eq $null) -or ($env:EDITOR -eq "")) {
+    $env:EDITOR = "code -w"
+}
+AddToDotenv -path "$env:DOTFILES\.env" -key "EDITOR" -value $env:EDITOR -overwrite $false -warn $false
+Write-Host
+
 # Cloud storage mount point is empty by default.
 Write-Host "Cloud storage mount point is empty by default. Example:"
 Write-Host 'AddToDotenv -path "$env:DOTFILES\.env" -key "CLOUD_MOINT_POINT" -value "X:/Meine Ablage/" -overwrite $true -warn $false'
