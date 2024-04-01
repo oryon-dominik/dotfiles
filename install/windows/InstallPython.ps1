@@ -33,11 +33,12 @@ function ManagePythonToolchain {
     $installed = @()
     $updated_pyenv = $false
 
+    if (($global_python_venvs -eq $null) -or ($global_python_venvs -eq "")) {
+        Write-Host "No 'env:GLOBAL_PYTHON_VENVS' path given. Using default: 'venvs'."
+        $global_python_venvs = "venvs"
+    }
+
     if (($workon_home -eq $null) -or ($workon_home -eq "")) {
-        if (($global_python_venvs -eq $null) -or ($global_python_venvs -eq "")) {
-            Write-Host "No 'env:GLOBAL_PYTHON_VENVS' path given. Using default: 'venvs'."
-            $global_python_venvs = "venvs"
-        }
         $env:WORKON_HOME = "$env:USERPROFILE\$global_python_venvs"
         Write-Host "No workon home path given. env:WORKON_HOME is not set. Using default $env:WORKON_HOME."
         [Environment]::SetEnvironmentVariable("WORKON_HOME", $env:WORKON_HOME, [System.EnvironmentVariableTarget]::Session)
@@ -61,7 +62,9 @@ function ManagePythonToolchain {
         # scoop update pyenv-win
 
         # Git clone instead, because the scoop package is kinda outdated fast..
-        Invoke-Expression "git clone $pyenv_url $pyenv_home"
+        if (-Not (Test-Path -Path $pyenv_home) -Or (Get-ChildItem -Path $pyenv_home | Measure-Object).Count -eq 0) {
+            Invoke-Expression "git clone $pyenv_url $pyenv_home"
+        }
         $current_path = $pwd
         Set-Location -Path (Split-Path -Path $pyenv_home -Parent)
         Invoke-Expression "git checkout -- pyenv-win/.versions_cache.xml"
