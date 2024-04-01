@@ -31,6 +31,9 @@ function InstallJavaScriptToolchain {
         AddToDotenv -path "$env:DOTFILES\.env" -key "YARN_GLOBAL_HOME" -value "$env:YARN_GLOBAL_HOME"
     }
 
+    # re-read all paths.
+    . "$env:DOTFILES\common\powershell\Paths.ps1"
+    
     # Write-Host "Now install yarn manually:"
     # Write-Host "iex npm install --global yarn"
     iex "npm install --global yarn"

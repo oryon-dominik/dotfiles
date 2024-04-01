@@ -102,6 +102,9 @@ function ManagePythonToolchain {
         $installed += "python $version"
     }
 
+    # re-read all paths.
+    . "$env:DOTFILES\common\powershell\Paths.ps1"
+
     python -m ensurepip --upgrade
     python -m pip install --upgrade pip --no-warn-script-location
 
