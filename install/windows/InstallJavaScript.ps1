@@ -2,7 +2,7 @@
 
 . "$env:DOTFILES\common\powershell\components\DotEnvs.ps1"
 
-
+# FIXME: no unattended install yet: nvm will not run from a script?!.
 function InstallJavaScriptToolchain {
 
     $installed = @()
@@ -13,26 +13,27 @@ function InstallJavaScriptToolchain {
     scoop install main/nvm
     scoop update nvm
 
+
     $env:NVM_HOME = "$(Join-Path -Path $env:SCOOP -ChildPath 'apps\nvm\current')"
     AddToDotenv -path "$env:DOTFILES\.env" -key "NVM_HOME" -value "$env:NVM_HOME" -overwrite $false -warn $false
 
-    nvm list available
+    iex "nvm list available"
     # install npm
-    nvm install latest
+    iex "nvm install latest"
     $installed += "node"
-    nvm use latest
+    iex "nvm use latest"
 
     # install yarn
-    npm install --global yarn
+    iex "npm install --global yarn"
     $installed += "yarn"
 
-    if ($env:YARN_GLOBAL_HOME -eq $null) {
+    if (($env:YARN_GLOBAL_HOME -eq $null) -or ($env:YARN_GLOBAL_HOME -eq "")) {
         $env:YARN_GLOBAL_HOME = "$env:USERPROFILE\.yarn"
         AddToDotenv -path "$env:DOTFILES\.env" -key "YARN_GLOBAL_HOME" -value "$env:YARN_GLOBAL_HOME"
     }
 
     # re-set yarn's global modules path
-    yarn config set prefix $env:YARN_GLOBAL_HOME
+    iex "yarn config set prefix $env:YARN_GLOBAL_HOME"
 
     return $installed
 }
