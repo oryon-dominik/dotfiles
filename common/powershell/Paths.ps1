@@ -8,6 +8,7 @@ $env:path += ";$env:Programfiles\GTK3-Runtime Win64\bin"  # gtk3 (used for weasy
 $env:path += ";$env:DOTFILES\bin"  # local binaries
 $env:path += ";$script_location\batch"
 $env:path += ";$env:CARGO_HOME\bin\"  # rust commands
+$env:path += ";$env:PYENV_HOME\bin\"  # pyenv itself
 $env:path += ";$env:PYENV_HOME\versions\$env:GLOBAL_PYTHON_VERSION\scripts\"  # global python scripts
 $env:path += ";$env:GOPATH\bin\"  # go commands
 $env:path += ";$env:POETRY_HOME\bin"  # python poetry
