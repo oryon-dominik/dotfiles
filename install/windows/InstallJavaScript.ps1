@@ -9,10 +9,11 @@ function InstallJavaScriptToolchain {
     
     Write-Host "Installing Javascript Toolchain... "
 
-    # install nvm - node version manager
-    scoop install main/nvm
-    scoop update nvm
-
+    # Install nvm - node version manager
+    # Newer versions of nvm introduced some bad bugs for automation. Seems it
+    # will get deprecated in favor of a tool called 'runtime' soon.
+    scoop install main/nvm@1.1.11
+    # scoop update nvm
 
     $env:NVM_HOME = "$(Join-Path -Path $env:SCOOP -ChildPath 'apps\nvm\current')"
     AddToDotenv -path "$env:DOTFILES\.env" -key "NVM_HOME" -value "$env:NVM_HOME" -overwrite $false -warn $false
