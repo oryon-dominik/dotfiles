@@ -112,6 +112,10 @@ if (($env:PROJECTS -ne $null) -and !(Test-Path $env:PROJECTS -PathType Container
 }
 Write-Host
 
+# Also add the gitignored bin directory.
+Write-Host "Creating bin directory in $env:DOTFILES."
+mkdir "$env:DOTFILES/bin" -ErrorAction SilentlyContinue
+
 # Create shared global logs directory and the file the global log will be written to.
 if (($env:DOTFILES_SHARED -ne $null) -and !(Test-Path "$env:DOTFILES_SHARED" -PathType Container)) {
     New-Item -ItemType Directory -Force -Path "$env:DOTFILES_SHARED"
