@@ -17,10 +17,10 @@ function ManagePythonToolchain {
         [bool]$favourites = $false,
         [bool]$clean = $true,
         [bool]$llm = $false,
-        [string]$workon_home = $($env:WORKON_HOME),
-        [string]$pyenv_home = $($env:PYENV_HOME),
-        [string]$poetry_home = $($env:POETRY_HOME),
-        [string]$global_python_venvs = $($env:GLOBAL_PYTHON_VENVS)
+        [string]$workon_home = "$($env:WORKON_HOME)",
+        [string]$pyenv_home = "$($env:PYENV_HOME)",
+        [string]$poetry_home = "$($env:POETRY_HOME)",
+        [string]$global_python_venvs = "$($env:GLOBAL_PYTHON_VENVS)"
     )
 
     Write-Host "Installing Python Toolchain... https://python.org/"
@@ -28,14 +28,14 @@ function ManagePythonToolchain {
     $installed = @()
     $updated_pyenv = $false
 
-    if ($workon_home -eq $null) {
-        if ($global_python_venvs -eq $null) {
+    if (($workon_home -eq $null) -or ($workon_home -eq "")) {
+        if (($global_python_venvs -eq $null) -or ($global_python_venvs -eq "")) {
             Write-Host "No 'env:GLOBAL_PYTHON_VENVS' path given. Using default: 'venvs'."
             $global_python_venvs = "venvs"
         }
         $env:WORKON_HOME = "$env:USERPROFILE\$global_python_venvs"
         Write-Host "No workon home path given. env:WORKON_HOME is not set. Using default $env:WORKON_HOME."
-        [Environment]::SetEnvironmentVariable("WORKON_HOME", "$env:USERPROFILE\venvs", [System.EnvironmentVariableTarget]::Session)
+        [Environment]::SetEnvironmentVariable("WORKON_HOME", $env:WORKON_HOME, [System.EnvironmentVariableTarget]::Session)
     }
 
     AddToDotenv -path "$env:DOTFILES\.env" -key "WORKON_HOME" -value "$env:WORKON_HOME" -overwrite $false -warn $false
@@ -45,7 +45,7 @@ function ManagePythonToolchain {
 
     if ($pyenv -eq $true) {
         # Install pyenv-win.
-        if ($pyenv_home -eq $null) {
+        if (($pyenv_home -eq $null) -or ($pyenv_home -eq "")) {
             Write-Host "No 'env:PYENV_HOME' set. Using default: 'env:USERPROFILE\.pyenv\pyenv-win\'."
             $pyenv_home = "$env:USERPROFILE\.pyenv\pyenv-win\"
         }
@@ -56,9 +56,9 @@ function ManagePythonToolchain {
         # scoop update pyenv-win
 
         # Git clone instead, because the scoop package is kinda outdated fast..
-        Invoke-Expression "git clone $pyenv_url $env:PYENV_HOME"
+        Invoke-Expression "git clone $pyenv_url $pyenv_home"
         $current_path = $pwd
-        Set-Location -Path (Split-Path -Path $env:PYENV_HOME -Parent)
+        Set-Location -Path (Split-Path -Path $pyenv_home -Parent)
         Invoke-Expression "git checkout -- pyenv-win/.versions_cache.xml"
         Invoke-Expression "git pull"
         Set-Location -Path $current_path
@@ -105,14 +105,14 @@ function ManagePythonToolchain {
     if ($llm -eq $true) {
         # Install llm.
         python -m pip install llm
-        $llm_home = $($env:LLM_USER_PATH)
-        if ($llm_home -eq $null) {
+        $llm_home = "$($env:LLM_USER_PATH)"
+        if (($llm_home -eq $null) -or ($llm_home -eq "")) {
             Write-Host "No 'env:LLM_USER_PATH' set. Using default: 'env:DOTFILES\common\llm'."
             $llm_home = "$env:DOTFILES\common\llm"
         }
         # llm plugins
-        llm install llm-gpt4all
-        llm install llm-mistral
+        # llm install llm-gpt4all
+        # llm install llm-mistral
         $env:LLM_USER_PATH = $llm_home
 
         # Monkeypatch llm cli.py to use default template.
@@ -123,20 +123,12 @@ function ManagePythonToolchain {
         mkdir $llm_home -ErrorAction SilentlyContinue
         AddToDotenv -path "$env:DOTFILES\.env" -key "LLM_USER_PATH" -value $env:LLM_USER_PATH -overwrite $true -warn $false
 
-        # TBD: do the editor settings belong here? Probably not.
-        $editor = $($env:EDITOR)
-        if ($editor -eq $null) {
-            Write-Host "No 'env:EDITOR' set. Using default: 'code -w'."
-            $editor = "code -w"
-        }
-        AddToDotenv -path "$env:DOTFILES\.env" -key "EDITOR" -value $editor -overwrite $true -warn $false
-
         $installed += "llm"
     }
 
     if ($poetry -eq $true) {
         # Install poetry.
-        if ($poetry_home -eq $null) {
+        if (($poetry_home -eq $null) -or ($poetry_home -eq "")) {
             Write-Host "No 'env:POETRY_HOME' set. Using default: 'env:USERPROFILE\.poetry'."
             $poetry_home = "$env:USERPROFILE\.poetry"
             mkdir $poetry_home -ErrorAction SilentlyContinue
