@@ -57,16 +57,17 @@ function ManagePythonToolchain {
         }
         AddToDotenv -path "$env:DOTFILES\.env" -key "PYENV_HOME" -value "$pyenv_home" -overwrite $false -warn $false
 
+        $pyenv_git = (Split-Path -Path $pyenv_home -Parent)
         # Install using scoop.
         # scoop install pyenv-win
         # scoop update pyenv-win
 
         # Git clone instead, because the scoop package is kinda outdated fast..
         if (-Not (Test-Path -Path $pyenv_home) -Or (Get-ChildItem -Path $pyenv_home | Measure-Object).Count -eq 0) {
-            Invoke-Expression "git clone $pyenv_url $pyenv_home"
+            Invoke-Expression "git clone $pyenv_url $pyenv_git"
         }
         $current_path = $pwd
-        Set-Location -Path (Split-Path -Path $pyenv_home -Parent)
+        Set-Location -Path $pyenv_git
         Invoke-Expression "git checkout -- pyenv-win/.versions_cache.xml"
         Invoke-Expression "git pull"
         Set-Location -Path $current_path
