@@ -4,6 +4,11 @@
 . "$env:DOTFILES\common\powershell\components\DotEnvs.ps1"
 
 
+function InstallLatestPython {
+    ManagePythonToolchain -python $true -pyenv $true -poetry $true -global $true -favourites $true -clean $true
+}
+
+
 function ManagePythonToolchain {
 
     param (
