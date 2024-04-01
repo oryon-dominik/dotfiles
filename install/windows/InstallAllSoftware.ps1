@@ -83,17 +83,22 @@ function EasyInstall {
     }
 
     Write-Host "Installing ALL Software packages.. this may take a while."
+    Write-Host "(Up to a couple of hours on slow systems. Bottleneck: c/c++ compiler.)"
+    Write-Host ""
     Write-Host "Meanwhile ... "
     Write-Host "style your taskbar"
     Write-Host "style your desktop and color-theme (#861a22)."
     Write-Host "Customize sounds."
     Write-Host "Get some coffee, go for a walk.."
+    Write-Host ""
+    Write-Host "Work."
+    Write-Host "Meet some colleagues."
+    Write-Host ""
     Write-Host "You name it.."
     Write-Host ""
     Write-Host "............"
     Write-Host ""
     InstallSoftware -scoops $scoops -essentials $essentials -rust $rust -modernunix $modernunix -python $python -golang $golang -javascript $javascript -pwsh_modules $pwsh_modules -google_filestream $google_filestream -buildtools $buildtools
-
 }
 
 
