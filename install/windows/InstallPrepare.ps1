@@ -8,6 +8,12 @@ if ($isAdmin -eq $true) {
     return
 }
 
+# Check if the DOTFILES directory is set.
+if (($env:DOTFILES -eq $null) -or ($env:DOTFILES -eq "")) {
+    Write-Host "env:DOTFILES is not defined. Can't continue."
+    return
+}
+
 # Touch a dotenv to store your custom environment variables - valid for powershell sessions only.
 $dotenv_path = (Join-Path -Path "$env:DOTFILES" -ChildPath ".env");
 if (!(Test-Path -Path $dotenv_path -PathType Leaf)) {
@@ -29,9 +35,29 @@ Write-Host
 
 # Fill initial .env
 . "$env:DOTFILES\common\powershell\components\DotEnvs.ps1"
+
+# Set the SCOOP directory.
+if (($env:SCOOP -eq $null) -or ($env:SCOOP -eq "")) {
+    $env:SCOOP = "$env:USERPROFILE\scoop\"
+}
+Write-Host "Setting scoop directory to $env:SCOOP."
+AddToDotenv -path "$env:DOTFILES\.env" -key "SCOOP" -value "$env:SCOOP" -overwrite $false -warn $false
+Write-Host
+
+# Set the DOTFILES_SHARED directory.
+if (($env:DOTFILES_SHARED -eq $null) -or ($env:DOTFILES_SHARED -eq "")) {
+    $env:DOTFILES_SHARED = "$env:DOTFILES\shared\"
+}
+Write-Host "Setting DOTFILES_SHARED directory to $env:DOTFILES_SHARED."
+AddToDotenv -path "$env:DOTFILES\.env" -key "DOTFILES_SHARED" -value "$env:DOTFILES_SHARED" -overwrite $false -warn $false
+Write-Host
+
 # Set the SHELL to pwsh.
+if (($env:SHELL -eq $null) -or ($env:SHELL -eq "")) {
+    $env:SHELL = "C:\Program Files\PowerShell\7\pwsh.exe"
+}
 Write-Host "Setting shell to pwsh."
-AddToDotenv -path "$env:DOTFILES\.env" -key "SHELL" -value "C:\Program Files\PowerShell\7\pwsh.exe" -overwrite $false -warn $false
+AddToDotenv -path "$env:DOTFILES\.env" -key "SHELL" -value $env:SHELL -overwrite $false -warn $false
 Write-Host
 
 # Disable virtualenv prompt to use my custom prompt.
@@ -79,19 +105,24 @@ if (($env:PROJECTS -ne $null) -and !(Test-Path $env:PROJECTS -PathType Container
 Write-Host
 
 # Create shared global logs directory and the file the global log will be written to.
-if (($env:DOTFILES -ne $null) -and !(Test-Path "$env:DOTFILES\shared\logs\global" -PathType Container)) {
-    New-Item -ItemType Directory -Force -Path "$env:DOTFILES\shared\logs\global"
-    New-Item -ItemType File -Force -Path "$env:DOTFILES\shared\logs\global\auto-gitevents.log"
+if (($env:DOTFILES_SHARED -ne $null) -and !(Test-Path "$env:DOTFILES_SHARED" -PathType Container)) {
+    New-Item -ItemType Directory -Force -Path "$env:DOTFILES_SHARED"
+    # This is a workaround to work on systems that do not have access to the 'shared' repo.
+    # Will create an empty git repository in the shared directory (git force clone
+    # will overwrite this "mocked shared dir" later, if access is granted).
+    cd "$env:DOTFILES_SHARED"
+    git init
+    cd -
+    New-Item -ItemType Directory -Force -Path "$env:DOTFILES_SHARED\logs\global"
+    New-Item -ItemType File -Force -Path "$env:DOTFILES_SHARED\logs\global\auto-gitevents.log"
 }
-
-# TODO: create other directories neccessary for a vital and runnable installation
 
 Write-Host "Done :)"
 
 Write-Host "Re-open a shell as admin and run the admin-installation script."
 Write-Host '(as admin) iex "$env:DOTFILES/install/windows/InstallAsAdmin.ps1"'
 Write-Host
-Write-Host "When that finished you can run the user-installation scripts for adding all software.."
+Write-Host "When that finished you can run the user-installation scripts for adding all software in a NEW shell-instance.."
 Write-Host '. "$env:DOTFILES/install/windows/InstallAllSoftware.ps1"'
 Write-Host 'EasyInstall -use_defaults $true'
 Write-Host

@@ -14,13 +14,13 @@ function ReadUpdateLog {
     }
 
     # Create the shared update path to the machine name if it doesn't exist.
-    $update_machine_path = (Join-Path -Path $env:DOTFILES -ChildPath "shared\logs\$env:computername\")
+    $update_machine_path = (Join-Path -Path $env:DOTFILES_SHARED -ChildPath "logs\$env:computername\")
     if(!(test-path $update_machine_path)) {
         New-Item -ItemType Directory -Force -Path $update_machine_path
     }
 
     # Touch the updates.log update path to the machine name if it doesn't exist.
-    $update_log_path = (Join-Path -Path $env:DOTFILES -ChildPath "shared\logs\$env:computername\updates.log")
+    $update_log_path = (Join-Path -Path $env:DOTFILES_SHARED -ChildPath "logs\$env:computername\updates.log")
     if (!(Test-Path -Path $update_log_path -PathType Leaf)) {
         New-Item -ItemType File -Force -Path $update_log_path
     }

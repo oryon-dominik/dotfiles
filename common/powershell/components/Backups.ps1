@@ -36,7 +36,7 @@ function backups {
         Write-Host starting backup at (Get-Date)
         Write-Host --------------------------------------------
 
-        restic-apollon --tag apollon --exclude-file $env:DOTFILES\shared\backup\restic-excludefile backup c:\dev d:\keep
+        restic-apollon --tag apollon --exclude-file $env:DOTFILES_SHARED\backup\restic-excludefile backup c:\dev d:\keep
         restic-apollon forget --prune --keep-last=7 --keep-daily=30 --keep-weekly=52 --keep-monthly=24 --keep-yearly=10
     }
 }

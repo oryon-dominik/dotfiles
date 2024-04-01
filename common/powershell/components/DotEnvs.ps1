@@ -33,12 +33,16 @@ function AddToDotenv {
     )
 
     # does env exist?
-    if (!( Test-Path $path)) {
+    if (!( Test-Path $path -PathType Leaf))) {
         Write-Warning "Failed to load environment variables from $path"
         return
     }
 
     $dotenvs = Get-Content $path -ErrorAction Stop
+    if ($dotenvs -eq $null -or $dotenvs.Count -eq 0) {
+    # If there are no entries yet, add the first line.
+        $dotenvs = @("# Set all environment variables here")
+    }
 
     $found = $false
     foreach ($line in $dotenvs) {
@@ -59,7 +63,7 @@ function AddToDotenv {
     }
 
     if (!$found) {
-        $dotenvs += "$key=$value`n"
+        $dotenvs += "$key=$value"
     }
 
     $dotenvs | Set-Content $path

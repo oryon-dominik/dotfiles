@@ -12,13 +12,17 @@ function pullJournal {
 
 function pullDotfiles {
     $dotfilesDir = $env:DOTFILES
-    if (-not (Test-Path $dotfilesDir)) {
-        Write-Host "env:DOTFILES is not defined."
+    $sharedDir = $env:DOTFILES_SHARED
+    if (($dotfilesDir -eq $null) -or (-not (Test-Path $dotfilesDir))) {
+        Write-Host "env:DOTFILES is not defined. Can't pull."
         return
     }
     GitPullfromDirectory -directory $dotfilesDir
-    # TODO: attention 'shared' is hardcoded: maybe we need an env here as well?!
-    GitPullfromDirectory -directory $dotfilesDir\shared
+    if (($sharedDir -eq $null) -or (-not (Test-Path $sharedDir))) {
+        Write-Host "env:DOTFILES_SHARED is not defined. Can't pull."
+        return
+    }
+    GitPullfromDirectory -directory $sharedDir
 }
 
 function GitPullfromDirectory {
@@ -47,7 +51,7 @@ function GitPullOnceADayAndWorkingMachine {
         return
     }
     $computerName = [System.Environment]::MachineName
-    $eventslogdir = "$env:DOTFILES/shared/logs/global"
+    $eventslogdir = "$env:DOTFILES_SHARED/logs/global"
     $eventslog = "$eventslogdir/auto-gitevents.log"
     if (-not (Test-Path $eventslog)) {
         New-Item -Path $eventslog -ItemType File

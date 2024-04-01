@@ -38,8 +38,8 @@ function Set-WallPaper { # Thanks to https://www.joseespitia.com/2017/09/15/set-
 function ToggleWallpaper {
     $currentWP = Split-Path (Get-ItemProperty -Path 'HKCU:\Control Panel\Desktop' -Name Wallpaper).Wallpaper -Leaf
     if ($currentWP -eq "surface.png") {
-        Set-WallPaper -Image "$env:DOTFILES/shared/files/images/conosole/console_zen.png" -Style Fill
+        Set-WallPaper -Image "$env:DOTFILES_SHARED/files/images/conosole/console_zen.png" -Style Fill
     } else {
-        Set-WallPaper -Image "$env:DOTFILES/shared/files/images/backgrounds/surface.png" -Style Fill
+        Set-WallPaper -Image "$env:DOTFILES_SHARED/files/images/backgrounds/surface.png" -Style Fill
     }
 }

@@ -74,11 +74,11 @@ function UpgradeScoop {
 
     Write-Host ""
     Write-Host "Adding installed scoop packages to local list"
-    $installed_scoops = (Join-Path -Path $env:DOTFILES -ChildPath shared\installedPackages\$env:computername\)
+    $installed_scoops = (Join-Path -Path $env:DOTFILES_SHARED -ChildPath "installedPackages\$env:computername\")
     if(!(test-path $installed_scoops)) {
         New-Item -ItemType Directory -Force -Path $installed_scoops
     }
-    $log = (Join-Path -Path $env:DOTFILES -ChildPath "shared\installedPackages\$env:computername\scoop_installed_packages.txt")
+    $log = (Join-Path -Path $env:DOTFILES_SHARED -ChildPath "installedPackages\$env:computername\scoop_installed_packages.txt")
     if (Test-Path -Path $log -PathType Leaf) {
         Write-Output (scoop list) | Out-file $log
     }
@@ -99,11 +99,11 @@ function UpgradeChocolatey {
     choco upgrade all
     Write-Host ""
     Write-Host "Adding installed chocolatey packages to local list"
-    $installed_packages_path = (Join-Path -Path $env:DOTFILES -ChildPath shared\installedPackages\$env:computername\)
+    $installed_packages_path = (Join-Path -Path $env:DOTFILES_SHARED -ChildPath "installedPackages\$env:computername\")
     if(!(test-path $installed_packages_path)) {
         New-Item -ItemType Directory -Force -Path $installed_packages_path
     }
-    $choco_packages_log_path = (Join-Path -Path $env:DOTFILES -ChildPath "shared\installedPackages\$env:computername\choco_installed_packages.txt")
+    $choco_packages_log_path = (Join-Path -Path $env:DOTFILES_SHARED -ChildPath "installedPackages\$env:computername\choco_installed_packages.txt")
     if (Test-Path -Path $choco_packages_log_path -PathType Leaf) {
         Write-Output (choco list -lo -r -y) | Out-file $choco_packages_log_path
     }
@@ -285,7 +285,7 @@ function UpdateRepositories {
     }
     Set-Location -Path $current_path
     LogUpdate -Message "Upgrade Repositories" -Level "INFO"  # TODO: calculate level from result errorcodes
-    LogUpdate -Message "Upgrade Repositories on $env:computername" -childpath "shared\logs\global" -logfilename "auto-gitevents.log" -Level "INFO"  # TODO: calculate level from result errorcodes
+    LogUpdate -Message "Upgrade Repositories on $env:computername" -childpath "logs\global" -logfilename "auto-gitevents.log" -Level "INFO"  # TODO: calculate level from result errorcodes
     # TODO: return errorcode or success
 }
 
@@ -295,15 +295,15 @@ function LogUpdate {
     param(
         [Parameter(Mandatory=$True)][string]$message = $(throw "Parameter -Message is required."),
         [Parameter(Mandatory=$True)][string]$level = $(throw "Parameter -Level is required."),
-        [string]$childpath = "shared\logs\$env:computername\",
+        [string]$childpath = "logs\$env:computername\",
         [string]$logfilename = "updates.log"
     )
 
-    $update_machine_path = (Join-Path -Path $env:DOTFILES -ChildPath $childpath)
+    $update_machine_path = (Join-Path -Path $env:DOTFILES_SHARED -ChildPath $childpath)
     if(!(test-path $update_machine_path)) {
         New-Item -ItemType Directory -Force -Path $update_machine_path
     }
-    $update_log_path = (Join-Path -Path $env:DOTFILES -ChildPath "$childpath\$logfilename")
+    $update_log_path = (Join-Path -Path $env:DOTFILES_SHARED -ChildPath "$childpath\$logfilename")
     if (!(Test-Path -Path $update_log_path -PathType Leaf)) {
         New-Item -ItemType File -Force -Path $update_log_path
     }
