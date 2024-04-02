@@ -33,7 +33,7 @@ function AddToDotenv {
     )
 
     # does env exist?
-    if (!( Test-Path $path -PathType Leaf))) {
+    if (!( Test-Path $path -PathType Leaf)) {
         Write-Warning "Failed to load environment variables from $path"
         return
     }
