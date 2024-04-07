@@ -673,6 +673,17 @@
       "category": "cli"
     },
     {
+      "package": "raspberry-pi-imager",
+      "bucket": "extras",
+      "urls": ["https://www.raspberrypi.com/software/"],
+      "description": "Raspberry Pi Imager, quick and easy install Raspberry Pi OS and others to microSD cards.",
+      "essential": false,
+      "command": null,
+      "os": null,
+      "tags": null,
+      "category": "guis"
+    },
+    {
       "package": "doppler",
       "bucket": "doppler https://github.com/DopplerHQ/scoop-doppler.git",
       "urls": ["https://github.com/DopplerHQ/"],
