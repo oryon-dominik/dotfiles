@@ -83,6 +83,8 @@ function SetupLocalGitconfig {
 [user]
     email = $email
     name = $name
+[credential "https://github.com"]
+	username = $name
 "@
 }
 
