@@ -112,6 +112,19 @@ if (($env:PROJECTS -ne $null) -and !(Test-Path $env:PROJECTS -PathType Container
 }
 Write-Host
 
+
+# Set & Create the DOWNLOADS directory.
+if (($env:DOWNLOADS -eq $null) -or ($env:DOWNLOADS -eq "")) {
+    $env:DOWNLOADS = "$env:USERPROFILE\Downloads\"
+}
+Write-Host "Setting DOWNLOADS directory to $env:DOWNLOADS."
+AddToDotenv -path "$env:DOTFILES\.env" -key "DOWNLOADS" -value "$env:DOWNLOADS" -overwrite $false -warn $false
+if (($env:DOWNLOADS -ne $null) -and !(Test-Path $env:DOWNLOADS -PathType Container)) {
+    New-Item -ItemType Directory -Force -Path $env:DOWNLOADS
+}
+Write-Host
+
+
 # Also add the gitignored bin directory (also added by MondernUnixInstall..).
 # Write-Host "Creating bin directory in $env:DOTFILES."
 # mkdir "$env:DOTFILES/bin" -ErrorAction SilentlyContinue
