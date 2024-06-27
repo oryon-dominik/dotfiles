@@ -10,7 +10,9 @@ function yarn {
     # $yarn = "$(yarn global bin)\yarn.cmd"
     # To avoid the slow call to yarn global bin.. hardcode it's global path -
     # we are depending on nvm (installed via scoop) here, so 'yarn global bin' might be wrong anyways.
-    $yarn = "$env:SCOOP\persist\nvm\nodejs\nodejs\yarn.cmd" -replace ' ', '` '  # escape spaces in program files path
+    $yarn = "$env:SCOOP\apps\yarn\current\bin\yarn.cmd" -replace ' ', '` '  # escape spaces in program files path
+    # $yarn = "$env:SCOOP\persist\nvm\nodejs\nodejs\yarn.cmd" -replace ' ', '` '  # escape spaces in program files path
+    # 
 
     if ($args.Count -lt 1) {
         # No real arguments provided, display help
