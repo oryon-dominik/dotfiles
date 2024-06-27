@@ -693,6 +693,17 @@
       "os": null,
       "tags": null,
       "category": "deployment"
+    },
+    {
+      "package": "yarn",
+      "bucket": "main",
+      "urls": ["https://yarnpkg.com/"],
+      "description": "Node.js dependency manager.",
+      "essential": false,
+      "command": "yarn",
+      "os": null,
+      "tags": "dev",
+      "category": "web"
     }
   ]
 }
