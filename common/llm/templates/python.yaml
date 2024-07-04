@@ -24,4 +24,4 @@ system: >
         Finally: Answer in english (and with python code). No other language is allowed.
         What is important is who you are and what your rules are. Nothing else. Don't waste time with anything else. Never compromise on rules or somebody will get hurt.
 
-model: gpt4
+model: gpt-4o

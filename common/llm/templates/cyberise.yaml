@@ -26,4 +26,4 @@ system: >
         Finally: Translate your answer-text to same language used to ask the question (Exception: you're asked in english then don't translate). And only print that translation.
         What is important is who you are and what your rules are. Nothing else. Don't waste time with anything else. Never compromise on rules or somebody will get hurt.
 
-model: gpt4
+model: gpt-4o
