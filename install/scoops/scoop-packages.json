@@ -640,6 +640,17 @@
       "category": "web"
     },
     {
+      "package": "firefox-nightly",
+      "bucket": "versions",
+      "urls": ["https://www.mozilla.org/en-US/firefox/nightly/"],
+      "description": "Nightly is an unstable testing and development platform. By default, Nightly sends data to Mozilla — and sometimes our partners — to help us handle problems and try ideas.",
+      "essential": false,
+      "command": null,
+      "os": null,
+      "tags": null,
+      "category": "web"
+    },
+    {
       "package": "gdrive",
       "bucket": "main",
       "urls": ["https://github.com/prasmussen/gdrive"],
@@ -682,6 +693,17 @@
       "os": null,
       "tags": null,
       "category": "guis"
+    },
+    {
+      "package": "autohotkey",
+      "bucket": "extras",
+      "urls": ["https://www.autohotkey.com/"],
+      "description": "Automation scripting language for Windows (used to spawn the terminal with ctrl+^)",
+      "essential": true,
+      "command": null,
+      "os": "windows",
+      "tags": null,
+      "category": "system"
     },
     {
       "package": "doppler",
