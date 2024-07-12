@@ -6,6 +6,7 @@
 // To view the default settings, hold "alt" while clicking on the "Settings" button.
 // For documentation on these settings, see: https://aka.ms/terminal-documentation
 {
+    "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
     "startOnUserLogin": true,
 
@@ -23,7 +24,8 @@
     "copyOnSelect": false,
 
     // If enabled, formatted data is also copied to your clipboard
-    "copyFormatting": false,
+    // "copyFormatting": false,
+    "copyFormatting": "none",
 
     // A profile specifies a command to execute paired with information about how it should look and feel.
     // Each one of them will appear in the 'New Tab' dropdown,
