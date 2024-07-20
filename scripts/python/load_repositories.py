@@ -10,6 +10,14 @@ except ImportError:
     print = print
 
 
+"""
+Clones all projects from the repositories global.json list
+
+You probably want to login to git account first.
+The 'shared' dotfiles directory should probably be setup first.
+"""
+
+
 df = os.environ.get("DOTFILES")
 assert df is not None, "DOTFILES environment variable not set"
 
