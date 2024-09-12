@@ -34,9 +34,13 @@ def generate_env_name(name: str, cwd: str, legacy: bool = False) -> str:
     return f"{sanitized}-{hshs}"
 
 
-def get_env():
-    cwd = str(os.getcwd())
-    project_path = Path(cwd)
+def get_env() -> tuple[str | None, str | None]:
+    """Get the project name and directory str from pyproject.toml."""
+    cwd = str(Path.cwd().resolve())
+    project_path = Path.cwd()
+    application_path = Path.cwd() / "application"
+    if application_path.exists():
+        project_path = application_path
     project_file = project_path / "pyproject.toml"
     if project_file.exists():
         return read_pyproject(project_file), cwd
