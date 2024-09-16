@@ -12,16 +12,32 @@ function cc () {
     $cwd = (Get-Location)
     $parent = Split-Path -Path $cwd
     if (Test-Path $commands -PathType leaf)    {
-        python commands.py $args
+        if ($args) {
+            python commands.py $args
+        }
+        else {
+            python commands.py
+        }
+        
     }
     elseif (Test-Path (Join-Path -Path $parent -ChildPath $commands) -PathType leaf) {
         Set-Location $parent
-        python commands.py $args
+        if ($args) {
+            python commands.py $args
+        }
+        else {
+            python commands.py
+        }
         Set-Location $cwd
     }
     elseif (Test-Path (Join-Path -Path $cwd -ChildPath "application/commands.py") -PathType leaf) {
         Set-Location (Join-Path -Path $cwd -ChildPath "application/")
-        python commands.py $args
+        if ($args) {
+            python commands.py $args
+        }
+        else {
+            python commands.py
+        }
         Set-Location $cwd
     }
     else {
