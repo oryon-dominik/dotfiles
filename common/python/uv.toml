@@ -1,8 +1,14 @@
 # uv configuration file
 # https://docs.astral.sh/uv/
+
 # pointed to by environment variable UV_CONFIG_FILE= set during installation.
 # defaults to: ~/.config/uv/uv.toml
 # modified to: ~/.config/uv.toml
+
+
+# uv is installed with: 
+# posix: curl -LsSf https://astral.sh/uv/install.sh | sh
+# windows: irm https://astral.sh/uv/install.ps1 | iex
 
 
 # for CI/CD you might set:
