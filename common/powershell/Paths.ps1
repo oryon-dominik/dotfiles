@@ -16,5 +16,5 @@ $env:path += ";$env:POETRY_HOME\bin"  # python poetry
 $env:path += ";$env:SCOOP\apps\scoop\current\bin\;$env:SCOOP\shims\"
 $env:path += ";$env:NVM_HOME\nodejs\"
 $env:path += ";$env:NVM_HOME\nodejs\nodejs\"
-$env:path += ";$env:YARN_GLOBAL_HOME\bin"
-$env:path += ";$env:EDITOR_BASE_DIR\bin"
+$env:path += ";$env:YARN_GLOBAL_HOME\bin\"
+$env:path += ";$env:EDITOR_BASE_DIR\bin\"

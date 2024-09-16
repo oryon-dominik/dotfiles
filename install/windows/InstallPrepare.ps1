@@ -104,7 +104,7 @@ Write-Host
 # Set the editor base path to vscodes default directory by default.
 Write-Host "Setting the editor to 'vscodes default directory' by default."
 if (($env:EDITOR_BASE_DIR -eq $null) -or ($env:EDITOR_BASE_DIR -eq "")) {
-    $env:EDITOR_BASE_DIR = "$env:APPS_BASE\Microsoft Vs Code\"
+    $env:EDITOR_BASE_DIR = "$env:APPS_BASE\Microsoft Vs Code"
 }
 AddToDotenv -path "$env:DOTFILES\.env" -key "EDITOR_BASE_DIR" -value $env:EDITOR_BASE_DIR -overwrite $false -warn $false
 Write-Host
