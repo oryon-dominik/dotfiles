@@ -2,6 +2,7 @@
 # Installed on every dev machine I fly
 
 # system
+pip
 pip-tools
 rich
 PyAutoGUI

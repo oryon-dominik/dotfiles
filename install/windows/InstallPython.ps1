@@ -83,12 +83,11 @@ function ManagePythonToolchain {
     # re-read all paths.
     . "$env:DOTFILES\common\powershell\Paths.ps1"
 
-    python -m ensurepip --upgrade
-    python -m pip install --upgrade pip --no-warn-script-location
+    python -m pip install --upgrade pip --no-warn-script-location --break-system-packages
 
     if ($favourites -eq $true) {
         # Install favourite system packages.
-        python -m pip install -r "$env:DOTFILES.\common\python\system-packages.txt"
+        python -m pip install -r "$env:DOTFILES.\common\python\system-packages.txt" --break-system-packages
         $installed += "python-system-packages"
     }
 

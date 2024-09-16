@@ -9,6 +9,7 @@ authors = [
 requires-python = ">=3.12"
 
 dependencies = [
+    "pip>=24.2",
     "pre-commit>=3.8.0",
 ]
 # System packages are located in common/python/system-packages.txt now.

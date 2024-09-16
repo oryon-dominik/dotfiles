@@ -48,7 +48,7 @@ function InstallPythonSystemPackages {
     if ($env:VIRTUAL_ENV_PROMPT -ne "" -and $env:VIRTUAL_ENV_PROMPT -ne $null) {
         deactivate
     }
-    python -m pip install -r $env:DOTFILES\common\python\system-packages.txt
+    python -m pip install -r $env:DOTFILES\common\python\system-packages.txt --break-system-packages
 }
 
 function ShowConfigSSH {
