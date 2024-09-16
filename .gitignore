@@ -9,6 +9,9 @@ bin/
 # dotenv
 .env
 
+# the venv
+.venv
+
 # all logs
 *.log
 
