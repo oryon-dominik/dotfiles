@@ -35,12 +35,10 @@ newest_version: 25.12.2021
 
 ### Hooks
 
-To enable the git commit hooks on the machine (Requires installation of [python](tutorials/python/pyenv-on-windows.md) + [poetry](tutorials/python/poetry-on-windows.md))
+To enable the git commit hooks on the machine (Requires installation of [uv](tutorials/python/uv.md))
 
-    poetry env use python
-    poetry install
-    poetry shell
-    pre-commit install
+    uv sync
+    uv run pre-commit install
 
 
 ### Diagram

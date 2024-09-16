@@ -22,6 +22,19 @@ function workon ($venvName, $legacy = $false ) {
         # Write-Host "Deactivating current virtualenv..."
         deactivate
     }
+
+    # check local .venv directories first
+    $venvDir = ".venv"
+    if (Test-Path -Path $venvDir) {
+        . (Join-Path -Path "$venvDir" -ChildPath "Scripts/activate.ps1")
+        return
+    }
+    $venvDir = "application/.venv"
+    if (Test-Path -Path $venvDir) {
+        . (Join-Path -Path "$venvDir" -ChildPath "Scripts/activate.ps1")
+        return
+    }
+
     if ($venvName -eq $null) {
         if ($legacy) {
             $venvName = (venvNameLegacy)
@@ -32,9 +45,9 @@ function workon ($venvName, $legacy = $false ) {
     $venvDir = "$env:WORKON_HOME/$venvName"
     if (Test-Path -Path $venvDir) {
         . (Join-Path -Path "$venvDir" -ChildPath "Scripts/activate.ps1")
-    } else {
-        Write-Host "Could not find venv: $venvName."
+        return
     }
+    Write-Host "Could not find venv: $venvName."
 }
 
 # deactivate is not needed, as it is automatically added by the activate.ps1 Script.

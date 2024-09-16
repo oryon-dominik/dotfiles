@@ -136,11 +136,9 @@ style = "bold white"
 
 [python]
 symbol = " 🐍 "
-pyenv_version_name = false
-format = '[${symbol}${pyenv_prefix}${version}]($style)[ (\($virtualenv\)) ]($style)'
+format = '[${symbol}${version}]($style)[ (\($virtualenv\)) ]($style)'
 version_format = "v${raw}"
 style = "bold white"
-pyenv_prefix = "pyenv"
 python_binary = ["python"]
 detect_extensions = ["py", "ipynb"]
 detect_files = [".python-version", "Pipfile", "__init__.py", "pyproject.toml", "requirements.txt", "setup.py", "tox.ini"]

@@ -5,7 +5,7 @@
 
 
 function InstallLatestPython {
-    ManagePythonToolchain -python $true -pyenv $true -poetry $true -global $true -favourites $true -clean $true
+    ManagePythonToolchain -python $true -uv $true -global $true -favourites $true -clean $true
 }
 
 
@@ -14,24 +14,18 @@ function ManagePythonToolchain {
     param (
         [string]$version = "",
         [bool]$python = $false,
-        [bool]$pyenv = $false,
-        [string]$pyenv_url = "https://github.com/pyenv-win/pyenv-win",
-        [bool]$poetry = $false,
-        [bool]$pipx = $false,
+        [bool]$uv = $false,
         [bool]$global = $false,
         [bool]$favourites = $false,
         [bool]$clean = $true,
         [bool]$llm = $false,
         [string]$workon_home = "$($env:WORKON_HOME)",
-        [string]$pyenv_home = "$($env:PYENV_HOME)",
-        [string]$poetry_home = "$($env:POETRY_HOME)",
         [string]$global_python_venvs = "$($env:GLOBAL_PYTHON_VENVS)"
     )
 
     Write-Host "Installing Python Toolchain... https://python.org/"
 
     $installed = @()
-    $updated_pyenv = $false
 
     if (($global_python_venvs -eq $null) -or ($global_python_venvs -eq "")) {
         Write-Host "No 'env:GLOBAL_PYTHON_VENVS' path given. Using default: 'venvs'."
@@ -48,7 +42,7 @@ function ManagePythonToolchain {
     AddToDotenv -path "$env:DOTFILES\.env" -key "GLOBAL_PYTHON_VENVS" -value "$global_python_venvs" -overwrite $false -warn $false
 
     # Clean up PATH.
-    # Remove WindowsApps from PATH. It will overshadow pyenv otherwise.
+    # Remove WindowsApps from PATH. It will overshadow other python installations otherwise.
     $winAppsPath = "$env:USERPROFILE\AppData\Local\Microsoft\WindowsApps"
     $path = [System.Environment]::GetEnvironmentVariable('PATH', 'User')
     # Clean unwanted elements
@@ -56,54 +50,31 @@ function ManagePythonToolchain {
     # Set modified PATH.
     [System.Environment]::SetEnvironmentVariable('PATH', $path, 'User')
 
-    if ($pyenv -eq $true) {
-        # Install pyenv-win.
-        if (($pyenv_home -eq $null) -or ($pyenv_home -eq "")) {
-            Write-Host "No 'env:PYENV_HOME' set. Using default: 'env:USERPROFILE\.pyenv\pyenv-win\'."
-            $pyenv_home = "$env:USERPROFILE\.pyenv\pyenv-win\"
-        }
-        AddToDotenv -path "$env:DOTFILES\.env" -key "PYENV_HOME" -value "$pyenv_home" -overwrite $false -warn $false
+    if ($uv -eq $true) {
+        # Install [uv](https://github.com/astral-sh/uv).
+        irm https://astral.sh/uv/install.ps1 | iex
 
-        $pyenv_git = (Split-Path -Path $pyenv_home -Parent)
-        # Install using scoop.
-        # scoop install pyenv-win
-        # scoop update pyenv-win
+        AddToDotenv -path "$env:DOTFILES\.env" -key "UV_CONFIG_FILE" -value "$env:USERPROFILE\.config\uv.toml" -overwrite $false -warn $false
+        AddToDotenv -path "$env:DOTFILES\.env" -key "UV_PYTHON_INSTALL_DIR" -value "$env:USERPROFILE\uv\python" -overwrite $false -warn $false
+        AddToDotenv -path "$env:DOTFILES\.env" -key "UV_CACHE_DIR" -value "$env:USERPROFILE\uv\cache" -overwrite $false -warn $false
 
-        # Git clone instead, because the scoop package is kinda outdated fast..
-        if (-Not (Test-Path -Path $pyenv_home) -Or (Get-ChildItem -Path $pyenv_home | Measure-Object).Count -eq 0) {
-            Invoke-Expression "git clone $pyenv_url $pyenv_git"
-        }
-        $current_path = $pwd
-        Set-Location -Path $pyenv_git
-        Invoke-Expression "git checkout -- pyenv-win/.versions_cache.xml"
-        Invoke-Expression "git pull"
-        Set-Location -Path $current_path
-
-        $installed += "pyenv-win"
-
-        pyenv update
-
-        $updated_pyenv = $true
+        $installed += "uv"
     }
+
 
     # Install target python version or latest.
     if ($python -eq $true) {
         if ($version -eq "") {
             # Get latest python version.
-            if ($updated_pyenv -eq $false) {
-                pyenv update
-            }
-            $version = pyenv install --list | Sort-Object {[System.Version]$_} -ErrorAction SilentlyContinue -Descending | Select-Object -First 1
+            $version = uv python list | ForEach-Object { ($_ -split '[-]') | Select-Object -First 1 -Skip 1} | Sort-Object {[System.Version]$_} -ErrorAction SilentlyContinue -Descending | Select-Object -First 1
         }
-        pyenv install $version
+        uv python install $version
         if ($global -eq $true) {
-            pyenv global $version
             AddToDotenv -path "$env:DOTFILES\.env" -key "GLOBAL_PYTHON_VERSION" -value "$version" -overwrite $true -warn $false
-            pyenv rehash  # TBD: is this necessary?
-
             $current_path = $pwd
             Set-Location -Path $env:DOTFILES
-            pyenv local $version
+            # echo $version > .python-version
+            uv python pin $version
             Set-Location -Path $current_path
         }
         $installed += "python $version"
@@ -135,7 +106,7 @@ function ManagePythonToolchain {
         $env:LLM_USER_PATH = $llm_home
 
         # Monkeypatch llm cli.py to use default template.
-        $llm_cli_path = "$env:PYENV_HOME\versions\$env:GLOBAL_PYTHON_VERSION\Lib\site-packages\llm\cli.py"
+        $llm_cli_path = "$env:UV_PYTHON_INSTALL_DIR\cpython-$env:GLOBAL_PYTHON_VERSION-windows-x86_64-none\Lib\site-packages\llm\cli.py"
         (Get-Content -Path $llm_cli_path) -replace '@click.option\("-t", "--template", help="Template to use"\)', '@click.option("-t", "--template", help="Template to use", default="default")' | Set-Content -Path $llm_cli_path
 
         # Create if not exists.
@@ -145,38 +116,10 @@ function ManagePythonToolchain {
         $installed += "llm"
     }
 
-    if ($poetry -eq $true) {
-        # Install poetry.
-        if (($poetry_home -eq $null) -or ($poetry_home -eq "")) {
-            Write-Host "No 'env:POETRY_HOME' set. Using default: 'env:USERPROFILE\.poetry'."
-            $poetry_home = "$env:USERPROFILE\.poetry"
-            mkdir $poetry_home -ErrorAction SilentlyContinue
-        }
-        AddToDotenv -path "$env:DOTFILES\.env" -key "POETRY_HOME" -value "$poetry_home" -overwrite $false -warn $false
-        if (![bool](Get-Command -Name 'poetry' -ErrorAction SilentlyContinue)) {
-            # Install to the active python interpreter via their offical script.
-            (Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | python -
-        }
-        $installed += "poetry"
-        poetry self update
-        poetry config cache-dir "$poetry_home\cache"
-        poetry config virtualenvs.options.always-copy "true"
-        poetry config virtualenvs.path "$env:WORKON_HOME"
-    }
-
-    if ($pipx -eq $true) {
-        # Install pipx.
-        python -m pip install --quiet --user -U pipx
-        python -m pipx reinstall-all
-        $installed += "pipx"
-    }
-
     if ($clean -eq $true) {
         # Clean up.
         python -m pip cache purge
-        echo yes | poetry cache clear . --all
-        # Pipx cache
-        Remove-Item "$env:USERPROFILE\.local\pipx\.cache" -Force -Recurse -Confirm:$false -ErrorAction SilentlyContinue
+        uv cache clean
     }
 
     return $installed

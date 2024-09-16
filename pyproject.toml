@@ -1,12 +1,12 @@
 [project]
-version = "1.1.0"
+version = "1.2.0"
 name = "dotfiles"
 description = "oryons dotfiles"
 readme = "README.md"
 authors = [
     {name ="oryon-dominik", email="oryon@cyberise.de"}
 ]
-requires-python = ">=3.11"
+requires-python = ">=3.12"
 
 dependencies = []
 # System packages are located in common/python/system-packages.txt now.

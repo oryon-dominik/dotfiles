@@ -156,7 +156,7 @@ function InstallSoftware {
     # (And if the user needs an install, chown/chmod the files to the user.)
     if ($python -eq $true) {
         . $(Join-Path -Path "$env:DOTFILES" -ChildPath "install/windows/InstallPython.ps1")
-        $installed += ManagePythonToolchain -python $true -pyenv $true -poetry $true -global $true -favourites $true -clean $true
+        $installed += ManagePythonToolchain -python $true -uv $true -global $true -favourites $true -clean $true
     }
 
     if ($google_filestream -eq $true) {

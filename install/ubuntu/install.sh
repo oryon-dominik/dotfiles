@@ -2,8 +2,7 @@
 
 # set environment variables
 export DOTFILES=$HOME/.dotfiles
-export PYENV_ROOT=$HOME/.pyenv
-export PYTHON_VERSION=3.10.1
+export PYTHON_VERSION=3.12.6
 
 # update first
 sudo apt update
@@ -63,37 +62,23 @@ else
     :
 fi
 
-## pyenv
+## uv
 # we need a c compiler & other dependencies
 sudo apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
 libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
 xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
 
-sudo rm -rf $HOME/.pyenv
-sudo curl https://pyenv.run | bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Install python
-pyenv update
-# then install your desired python (pyenv install --list)
+# then install your desired python (uv python list --all-versions)
 # this may take a while!
-pyenv install $PYTHON_VERSION
+uv python install $PYTHON_VERSION
 # show if everthing is right
-pyenv global $PYTHON_VERSION
-pyenv versions
-pyenv rehash
+
 python -m pip install --upgrade pip
 
-# And poetry
-curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
-source $HOME/.poetry/env
-# set the path inline with virtualfish
-poetry config virtualenvs.path $HOME/.virtualenvs/
-
 python -m pip install --user virtualenvwrapper
-
-# install pipx
-python -m pip install --user pipx
-python -m pipx ensurepath
 
 # yarn
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
@@ -105,9 +90,7 @@ sudo sh -c "echo /bin/fish >> /etc/shells"
 
 # activate fish-shell
 fish -i
-# and add poetry & pyenv to the path
-set -U PYENV_ROOT $HOME/.pyenv
-set -U fish_user_paths /usr/local/bin /sbin $HOME/.poetry/bin $HOME/.local/bin $PYENV_ROOT/bin $PYENV_ROOT/shims (yarn global bin) $fish_user_paths
+set -U fish_user_paths /usr/local/bin /sbin $HOME/.local/bin (yarn global bin) $fish_user_paths
 
 source $HOME/.dotfiles/common/fish/install_fisher_plugins.fish
 

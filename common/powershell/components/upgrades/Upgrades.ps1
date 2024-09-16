@@ -17,7 +17,7 @@ function upgrade {
         Write-Host "    windows             Windows Update"
         # Write-Host "    choco               Chocolatey Upgrade"
         Write-Host "    repos               Update the repositores that are set in $env:DOTFILES\.repositories.txt"
-        Write-Host "    python              Update pyenv, poetry and pip"
+        Write-Host "    python              Update python and pip"
         # Write-Host "    python-packages     Updates all python packages of the active repositories"
         Write-Host "    powershell          Update powershell"
         Write-Host "    rust                Update rust via rustup"
@@ -117,7 +117,7 @@ function UpgradeChocolatey {
 
 function PythonUpdate {
     Write-Host "=== === === PYTHON Update === === ==="
-    $update_message = "Updating PYTHON (pip, pyenv, poetry, pipx).. DEPRECATION WARNING, will call the install script instead"
+    $update_message = "Updating PYTHON (pip, uv).. DEPRECATION WARNING, will call the install script instead"
     Write-Host $update_message
     Write-Host ""
     # TODO: calculate level from result errorcodes, so update the log, when
@@ -126,72 +126,10 @@ function PythonUpdate {
 
 
     . $(Join-Path -Path "$env:DOTFILES" -ChildPath "install/windows/InstallPython.ps1")
-    $installed += ManagePythonToolchain -python $true -pyenv $true -poetry $true -global $true -favourites $true -clean $true
+    $installed += ManagePythonToolchain -python $true -uv $true -global $true -favourites $true -clean $true
 
     Write-Host ""
     Write-Host "=== === === PYTHON Update Finished === === ==="
-    # ! DEPRECATION WARNING
-
-    # Write-Host "Updating pip.."
-    # python -m ensurepip --upgrade
-    # python -m pip install --upgrade pip --no-warn-script-location
-    # Write-Host ""
-
-    # if (![bool](Get-Command -Name 'pyenv' -ErrorAction SilentlyContinue)) {
-    #     Write-Host "could not find pyenv on path, skipping.."
-    # }
-    # else {
-    #     Write-Host "Updating pyenv.."
-    #     if (Test-Path $env:PYENV_HOME) {
-    #         $current_path = $pwd
-    #         Set-Location -Path (Split-Path -Path $env:PYENV_HOME -Parent)
-    #         Invoke-Expression "git checkout -- pyenv-win/.versions_cache.xml"
-    #         Invoke-Expression "git pull"
-    #         Set-Location -Path $current_path
-    #         }
-    #     else {
-    #         Write-Host "env:PYENV not found, skipping repository pull"
-    #     }
-    #     Write-Host "Ask for new python versions available to pyenv.."
-    #     pyenv update
-    #     Write-Host ""
-    # }
-
-    # ! Write-Host "Updating pipx.." ! deprecated
-
-    # clearing the cache
-    # $pipx_cache_dir = "$env:USERPROFILE\.local\pipx\.cache"
-    # Remove-Item $pipx_cache_dir -Force -Recurse -Confirm:$false
-
-    # check the symbolic link
-    # $pipx_python_path = "$env:USERPROFILE\.local\bin\python"
-    # $pipx_python = Get-Item $pipx_python_path -Force -ea SilentlyContinue
-    # if (SelfHasAdminRights) {
-    #     if (![bool]($pipx_python.Attributes -band [IO.FileAttributes]::ReparsePoint)) {
-    #             # python in .local\bin is not linked as symbolic link
-    #             Remove-Item $pipx_python_path -Force -Confirm:$false
-    #             New-Item -Path $pipx_python_path -ItemType SymbolicLink -Value "$env:PYENV_HOME\shims\python.bat"
-    #         }
-    # } else {
-    #     Write-Host "Skipping pipx python symbolic link check, privilege elevation required."
-    #     Write-Host "Type: New-Item -Path $pipx_python_path -ItemType SymbolicLink -Value '$env:PYENV_HOME\shims\python.bat'"
-    # }
-
-    # python -m pip install --quiet --user -U pipx
-    # python -m pipx reinstall-all
-
-    # if (![bool](Get-Command -Name 'poetry' -ErrorAction SilentlyContinue)) {
-    #     Write-Host "Could not find poetry on path, skipping.."
-    # }
-    # else {
-    #     Write-Host "Updating poetry.."
-    #     # clear cache
-    #     Write-Host "Delete poetry cache.."
-    #     echo yes | poetry cache clear . --all
-    #     poetry self update
-    #     # python -m pipx upgrade poetry
-    #     Write-Host ""
-    # }
 
 }
 

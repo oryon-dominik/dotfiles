@@ -6,6 +6,7 @@ function SymlinkDotfiles {
         [bool]$powershell = $false,
         [bool]$gitconfig = $false,
         [bool]$starship = $true,
+        [bool]$uv = $true,
         [bool]$vim = $false,
         [bool]$alacritty = $false,
         [bool]$micro = $false,
@@ -30,6 +31,12 @@ function SymlinkDotfiles {
         # starship
         Remove-Item -path "$UserPath/.config/starship.toml" -recurse -force -ErrorAction SilentlyContinue
         New-Item -Path "$UserPath/.config/starship.toml" -ItemType SymbolicLink -Value "$env:DOTFILES/common/starship/starship.toml"
+    }
+
+    if ($uv -eq $true) {
+        # uv
+        Remove-Item -path "$UserPath/.config/uv.toml" -recurse -force -ErrorAction SilentlyContinue
+        New-Item -Path "$UserPath/.config/uv.toml" -ItemType SymbolicLink -Value "$env:DOTFILES/common/python/uv.toml"
     }
 
     if ($vim -eq $true) {

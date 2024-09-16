@@ -15,6 +15,4 @@ alias l='eza --all --color-scale --long --header --git --group-directories-first
 
 alias ports='netstat -tulpen'
 
-alias poetry="$HOME/.local/bin/poetry"
-
 alias cfg="z $HOME/.dotfiles"

@@ -25,22 +25,12 @@ zoxide init fish | source
 mcfly init fish | source
 starship init fish | source
 
-# pyenv
-status is-login; and pyenv init --path | source
-status is-interactive; and pyenv init - | source
-
-# pipx completions, only run once after a fresh pipx install..
-# register-python-argcomplete --shell fish pipx | source
-
 # set -U EDITOR vi
 
-set -U PYENV_ROOT $HOME/.pyenv
+echo "Warning, need to install UV for python packaging."
 fish_add_path -g /usr/local/bin /usr/local/sbin
 fish_add_path -g "$HOME/.local/bin"
 fish_add_path -g "$HOME/.cargo/bin"
-fish_add_path -g "$HOME/.poetry/bin"
-fish_add_path -g "$PYENV_ROOT/bin"
-fish_add_path -g "$PYENV_ROOT/shims"
 # fish_add_path -g (yarn global bin)
 
 
