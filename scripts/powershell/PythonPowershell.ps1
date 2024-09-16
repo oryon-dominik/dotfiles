@@ -3,15 +3,8 @@
 
 function pip { python -m pip $args }  # always use active's python pip
 
-function python {
-    param(
-        [Parameter(ValueFromRemainingArguments=$true)]
-        [string[]]$arguments = @()
-    )
-    $executable = uv python find
-    $args_ = $arguments -join ' '
-    iex "$executable $args_"
-}  # always use uv's active's python
+function python { uv run python $args }  # always use active uv's python
+
 
 # Call command shortcuts, used for python projects
 function cc () {
@@ -23,6 +16,11 @@ function cc () {
     }
     elseif (Test-Path (Join-Path -Path $parent -ChildPath $commands) -PathType leaf) {
         Set-Location $parent
+        python commands.py $args
+        Set-Location $cwd
+    }
+    elseif (Test-Path (Join-Path -Path $parent -ChildPath "application/commands.py") -PathType leaf) {
+        Set-Location (Join-Path -Path $parent -ChildPath "application/")
         python commands.py $args
         Set-Location $cwd
     }
