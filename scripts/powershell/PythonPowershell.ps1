@@ -19,8 +19,8 @@ function cc () {
         python commands.py $args
         Set-Location $cwd
     }
-    elseif (Test-Path (Join-Path -Path $parent -ChildPath "application/commands.py") -PathType leaf) {
-        Set-Location (Join-Path -Path $parent -ChildPath "application/")
+    elseif (Test-Path (Join-Path -Path $cwd -ChildPath "application/commands.py") -PathType leaf) {
+        Set-Location (Join-Path -Path $cwd -ChildPath "application/")
         python commands.py $args
         Set-Location $cwd
     }
