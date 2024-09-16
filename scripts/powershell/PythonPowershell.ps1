@@ -3,7 +3,15 @@
 
 function pip { python -m pip $args }  # always use active's python pip
 
-function pipx { python -m pipx $args }  # always use active's python pipx
+function python {
+    param(
+        [Parameter(ValueFromRemainingArguments=$true)]
+        [string[]]$arguments = @()
+    )
+    $executable = uv python find
+    $args_ = $arguments -join ' '
+    iex "$executable $args_"
+}  # always use uv's active's python
 
 # Call command shortcuts, used for python projects
 function cc () {
@@ -22,7 +30,6 @@ function cc () {
         Write-Host "commands.py not found" 
     }
 }
-
 
 function HashFromPassword {
     python -c "from passlib.hash import sha512_crypt; import getpass; print(sha512_crypt.using(rounds=656_000).hash(getpass.getpass()))"
