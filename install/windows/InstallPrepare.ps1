@@ -85,12 +85,28 @@ Write-Host "Yarn should be installed."
 AddToDotenv -path "$env:DOTFILES\.env" -key "DOTFILES_SKIP_YARN" -value "false" -overwrite $false -warn $false
 Write-Host
 
+# Set the apps base directory to 'ProgramFiles' by default.
+Write-Host "Setting the apps base directory to 'ProgramFiles by default."
+if (($env:APPS_BASE -eq $null) -or ($env:APPS_BASE -eq "")) {
+    $env:APPS_BASE = "$env:ProgramFiles"
+}
+AddToDotenv -path "$env:DOTFILES\.env" -key "APPS_BASE" -value $env:APPS_BASE -overwrite $false -warn $false
+Write-Host
+
 # Set the editor to 'code -w' by default.
 Write-Host "Setting the editor to 'code -w' by default."
 if (($env:EDITOR -eq $null) -or ($env:EDITOR -eq "")) {
     $env:EDITOR = "code -w"
 }
 AddToDotenv -path "$env:DOTFILES\.env" -key "EDITOR" -value $env:EDITOR -overwrite $false -warn $false
+Write-Host
+
+# Set the editor base path to vscodes default directory by default.
+Write-Host "Setting the editor to 'vscodes default directory' by default."
+if (($env:EDITOR_BASE_DIR -eq $null) -or ($env:EDITOR_BASE_DIR -eq "")) {
+    $env:EDITOR_BASE_DIR = "$env:APPS_BASE\Microsoft Vs Code\"
+}
+AddToDotenv -path "$env:DOTFILES\.env" -key "EDITOR_BASE_DIR" -value $env:EDITOR_BASE_DIR -overwrite $false -warn $false
 Write-Host
 
 # Cloud storage mount point is empty by default.
