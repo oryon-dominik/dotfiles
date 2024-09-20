@@ -107,23 +107,9 @@
             "os": null
         },
         {
-            "command": "pyenv",
-            "description": "Manage your different python versions.",
-            "link": "https://github.com/pyenv/pyenv",
-            "category": "python",
-            "os": null
-        },
-        {
-            "command": "poetry",
-            "description": "Manage your projects dependencies and package.",
-            "link": "https://python-poetry.org/",
-            "category": "python",
-            "os": null
-        },
-        {
-            "command": "pipx",
-            "description": "Manage external binaries.",
-            "link": "https://pypa.github.io/pipx/",
+            "command": "uv",
+            "description": "Python releases and packaging manager and resolver.",
+            "link": "https://docs.astral.sh/uv/",
             "category": "python",
             "os": null
         },
