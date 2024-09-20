@@ -23,7 +23,7 @@ function ManagePythonToolchain {
         [string]$global_python_venvs = "$($env:GLOBAL_PYTHON_VENVS)"
     )
 
-    Write-Host "Installing Python Toolchain... https://python.org/"
+    Write-Host ">>> Installing Python Toolchain... https://python.org/"
 
     $installed = @()
 
@@ -38,6 +38,7 @@ function ManagePythonToolchain {
         [Environment]::SetEnvironmentVariable("WORKON_HOME", $env:WORKON_HOME, [System.EnvironmentVariableTarget]::Session)
     }
 
+    Write-Host "------------>> Setting up dotenvs & path."
     AddToDotenv -path "$env:DOTFILES\.env" -key "WORKON_HOME" -value "$env:WORKON_HOME" -overwrite $false -warn $false
     AddToDotenv -path "$env:DOTFILES\.env" -key "GLOBAL_PYTHON_VENVS" -value "$global_python_venvs" -overwrite $false -warn $false
 
@@ -52,6 +53,7 @@ function ManagePythonToolchain {
 
     if ($uv -eq $true) {
         # Install [uv](https://github.com/astral-sh/uv).
+        Write-Host "------------>> Installing uv."
         irm https://astral.sh/uv/install.ps1 | iex
 
         AddToDotenv -path "$env:DOTFILES\.env" -key "UV_CONFIG_FILE" -value "$env:USERPROFILE\.config\uv.toml" -overwrite $false -warn $false
@@ -64,6 +66,7 @@ function ManagePythonToolchain {
 
     # Install target python version or latest.
     if ($python -eq $true) {
+        Write-Host "------------>> Installing latest python version."
         if ($version -eq "") {
             # Get latest python version.
             $version = uv python list | ForEach-Object { ($_ -split '[-]') | Select-Object -First 1 -Skip 1} | Sort-Object {[System.Version]$_} -ErrorAction SilentlyContinue -Descending | Select-Object -First 1
@@ -83,17 +86,20 @@ function ManagePythonToolchain {
     # re-read all paths.
     . "$env:DOTFILES\common\powershell\Paths.ps1"
 
+    Write-Host "------------>> Installing/updating pip."
     python -m pip install --upgrade pip --no-warn-script-location --break-system-packages
 
     if ($favourites -eq $true) {
         # Install favourite system packages.
+        Write-Host "------------>> Installing favourite system packages."
         python -m pip install -r "$env:DOTFILES.\common\python\system-packages.txt" --break-system-packages
         $installed += "python-system-packages"
     }
 
     if ($llm -eq $true) {
         # Install llm.
-        python -m pip install llm
+        Write-Host "------------>> Installing llm."
+        python -m pip install llm --break-system-packages
         $llm_home = "$($env:LLM_USER_PATH)"
         if (($llm_home -eq $null) -or ($llm_home -eq "")) {
             Write-Host "No 'env:LLM_USER_PATH' set. Using default: 'env:DOTFILES\common\llm'."
@@ -117,7 +123,10 @@ function ManagePythonToolchain {
 
     if ($clean -eq $true) {
         # Clean up.
+        Write-Host "------------>> Cleaning up"
+        Write-Host "-------------> pip cache purge"
         python -m pip cache purge
+        Write-Host "-------------> uv cache clean"
         uv cache clean
     }
 
