@@ -71,6 +71,9 @@ Import-Module DockerCompletion -ErrorAction SilentlyContinue
 # Virtualenvwrapper bindings
 $env:WORKON_HOME = "$env:USERPROFILE\$env:GLOBAL_PYTHON_VENVS"
 Import-Module "$PSScriptRoot\components\SlimVenvWrapper.ps1"
+# uv powershell completions
+Import-Module "$PSScriptRoot\components\CompletionsUv.ps1"
+
 # Upgrades & Update functionality
 Import-Module "$PSScriptRoot\components\upgrades\Upgrades.ps1"
 # Win-EventTail (tails Windows Event Logs) (https://gist.github.com/jeffpatton1971/a908cac57489e6ca59a6)
