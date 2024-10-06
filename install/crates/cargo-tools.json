@@ -263,6 +263,51 @@
             "os": "posix"
         },
         {
+            "crate": "zeitfetch",
+            "description": "Instantaneous snapshots of system information.",
+            "url": "https://github.com/nidnogg/zeitfetch",
+            "command": "zeitfetch",
+            "tags": "monitoring",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "onefetch",
+            "description": "Command-line Git information tool.",
+            "url": "https://github.com/o2sh/onefetch",
+            "command": "onefetch",
+            "tags": "dev",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "rainfrog",
+            "description": "Database management tui for postgres.",
+            "url": "https://github.com/achristmascarl/rainfrog",
+            "command": "rainfrog",
+            "tags": "dev",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "hwatch",
+            "description": "Modern watch. Records the differences in execution results.",
+            "url": "https://github.com/blacknon/hwatch",
+            "command": "hwatch",
+            "tags": "dev",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "havn",
+            "description": "A fast configurable port scanner with reasonable defaults.",
+            "url": "https://github.com/mrjackwills/havn",
+            "command": "havn",
+            "tags": "dev",
+            "interface": "cli",
+            "os": null
+        },
+        {
             "crate": "rustscan",
             "description": "Fast portscanning with nmap in rust.",
             "url": "https://github.com/RustScan/RustScan",

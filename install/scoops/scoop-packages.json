@@ -717,6 +717,17 @@
       "category": "deployment"
     },
     {
+      "package": "cmake",
+      "bucket": "main",
+      "urls": ["https://cmake.org/"],
+      "description": "The de-facto standard for building C++ code.",
+      "essential": true,
+      "command": "cmake",
+      "os": null,
+      "tags": "dev",
+      "category": "system"
+    },
+    {
       "package": "yarn",
       "bucket": "main",
       "urls": ["https://yarnpkg.com/"],
