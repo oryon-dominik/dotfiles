@@ -308,6 +308,15 @@
             "os": null
         },
         {
+            "crate": "gitu",
+            "description": "A TUI Git client inspired by Magit.",
+            "url": "https://github.com/altsem/gitu",
+            "command": "gitu",
+            "tags": "dev",
+            "interface": "cli",
+            "os": null
+        },
+        {
             "crate": "rustscan",
             "description": "Fast portscanning with nmap in rust.",
             "url": "https://github.com/RustScan/RustScan",
