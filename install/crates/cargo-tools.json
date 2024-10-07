@@ -398,6 +398,15 @@
             "os": null
         },
         {
+            "crate": "termscp",
+            "description": "File transfer and explorer with support for SCP/SFTP/FTP/S3/SMB.",
+            "url": "https://github.com/veeso/termscp",
+            "command": "termscp",
+            "tags": "tree",
+            "interface": "cli",
+            "os": null
+        },
+        {
             "crate": "rustscan",
             "description": "Fast portscanning with nmap in rust.",
             "url": "https://github.com/RustScan/RustScan",
