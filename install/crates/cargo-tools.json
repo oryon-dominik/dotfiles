@@ -400,7 +400,7 @@
         {
             "crate": "termscp",
             "description": "File transfer and explorer with support for SCP/SFTP/FTP/S3/SMB.",
-            "url": "https://github.com/veeso/termscp",
+            "url": "https://termscp.veeso.dev/",
             "command": "termscp",
             "tags": "tree",
             "interface": "cli",
