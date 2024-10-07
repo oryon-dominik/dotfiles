@@ -3,7 +3,11 @@
 
 function pip { python -m pip $args }  # always use active's python pip
 
-function python { uv run python $args }  # always use active uv's python
+# deprecated:
+# using uv's python does not work as expected.. but having uv paths on path
+# will automagically use the systems python when not in an active venv.
+# Also: uv python cretes a venv when 'somewhere', that's not my intended behaviour.
+# function python { uv run python $args }  # always use active uv's python
 
 
 # Call command shortcuts, used for python projects
