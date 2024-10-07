@@ -9,7 +9,7 @@
       "essential": true,
       "command": "git",
       "os": null,
-      "tags": "dev",
+      "tags": "git",
       "category": "cli"
     },
     {
@@ -20,7 +20,7 @@
       "essential": true,
       "command": "git-credential-manager",
       "os": null,
-      "tags": "dev",
+      "tags": "git",
       "category": "cli"
     },
     {
@@ -31,7 +31,7 @@
       "essential": true,
       "command": "git lfs install (once)",
       "os": null,
-      "tags": "dev",
+      "tags": "git",
       "category": "cli"
     },
     {
@@ -97,7 +97,7 @@
       "essential": false,
       "command": "duf",
       "os": null,
-      "tags": "info",
+      "tags": "system",
       "category": "cli"
     },
     {
@@ -512,7 +512,7 @@
       "bucket": "main",
       "urls": ["https://www.audacityteam.org/"],
       "description": "FFmpeg is a powerful multimedia processing tool that can convert, record, and stream audio and video files in various formats.",
-      "essential": false,
+      "essential": true,
       "command": null,
       "os": null,
       "tags": null,
@@ -728,6 +728,39 @@
       "category": "system"
     },
     {
+      "package": "imagemagick",
+      "bucket": "main",
+      "urls": ["https://imagemagick.org/"],
+      "description": "Edit and manipulating digital images",
+      "essential": true,
+      "command": "magick",
+      "os": null,
+      "tags": "dev",
+      "category": "cli"
+    },
+    {
+      "package": "ghostscript",
+      "bucket": "main",
+      "urls": ["https://www.ghostscript.com/", "https://ghostscript.readthedocs.io/"],
+      "description": "Ghostscript is an interpreter for the PostScript language and PDF files.",
+      "essential": true,
+      "command": "gs",
+      "os": null,
+      "tags": "dev",
+      "category": "cli"
+    },
+    {
+      "package": "poppler",
+      "bucket": "main",
+      "urls": ["https://github.com/oschwartz10612/poppler-windows", "https://poppler.freedesktop.org/"],
+      "description": "Poppler is a PDF rendering library.",
+      "essential": true,
+      "command": null,
+      "os": null,
+      "tags": null,
+      "category": "cli"
+    },
+    {
       "package": "yarn",
       "bucket": "main",
       "urls": ["https://yarnpkg.com/"],
@@ -735,7 +768,7 @@
       "essential": false,
       "command": "yarn",
       "os": null,
-      "tags": "dev",
+      "tags": "javascript",
       "category": "web"
     }
   ]

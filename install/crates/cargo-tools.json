@@ -6,7 +6,7 @@
             "description": "The minimal, blazing-fast, and infinitely customizable prompt for any shell!",
             "url": "https://github.com/starship/starship",
             "command": null,
-            "tags": null,
+            "tags": "shell",
             "interface": "cli",
             "os": "posix"
         },
@@ -42,7 +42,7 @@
             "description": "Grep on steroids - 'ripgrep' recursively searches directories for a regex pattern",
             "url": "https://github.com/BurntSushi/ripgrep",
             "command": "rg",
-            "tags": "data-processing",
+            "tags": "search",
             "interface": "cli",
             "os": null
         },
@@ -60,7 +60,7 @@
             "description": "Find entries in the filesystem. User-friendly alternative to 'find'",
             "url": "https://github.com/sharkdp/fd",
             "command": "fd",
-            "tags": "files",
+            "tags": "search",
             "interface": "cli",
             "os": null
         },
@@ -78,7 +78,7 @@
             "description": "A more intuitive version of du in rust - instant overview of which directories are using disk",
             "url": "https://github.com/bootandy/dust",
             "command": "dust",
-            "tags": "info",
+            "tags": "system",
             "interface": "cli",
             "os": null
         },
@@ -96,7 +96,7 @@
             "description": "A program that displays statistics about your code.",
             "url": "https://github.com/XAMPPRocky/tokei",
             "command": "tokei",
-            "tags": "dev",
+            "tags": "info",
             "interface": "cli",
             "os": null
         },
@@ -186,7 +186,7 @@
             "description": "Blazing fast terminal-ui for git written in rust",
             "url": "https://github.com/extrawurst/gitui",
             "command": "gitui",
-            "tags": "dev",
+            "tags": "git",
             "interface": "cli",
             "os": "posix"
         },
@@ -195,7 +195,7 @@
             "description": "The Git Commit Message and Changelog Generation Framework",
             "url": "https://github.com/saschagrunert/git-journal",
             "command": "git-journal",
-            "tags": "dev",
+            "tags": "git",
             "interface": "cli",
             "os": null
         },
@@ -258,7 +258,7 @@
             "description": "Easier connect to WIFI from the command line.",
             "url": "https://github.com/araujobsd/ifwifi/",
             "command": "ifwifi",
-            "tags": "dev",
+            "tags": "system",
             "interface": "cli",
             "os": "posix"
         },
@@ -276,7 +276,7 @@
             "description": "Command-line Git information tool.",
             "url": "https://github.com/o2sh/onefetch",
             "command": "onefetch",
-            "tags": "dev",
+            "tags": "git",
             "interface": "cli",
             "os": null
         },
@@ -285,7 +285,7 @@
             "description": "Database management tui for postgres.",
             "url": "https://github.com/achristmascarl/rainfrog",
             "command": "rainfrog",
-            "tags": "dev",
+            "tags": "database",
             "interface": "cli",
             "os": null
         },
@@ -294,16 +294,25 @@
             "description": "Modern watch. Records the differences in execution results.",
             "url": "https://github.com/blacknon/hwatch",
             "command": "hwatch",
-            "tags": "dev",
+            "tags": "monitoring",
             "interface": "cli",
             "os": null
+        },
+        {
+            "crate": "netop",
+            "description": "Network Top - Monitor network traffic with bpf (Berkeley Packet Filter).",
+            "url": "https://github.com/ZingerLittleBee/netop",
+            "command": "netop",
+            "tags": "monitoring",
+            "interface": "cli",
+            "os": "posix"
         },
         {
             "crate": "havn",
             "description": "A fast configurable port scanner with reasonable defaults.",
             "url": "https://github.com/mrjackwills/havn",
             "command": "havn",
-            "tags": "dev",
+            "tags": "security",
             "interface": "cli",
             "os": null
         },
@@ -312,7 +321,79 @@
             "description": "A TUI Git client inspired by Magit.",
             "url": "https://github.com/altsem/gitu",
             "command": "gitu",
-            "tags": "dev",
+            "tags": "git",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "lemmeknow",
+            "description": "The fastest way to identify anything!",
+            "url": "https://docs.rs/lemmeknow/latest/lemmeknow",
+            "command": "lemmeknow",
+            "tags": "info",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "ouch",
+            "description": "Compression and decompression in the terminal.",
+            "url": "https://github.com/ouch-org/ouch",
+            "command": "ouch",
+            "tags": "files",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "ttyper",
+            "description": "Terminal-based typing test.",
+            "url": "https://github.com/max-niederman/ttyper",
+            "command": "ttyper",
+            "tags": "learning",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "cyme",
+            "description": "List system USB buses and devices - modern cross-platform lsusb",
+            "url": "https://github.com/tuna-f1sh/cyme",
+            "command": "cyme",
+            "tags": "system",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "pastel",
+            "description": "Generate, analyze, convert and manipulate colors.",
+            "url": "https://github.com/sharkdp/pastel",
+            "command": "pastel",
+            "tags": "info",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "pik",
+            "description": "Process Interactive Kill.",
+            "url": "https://github.com/jacek-kurlit/pik",
+            "command": "pik",
+            "tags": "monitoring",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "yazi-fm",
+            "description": "Blazing fast async terminal file manager.",
+            "url": "https://yazi-rs.github.io/",
+            "command": "yazi",
+            "tags": "tree",
+            "interface": "cli",
+            "os": null
+        },
+        {
+            "crate": "yazi-cli",
+            "description": "CLI for blazing fast async terminal file manager.",
+            "url": "https://yazi-rs.github.io/",
+            "command": "yazi",
+            "tags": "tree",
             "interface": "cli",
             "os": null
         },

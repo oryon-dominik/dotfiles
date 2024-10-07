@@ -111,7 +111,7 @@ def generate_commands() -> list[ShellCommand]:
 
     # TODO: what about the go packages and the npm global packages?
     # TODO: what about the python packages, can we also make some neat jsons for these?
-
+    # TODO: what if category or command is None? This script breaks :)
     return sorted(commands, key=lambda c: (c.category, c.command))
 
 
