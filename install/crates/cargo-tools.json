@@ -402,7 +402,7 @@
             "description": "File transfer and explorer with support for SCP/SFTP/FTP/S3/SMB.",
             "url": "https://termscp.veeso.dev/",
             "command": "termscp",
-            "tags": "tree",
+            "tags": "web",
             "interface": "cli",
             "os": null
         },
