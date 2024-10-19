@@ -153,6 +153,3 @@
     # For https connections use git-credential-manager-core:
     # ~/scoop/apps/git-credential-manager/current/git-credential-manager.exe
     helper = manager
-
-[credential "helperselector"]
-    selected = manager
